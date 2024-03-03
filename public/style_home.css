@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
+}
+body{
+    background: #E8F1F2;
+    height: 100vh;
+}
+/* thanh điều khiển*/
+nav{
+    border: #00173D;
+    border-radius: 40px;
+    position: sticky;
+    left: 10px;
+    width: 98px;
+    height: 97vh;
+    margin-top: 10px;
+    background: #00173D;
+    overflow: hidden;
+    transition: 1s;
+}
+/* animation cho thanh điều khiển*/
+nav:hover{
+    width: 280px;
+}
+
+/* Chỉnh logo và avatar*/
+.logo{
+    text-align: center;
+    display: flex;
+    margin: 0px 0px 0px 0px;
+    padding-bottom: 2rem;
+}
+.logo img{
+    height: 45px;
+    width: 60px;
+    border-radius: 50%;
+}
+.logo span{
+    font-weight: bold;
+    padding-left: 15px;
+    font-size: 18px;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+a{
+    position: relative;
+    width: 280px;
+    font-size: 14px;
+    color: #C2E8F8;
+    display: table;
+    padding:10px
+}
+.avatar
+{
+    text-align: center;
+    display: flex;
+    margin: 0px 0px 0px 0px;
+    padding-bottom: 1rem;
+}
+.avatar img{
+    height:50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.avatar span{
+    font-weight: bold;
+    padding-left: 30px;
+    font-size: 18px;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+/* Chỉnh vị trí icon của thanh điều khiển*/
+nav .fas{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 12px;
+    font-size: 20px;
+    text-align: center;
+}
+/* Chỉnh vị trí chữ của thanh điều khiển*/
+.nav-item{ 
+    position: relative;
+    top: 12px;
+    margin-left: 16px;
+}
+/*hiệu ứng thanh diều khiển*/
+.side-bar-icon:hover{
+    background: #C2E8F8;
+}
+.side-bar-icon:hover i{
+    color: #00173D;
+    transition: 0.5s;
+}
+.side-bar-icon:hover .nav-item{
+    color: #00173D;
+    transition: 0.5s;
+}
+.container{
+    display: flex;
+}
+
+.main{
+    position: relative;
+    padding: 40px;
+    width: 100%;
+}
+.main-top{
+    display: flex;
+    width: 100%;
+    color: #00173D;
+}
+.notifications-and-messages {
+    position: absolute;
+    right:0;
+    margin: 10px 30px;
+    font-size: 1.5rem;
+    
+}
