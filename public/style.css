@@ -4,67 +4,6 @@
 
 }
 
-/* style trong index */
-.main{
-    width: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%), url(1.jpg) ;
-    background-position: center;
-    background-size: cover ;
-    height: 109vh;
-}
-
-.navbar{
-    width: 1200px;
-    height: 75px;
-    margin: auto;
-}
-
-.icon{
-    width: 200px;
-    float: left;
-    height: 70px;
-}
-
-.logo {
-    color: #ff7200;
-    font-size : 35px;
-    font-family: Arial;
-    padding-left: 20px;
-    float: left;
-    padding-top: 10px; 
-}
-
-.menu{
-    width: 400px;
-    float: left;
-    height: 70px;
-}
-
-ul{
-    float: left;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-ul li{
-    list-style: none;
-    margin-left: 62px;
-    margin-top: 27px;
-    font-size: 14px;
-}
-
-ul li a{
-    text-decoration: none;
-    color: #fff;
-    font-family: Arial;
-    font-weight: bold;
-    transition: 0.4s ease-in-out;
-}
-
-ul li a:hover{
-    color: #ff7200;
-}
 
 /*style trong login */
 body {
@@ -136,13 +75,25 @@ body {
     color: #D9D9D9; /* Màu chữ 
   }
 */
+
+.forgot-pass{
+    margin-left: 10px;
+    margin-top: 5px;
+    font-size: 10px;  
+    color: #000000; /* Màu chữ */
+    font-weight: bold; /* Chữ in đậm */
+
+}
+
 .Sign-in{
     text-align: center;
-    margin: 20px;
+    margin-top: 15px;
+    margin-left: 12px;
+    margin-bottom: 10px;
     background: #00173D;
     color: #D9D9D9;
     border-radius: 20px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
-    padding: 10px 195px;
+    padding: 10px 203px;
     white-space: nowrap;
     transition: 0.3s;
     justify-content: center;
@@ -151,16 +102,26 @@ body {
     display: inline-block;
 }
 
+.notAccount{
+    margin-left: 10px;
+    font-size: 15px;
+}
+
 /* style register */
-.Sign-up{
-    text-align: center;
-    margin-top: 70px;
-    margin-left: 12px;
+.already-account-index{
+    margin-left: 10px;
     margin-bottom: 10px;
+    font-size: 15px;
+}
+.Sign-up{
+    text-align: center; 
+    margin-left: 15px;
+    margin-top: 15px;
+    margin-bottom: 20px;
     background: #00173D;
     color: #D9D9D9;
     border-radius: 20px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
-    padding: 10px 193px;
+    padding: 10px 191px;
     white-space: nowrap;
     transition: 0.3s;
     justify-content: center;
@@ -175,7 +136,128 @@ body {
 
 }
 
+/* style forgotPass */
+
+.sign-forgot{
+    text-align: center; 
+    margin-left: 15px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background: #00173D;
+    color: #D9D9D9;
+    border-radius: 20px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
+    padding: 10px 223px;
+    white-space: nowrap;
+    transition: 0.3s;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    display: inline-block;
+}
 /* style chat */
+
+
+/*style otp */
+.Tieude1{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 15px;
+    color: #00173D; /* Màu chữ */
+    font-weight: bold; /* Chữ in đấm */
+}
+
+.rounded-square {
+    width: 2px;
+    height: 2px;
+    background-color: #8098F9;
+    border-radius: 8px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.rounded-square input[type="text"] {
+    text-align: center;
+    background: #8098F9;
+    color: #8098F9;
+    border-radius: 3px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
+    padding: 2px 2px;
+    white-space: nowrap;
+    transition: 0.3s;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    display: inline-block;
+
+}
+.otp-container {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.otp-input {
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #929fd6;
+    background-color: #b2bdec;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.otp-input:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.otp-input:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+  }
+  
+.resend-btn {
+    color: #8098F9;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+  
+.submit_in_otp{
+    text-align: center; 
+    margin-left: 15px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background: #00173D;
+    color: #D9D9D9;
+    border-radius: 20px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
+    padding: 10px 223px;
+    white-space: nowrap;
+    transition: 0.3s;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    display: inline-block;
+}
+
+.backToLogin{
+    text-align: right;
+    margin-right: 10px;
+}
+
 
 
 
