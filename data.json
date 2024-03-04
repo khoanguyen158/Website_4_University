@@ -1,0 +1,72 @@
+[
+    {
+        "id":"1",
+        "question":"Hoàng Phủ Ngọc Tường là tác giả của bài văn Ai đã đặt tên cho dòng sông.",
+        "image":"song-Huong.jpg",
+        "answer":true,
+        "score":1000
+    },
+    {
+        "id":"2",
+        "question":"HTML là ngôn ngữ lập trình web phổ biến nhất.",
+        "image":"html.png",
+        "answer":false,
+        "score":500
+    },
+    {
+        "id":"3",
+        "question":"Núi Bà Đen cao nhất Việt Nam.",
+        "image":"nui-Ba-Den.jpg",
+        "answer":false,
+        "score":1000
+    },
+    {
+        "id":"4",
+        "question":"Hình vuông là tứ giác có hai đường chéo vuông góc với nhau tại trung điểm của mỗi đường.",
+        "image":"hinh-vuong.png",
+        "answer":true,
+        "score":500
+    },
+    {
+        "id":"5",
+        "question":"Mặt Trời có dạng hình tròn.",
+        "image":"mat-Troi.jpg",
+        "answer":false,
+        "score":1000
+    },
+    {
+        "id":"6",
+        "question":"Toàn bộ hệ điều hành Windows được viết bằng C++.",
+        "image":"windows.jpg",
+        "answer":false,
+        "score":500
+    },
+    {
+        "id":"7",
+        "question":"JavaScript là một ngôn ngữ lập trình hướng đối tượng.",
+        "image":"javascript.png",
+        "answer":true,
+        "score":1000
+    },
+    {
+        "id":"8",
+        "question":"AI có thể thay thế con người làm mọi việc.",
+        "image":"ai.jpg",
+        "answer":false,
+        "score":500
+    },
+    {
+        "id":"9",
+        "question":"Một ngày có 24 giờ, 720 phút, 43200 giây.",
+        "image":"time.jpg",
+        "answer":false,
+        "score":1000
+    },
+    {
+        "id":"10",
+        "question":"Sa mạc Sahara to hơn Trung Quốc.",
+        "image":"Sahara.jpg",
+        "answer":false,
+        "score":500
+    }
+]
