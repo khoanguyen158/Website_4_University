@@ -113,9 +113,13 @@ nav .fas{
     width: 100%;
 }
 .main-top{
-    display: flex;
+    display: grid;
     width: 100%;
     color: #00173D;
+    height: auto;
+}
+.main-top ul li{
+    list-style-type: none;
 }
 .notifications-and-messages {
     position: absolute;
@@ -124,3 +128,83 @@ nav .fas{
     font-size: 1.5rem;
     
 }
+.notifications-and-messages i{
+    margin: 10px;
+}
+.main .main-top .ima-status{
+    position: relative;
+    top:20px;
+    left: 150px;
+    
+    
+}
+.main .main-top .ima-status img{
+    width: 940px;
+    height: 260px;
+    border-radius: 20px;
+}
+/* .main .main-top .ima-status img:hover{
+    width: 970px;
+    height: 290px;
+    border-radius: 20px;
+    
+} */
+.main .main-top .diploma-list a{
+    position: relative;
+    display: inline-block;
+    top:20px;
+    left: 250px;
+    color:white;
+    border-radius: 10px;
+    background-color: #21c2d4;
+    width: 200px;
+    height: 100px;
+    margin: 20px 20px;
+    text-align: center;
+}
+.main .main-top .diploma-list a ul li{
+    list-style-type: none;
+}
+.main .main-top .diploma-list a:hover{
+    color: #21c2d4;
+    background-color: black;
+    transition: 1s;
+    width: 220px;
+    height: 120px;
+}
+.main .main-top .progress-multi ul li p{
+    display: inline-block;
+    text-align: center;
+
+}
+.main .main-top .progress-multi ul {
+    display: inline-block;
+    list-style-type: none;
+    margin: 15px;
+    
+}
+.main .main-top .progress-multi{
+    position: relative;
+    top:20px;
+    left: 250px;
+}
+.main .main-top .progress-multi ul li{
+    color:white;
+    border-radius: 10px;
+    background-color: #17227a;
+    width: 300px;
+    height: 40px;
+    margin: 20px 10px;
+    padding-top: 10px;
+    text-align: center;
+}
+.main .main-top .progress-multi ul li:hover{    
+    width: 320px;
+    height: 60px;
+    color: #17227a;
+    background-color: rgb(213, 187, 55);
+    transition: 0.75s;
+} 
+
+
+

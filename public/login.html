@@ -9,8 +9,9 @@
         <title>Elearning</title>
         <link rel = "stylesheet" href="style.css"> 
     </head>
+
     <body>
-        <div class = "main1">  
+        <!-- <div class = "main1">  
             <div class = "Dang-nhap">
                 Đăng Nhập Tài Khoản Của Bạn
             </div>
@@ -27,6 +28,9 @@
                     <input type="text" id="username" class="input-field" placeholder="Mật khẩu">  
                 </div>
             </div>
+
+
+
             <div class = "remember-login">
                 <label for="checkbox"> </label>  
                 <input type="checkbox" id="checkbox" name="checkbox">
@@ -40,15 +44,106 @@
             <a href="#" class = "Sign-in" > 
                Đăng nhập
             </a>
-            
-            <div class = "notAccount">
-                Chưa có tài khoản? 
-                <a href ="index.html">
-                    Tạo tài khoản
-                </a>  
-            </div>
-        </div>
+        </div> -->
         
+        <form id="MainForm">
+            <div class = "main1">  
+              <div class = "Dang-nhap">
+                  Đăng Nhập Tài Khoản Của Bạn
+              </div>
+              
+              <div class="input-box">
+                  Email
+                  <div class = "rounded-rectangle-login"> 
+                      <input type="text" id="emailInp" class="input-field" placeholder="name@hcmut.edu.vn">
+                  </div>
+              </div>
+              <div class="input-box">
+                  Password
+                  <div class = "rounded-rectangle-login"> 
+                      <input type="text" id="passwordInp" class="input-field" placeholder="">
+                  </div>
+              </div>
+      
+              
+              
+                <div class = "remember-login">
+                    <label for="checkbox"> </label>  
+                    <input type="checkbox" id="checkbox" name="checkbox">
+                    Ghi nhớ đăng nhập <br/>
+                </div>
+                <div>
+                    <a href = "forgotPass.html" class = "forgot-pass">
+                        Quên mật khẩu?
+                    </a> 
+                </div>
+                
 
+                <a href="login.html"><button type="submit">Đăng nhập</button></a>
+
+                <a href="#" class = "Sign-in" > 
+                    Đăng nhập
+                </a>
+            </div>
+        </form>
+      
+          <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+          <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+            import { getDatabase, get, ref, child } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+            import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+            //import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js";
+            
+            const firebaseConfig = {
+              apiKey: "AIzaSyDQk0PGIztg7qltOimH1_9_lLl5rluKsV8",
+              authDomain: "fir-d023a.firebaseapp.com",
+              databaseURL: "https://fir-d023a-default-rtdb.firebaseio.com",
+              projectId: "fir-d023a",
+              storageBucket: "fir-d023a.appspot.com",
+              messagingSenderId: "81322751429",
+              appId: "1:81322751429:web:eeb12e1ec56b1970c807ac",
+              measurementId: "G-KZQQJNVVWJ"
+            };
+          
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase();
+            const auth = getAuth(app);
+            const dbref = ref(db);
+            //const analytics = getAnalytics(app);
+      
+            let EmailInp =  document.getElementById('emailInp');
+            let PassInp =   document.getElementById('passwordInp');
+            let NameInp =   document.getElementById('nameInp');
+            let MainForm =  document.getElementById('MainForm');
+      
+            let SignInUser = evt => {
+                evt.preventDefault();
+        
+                signInWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
+                .then((credentials) => {
+                    get(child(dbref, 'UsersAuthList/' + credentials.user.uid)).then((snapshot) => {
+                        if (snapshot.exists()) {
+                            sessionStorage.setItem("user-info", JSON.stringify({
+                                username: snapshot.val().username,
+                                email: snapshot.val().email,
+                                password: snapshot.val().password
+                            }))
+                            sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
+                            window.location.href = "Home.html";
+                        } else {
+                            console.log("No data available");
+                        }
+                    })
+                })
+                .catch((error) => {
+                    alert(error.message);
+                    console.log(error.code);
+                    console.log(error.message);
+                });
+            }
+      
+            MainForm.addEventListener('submit', SignInUser);
+          </script>
+          <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
     </body>
 </html>
