@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     var otpInputs = document.querySelectorAll('.otp-input');
 
