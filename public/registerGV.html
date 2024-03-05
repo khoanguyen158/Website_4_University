@@ -40,7 +40,7 @@
       </div>
 
       <div class="Dang-nhap">
-        Tạo tài khoản sinh viên
+        Tạo tài khoản giảng viên
       </div>
       <div class="input-box">
         Tên đăng nhập
@@ -116,7 +116,7 @@
 
       createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
         .then((credentials) => {
-          set(ref(db, 'SinhVien/' + credentials.user.uid), {
+          set(ref(db, 'GiangVien/' + credentials.user.uid), {
             username: NameInp.value,
             email: EmailInp.value,
             password: PassInp.value
