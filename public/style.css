@@ -17,8 +17,9 @@ body {
   }
 
 .main1 {
+    padding: 50px;
     width: 900px;
-    height: 500px;
+    height: 600px;
     background-color: #FFFFFF;
     border-radius: 50px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
     margin: 20px;
@@ -28,7 +29,7 @@ body {
 .Dang-nhap {
     text-align: center;
     margin: 20px;
-    font-size: 20px;
+    font-size: 28px;
     color: #333; /* Màu chữ */
     font-weight: bold; /* Chữ in đậm */
 }
@@ -37,7 +38,7 @@ body {
     margin-top: 20px;
     margin-left: 10px;
     text-align: left;
-    font-size: 15px;
+    font-size: 18px;
     color: #333; /* Màu chữ */
     font-weight: bold; /* Chữ in đậm */
 }
@@ -79,7 +80,7 @@ body {
 .forgot-pass{
     margin-left: 10px;
     margin-top: 5px;
-    font-size: 10px;  
+    font-size: 14px;  
     color: #000000; /* Màu chữ */
     font-weight: bold; /* Chữ in đậm */
 
@@ -270,18 +271,31 @@ body {
     background-color: #00173D;
     color: aliceblue;
     font-size: large;
+    font-family: 'Times New Roman', Times, serif;
 }
 .logo img{
     position: relative;
     top:10px;
-    left: 380px;
-    width: 140px;
-    height: 100px;
-    border-radius: 50px;
+    left: 360px;
+    width: 180px;
+    height: 140px;
+    border-radius: 50%;
 }
 
 .log-in button:hover{
     background-color: #054b36;
     color: aliceblue;
+}
+
+.dang-ki-tk button{
+    position: relative;
+    width: 900px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #00173D;
+    color: aliceblue;
+    font-size: large;
+    top:80px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
