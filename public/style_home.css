@@ -10,6 +10,8 @@
 body{
     background: #E8F1F2;
     height: 100vh;
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2FDH_DEF2.jpg?alt=media&token=5feb4f44-c78a-4e2e-ae98-abaef1831179');
+    
 }
 /* thanh điều khiển*/
 nav{
@@ -93,6 +95,9 @@ nav .fas{
     margin-left: 16px;
 }
 /*hiệu ứng thanh diều khiển*/
+.side-bar-icon{
+    width: 360px;
+}
 .side-bar-icon:hover{
     background: #C2E8F8;
 }
@@ -111,11 +116,11 @@ nav .fas{
 .main{
     position: relative;
     padding: 40px;
-    width: 100%;
+    /* width: 100%; */
 }
 .main-top{
     display: grid;
-    width: 100%;
+    /* width: 100%; */
     color: #00173D;
     height: auto;
 }
