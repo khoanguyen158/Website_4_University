@@ -17,7 +17,7 @@ body {
   }
 
 .main1 {
-    width: 500px;
+    width: 900px;
     height: 500px;
     background-color: #FFFFFF;
     border-radius: 50px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
@@ -43,7 +43,7 @@ body {
 }
 
 .rounded-rectangle-login input[type="text"] {
-    width: 450px;
+    width: 850px;
     height: 20px;
     margin-left: 5px;
     padding: 10px; /* Khoảng cách bên trong input */ 
@@ -257,7 +257,31 @@ body {
     text-align: right;
     margin-right: 10px;
 }
+.log-in{
+    position: relative;
+    top: 40px;
+    left: 25px;
+    
+}
+.log-in button{
+    width: 850px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #00173D;
+    color: aliceblue;
+    font-size: large;
+}
+.logo img{
+    position: relative;
+    top:10px;
+    left: 380px;
+    width: 140px;
+    height: 100px;
+    border-radius: 50px;
+}
 
-
-
+.log-in button:hover{
+    background-color: #054b36;
+    color: aliceblue;
+}
 

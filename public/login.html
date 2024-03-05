@@ -1,59 +1,97 @@
 <!DOCTYPE html>
-<!-- login.html -->
 <html lang="en">
-    <head>
-        <!--
-                <meta charset="utf-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-        -->
-        <title>Elearning</title>
-        <link rel = "stylesheet" href="style.css"> 
-    </head>
 
-    <body>        
-        <form id="MainForm">
-            <div class = "main1">  
-              <div class = "Dang-nhap">
-                  Đăng Nhập Tài Khoản Của Bạn
-              </div>
-              
-              <div class="input-box">
-                  Email
-                  <div class = "rounded-rectangle-login"> 
-                      <input type="text" id="emailInp" class="input-field" placeholder="name@hcmut.edu.vn">
-                  </div>
-              </div>
-              <div class="input-box">
-                  Password
-                  <div class = "rounded-rectangle-login"> 
-                      <input type="text" id="passwordInp" class="input-field" placeholder="">
-                  </div>
-              </div>
-      
-              
-              
-                <div class = "remember-login">
-                    <label for="checkbox"> </label>  
-                    <input type="checkbox" id="checkbox" name="checkbox">
-                    Ghi nhớ đăng nhập <br/>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elearning</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- <div class = "main1">  
+            <div class = "Dang-nhap">
+                Đăng Nhập Tài Khoản Của Bạn
+            </div>
+            
+            <div class="input-box">
+                Tên đăng nhập
+                <div class = "rounded-rectangle-login"> 
+                    <input type="text" id="username" class="input-field" placeholder="Tên đăng nhập">
                 </div>
-
-                <div>
-                    <!-- <a href = "forgotPass.html" class = "forgot-pass">
-                        Quên mật khẩu?
-                    </a>  -->
-
-                    <label id="forgotpasslabel">Quên mật khẩu?</label>
+            </div>
+            <div class="input-box">
+                Mật khẩu
+                <div class = "rounded-rectangle-login"> 
+                    <input type="text" id="username" class="input-field" placeholder="Mật khẩu">  
                 </div>
-                
+            </div>
 
-                <a href="login.html"><button type="submit">Đăng nhập</button></a>
 
-                <a href="#" class = "Sign-in" > 
-                    Đăng nhập
+
+            <div class = "remember-login">
+                <label for="checkbox"> </label>  
+                <input type="checkbox" id="checkbox" name="checkbox">
+                Ghi nhớ đăng nhập <br/>
+            </div>
+            
+            <a href = "forgotPass.html" class = "forgot-pass">
+                Quên mật khẩu?
+            </a> 
+            
+            <a href="#" class = "Sign-in" > 
+               Đăng nhập
+            </a>
+        </div> -->
+
+    <form id="MainForm">
+        <div class="main1">
+
+            <div class="logo">
+                <img
+                    src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Flogo_DEF.jpg?alt=media&token=5c319bb6-f09c-4d0b-89d6-342fde279f9d">
+            </div>
+
+            <div class="Dang-nhap">
+                Đăng Nhập Tài Khoản Của Bạn
+            </div>
+
+
+
+            <div class="input-box">
+                Email
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="emailInp" class="input-field" placeholder="name@hcmut.edu.vn">
+                </div>
+            </div>
+
+            <div class="input-box">
+                Password
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="passwordInp" class="input-field" placeholder="">
+                </div>
+            </div>
+
+
+
+            <div class="remember-login">
+                <label for="checkbox"> </label>
+                <input type="checkbox" id="checkbox" name="checkbox">
+                Ghi nhớ đăng nhập <br />
+            </div>
+            <div>
+                <a href="forgotPass.html" class="forgot-pass">
+                    Quên mật khẩu?
                 </a>
             </div>
-        </form>
+
+            <a href="login.html" class="log-in"><button type="submit">Đăng nhập</button></a>
+
+            <!-- <a href="#" class="Sign-in">
+                Đăng nhập
+            </a> -->
+        </div>
+    </form>       
       
           <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
           <script type="module">
@@ -87,7 +125,6 @@
       
             let SignInUser = evt => {
                 evt.preventDefault();
-        
                 signInWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
                 .then((credentials) => {
                     get(child(dbref, 'UsersAuthList/' + credentials.user.uid)).then((snapshot) => {
@@ -109,6 +146,7 @@
                     console.log(error.code);
                     console.log(error.message);
                 });
+
             }
 
             let ForgotPassword = () => {
@@ -128,4 +166,5 @@
           </script>
           <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
     </body>
+
 </html>
