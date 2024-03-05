@@ -23,7 +23,7 @@
 
                     <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22" alt="Avatar">
 
-                    <span class="nav-item">Hi</span>
+                    <span class="nav-item">Thông tin cá nhân</span>
                 </a></li>
                 <li><a href="#" class="side-bar-icon">
                     <i class="fas fa-home"></i>
@@ -54,12 +54,13 @@
 
         <section class="main">
             <div class="main-top">
+                
                 <ul>
                     <li>
-                        <h1>Khóa học của tôi</h1>
+                        <h1 id="greet"></h1>
                     </li>
                     <li>
-                        <p>Xin chào, Khoa</p>
+                        <p id="msg"></p>
                     </li>
                 </ul>
 
@@ -140,11 +141,11 @@
         <button style="color: red;" type="button" id="signoutbutton">Đăng xuất</button>
     </div>
 
-    <h1 id="msg"></h1>
-    <h1 id="greet"></h1>
+    <!-- <h1 id="msg"></h1>
+    <h1 id="greet"></h1> -->
 
     <script>
-        let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+        //let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
         let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
 
         let MsgHead = document.getElementById("msg");
@@ -163,8 +164,8 @@
                 window.location.href = "login.html";
             }
             else{
-                MsgHead.innerText = `user with email "${UserInfo.email}" has logged in`;
-                GreetHead.innerText = `Hello ${UserInfo.username}!`;
+                GreetHead.innerText = `Chào mừng đến với trang chủ sinh viên, ${UserInfo.username}!`;
+                MsgHead.innerText = `Bạn đang đăng nhập với email "${UserInfo.email}"`;
             }
         }
 
