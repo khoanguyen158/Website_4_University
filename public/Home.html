@@ -168,12 +168,12 @@
         let SignOut = () => {
             sessionStorage.removeItem("user-creds");
             sessionStorage.removeItem("user-info");
-            window.location.href = "login.html";
+            window.location.href = "index.html";
         }
 
         let checkCred = () => {
             if (!sessionStorage.getItem("user-creds")) {
-                window.location.href = "login.html";
+                window.location.href = "index.html";
             }
             else {
                 GreetHead.innerText = `Chào mừng đến với trang chủ sinh viên, ${UserInfo.username}!`;

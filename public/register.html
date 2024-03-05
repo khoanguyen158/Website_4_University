@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!-- Đây là trang ĐĂNG KÝ -->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elearning</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- <script src="/js/angular-route.min.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/css/bootstrap.min.css"></script> -->
+
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/10.8.1/firebase-app-compat.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/10.8.1/firebase-auth-compat.js"></script>
+  <script defer src="/__/firebase/10.8.1/firebase-database-compat.js"></script>
+  <script defer src="/__/firebase/10.8.1/firebase-firestore-compat.js"></script>
+  <script defer src="/__/firebase/10.8.1/firebase-functions-compat.js"></script>
+  <script defer src="/__/firebase/10.8.1/firebase-messaging-compat.js"></script>
+  <script defer src="/__/firebase/10.8.1/firebase-storage-compat.js"></script>
+  <script defer src="/__/firebase/10.8.1/firebase-analytics-compat.js"></script>
+  <script defer src="/__/firebase/10.8.1/firebase-remote-config-compat.js"></script>
+  <script defer src="/__/firebase/10.8.1/firebase-performance-compat.js"></script>
+  <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+</head>
+
+<body>
+  <form id="MainForm">
+    <div class="main1">
+
+      <div class="logo">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Flogo_DEF.jpg?alt=media&token=5c319bb6-f09c-4d0b-89d6-342fde279f9d">
+      </div>
+
+      <div class="Dang-nhap">
+        Tạo tài khoản
+      </div>
+      <div class="input-box">
+        Tên đăng nhập
+        <div class="rounded-rectangle-login">
+          <input type="text" id="nameInp" class="input-field" placeholder="">
+        </div>
+      </div>
+      <div class="input-box">
+        Email
+        <div class="rounded-rectangle-login">
+          <input type="text" id="emailInp" class="input-field" placeholder="name@hcmut.edu.vn">
+        </div>
+      </div>
+      <div class="input-box">
+        Password
+        <div class="rounded-rectangle-login">
+          <input type="text" id="passwordInp" class="input-field" placeholder="">
+        </div>
+      </div>
+
+      <a href="index.html" class="dang-ki-tk"><button type="submit">Đăng kí tài khoản</button></a>
+
+
+      <div class="already-account-index">
+        Sau khi tạo xong tài khoản, trở về trang đăng nhập:
+        <a href="index.html">
+          Đăng nhập
+        </a>
+      </div>
+      <!-- <div class =" already-account-index ">
+          Sign in with Google: 
+          <button onclick="googleLogin()">
+            Login with Google
+          </button>
+        </div> -->
+      <script src="app.js">
+
+      </script>
+
+    </div>
+  </form>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+    import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+    //import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDQk0PGIztg7qltOimH1_9_lLl5rluKsV8",
+      authDomain: "fir-d023a.firebaseapp.com",
+      databaseURL: "https://fir-d023a-default-rtdb.firebaseio.com",
+      projectId: "fir-d023a",
+      storageBucket: "fir-d023a.appspot.com",
+      messagingSenderId: "81322751429",
+      appId: "1:81322751429:web:eeb12e1ec56b1970c807ac",
+      measurementId: "G-KZQQJNVVWJ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    const auth = getAuth(app);
+    //const analytics = getAnalytics(app);
+
+    let EmailInp = document.getElementById('emailInp');
+    let PassInp = document.getElementById('passwordInp');
+    let NameInp = document.getElementById('nameInp');
+    let MainForm = document.getElementById('MainForm');
+
+    let RegisterUser = evt => {
+      evt.preventDefault();
+
+      createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
+        .then((credentials) => {
+          set(ref(db, 'UsersAuthList/' + credentials.user.uid), {
+            username: NameInp.value,
+            email: EmailInp.value,
+            password: PassInp.value
+          })
+          alert("Đăng ký thành công!")
+          }
+          
+        )
+        .catch((error) => {
+          alert(error.message);
+          console.log(error.code);
+          console.log(error.message);
+        });
+        
+      }
+
+    MainForm.addEventListener('submit', RegisterUser);
+  </script>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+</body>
+
+</html>
