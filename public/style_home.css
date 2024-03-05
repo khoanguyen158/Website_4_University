@@ -17,7 +17,7 @@ nav{
     border-radius: 40px;
     position: sticky;
     left: 10px;
-    width: 98px;
+    width: 90px;
     height: 97vh;
     margin-top: 10px;
     background: #00173D;
@@ -64,15 +64,17 @@ a{
     padding-bottom: 1rem;
 }
 .avatar img{
+    margin-left: 8px;
     height:50px;
     width: 50px;
     border-radius: 50%;
 }
 .avatar span{
     font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
     margin-top: 10px;
     text-transform: uppercase;
+    padding-left: 15px;
 }
 
 /* Chỉnh vị trí icon của thanh điều khiển*/
