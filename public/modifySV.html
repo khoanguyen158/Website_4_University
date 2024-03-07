@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin sinh viên</title>
+
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="/js/angular-route.min.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/css/bootstrap.min.css"></script> -->
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/10.8.1/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/10.8.1/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+</head>
+
+<body>
+    <form id="MainForm">
+        <div class="main1">
+            <div class="logo">
+                <img
+                    src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Flogo_DEF.jpg?alt=media&token=5c319bb6-f09c-4d0b-89d6-342fde279f9d">
+            </div>
+
+            <div class="Dang-nhap">
+                Chỉnh sửa tài khoản sinh viên
+            </div>
+            <div class="input-box">
+                Tên đăng nhập
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="nameInp" class="input-field" placeholder="">
+                </div>
+            </div>
+            <div class="input-box">
+                Email
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="emailInp" class="input-field" placeholder="">
+                </div>
+            </div>
+            <div class="input-box">
+                Mật khẩu
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="passwordInp" class="input-field" placeholder="">
+                </div>
+            </div>
+            <div class="input-box">
+                Nhập lại mật khẩu (chưa biết làm, xem sau)
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="" class="input-field" placeholder="">
+                </div>
+            </div>
+            <div class="input-box">
+                Mã số sinh viên
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="idInp" class="input-field" placeholder="">
+                </div>
+            </div>
+            <div class="input-box">
+                Thành phố
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="cityInp" class="input-field" placeholder="">
+                </div>
+            </div>
+            <div class="input-box">
+                Quận
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="districtInp" class="input-field" placeholder="">
+                </div>
+            </div>
+            <div class="input-box">
+                Địa chỉ cụ thể
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="addressInp" class="input-field" placeholder="">
+                </div>
+            </div>
+
+            <button id="AddBtn">Add</button>
+            <button id="RetBtn">Retrive</button>
+            <button id="UpdBtn">Update</button>
+            <button id="DelBtn">Delete</button>
+
+            <a href="HomeQTV.html">Back</a>
+        </div>
+    </form>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDQk0PGIztg7qltOimH1_9_lLl5rluKsV8",
+            authDomain: "fir-d023a.firebaseapp.com",
+            databaseURL: "https://fir-d023a-default-rtdb.firebaseio.com",
+            projectId: "fir-d023a",
+            storageBucket: "fir-d023a.appspot.com",
+            messagingSenderId: "81322751429",
+            appId: "1:81322751429:web:eeb12e1ec56b1970c807ac",
+            measurementId: "G-KZQQJNVVWJ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+        import { getDatabase, set, ref, child, get, update, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+        const db = getDatabase(app);
+        const auth = getAuth(app);
+
+        let EmailInp = document.getElementById('emailInp');
+        let PassInp = document.getElementById('passwordInp');
+        let NameInp = document.getElementById('nameInp');
+        let IdInp = document.getElementById('idInp');
+        let CityInp = document.getElementById('cityInp');
+        let DistrictInp = document.getElementById('districtInp');
+        let AddressInp = document.getElementById('addressInp');
+
+        let AddBtn = document.getElementById('AddBtn');
+        let RetBtn = document.getElementById('RetBtn');
+        let UpdBtn = document.getElementById('UpdBtn');
+        let DelBtn = document.getElementById('DelBtn');
+
+        // let AddData = () => {
+        //     set(ref(db, 'SinhVien/' + IdInp.value), {
+        //         username: NameInp.value,
+        //         email: EmailInp.value,
+        //         password: PassInp.value,
+        //         //mssv: IdInp.value,
+        //         city: CityInp.value,
+        //         district: DistrictInp.value,
+        //         address: AddressInp.value
+        //     }).then(() => {
+        //         alert("Data added successfully!");
+        //     }).catch((error) => {
+        //         alert("Data could not be added!" + error);
+        //         console.error(error);
+        //     });
+        // }
+
+        let AddData = evt => {
+            evt.preventDefault();
+
+            createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value, IdInp.value)
+                .then((credentials) => {
+                    set(ref(db, 'SinhVien/' + IdInp.value), {
+                        username: NameInp.value,
+                        email: EmailInp.value,
+                        password: PassInp.value,
+                        city: CityInp.value,
+                        district: DistrictInp.value,
+                        address: AddressInp.value
+                    })
+                    alert("Đăng ký thành công!")
+                }
+
+                )
+                .catch((error) => {
+                    alert(error.message);
+                    console.log(error.code);
+                    console.log(error.message);
+                });
+
+        }
+
+        let RetData = () => {
+            const dbRef = ref(db);
+            get(child(dbRef, 'SinhVien/' + IdInp.value)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    NameInp.value = snapshot.val().username;
+                    EmailInp.value = snapshot.val().email;
+                    PassInp.value = snapshot.val().password;
+                    CityInp.value = snapshot.val().city;
+                    DistrictInp.value = snapshot.val().district;
+                    AddressInp.value = snapshot.val().address;
+                } else {
+                    alert("No data available");
+                    console.log("No data available");
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
+        }
+
+        let UpdData = () => {
+            update(ref(db, 'SinhVien/' + IdInp.value), {
+                username: NameInp.value,
+                email: EmailInp.value,
+                password: PassInp.value,
+                city: CityInp.value,
+                district: DistrictInp.value,
+                address: AddressInp.value
+            }).then(() => {
+                alert("Data updated successfully!");
+            }).catch((error) => {
+                alert("Data could not be updated!" + error);
+                console.error(error);
+            });
+        }
+
+        let DelData = () => {
+            remove(ref(db, 'SinhVien/' + IdInp.value)).then(() => {
+                alert("Data deleted successfully!");
+            }).catch((error) => {
+                alert("Data could not be deleted!" + error);
+                console.error(error);
+            });
+        }
+
+        //AddBtn.addEventListener('click', AddData);
+        // RetBtn.addEventListener('click', RetData);
+        // UpdBtn.addEventListener('click', UpdData);
+        // DelBtn.addEventListener('click', DelData);
+
+        AddBtn.addEventListener('click', AddData);
+
+        RetBtn.addEventListener('click', evt => {
+            evt.preventDefault();
+            RetData();
+        });
+
+        UpdBtn.addEventListener('click', evt => {
+            evt.preventDefault();
+            UpdData();
+        });
+
+        DelBtn.addEventListener('click', evt => {
+            evt.preventDefault();
+            DelData();
+        });
+
+    </script>
+</body>
+
+</html>

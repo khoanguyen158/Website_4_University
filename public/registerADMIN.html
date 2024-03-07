@@ -51,7 +51,13 @@
       <div class="input-box">
         Email
         <div class="rounded-rectangle-login">
-          <input type="text" id="emailInp" class="input-field" placeholder="name@hcmut.edu.vn">
+          <input type="text" id="emailInp" class="input-field" placeholder="example@hcmut.edu.vn">
+        </div>
+      </div>
+      <div class="input-box">
+        Mã số quản trị viên
+        <div class="rounded-rectangle-login">
+          <input type="text" id="idInp" class="input-field" placeholder="Định dạng: QTV_number">
         </div>
       </div>
       <div class="input-box">
@@ -61,12 +67,12 @@
         </div>
       </div>
 
-      <a href="index.html" class="dang-ki-tk"><button type="submit">Đăng kí tài khoản</button></a>
+      <a href="" class="dang-ki-tk"><button type="submit">Đăng kí tài khoản</button></a>
 
 
       <div class="already-account-index">
-        Sau khi tạo xong tài khoản, trở về trang đăng nhập:
-        <a href="index.html">
+        Sau khi tạo xong tài khoản, trở về trang chủ quản trị viên tại đây:
+        <a href="HomeQTV.html">
           Đăng nhập
         </a>
       </div>
@@ -109,14 +115,15 @@
     let EmailInp = document.getElementById('emailInp');
     let PassInp = document.getElementById('passwordInp');
     let NameInp = document.getElementById('nameInp');
+    let IdInp = document.getElementById('idInp');
     let MainForm = document.getElementById('MainForm');
 
     let RegisterUser = evt => {
       evt.preventDefault();
 
-      createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
+      createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value, IdInp.value)
         .then((credentials) => {
-          set(ref(db, 'QuanTriVien/' + credentials.user.uid), {
+          set(ref(db, 'SinhVien/' + IdInp.value), {
             username: NameInp.value,
             email: EmailInp.value,
             password: PassInp.value
