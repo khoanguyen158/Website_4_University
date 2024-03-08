@@ -51,36 +51,66 @@
       <div class="input-box">
         Email
         <div class="rounded-rectangle-login">
-          <input type="text" id="emailInp" class="input-field" placeholder="name@hcmut.edu.vn">
+          <input type="text" id="emailInp" class="input-field" placeholder="">
         </div>
       </div>
       <div class="input-box">
-        Password
+        Mật khẩu
         <div class="rounded-rectangle-login">
           <input type="text" id="passwordInp" class="input-field" placeholder="">
         </div>
       </div>
-
-      <a href="index.html" class="dang-ki-tk"><button type="submit">Đăng kí tài khoản</button></a>
-
-
-      <div class="already-account-index">
-        Sau khi tạo xong tài khoản, trở về trang đăng nhập:
-        <a href="index.html">
-          Đăng nhập
-        </a>
+      <div class="input-box">
+        Nhập lại mật khẩu (chưa biết làm, xem sau)
+        <div class="rounded-rectangle-login">
+          <input type="text" id="" class="input-field" placeholder="">
+        </div>
       </div>
-      <!-- <div class =" already-account-index ">
+      <div class="input-box">
+        Mã số giảng viên
+        <div class="rounded-rectangle-login">
+          <input type="text" id="idInp" class="input-field" placeholder="">
+        </div>
+      </div>
+      <div class="input-box">
+        Thành phố
+        <div class="rounded-rectangle-login">
+          <input type="text" id="cityInp" class="input-field" placeholder="">
+        </div>
+      </div>
+      <div class="input-box">
+        Quận
+        <div class="rounded-rectangle-login">
+          <input type="text" id="districtInp" class="input-field" placeholder="">
+        </div>
+      </div>
+      <div class="input-box">
+        Địa chỉ cụ thể
+        <div class="rounded-rectangle-login">
+          <input type="text" id="addressInp" class="input-field" placeholder="">
+        </div>
+      </div>
+
+        <a href="" class="dang-ki-tk"><button type="submit">Đăng kí tài khoản</button></a>
+
+
+        <div class="already-account-index">
+          Sau khi tạo xong tài khoản, trở về trang đăng nhập:
+          <a href="index.html">
+            Đăng nhập
+          </a>
+        </div>
+        <!-- <div class =" already-account-index ">
           Sign in with Google: 
           <button onclick="googleLogin()">
             Login with Google
           </button>
         </div> -->
-      <script src="app.js">
+        <script src="app.js">
 
-      </script>
+        </script>
 
-    </div>
+      </div>
   </form>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -109,6 +139,11 @@
     let EmailInp = document.getElementById('emailInp');
     let PassInp = document.getElementById('passwordInp');
     let NameInp = document.getElementById('nameInp');
+    let IdInp = document.getElementById('idInp');
+    let CityInp = document.getElementById('cityInp');
+    let DistrictInp = document.getElementById('districtInp');
+    let AddressInp = document.getElementById('addressInp');
+    
     let MainForm = document.getElementById('MainForm');
 
     let RegisterUser = evt => {
@@ -119,7 +154,11 @@
           set(ref(db, 'GiangVien/' + credentials.user.uid), {
             username: NameInp.value,
             email: EmailInp.value,
-            password: PassInp.value
+            password: PassInp.value,
+            msgv: IdInp.value,
+            city: CityInp.value,
+            district: DistrictInp.value,
+            address: AddressInp.value
           })
           alert("Đăng ký thành công!")
         }

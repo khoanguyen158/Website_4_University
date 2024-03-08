@@ -17,12 +17,13 @@ body {
   }
 
 .main1 {
+    
     padding: 50px;
     width: 900px;
-    height: 650px;
+    height: 950px;
     background-color: #FFFFFF;
     border-radius: 50px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
-    margin: 20px;
+    margin: 350px 0 20px 0;
     justify-content: center;
     align-items: center;
 }
@@ -40,6 +41,15 @@ body {
     text-align: left;
     font-size: 18px;
     color: #333; /* Màu chữ */
+    font-weight: bold; /* Chữ in đậm */
+}
+
+.confirm_css{
+    margin-top: 10px;
+    margin-left: 20px;
+    text-align: left;
+    font-size: 15px;
+    color: black; /* Màu chữ */
     font-weight: bold; /* Chữ in đậm */
 }
 
@@ -279,5 +289,21 @@ body {
     color: aliceblue;
     font-size: large;
     top: 80px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#BackBtn a{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+button{
+    margin: 40px 0 0 40px;
+    width: 130px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #00173D;
+    color: aliceblue;
+    font-size: large;
     font-family: 'Times New Roman', Times, serif;
 }
