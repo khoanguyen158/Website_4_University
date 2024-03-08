@@ -73,8 +73,10 @@
 
         let EmailInp = document.getElementById('emailInp');
         let IdInp = document.getElementById('idInp');
+        let IdInp = document.getElementById('idInp');
         let PassInp = document.getElementById('passwordInp');
         let MainForm = document.getElementById('MainForm');
+
 
         let ForgotPassLabel = document.getElementById('forgotpasslabel');
 
@@ -85,6 +87,7 @@
             signInWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
                 .then((credentials) => {
                     get(child(dbref, 'SinhVien/' + IdInp.value)).then((snapshot) => {
+                    get(child(dbref, 'SinhVien/' + IdInp.value)).then((snapshot) => {
                         if (snapshot.exists()) {
                             sessionStorage.setItem("user-info", JSON.stringify({
                                 username: snapshot.val().username,
@@ -93,9 +96,11 @@
                             }))
                             sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
                             window.location.href = "Home.html";
+                            window.location.href = "Home.html";
                         }
                     })
 
+                    get(child(dbref, 'GiangVien/' + IdInp.value)).then((snapshot) => {
                     get(child(dbref, 'GiangVien/' + IdInp.value)).then((snapshot) => {
                         if (snapshot.exists()) {
                             sessionStorage.setItem("user-info", JSON.stringify({
@@ -105,9 +110,11 @@
                             }))
                             sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
                             window.location.href = "HomeGV.html";
+                            window.location.href = "HomeGV.html";
                         }
                     })
 
+                    get(child(dbref, 'QuanTriVien/' + IdInp.value)).then((snapshot) => {
                     get(child(dbref, 'QuanTriVien/' + IdInp.value)).then((snapshot) => {
                         if (snapshot.exists()) {
                             sessionStorage.setItem("user-info", JSON.stringify({
@@ -122,6 +129,7 @@
 
                 })
                 .catch((error) => {
+                    alert("Sai tên đăng nhập hoặc mật khẩu!");
                     alert("Sai tên đăng nhập hoặc mật khẩu!");
                     console.log(error.code);
                     console.log(error.message);
