@@ -17,10 +17,11 @@ body {
     margin: 0%;
     position: relative;
     bottom: 50px;
-    left: 100px;
+    left: 60px;
 }
 #page {
-    width: 1440px;
+    
+    width: 840px;
     height: 785px;
     background:#0D0F1A;
     position:relative;
@@ -32,6 +33,7 @@ body {
 }
 
 #page .logo {
+    margin-left: -250px;
     position:absolute;
     top:62px;
     left:66px;
@@ -74,7 +76,8 @@ body {
 .left {
     width: 50%;
     padding-top:220px;
-    padding-left:150px;
+    margin-left: -250px;
+    padding-left:50px;
 }
 
 .left .title {
@@ -83,8 +86,8 @@ body {
 
 .left .title h1 {
     color:#fff;
-    font-size:95px;
-    letter-spacing: 10px;
+    font-size:75px;
+    letter-spacing: 7px;
 }
 
 .left p {
@@ -109,6 +112,8 @@ body {
 }
 
 .right {
+    position: relative;
+    left: 290px;
     width: 50%;
     height: 100%;
     display: flex;
@@ -155,7 +160,7 @@ form input[type = 'submit']{
     color:#fff;
     position: relative;
     bottom: 70px;
-    left: 300px;
+    left: 250px;
 }
 /* style register */
 .already-account-index {

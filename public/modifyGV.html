@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thông tin giáo viên</title>
+    <title>Thông tin giảng viên</title>
 
-    <link rel="stylesheet" href="/public/css/style-modi-SV.css">
+    <link rel="stylesheet" href="style-modi-SV.css">
     <!-- <script src="/js/angular-route.min.js"></script>
     <script src="/js/angular.min.js"></script>
     <script src="/css/bootstrap.min.css"></script> -->
@@ -39,7 +39,7 @@
             </div>
 
             <div class="Dang-nhap">
-                Chỉnh sửa tài khoản giáo viên
+                Chỉnh sửa tài khoản giảng viên
             </div>
             <div class="input-box">
                 Tên đăng nhập
@@ -60,17 +60,23 @@
                 </div>
             </div>
             <div class="input-box">
-                Nhập lại mật khẩu (chưa biết làm, xem sau)
+                Xác nhận mật khẩu
                 <div class="rounded-rectangle-login">
-                    <input type="text" id="" class="input-field" placeholder="">
+                    <input type="text" id="confirmInp" class="input-field" placeholder="">
                 </div>
             </div>
+            <div class="confirm_css">
+                <p id="message"></p>
+                <input type="button" onclick="checkPassword()" value="Kiểm tra">
+            </div>
+
             <div class="input-box">
-                Mã số giáo viên
+                Mã số giảng viên
                 <div class="rounded-rectangle-login">
                     <input type="text" id="idInp" class="input-field" placeholder="">
                 </div>
             </div>
+
             <div class="input-box">
                 Thành phố
                 <div class="rounded-rectangle-login">
@@ -134,29 +140,12 @@
         let UpdBtn = document.getElementById('UpdBtn');
         let DelBtn = document.getElementById('DelBtn');
 
-        // let AddData = () => {
-        //     set(ref(db, 'SinhVien/' + IdInp.value), {
-        //         username: NameInp.value,
-        //         email: EmailInp.value,
-        //         password: PassInp.value,
-        //         //mssv: IdInp.value,
-        //         city: CityInp.value,
-        //         district: DistrictInp.value,
-        //         address: AddressInp.value
-        //     }).then(() => {
-        //         alert("Data added successfully!");
-        //     }).catch((error) => {
-        //         alert("Data could not be added!" + error);
-        //         console.error(error);
-        //     });
-        // }
-
         let AddData = evt => {
             evt.preventDefault();
 
             createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value, IdInp.value)
                 .then((credentials) => {
-                    set(ref(db, 'GiaoVien/' + IdInp.value), {
+                    set(ref(db, 'GiangVien/' + IdInp.value), {
                         username: NameInp.value,
                         email: EmailInp.value,
                         password: PassInp.value,
@@ -178,7 +167,7 @@
 
         let RetData = () => {
             const dbRef = ref(db);
-            get(child(dbRef, 'GiaoVien/' + IdInp.value)).then((snapshot) => {
+            get(child(dbRef, 'GiangVien/' + IdInp.value)).then((snapshot) => {
                 if (snapshot.exists()) {
                     NameInp.value = snapshot.val().username;
                     EmailInp.value = snapshot.val().email;
@@ -196,7 +185,7 @@
         }
 
         let UpdData = () => {
-            update(ref(db, 'GiaoVien/' + IdInp.value), {
+            update(ref(db, 'GiangVien/' + IdInp.value), {
                 username: NameInp.value,
                 email: EmailInp.value,
                 password: PassInp.value,
@@ -212,18 +201,13 @@
         }
 
         let DelData = () => {
-            remove(ref(db, 'GiaoVien/' + IdInp.value)).then(() => {
+            remove(ref(db, 'GiangVien/' + IdInp.value)).then(() => {
                 alert("Data deleted successfully!");
             }).catch((error) => {
                 alert("Data could not be deleted!" + error);
                 console.error(error);
             });
         }
-
-        //AddBtn.addEventListener('click', AddData);
-        // RetBtn.addEventListener('click', RetData);
-        // UpdBtn.addEventListener('click', UpdData);
-        // DelBtn.addEventListener('click', DelData);
 
         AddBtn.addEventListener('click', AddData);
 
@@ -241,8 +225,8 @@
             evt.preventDefault();
             DelData();
         });
-
     </script>
+    <script src="checkmk.js"></script>
 </body>
 
 </html>
