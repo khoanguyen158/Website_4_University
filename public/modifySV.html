@@ -54,6 +54,12 @@
                 </div>
             </div>
             <div class="input-box">
+                Số điện thoại
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="phoneInp" class="input-field" placeholder="">
+                </div>
+            </div>
+            <div class="input-box">
                 Mật khẩu
                 <div class="rounded-rectangle-login">
                     <input type="text" id="passwordInp" class="input-field" placeholder="">
@@ -134,6 +140,7 @@
         let CityInp = document.getElementById('cityInp');
         let DistrictInp = document.getElementById('districtInp');
         let AddressInp = document.getElementById('addressInp');
+        let PhoneInp = document.getElementById('phoneInp');
 
         let AddBtn = document.getElementById('AddBtn');
         let RetBtn = document.getElementById('RetBtn');
@@ -148,6 +155,7 @@
                     set(ref(db, 'SinhVien/' + IdInp.value), {
                         username: NameInp.value,
                         email: EmailInp.value,
+                        phone: PhoneInp.value,
                         password: PassInp.value,
                         city: CityInp.value,
                         district: DistrictInp.value,
@@ -171,6 +179,7 @@
                 if (snapshot.exists()) {
                     NameInp.value = snapshot.val().username;
                     EmailInp.value = snapshot.val().email;
+                    PhoneInp.value = snapshot.val().phone;
                     PassInp.value = snapshot.val().password;
                     CityInp.value = snapshot.val().city;
                     DistrictInp.value = snapshot.val().district;
@@ -188,6 +197,7 @@
             update(ref(db, 'SinhVien/' + IdInp.value), {
                 username: NameInp.value,
                 email: EmailInp.value,
+                phone: PhoneInp.value,
                 password: PassInp.value,
                 city: CityInp.value,
                 district: DistrictInp.value,
