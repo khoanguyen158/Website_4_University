@@ -20,7 +20,7 @@ body {
     
     padding: 50px;
     width: 900px;
-    height: 950px;
+    height: 930px;
     background-color: #FFFFFF;
     border-radius: 50px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
     margin: 350px 0 20px 0;
@@ -305,5 +305,18 @@ button{
     background-color: #00173D;
     color: aliceblue;
     font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+tr{
+    display: inline-block;
+    margin-right:30px;
+}
+
+select{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: large-smaller;
     font-family: 'Times New Roman', Times, serif;
 }

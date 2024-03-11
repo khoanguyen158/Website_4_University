@@ -15,5 +15,18 @@ function googleLogin() {
         .catch(console.log);
 }
 
+angular
+.module('myapp', [])
+.controller('homeCtrl', function ($scope, $http){
+    $scope.dsTinh = []
 
+      $http.get('https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json?fbclid=IwAR3iiCQLBU-anKX9WMYqyM0st9VfONutYweGeDzCPledyrAStlnGfPVzL3c').then(
+            function (res) {//Thành công
+                $scope.dsTinh = res.data
+            },
+            function (res) {//Thất bại
+
+            }
+        )
+})
 

@@ -7,9 +7,9 @@
     <title>Thông tin sinh viên</title>
 
     <link rel="stylesheet" href="style-modi-SV.css">
-    <!-- <script src="/js/angular-route.min.js"></script>
+    <script src="/js/angular-route.min.js"></script>
     <script src="/js/angular.min.js"></script>
-    <script src="/css/bootstrap.min.css"></script> -->
+    <script src="app.js"></script>
 
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/10.8.1/firebase-app-compat.js"></script>
@@ -30,7 +30,7 @@
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 </head>
 
-<body>
+<body ng-app="myapp" ng-controller="homeCtrl">
     <form id="MainForm">
         <div class="main1">
             <div class="logo">
@@ -45,6 +45,12 @@
                 Tên đăng nhập
                 <div class="rounded-rectangle-login">
                     <input type="text" id="nameInp" class="input-field" placeholder="">
+                </div>
+            </div>
+            <div class="input-box">
+                Mã số sinh viên
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="idInp" class="input-field" placeholder="SV + number">
                 </div>
             </div>
             <div class="input-box">
@@ -65,7 +71,7 @@
                     <input type="text" id="passwordInp" class="input-field" placeholder="">
                 </div>
             </div>
-            <div class="input-box">
+            <div class="input-box" onchange="checkPassword()">
                 Xác nhận mật khẩu
                 <div class="rounded-rectangle-login">
                     <input type="text" id="confirmInp" class="input-field" placeholder="">
@@ -73,32 +79,52 @@
             </div>
             <div class="confirm_css">
                 <p id="message"></p>
-                <input type="button" onclick="checkPassword()" value="Kiểm tra">
             </div>
 
-            <div class="input-box">
-                Mã số sinh viên
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="idInp" class="input-field" placeholder="">
-                </div>
+            <div class="input-box" id="infor">
+                <table>
+                    <tr>
+                        <th>Tỉnh/Thành Phố: </th>
+                        <td>
+                            <div class="rounded-rectangle-login">
+                                <select id="cityInp" class="form-control" ng-model="tinh"
+                                    ng-options="tinh.Name for tinh in dsTinh" required name="tinh">
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Quận/Huyện: </th>
+                        <td>
+                            <div class="rounded-rectangle-login">
+                                <select id="districtInp" class="form-control" ng-model="quan"
+                                    ng-options="quan.Name for quan in  tinh.Districts" required name="quan">
+                                </select>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <th>Phường/Xã:</th>
+                        <td>
+                            <div class="rounded-rectangle-login">
+                                <select id="xaInp" class="form-control" ng-model="phuong"
+                                    ng-options="phuong.Name for phuong in quan.Wards" required name="phuong">
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
-            <div class="input-box">
-                Thành phố
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="cityInp" class="input-field" placeholder="">
-                </div>
-            </div>
-            <div class="input-box">
-                Quận
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="districtInp" class="input-field" placeholder="">
-                </div>
-            </div>
+
+
             <div class="input-box">
                 Địa chỉ cụ thể
                 <div class="rounded-rectangle-login">
-                    <input type="text" id="addressInp" class="input-field" placeholder="">
+                    <input type="text" id="addressInp" class="input-field" placeholder=""
+                        value=" , {{phuong.Name}}, {{quan.Name}}, {{tinh.Name}}">
                 </div>
             </div>
 
@@ -139,6 +165,7 @@
         let IdInp = document.getElementById('idInp');
         let CityInp = document.getElementById('cityInp');
         let DistrictInp = document.getElementById('districtInp');
+        let XaInp = document.getElementById('xaInp');
         let AddressInp = document.getElementById('addressInp');
         let PhoneInp = document.getElementById('phoneInp');
 
@@ -157,9 +184,12 @@
                         email: EmailInp.value,
                         phone: PhoneInp.value,
                         password: PassInp.value,
-                        city: CityInp.value,
-                        district: DistrictInp.value,
-                        address: AddressInp.value
+                        //city: CityInp.value,
+                        //district: DistrictInp.value,
+                        address: AddressInp.value, 
+                        learning: null,
+                        learned: null,
+                        average: null
                     })
                     alert("Đăng ký thành công!")
                 }
@@ -181,8 +211,8 @@
                     EmailInp.value = snapshot.val().email;
                     PhoneInp.value = snapshot.val().phone;
                     PassInp.value = snapshot.val().password;
-                    CityInp.value = snapshot.val().city;
-                    DistrictInp.value = snapshot.val().district;
+                    //CityInp.value = snapshot.val().city;
+                    //DistrictInp.value = snapshot.val().district;
                     AddressInp.value = snapshot.val().address;
                 } else {
                     alert("No data available");
@@ -199,8 +229,8 @@
                 email: EmailInp.value,
                 phone: PhoneInp.value,
                 password: PassInp.value,
-                city: CityInp.value,
-                district: DistrictInp.value,
+                //city: CityInp.value,
+                //district: DistrictInp.value,
                 address: AddressInp.value
             }).then(() => {
                 alert("Data updated successfully!");
