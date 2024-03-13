@@ -26,7 +26,6 @@
                 </div>
                 <p>Trường Đại Học DEF
                 </p>
-                <!-- <button>Explore</button> -->
             </div>
             <div class="right">
                 <form id="MainForm">
@@ -89,7 +88,8 @@
                             sessionStorage.setItem("user-info", JSON.stringify({
                                 username: snapshot.val().username,
                                 email: snapshot.val().email,
-                                password: snapshot.val().password
+                                password: snapshot.val().password,
+                                id: snapshot.val().id
                             }))
                             sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
                             window.location.href = "Home.html";
@@ -101,7 +101,8 @@
                             sessionStorage.setItem("user-info", JSON.stringify({
                                 username: snapshot.val().username,
                                 email: snapshot.val().email,
-                                password: snapshot.val().password
+                                password: snapshot.val().password,
+                                id: snapshot.val().id
                             }))
                             sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
                             window.location.href = "HomeGV.html";
@@ -113,7 +114,8 @@
                             sessionStorage.setItem("user-info", JSON.stringify({
                                 username: snapshot.val().username,
                                 email: snapshot.val().email,
-                                password: snapshot.val().password
+                                password: snapshot.val().password,
+                                id: snapshot.val().id
                             }))
                             sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
                             window.location.href = "HomeQTV.html";
@@ -134,7 +136,7 @@
         let ForgotPassword = () => {
             sendPasswordResetEmail(auth, EmailInp.value)
                 .then(() => {
-                    alert("Kiểm tra email của bạn để đặt lại mật khẩu!");
+                    alert("Kiểm tra email của bạn để đặt lại mật khẩu!"); 
                 })
                 .catch((error) => {
                     alert(error.message);

@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Elearning</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
+
   <!-- <script src="/js/angular-route.min.js"></script>
     <script src="/js/angular.min.js"></script>
     <script src="/css/bootstrap.min.css"></script> -->
@@ -31,8 +33,57 @@
 </head>
 
 <body>
-  
-  
+  <nav>
+    <ul>
+      <li><a href="#" class="logo">
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2F01_logobachkhoasang.png?alt=media&token=6e835bd4-9c3f-4b16-8c4d-36f87c7e7c9d">
+
+          <span class="nav-item">bkel</span>
+        </a></li>
+
+      <!-- <li><a href="#" class="avatar">
+
+                <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
+                    alt="Avatar">
+
+                <span class="nav-item">Thông tin cá nhân</span>
+            </a></li> -->
+      <li><a href="HomeQTV.html" class="side-bar-icon">
+          <i class="fas fa-home"></i>
+          <span class="nav-item">Trang chủ</span>
+        </a></li>
+      <li><a href="registerADMIN.html" class="side-bar-icon">
+          <i class="fas fa-newspaper"></i>
+          <span class="nav-item">Đăng ký quản trị viên</span>
+        </a></li>
+      <li><a href="monhoc.html" class="side-bar-icon">
+          <i class="fas fa-newspaper"></i>
+          <span class="nav-item">Chỉnh sửa môn học</span>
+        </a></li>
+      <li><a href="modifySV.html" class="side-bar-icon">
+          <i class="fas fa-book-open-reader"></i>
+          <span class="nav-item">Chỉnh sửa sinh viên</span>
+        </a></li>
+      <li><a href="modifyGV.html" class="side-bar-icon">
+          <i class="fas fa-book-open-reader"></i>
+          <span class="nav-item">Chỉnh sửa giảng viên</span>
+        </a></li>
+      <li>
+        <a href="#" class="side-bar-icon">
+          <i class="fas fa-solid fa-right-from-bracket"></i>
+          <span class="nav-item" id="signoutbutton">Đăng xuất</span>
+        </a>
+      </li>
+      <!-- <div>
+                
+                <button type="button" ></button>
+            </div> -->
+      </li>
+    </ul>
+  </nav>
+
+
   <form id="MainForm">
     <div class="main1">
 
@@ -71,23 +122,6 @@
 
       <a href="" class="dang-ki-tk"><button type="submit">Đăng kí tài khoản</button></a>
 
-
-      <div class="already-account-index">
-        Sau khi tạo xong tài khoản, trở về trang chủ quản trị viên tại đây:
-        <a href="HomeQTV.html">
-          Đăng nhập
-        </a>
-      </div>
-      <!-- <div class =" already-account-index ">
-          Sign in with Google: 
-          <button onclick="googleLogin()">
-            Login with Google
-          </button>
-        </div> -->
-      <script src="app.js">
-
-      </script>
-
     </div>
   </form>
 
@@ -125,10 +159,11 @@
 
       createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value, IdInp.value)
         .then((credentials) => {
-          set(ref(db, 'SinhVien/' + IdInp.value), {
+          set(ref(db, 'QuanTriVien/' + IdInp.value), {
             username: NameInp.value,
             email: EmailInp.value,
-            password: PassInp.value
+            password: PassInp.value,
+            id: IdInp.value
           })
           alert("Đăng ký thành công!")
         }
@@ -141,6 +176,20 @@
         });
 
     }
+    let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+    let MsgHead = document.getElementById("msg");
+    let GreetHead = document.getElementById("greet");
+    let SignOutBtn = document.getElementById("signoutbutton");
+
+
+    let SignOut = () => {
+      sessionStorage.removeItem("user-creds");
+      sessionStorage.removeItem("user-info");
+      window.location.href = "index.html";
+    }
+
+    SignOutBtn.addEventListener('click', SignOut);
 
     MainForm.addEventListener('submit', RegisterUser);
   </script>

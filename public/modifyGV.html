@@ -10,6 +10,8 @@
     <script src="angular-route.min.js"></script>
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
+    <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
+
 
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/10.8.1/firebase-app-compat.js"></script>
@@ -31,6 +33,55 @@
 </head>
 
 <body ng-app="myapp" ng-controller="homeCtrl">
+    <nav>
+        <ul>
+            <li><a href="#" class="logo">
+                    <img
+                        src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2F01_logobachkhoasang.png?alt=media&token=6e835bd4-9c3f-4b16-8c4d-36f87c7e7c9d">
+
+                    <span class="nav-item">bkel</span>
+                </a></li>
+
+            <!-- <li><a href="#" class="avatar">
+
+                <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
+                    alt="Avatar">
+
+                <span class="nav-item">Thông tin cá nhân</span>
+            </a></li> -->
+            <li><a href="HomeQTV.html" class="side-bar-icon">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-item">Trang chủ</span>
+                </a></li>
+            <li><a href="registerADMIN.html" class="side-bar-icon">
+                    <i class="fas fa-newspaper"></i>
+                    <span class="nav-item">Đăng ký quản trị viên</span>
+                </a></li>
+            <li><a href="monhoc.html" class="side-bar-icon">
+                    <i class="fas fa-newspaper"></i>
+                    <span class="nav-item">Chỉnh sửa môn học</span>
+                </a></li>
+            <li><a href="modifySV.html" class="side-bar-icon">
+                    <i class="fas fa-book-open-reader"></i>
+                    <span class="nav-item">Chỉnh sửa sinh viên</span>
+                </a></li>
+            <li><a href="modifyGV.html" class="side-bar-icon">
+                    <i class="fas fa-book-open-reader"></i>
+                    <span class="nav-item">Chỉnh sửa giảng viên</span>
+                </a></li>
+            <li>
+                <a href="#" class="side-bar-icon">
+                    <i class="fas fa-solid fa-right-from-bracket"></i>
+                    <span class="nav-item" id="signoutbutton">Đăng xuất</span>
+                </a>
+            </li>
+            <!-- <div>
+                
+                <button type="button" ></button>
+            </div> -->
+            </li>
+        </ul>
+    </nav>
     <form id="MainForm">
         <div class="main1">
             <div class="logo">
@@ -129,7 +180,7 @@
             </div>
 
             <div class="input-box">
-                Chuyên môn
+                Có thể giảng dạy các môn
                 <div class="rounded-rectangle-login">
                     <input type="text" id="subInp" class="input-field" placeholder="">
                 </div>
@@ -190,13 +241,14 @@
                     set(ref(db, 'GiangVien/' + IdInp.value), {
                         username: NameInp.value,
                         email: EmailInp.value,
+                        id: IdInp.value,
                         phone: PhoneInp.value,
                         password: PassInp.value,
                         mon: SubInp.value,
-                        //city: CityInp.value,
-                        //district: DistrictInp.value,
                         address: AddressInp.value
-                        
+                    })
+                    set(ref(db, 'MonHoc/' + SubInp.value+ '/subjectnogv/' + IdInp.value), {
+                        username: NameInp.value
                     })
                     alert("Đăng ký thành công!")
                 }
@@ -218,8 +270,6 @@
                     EmailInp.value = snapshot.val().email;
                     PhoneInp.value = snapshot.val().phone;
                     PassInp.value = snapshot.val().password;
-                    //CityInp.value = snapshot.val().city;
-                    //DistrictInp.value = snapshot.val().district;
                     AddressInp.value = snapshot.val().address;
                     SubInp.value = snapshot.val().mon;
                 } else {
@@ -237,10 +287,11 @@
                 email: EmailInp.value,
                 phone: PhoneInp.value,
                 password: PassInp.value,
-                //city: CityInp.value,
-                //district: DistrictInp.value,
                 address: AddressInp.value,
                 mon: SubInp.value
+            })
+            update(ref(db, 'MonHoc/' + SubInp.value+ '/subjectnogv/' + IdInp.value), {
+                username: NameInp.value
             }).then(() => {
                 alert("Data updated successfully!");
             }).catch((error) => {
@@ -250,9 +301,12 @@
         }
 
         let DelData = () => {
-            remove(ref(db, 'GiangVien/' + IdInp.value)).then(() => {
+            remove(ref(db, 'GiangVien/' + IdInp.value));
+            remove(ref(db, 'MonHoc/' + SubInp.value+ '/subjectnogv/' + IdInp.value))
+            .then(() => {
                 alert("Data deleted successfully!");
-            }).catch((error) => {
+            })
+            .catch((error) => {
                 alert("Data could not be deleted!" + error);
                 console.error(error);
             });
@@ -274,6 +328,21 @@
             evt.preventDefault();
             DelData();
         });
+
+        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+        let MsgHead = document.getElementById("msg");
+        let GreetHead = document.getElementById("greet");
+        let SignOutBtn = document.getElementById("signoutbutton");
+
+
+        let SignOut = () => {
+            sessionStorage.removeItem("user-creds");
+            sessionStorage.removeItem("user-info");
+            window.location.href = "index.html";
+        }
+
+        SignOutBtn.addEventListener('click', SignOut);
     </script>
     <script src="checkmk.js"></script>
 </body>

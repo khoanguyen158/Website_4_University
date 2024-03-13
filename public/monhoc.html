@@ -1,136 +1,320 @@
 <!DOCTYPE html>
-<!-- Đây là trang ĐĂNG KÝ -->
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Elearning</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- <script src="/js/angular-route.min.js"></script>
-    <script src="/js/angular.min.js"></script>
-    <script src="/css/bootstrap.min.css"></script> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Môn học</title>
 
-  <!-- update the version number as needed -->
-  <script defer src="/__/firebase/10.8.1/firebase-app-compat.js"></script>
-  <!-- include only the Firebase features as you need -->
-  <script defer src="/__/firebase/10.8.1/firebase-auth-compat.js"></script>
-  <script defer src="/__/firebase/10.8.1/firebase-database-compat.js"></script>
-  <script defer src="/__/firebase/10.8.1/firebase-firestore-compat.js"></script>
-  <script defer src="/__/firebase/10.8.1/firebase-functions-compat.js"></script>
-  <script defer src="/__/firebase/10.8.1/firebase-messaging-compat.js"></script>
-  <script defer src="/__/firebase/10.8.1/firebase-storage-compat.js"></script>
-  <script defer src="/__/firebase/10.8.1/firebase-analytics-compat.js"></script>
-  <script defer src="/__/firebase/10.8.1/firebase-remote-config-compat.js"></script>
-  <script defer src="/__/firebase/10.8.1/firebase-performance-compat.js"></script>
-  <!-- 
+    <link rel="stylesheet" href="style-modi-SV.css">
+    <script src="angular-route.min.js"></script>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/10.8.1/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/10.8.1/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-performance-compat.js"></script>
+    <!-- 
       initialize the SDK after all desired features are loaded, set useEmulator to false
       to avoid connecting the SDK to running emulators.
     -->
-  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 </head>
 
-<body>
+<body ng-app="myapp" ng-controller="homeCtrl">
+    <nav>
+        <ul>
+            <li><a href="#" class="logo">
+                    <img
+                        src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2F01_logobachkhoasang.png?alt=media&token=6e835bd4-9c3f-4b16-8c4d-36f87c7e7c9d">
 
+                    <span class="nav-item">bkel</span>
+                </a></li>
 
-  <form id="MainForm">
-    <div class="main1">
+            <!-- <li><a href="#" class="avatar">
+    
+                    <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
+                        alt="Avatar">
+    
+                    <span class="nav-item">Thông tin cá nhân</span>
+                </a></li> -->
+            <li><a href="HomeQTV.html" class="side-bar-icon">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-item">Trang chủ</span>
+                </a></li>
+            <li><a href="registerADMIN.html" class="side-bar-icon">
+                    <i class="fas fa-newspaper"></i>
+                    <span class="nav-item">Đăng ký quản trị viên</span>
+                </a></li>
+            <li><a href="monhoc.html" class="side-bar-icon">
+                    <i class="fas fa-newspaper"></i>
+                    <span class="nav-item">Chỉnh sửa môn học</span>
+                </a></li>
+            <li><a href="modifySV.html" class="side-bar-icon">
+                    <i class="fas fa-book-open-reader"></i>
+                    <span class="nav-item">Chỉnh sửa sinh viên</span>
+                </a></li>
+            <li><a href="modifyGV.html" class="side-bar-icon">
+                    <i class="fas fa-book-open-reader"></i>
+                    <span class="nav-item">Chỉnh sửa giảng viên</span>
+                </a></li>
+            <li>
+                <a href="#" class="side-bar-icon">
+                    <i class="fas fa-solid fa-right-from-bracket"></i>
+                    <span class="nav-item" id="signoutbutton">Đăng xuất</span>
+                </a>
+            </li>
+            <!-- <div>
+                    
+                    <button type="button" ></button>
+                </div> -->
+            </li>
+        </ul>
+    </nav>
+    <form id="MainForm">
+        <div class="main1">
+            <div class="logo">
+                <img
+                    src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Flogo_DEF.jpg?alt=media&token=5c319bb6-f09c-4d0b-89d6-342fde279f9d">
+            </div>
 
-      <div class="logo">
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Flogo_DEF.jpg?alt=media&token=5c319bb6-f09c-4d0b-89d6-342fde279f9d">
-      </div>
+            <div class="Dang-nhap">
+                Chỉnh sửa môn học
+            </div>
+            <div class="input-box">
+                Tên môn học
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="nameInp" class="input-field" placeholder="">
+                </div>
+            </div>
 
-      <div class="Dang-nhap">
-        Chỉnh sửa môn học
-      </div>
-      <div class="input-box">
-        Tên
-        <div class="rounded-rectangle-login">
-          <input type="text" id="nameInp" class="input-field" placeholder="">
+            <div class="input-box">
+                Mã số môn học
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="idInp" class="input-field" placeholder="">
+                </div>
+            </div>
+            
+            <div class="input-box">
+                Thời lượng dạy học (tuần)
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="timeInp" class="input-field" placeholder="">
+                </div>
+            </div>
+            
+
+            <button id="AddBtn">Add</button>
+            <button id="RetBtn">Retrive</button>
+            <button id="UpdBtn">Update</button>
+            <button id="DelBtn">Delete</button>
+            <button id="BackBtn"><a href="HomeQTV.html">Back</a></button>
         </div>
-      </div>
+    </form>
 
-      <div class="input-box">
-        Mã số môn hoc
-        <div class="rounded-rectangle-login">
-          <input type="text" id="idInp" class="input-field" placeholder="Định dạng: QTV_number">
-        </div>
-      </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
 
-      <a href="" class="dang-ki-tk"><button type="submit">Đăng kí</button></a>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDQk0PGIztg7qltOimH1_9_lLl5rluKsV8",
+            authDomain: "fir-d023a.firebaseapp.com",
+            databaseURL: "https://fir-d023a-default-rtdb.firebaseio.com",
+            projectId: "fir-d023a",
+            storageBucket: "fir-d023a.appspot.com",
+            messagingSenderId: "81322751429",
+            appId: "1:81322751429:web:eeb12e1ec56b1970c807ac",
+            measurementId: "G-KZQQJNVVWJ"
+        };
 
+        const app = initializeApp(firebaseConfig);
 
-      <div class="already-account-index">
-        Sau khi tạo xong tài khoản, trở về trang chủ quản trị viên tại đây:
-        <a href="HomeQTV.html">
-          Đăng nhập
-        </a>
-      </div>
-      <!-- <div class =" already-account-index ">
-          Sign in with Google: 
-          <button onclick="googleLogin()">
-            Login with Google
-          </button>
-        </div> -->
-      <!-- <script src="app.js">
+        import { getDatabase, set, ref, child, get, update, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
-      </script> -->
+        const db = getDatabase(app);
+        const auth = getAuth(app);
 
-    </div>
-  </form>
+        let NameInp = document.getElementById('nameInp');
+        let IdInp = document.getElementById('idInp');
+        let TimeInp = document.getElementById('timeInp');
 
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-    import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
-    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
-    //import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js";
+        let AddBtn = document.getElementById('AddBtn');
+        let RetBtn = document.getElementById('RetBtn');
+        let UpdBtn = document.getElementById('UpdBtn');
+        let DelBtn = document.getElementById('DelBtn');
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyDQk0PGIztg7qltOimH1_9_lLl5rluKsV8",
-      authDomain: "fir-d023a.firebaseapp.com",
-      databaseURL: "https://fir-d023a-default-rtdb.firebaseio.com",
-      projectId: "fir-d023a",
-      storageBucket: "fir-d023a.appspot.com",
-      messagingSenderId: "81322751429",
-      appId: "1:81322751429:web:eeb12e1ec56b1970c807ac",
-      measurementId: "G-KZQQJNVVWJ"
-    };
+        let AddData = evt => {
+            evt.preventDefault();
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase();
-    const auth = getAuth(app);
-    //const analytics = getAnalytics(app);
+            createUserWithEmailAndPassword(auth, IdInp.value + '@gmail.com', IdInp.value)
+                .then((credentials) => {
+                    set(ref(db, 'MonHoc/' + IdInp.value), {
+                        subjectname: NameInp.value,
+                        subjecttime: TimeInp.value,
+                        subjectnosv: "0",
+                        subjectnogv: "0",
+                        subjectclass: {
+                          L01: {
+                            GVinfo: {
+                              LyThuyet: "none",
+                              ThucHanh: "none"
+                            },
+                            SVinfo: {
+                              SV1: "none",
+                              SV2: "none"
+                            },
+                            Time: {
+                              Monday: "none",
+                              Tuesday: "none",
+                              Wednesday: "none",
+                              Thursday: "none",
+                              Friday: "none",
+                              Saturday: "none",
+                            }, 
+                            TrangThongTin: {
+                              TaiLieu: "none",
+                              BaiTap: "none",
+                              Video: "none"
+                            }
+                          },
+                          L02: {
+                            GVinfo: {
+                              LyThuyet: "none",
+                              ThucHanh: "none"
+                            },
+                            SVinfo: {
+                              SV1: "none",
+                              SV2: "none"
+                            },
+                            Time: {
+                              Monday: "none",
+                              Tuesday: "none",
+                              Wednesday: "none",
+                              Thursday: "none",
+                              Friday: "none",
+                              Saturday: "none",
+                            }, 
+                            TrangThongTin: {
+                              TaiLieu: "none",
+                              BaiTap: "none",
+                              Video: "none"
+                            }
+                          },
+                          L03: {
+                            GVinfo: {
+                              LyThuyet: "none",
+                              ThucHanh: "none"
+                            },
+                            SVinfo: {
+                              SV1: "none",
+                              SV2: "none"
+                            },
+                            Time: {
+                              Monday: "none",
+                              Tuesday: "none",
+                              Wednesday: "none",
+                              Thursday: "none",
+                              Friday: "none",
+                              Saturday: "none",
+                            }, 
+                            TrangThongTin: {
+                              TaiLieu: "none",
+                              BaiTap: "none",
+                              Video: "none"
+                            }
+                          }
+                        }
+                    })
+                    alert("Đăng ký thành công!")
+                }
 
-    let NameInp = document.getElementById('nameInp');
-    let IdInp = document.getElementById('idInp');
-    let MainForm = document.getElementById('MainForm');
+                )
+                .catch((error) => {
+                    alert(error.message);
+                    console.log(error.code);
+                    console.log(error.message);
+                });
 
-    let RegisterUser = evt => {
-      evt.preventDefault();
-
-      createUserWithEmailAndPassword(auth, IdInp.value + '@gmail.com', IdInp.value)
-
-        .then((credentials) => {
-          set(ref(db, 'MonHoc/' + IdInp.value), {
-            username: NameInp.value
-          })
-          alert("Đăng ký thành công!")
         }
 
-        )
-        .catch((error) => {
-          alert(error.message);
-          console.log(error.code);
-          console.log(error.message);
+        let RetData = () => {
+            const dbRef = ref(db);
+            get(child(dbRef, 'MonHoc/' + IdInp.value)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    NameInp.value = snapshot.val().subjectname;
+                    TimeInp.value = snapshot.val().subjecttime;
+                } else {
+                    alert("No data available");
+                    console.log("No data available");
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
+        }
+
+        let UpdData = () => {
+            update(ref(db, 'MonHoc/' + IdInp.value), {
+                subjectname: NameInp.value,
+                subjecttime: TimeInp.value
+            }).then(() => {
+                alert("Data updated successfully!");
+            }).catch((error) => {
+                alert("Data could not be updated!" + error);
+                console.error(error);
+            });
+        }
+
+        let DelData = () => {
+            remove(ref(db, 'MonHoc/' + IdInp.value)).then(() => {
+                alert("Data deleted successfully!");
+            }).catch((error) => {
+                alert("Data could not be deleted!" + error);
+                console.error(error);
+            });
+        }
+
+        AddBtn.addEventListener('click', AddData);
+
+        RetBtn.addEventListener('click', evt => {
+            evt.preventDefault();
+            RetData();
         });
 
-    }
+        UpdBtn.addEventListener('click', evt => {
+            evt.preventDefault();
+            UpdData();
+        });
 
-    MainForm.addEventListener('submit', RegisterUser);
-  </script>
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        DelBtn.addEventListener('click', evt => {
+            evt.preventDefault();
+            DelData();
+        });
+
+        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+        let MsgHead = document.getElementById("msg");
+        let GreetHead = document.getElementById("greet");
+        let SignOutBtn = document.getElementById("signoutbutton");
+
+
+        let SignOut = () => {
+            sessionStorage.removeItem("user-creds");
+            sessionStorage.removeItem("user-info");
+            window.location.href = "index.html";
+        }
+
+        SignOutBtn.addEventListener('click', SignOut);
+    </script>
+    <script src="checkmk.js"></script>
 </body>
 
 </html>

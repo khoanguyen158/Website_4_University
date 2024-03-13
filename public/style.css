@@ -2,8 +2,12 @@
 *{
     padding:0;
     margin:0;
+    text-decoration: none;
+    font-family: "Poppins",sans-serif;
 }
-
+#MainForm{
+    margin-top: 50px;
+}
 /*style trong login */
 
 body {
@@ -17,6 +21,7 @@ body {
   }
 
 .main1 {
+    
     padding: 50px;
     width: 900px;
     height: 650px;
@@ -256,7 +261,7 @@ body {
     font-family: 'Times New Roman', Times, serif;
 }
 
-.logo img {
+.main1 .logo img {
     position: relative;
     top: 10px;
     left: 360px;
@@ -280,4 +285,105 @@ body {
     font-size: large;
     top: 80px;
     font-family: 'Times New Roman', Times, serif;
+}
+
+/* thanh điều khiển*/
+nav{
+    border: #00173D;
+    border-radius: 40px;
+    position: relative;
+    top: 20px;
+    right: 180px;
+    width: 90px;
+    height: 750px;
+    margin-top: 10px;
+    background: #00173D;
+    overflow: hidden;
+    transition: 1s;
+}
+/* animation cho thanh điều khiển*/
+nav:hover{
+    position: relative;
+    top: 20px;
+    right: 70px;
+    width: 300px;
+}
+
+/* Chỉnh logo và avatar*/
+.logo{
+    text-align: center;
+    display: flex;
+    margin: 0px 0px 0px 0px;
+    padding-bottom: 2rem;
+}
+.logo img{
+    height: 45px;
+    width: 60px;
+    border-radius: 50%;
+}
+.logo span{
+    font-weight: bold;
+    padding-left: 15px;
+    font-size: 18px;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+nav ul li a{
+    position: relative;
+    width: 280px;
+    font-size: 14px;
+    color: #C2E8F8;
+    display: table;
+    padding:10px
+}
+.avatar
+{
+    text-align: center;
+    display: flex;
+    margin: 0px 0px 0px 0px;
+    padding-bottom: 1rem;
+}
+.avatar img{
+    margin-left: 8px;
+    height:50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.avatar span{
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    padding-left: 15px;
+}
+
+/* Chỉnh vị trí icon của thanh điều khiển*/
+nav .fas{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 12px;
+    font-size: 20px;
+    text-align: center;
+}
+/* Chỉnh vị trí chữ của thanh điều khiển*/
+.nav-item{ 
+    position: relative;
+    top: 12px;
+    margin-left: 16px;
+}
+/*hiệu ứng thanh diều khiển*/
+.side-bar-icon{
+    width: 360px;
+}
+.side-bar-icon:hover{
+    background: #C2E8F8;
+}
+.side-bar-icon:hover i{
+    color: #00173D;
+    transition: 0.5s;
+}
+.side-bar-icon:hover .nav-item{
+    color: #00173D;
+    transition: 0.5s;
 }

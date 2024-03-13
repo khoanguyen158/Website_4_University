@@ -5,12 +5,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang chủ</title>
+    <title>Trang chủ sinh viên</title>
     <link rel="stylesheet" href="style_home.css" />
     <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <a href="#my-dialog" class="dialog-btn">Bạn vừa đổi mật khẩu?</a>
+    <div class="dialog overplay" id="my-dialog">
+        <a href="#" class="overplay-close"></a>
+        <div class="dialog-body">
+            <a href="#" class="dialog-close-btn">&times;</a>
+            <p id="dialog-text">Nhập mật khẩu bạn vừa đổi vào đây</p>
+            <input type="text" id="dialog-input">
+
+            <button id="dialog-submit">Xác nhận</button>
+        </div>
+    </div>
     <div class="container">
         <nav>
             <ul>
@@ -52,23 +63,26 @@
                         <i class="fas fa-gear"></i>
                         <span class="nav-item">Cài đặt</span>
                     </a></li>
-                
+
                 <li>
                     <a href="#" class="side-bar-icon">
                         <i class="fas fa-regular fa-table"></i>
                         <span class="nav-item" id="bangdiem">Bảng điểm</span>
-                    </a></li>
+                    </a>
+                </li>
                 <li>
                     <a href="#" class="side-bar-icon">
                         <i class="fas fa-regular fa-registered"></i>
                         <span class="nav-item" id="dkimonhoc">Đăng ký môn học</span>
-                    </a></li>
+                    </a>
+                </li>
                 <li>
                     <a href="#" class="side-bar-icon">
                         <i class="fas fa-solid fa-right-from-bracket"></i>
                         <span class="nav-item" id="signoutbutton">Đăng xuất</span>
-                    </a></li>
-                    <!-- <div>
+                    </a>
+                </li>
+                <!-- <div>
                         
                         <button type="button" ></button>
                     </div> -->
@@ -92,7 +106,6 @@
                     <img
                         src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2FBK.jpg?alt=media&token=16485c8d-4532-45a0-a7f8-a8ebf887de47">
                 </div> -->
-
                 <!-- <div class="diploma-list">
                     <a><i class="fa-solid fa-building-flag"></i>
                         <ul>
@@ -148,18 +161,39 @@
                     <i class="fas fa-message"></i>
                     <i class="fas fa-bell"></i>
                 </div> -->
-
             </div>
         </section>
     </div>
 
-    <script>
-        //let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
-        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
 
+        const firebaseConfig = {
+            apiKey: "AIzaSyDQk0PGIztg7qltOimH1_9_lLl5rluKsV8",
+            authDomain: "fir-d023a.firebaseapp.com",
+            databaseURL: "https://fir-d023a-default-rtdb.firebaseio.com",
+            projectId: "fir-d023a",
+            storageBucket: "fir-d023a.appspot.com",
+            messagingSenderId: "81322751429",
+            appId: "1:81322751429:web:eeb12e1ec56b1970c807ac",
+            measurementId: "G-KZQQJNVVWJ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+        import { getDatabase, set, ref, child, get, update, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+        const db = getDatabase(app);
+        const auth = getAuth(app);
+
+        let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
         let MsgHead = document.getElementById("msg");
         let GreetHead = document.getElementById("greet");
         let SignOutBtn = document.getElementById("signoutbutton");
+        let UpdBtn = document.getElementById("dialog-submit");
+        let Input = document.getElementById("dialog-input");
 
 
         let SignOut = () => {
@@ -173,13 +207,29 @@
                 window.location.href = "index.html";
             }
             else {
-                GreetHead.innerText = `Chào mừng đến với trang chủ sinh viên, ${UserInfo.username}!`;
-                MsgHead.innerText = `Bạn đang đăng nhập với email "${UserInfo.email}"`;
+
+                GreetHead.innerText = `Chào mừng sinh viên ${UserInfo.username}!`;
+                MsgHead.innerText = `Bạn đang đăng nhập với email "${UserInfo.email}", mã sinh viên "${UserInfo.id}".`;
             }
+        }
+
+        let UpdData = () => {
+            update(ref(db, 'SinhVien/' + UserInfo.id), {
+                password: Input.value
+            }).then(() => {
+                alert("Data updated successfully!");
+            }).catch((error) => {
+                alert("Data could not be updated!" + error);
+                console.error(error);
+            });
         }
 
         window.addEventListener('load', checkCred);
         SignOutBtn.addEventListener('click', SignOut);
+        UpdBtn.addEventListener('click', evt => {
+            evt.preventDefault();
+            UpdData();
+        });
     </script>
 </body>
 

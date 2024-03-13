@@ -11,6 +11,17 @@
 </head>
 
 <body>
+    <a href="#my-dialog" class="dialog-btn">Bạn vừa đổi mật khẩu?</a>
+    <div class="dialog overplay" id="my-dialog">
+        <a href="#" class="overplay-close"></a>
+        <div class="dialog-body">
+            <a href="#" class="dialog-close-btn">&times;</a>
+            <p id="dialog-text">Nhập mật khẩu bạn vừa đổi vào đây</p>
+            <input type="text" id="dialog-input">
+
+            <button id="dialog-submit">Xác nhận</button>
+        </div>
+    </div>
     <div class="container">
         <nav>
             <ul>
@@ -136,13 +147,35 @@
         </section>
     </div>
 
-    <script>
-        //let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
-        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
 
+        const firebaseConfig = {
+            apiKey: "AIzaSyDQk0PGIztg7qltOimH1_9_lLl5rluKsV8",
+            authDomain: "fir-d023a.firebaseapp.com",
+            databaseURL: "https://fir-d023a-default-rtdb.firebaseio.com",
+            projectId: "fir-d023a",
+            storageBucket: "fir-d023a.appspot.com",
+            messagingSenderId: "81322751429",
+            appId: "1:81322751429:web:eeb12e1ec56b1970c807ac",
+            measurementId: "G-KZQQJNVVWJ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+        import { getDatabase, set, ref, child, get, update, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+        const db = getDatabase(app);
+        const auth = getAuth(app);
+
+        let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
         let MsgHead = document.getElementById("msg");
         let GreetHead = document.getElementById("greet");
         let SignOutBtn = document.getElementById("signoutbutton");
+        let UpdBtn = document.getElementById("dialog-submit");
+        let Input = document.getElementById("dialog-input");
 
 
         let SignOut = () => {
@@ -156,13 +189,29 @@
                 window.location.href = "index.html";
             }
             else {
-                GreetHead.innerText = `Chào mừng đến với trang chủ quản trị viên, ${UserInfo.username}!`;
-                MsgHead.innerText = `Bạn đang đăng nhập với email "${UserInfo.email}"`;
+
+                GreetHead.innerText = `Chào mừng quản trị viên ${UserInfo.username}!`;
+                MsgHead.innerText = `Bạn đang đăng nhập với email "${UserInfo.email}", mã quản trị viên "${UserInfo.id}".`;
             }
+        }
+
+        let UpdData = () => {
+            update(ref(db, 'QuanTriVien/' + UserInfo.id), {
+                password: Input.value
+            }).then(() => {
+                alert("Data updated successfully!");
+            }).catch((error) => {
+                alert("Data could not be updated!" + error);
+                console.error(error);
+            });
         }
 
         window.addEventListener('load', checkCred);
         SignOutBtn.addEventListener('click', SignOut);
+        UpdBtn.addEventListener('click', evt => {
+            evt.preventDefault();
+            UpdData();
+        });
     </script>
 </body>
 
