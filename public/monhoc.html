@@ -90,6 +90,9 @@
 
             <div class="Dang-nhap">
                 Chỉnh sửa môn học
+                <br>
+                Lưu ý: Quý quản trị viên vui lòng chỉ chỉnh sửa thông tin khi học kì hiện tại đã kết thúc và học kì mới
+                chưa bắt đầu
             </div>
             <div class="input-box">
                 Tên môn học
@@ -104,14 +107,29 @@
                     <input type="text" id="idInp" class="input-field" placeholder="">
                 </div>
             </div>
-            
+
             <div class="input-box">
                 Thời lượng dạy học (tuần)
                 <div class="rounded-rectangle-login">
                     <input type="text" id="timeInp" class="input-field" placeholder="">
                 </div>
             </div>
-            
+
+            <div class="input-box">
+                Số tín chỉ
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="tcInp" class="input-field" placeholder="">
+                </div>
+            </div>
+
+            <div class="input-box">
+                Số cột điểm và phần trăm từng cột điểm
+                <br>
+                <p>Lưu ý: Nhập đúng định dạng như ví dụ sau: 4-10%-20%-20%-50%</p>
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="gradeInp" class="input-field" placeholder="">
+                </div>
+            </div>
 
             <button id="AddBtn">Add</button>
             <button id="RetBtn">Retrive</button>
@@ -146,6 +164,8 @@
         let NameInp = document.getElementById('nameInp');
         let IdInp = document.getElementById('idInp');
         let TimeInp = document.getElementById('timeInp');
+        let TCInp = document.getElementById('tcInp');
+        let GradeInp = document.getElementById('gradeInp');
 
         let AddBtn = document.getElementById('AddBtn');
         let RetBtn = document.getElementById('RetBtn');
@@ -155,85 +175,25 @@
         let AddData = evt => {
             evt.preventDefault();
 
+            let s = GradeInp.value.split("-");
+
             createUserWithEmailAndPassword(auth, IdInp.value + '@gmail.com', IdInp.value)
                 .then((credentials) => {
                     set(ref(db, 'MonHoc/' + IdInp.value), {
-                        subjectname: NameInp.value,
-                        subjecttime: TimeInp.value,
-                        subjectnosv: "0",
-                        subjectnogv: "0",
-                        subjectclass: {
-                          L01: {
-                            GVinfo: {
-                              LyThuyet: "none",
-                              ThucHanh: "none"
-                            },
-                            SVinfo: {
-                              SV1: "none",
-                              SV2: "none"
-                            },
-                            Time: {
-                              Monday: "none",
-                              Tuesday: "none",
-                              Wednesday: "none",
-                              Thursday: "none",
-                              Friday: "none",
-                              Saturday: "none",
-                            }, 
-                            TrangThongTin: {
-                              TaiLieu: "none",
-                              BaiTap: "none",
-                              Video: "none"
-                            }
-                          },
-                          L02: {
-                            GVinfo: {
-                              LyThuyet: "none",
-                              ThucHanh: "none"
-                            },
-                            SVinfo: {
-                              SV1: "none",
-                              SV2: "none"
-                            },
-                            Time: {
-                              Monday: "none",
-                              Tuesday: "none",
-                              Wednesday: "none",
-                              Thursday: "none",
-                              Friday: "none",
-                              Saturday: "none",
-                            }, 
-                            TrangThongTin: {
-                              TaiLieu: "none",
-                              BaiTap: "none",
-                              Video: "none"
-                            }
-                          },
-                          L03: {
-                            GVinfo: {
-                              LyThuyet: "none",
-                              ThucHanh: "none"
-                            },
-                            SVinfo: {
-                              SV1: "none",
-                              SV2: "none"
-                            },
-                            Time: {
-                              Monday: "none",
-                              Tuesday: "none",
-                              Wednesday: "none",
-                              Thursday: "none",
-                              Friday: "none",
-                              Saturday: "none",
-                            }, 
-                            TrangThongTin: {
-                              TaiLieu: "none",
-                              BaiTap: "none",
-                              Video: "none"
-                            }
-                          }
+                        tong_so_sinh_vien: "0",
+                        tong_so_giang_vien: "0",
+                        mo_ta_mon_hoc: {
+                            text_hien_thi: GradeInp.value,
+                            so_tin_chi: TCInp.value,
+                            subjectname: NameInp.value,
+                            subjecttime: TimeInp.value
                         }
-                    })
+                    });
+                    for (let i = 1; i < s.length; i++) {
+                        set(ref(db, 'MonHoc/' + IdInp.value + '/mo_ta_mon_hoc/so_cot_diem/' + 'cot' + i), {
+                            phan_tram: s[i]
+                        });
+                    }
                     alert("Đăng ký thành công!")
                 }
 
@@ -250,8 +210,10 @@
             const dbRef = ref(db);
             get(child(dbRef, 'MonHoc/' + IdInp.value)).then((snapshot) => {
                 if (snapshot.exists()) {
-                    NameInp.value = snapshot.val().subjectname;
-                    TimeInp.value = snapshot.val().subjecttime;
+                    NameInp.value = snapshot.val().mo_ta_mon_hoc.subjectname;
+                    TimeInp.value = snapshot.val().mo_ta_mon_hoc.subjecttime;
+                    TCInp.value = snapshot.val().mo_ta_mon_hoc.so_tin_chi;
+                    GradeInp.value = snapshot.val().mo_ta_mon_hoc.text_hien_thi;
                 } else {
                     alert("No data available");
                     console.log("No data available");
@@ -262,10 +224,21 @@
         }
 
         let UpdData = () => {
+            let s = GradeInp.value.split("-");
             update(ref(db, 'MonHoc/' + IdInp.value), {
-                subjectname: NameInp.value,
-                subjecttime: TimeInp.value
-            }).then(() => {
+                mo_ta_mon_hoc: {
+                    text_hien_thi: GradeInp.value,
+                    so_tin_chi: TCInp.value,
+                    subjectname: NameInp.value,
+                    subjecttime: TimeInp.value
+                }
+            }
+            ).then(() => {
+                for (let i = 1; i < s.length; i++) {
+                    set(ref(db, 'MonHoc/' + IdInp.value + '/mo_ta_mon_hoc/so_cot_diem/' + 'cot' + i), {
+                        phan_tram: s[i]
+                    });
+                }
                 alert("Data updated successfully!");
             }).catch((error) => {
                 alert("Data could not be updated!" + error);

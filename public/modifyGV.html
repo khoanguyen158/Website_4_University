@@ -93,7 +93,7 @@
                 Chỉnh sửa tài khoản giảng viên
             </div>
             <div class="input-box">
-                Tên đăng nhập
+                Họ và Tên
                 <div class="rounded-rectangle-login">
                     <input type="text" id="nameInp" class="input-field" placeholder="">
                 </div>
@@ -177,22 +177,42 @@
                     <input type="text" id="addressInp" class="input-field" placeholder=""
                         value=" , {{phuong.Name}}, {{quan.Name}}, {{tinh.Name}}">
                 </div>
+
+                
             </div>
+            <button id="AddBtn">Thêm giảng viên</button>
+                <button id="RetBtn">Tìm kiếm</button>
+                <button id="UpdBtn">Cập nhật</button>
+                <button id="DelBtn">Xóa giảng viên</button>
 
             <div class="input-box">
-                Có thể giảng dạy các môn
+                Tất cả các môn giảng dạy hiện tại của giảng viên (chỉ đọc)
                 <div class="rounded-rectangle-login">
-                    <input type="text" id="subInp" class="input-field" placeholder="">
+                    <input type="text" id="subInp" class="input-field" placeholder="" readonly>
                 </div>
             </div>
 
-            <button id="AddBtn">Add</button>
-            <button id="RetBtn">Retrive</button>
-            <button id="UpdBtn">Update</button>
-            <button id="DelBtn">Delete</button>
+            <p>Lưu ý: các dòng phía dưới phải theo định dạng như sau: CH1003,C01005,CO1007</p>
 
-            <button id="BackBtn"><a href="HomeQTV.html">Back</a></button>
-        </div>
+            <div class="input-box">
+                Các môn giảng viên muốn HỦY đăng ký giảng dạy trong các môn hiện tại
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="cancelsubInp" class="input-field" placeholder="">
+                </div>
+            </div>
+
+            <div class="input-box">
+                Các môn giảng viên muốn ĐĂNG KÝ giảng dạy ngoài các môn hiện tại
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="addsubInp" class="input-field" placeholder="">
+                </div>
+
+
+                <button id="AddSubBtn">Thêm môn mới</button>
+                <button id="CanSubBtn">Xóa môn cũ</button>
+
+                <button id="BackBtn"><a href="HomeQTV.html">Back</a></button>
+            </div>
     </form>
 
     <script type="module">
@@ -227,12 +247,17 @@
         let AddressInp = document.getElementById('addressInp');
         let PhoneInp = document.getElementById('phoneInp');
         let SubInp = document.getElementById('subInp');
+        let CancelSubInp = document.getElementById('cancelsubInp');
+        let AddSubInp = document.getElementById('addsubInp');
 
         let AddBtn = document.getElementById('AddBtn');
         let RetBtn = document.getElementById('RetBtn');
         let UpdBtn = document.getElementById('UpdBtn');
         let DelBtn = document.getElementById('DelBtn');
+        let AddSubBtn = document.getElementById('AddSubBtn');
+        let CanSubBtn = document.getElementById('CanSubBtn');
 
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         let AddData = evt => {
             evt.preventDefault();
 
@@ -244,13 +269,9 @@
                         id: IdInp.value,
                         phone: PhoneInp.value,
                         password: PassInp.value,
-                        mon: SubInp.value,
                         address: AddressInp.value
-                    })
-                    set(ref(db, 'MonHoc/' + SubInp.value+ '/subjectnogv/' + IdInp.value), {
-                        username: NameInp.value
-                    })
-                    alert("Đăng ký thành công!")
+                    });
+                    alert("Đăng ký thông tin thành công! ");
                 }
 
                 )
@@ -262,6 +283,145 @@
 
         }
 
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        let AddSubjectData = () => {
+            let str = new String();
+            const dbRef = ref(db);
+            get(child(dbRef, 'GiangVien/' + IdInp.value)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    if (snapshot.val().mon != null) {
+                        str = snapshot.val().mon;
+                    }
+                    else {
+                        str = "";
+                    }
+                } else {
+                    alert("No data available");
+                    console.log("No data available");
+                }
+
+                if (str.length > 0) {
+                    str += ("," + AddSubInp.value);
+                }
+                else {
+                    str = AddSubInp.value;
+                }
+                update(ref(db, 'GiangVien/' + IdInp.value), {
+                    mon: str
+                });
+                let s = new String(AddSubInp.value);
+                let n = s.length;
+                let arr = new Array();
+                for (let i = 0; i < n; i++) {
+                    if (s[i] == ',') {
+                        arr.push(s.substring(0, i));
+                        s = s.substring(i + 1, n);
+                        n = s.length;
+                        i = 0;
+                    }
+                    else if (i == n - 1) arr.push(s);
+                }
+                let sophantucuamang = arr.length;
+
+                
+                for (let i = 0; i < sophantucuamang; i++) {
+                    set(ref(db, 'MonHoc/' + arr[i] + '/tong_so_giang_vien/' + IdInp.value), {
+                        username: NameInp.value
+                    })
+                }
+                alert("Thêm " + sophantucuamang + " môn mới thành công!");
+            });
+        }
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        let CancelSubjectData = () => {
+            let str = new String();
+            const dbRef = ref(db);
+            get(child(dbRef, 'GiangVien/' + IdInp.value)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    if (snapshot.val().mon != null) {
+                        str = snapshot.val().mon;
+                    }
+                    else {
+                        str = "";
+                        alert("Chưa có môn nào để xóa!");
+                        return;
+                    }
+                } else {
+                    alert("No data available");
+                    console.log("No data available");
+                }
+
+                let s = new String(CancelSubInp.value);
+                let n = s.length;
+                let arr = new Array();
+                for (let i = 0; i < n; i++) {
+                    if (s[i] == ',') {
+                        arr.push(s.substring(0, i));
+                        s = s.substring(i + 1, n);
+                        n = s.length;
+                        i = 0;
+                    }
+                    else if (i == n - 1) arr.push(s);
+                }
+                let sophantucuamang = arr.length;
+                for (let i = 0; i < sophantucuamang; i++) {
+                    remove(ref(db, 'MonHoc/' + arr[i] + '/tong_so_giang_vien/' + IdInp.value));
+                }
+
+                let s_tmp = new String(str);
+                let n_tmp = s_tmp.length;
+                let arr_tmp = new Array();
+                for (let i = 0; i < n_tmp; i++) {
+                    if (s_tmp[i] == ',') {
+                        arr_tmp.push(s_tmp.substring(0, i));
+                        s_tmp = s_tmp.substring(i + 1, n_tmp);
+                        n_tmp = s_tmp.length;
+                        i = 0;
+                    }
+                    else if (i == n_tmp - 1) arr_tmp.push(s_tmp);
+                }
+                let sophantucuamang_tmp = arr_tmp.length;
+                if (sophantucuamang_tmp == sophantucuamang) {
+                    update(ref(db, 'GiangVien/' + IdInp.value), {
+                        mon: null
+                    });
+                    alert("Đã xóa hết môn giảng viên này giảng dạy!");
+                    return;
+                }
+                let tenmonhoccuoicung = new String("");
+                //alert(arr_tmp + " " + arr);
+                for (let i = 0; i < sophantucuamang_tmp; i++) {
+                    let flag = false;
+                    for (let j = 0; j < sophantucuamang; j++) {
+                        if (arr_tmp[i] == arr[j]) {
+                            //alert("Mon hoc " + arr_tmp[i] + " da bi xoa!");
+                            flag = true;
+                            break;
+                        }
+                        //else alert("Mon hoc " + arr_tmp[i] + " chua bi xoa!");
+                    }
+                    if (flag == false) {
+                        tenmonhoccuoicung += (arr_tmp[i] + ",");
+                    }
+                }
+                if (tenmonhoccuoicung.length > 0) {
+                    tenmonhoccuoicung = tenmonhoccuoicung.substring(0, tenmonhoccuoicung.length - 1);
+                    //alert("Các môn giảng viên còn giảng dạy sau khi xóa: " + tenmonhoccuoicung);
+                }
+                else {
+                    alert("Đã xóa hết môn giảng viên này giảng dạy!");
+                    tenmonhoccuoicung = null;
+                }
+                update(ref(db, 'GiangVien/' + IdInp.value), {
+                    mon: tenmonhoccuoicung
+                });
+                alert("Xóa " + sophantucuamang + " môn cũ thành công!");
+            });
+
+
+
+        }
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         let RetData = () => {
             const dbRef = ref(db);
             get(child(dbRef, 'GiangVien/' + IdInp.value)).then((snapshot) => {
@@ -271,7 +431,12 @@
                     PhoneInp.value = snapshot.val().phone;
                     PassInp.value = snapshot.val().password;
                     AddressInp.value = snapshot.val().address;
-                    SubInp.value = snapshot.val().mon;
+                    if (snapshot.val().mon != null) {
+                        SubInp.value = snapshot.val().mon;
+                    }
+                    else {
+                        SubInp.value = "Chưa có môn nào";
+                    }
                 } else {
                     alert("No data available");
                     console.log("No data available");
@@ -280,36 +445,73 @@
                 console.error(error);
             });
         }
-
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         let UpdData = () => {
-            update(ref(db, 'GiangVien/' + IdInp.value), {
-                username: NameInp.value,
-                email: EmailInp.value,
-                phone: PhoneInp.value,
-                password: PassInp.value,
-                address: AddressInp.value,
-                mon: SubInp.value
-            })
-            update(ref(db, 'MonHoc/' + SubInp.value+ '/subjectnogv/' + IdInp.value), {
-                username: NameInp.value
-            }).then(() => {
-                alert("Data updated successfully!");
-            }).catch((error) => {
-                alert("Data could not be updated!" + error);
-                console.error(error);
-            });
+            let str = new String();
+            const dbRef = ref(db);
+            get(child(dbRef, 'GiangVien/' + IdInp.value)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    if (snapshot.val().mon != null) {
+                        str = snapshot.val().mon;
+                    }
+                    else {
+                        str = "";
+                    }
+                } else {
+                    alert("No data available");
+                    console.log("No data available");
+                }
+
+                update(ref(db, 'GiangVien/' + IdInp.value), {
+                    username: NameInp.value,
+                    phone: PhoneInp.value,
+                    password: PassInp.value,
+                    address: AddressInp.value
+                });
+    
+                let s = new String(str);
+                let n = s.length;
+                let arr = new Array();
+                for (let i = 0; i < n; i++) {
+                    if (s[i] == ',') {
+                        arr.push(s.substring(0, i));
+                        s = s.substring(i + 1, n);
+                        n = s.length;
+                        i = 0;
+                    }
+                    else if (i == n - 1) arr.push(s);
+                }
+                let sophantucuamang = arr.length;
+
+                
+                for (let i = 0; i < sophantucuamang; i++) {
+                    update(ref(db, 'MonHoc/' + arr[i] + '/tong_so_giang_vien/' + IdInp.value), {
+                        username: NameInp.value
+                    })
+                }
+                alert("Cập nhật thông tin thành công!");
+            });            
         }
 
         let DelData = () => {
             remove(ref(db, 'GiangVien/' + IdInp.value));
-            remove(ref(db, 'MonHoc/' + SubInp.value+ '/subjectnogv/' + IdInp.value))
-            .then(() => {
-                alert("Data deleted successfully!");
-            })
-            .catch((error) => {
-                alert("Data could not be deleted!" + error);
-                console.error(error);
-            });
+            let s = new String(SubInp.value);
+            let n = s.length;
+            let arr = new Array();
+            for (let i = 0; i < n; i++) {
+                if (s[i] == ',') {
+                    arr.push(s.substring(0, i));
+                    s = s.substring(i + 1, n);
+                    n = s.length;
+                    i = 0;
+                }
+                else if (i == n - 1) arr.push(s);
+            }
+            let sophantucuamang = arr.length;
+            for (let i = 0; i < sophantucuamang; i++) {
+                remove(ref(db, 'MonHoc/' + arr[i] + '/tong_so_giang_vien/' + IdInp.value));
+            }
+            alert("Data deleted successfully!");
         }
 
         AddBtn.addEventListener('click', AddData);
@@ -327,6 +529,16 @@
         DelBtn.addEventListener('click', evt => {
             evt.preventDefault();
             DelData();
+        });
+
+        AddSubBtn.addEventListener('click', evt => {
+            evt.preventDefault();
+            AddSubjectData();
+        });
+
+        CanSubBtn.addEventListener('click', evt => {
+            evt.preventDefault();
+            CancelSubjectData();
         });
 
         let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
