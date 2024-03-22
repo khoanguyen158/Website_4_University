@@ -8,8 +8,8 @@
     <title>Khóa học của tôi</title>
     <link rel="stylesheet" href="style_home.css" />
     <link rel="stylesheet" href="userInfo.css" />
-    <link rel="stylesheet" href="style.css" />
     <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -19,18 +19,18 @@
                 <li><a href="#" class="logo">
                         <img
                             src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2F01_logobachkhoasang.png?alt=media&token=6e835bd4-9c3f-4b16-8c4d-36f87c7e7c9d">
-
+        
                         <span class="nav-item">bkel</span>
                     </a></li>
-
-                <li><a href="#" class="avatar">
-
+        
+                <li><a href="svInfo.html" class="avatar">
+        
                         <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
                             alt="Avatar">
-
+        
                         <span class="nav-item">Thông tin cá nhân</span>
                     </a></li>
-                <li><a href="#" class="side-bar-icon">
+                <li><a href="Home.html" class="side-bar-icon">
                         <i class="fas fa-home"></i>
                         <span class="nav-item">Trang chủ</span>
                     </a></li>
@@ -54,76 +54,75 @@
                         <i class="fas fa-gear"></i>
                         <span class="nav-item">Cài đặt</span>
                     </a></li>
-
+        
                 <li>
                     <a href="#" class="side-bar-icon">
-                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <i class="fas fa-regular fa-table"></i>
+                        <span class="nav-item" id="bangdiem">Bảng điểm</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="dkimonhoc.html" class="side-bar-icon">
+                        <i class="fas fa-regular fa-registered"></i>
+                        <span class="nav-item" id="dkimonhoc">Đăng ký môn học</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="side-bar-icon">
+                        <i class="fas fa-solid fa-right-from-bracket"></i>
                         <span class="nav-item" id="signoutbutton">Đăng xuất</span>
                     </a>
                 </li>
-                <!-- <div>
-                            
-                            <button type="button" ></button>
-                        </div> -->
-                </li>
             </ul>
         </nav>
-
         <div class="userIn">
             <div class="tittleIn">
                 Thông tin của sinh viên
             </div>
+            <div class="imgPro">
+                <input type="text" id="namebox">
+                <label id="extlab"></label>
+                <img id="myimg" src="">
+                <br> <br>
+                <button id="upbtn">Upload Image</button>
+            </div>
             <div class="mainUserIn">
-                <div class="ImageProfile">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FimgUser%2FimgSV%2Fjuan.png?alt=media&token=dd8a2e1c-2a93-42a8-a0d3-70e5d602ed01"
-                        id="profilePic">
-                    <br />
-                    <label for="input-file"> Update image </label>
-                    <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file">
-
-                </div>
 
                 <div class="userInfoForm">
                     <div class="form-group">
                         <label for="fullName">Họ và Tên:</label>
-                        <input type="text" id="nameInp" name="fullName">
+                        <input type="text" id="nameInp" name="fullName" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="mssv">MSSV:</label>
+                        <input type="text" id="idInp" name="mssv" readonly>
                     </div>
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="text" id="emailInp" name="email">
+                        <input type="text" id="emailInp" name="email" readonly>
                     </div>
                     <div class="form-group">
                         <label for="phone">Số điện thoại:</label>
                         <input type="text" id="phoneInp" name="phone">
                     </div>
-                    <div class="form-group">
-                        <label for="mssv">MSSV:</label>
-                        <input type="text" id="idInp">
-                    </div>
+                    
                     <div class="form-group">
                         <label for="address">Địa chỉ </label>
-                        <input type="text" id="addressInp">
+                        <input type="text" id="addressInp" name="address">
                     </div>
 
-                    
+                    <button id="UpdBtn">Cập nhật thông tin</button>
                 </div>
             </div>
-            <button id="RetBtn">Tìm kiếm</button>
-            <button id="UpdBtn">Cập nhật</button>
-        </div>
-        
-    </div>
-    <script>
-        let profilePic = document.getElementById("profilePic");
-        let inputfile = document.getElementById("input-file");
 
-        inputfile.onchange = function () {
-            profilePic.src = URL.createObjectURL(inputfile.files[0]);
-        }
-    </script>
+        </div>
+    </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL, deleteObject, listAll } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-storage.js";
+        import { getDatabase, set, ref, child, get, update, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDQk0PGIztg7qltOimH1_9_lLl5rluKsV8",
@@ -137,46 +136,124 @@
         };
 
         const app = initializeApp(firebaseConfig);
-
-        import { getDatabase, set, ref, child, get, update, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
-
-        const db = getDatabase(app);
+        const realdb = getDatabase(app);
         const auth = getAuth(app);
 
+        //-------------------------------------------------------------
         let EmailInp = document.getElementById('emailInp');
         let NameInp = document.getElementById('nameInp');
         let IdInp = document.getElementById('idInp');
         let AddressInp = document.getElementById('addressInp');
         let PhoneInp = document.getElementById('phoneInp');
+        let UpdBtn = document.getElementById('UpdBtn');
 
-        let retBtn = document.getElementById('RetBtn');
-        let updBtn = document.getElementById('UpdBtn');
+        //let updBtn      = document.getElementById('UpdBtn');
+        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
 
+        const storage = getStorage();
 
-        let RetData = () => {
-            const dbRef = ref(db);
-            get(child(dbRef, 'SinhVien/' + IdInp.value)).then((snapshot) => {
-                if (snapshot.exists()) {
-                    NameInp.value = snapshot.val().username;
-                    EmailInp.value = snapshot.val().email;
-                    AddressInp.value = snapshot.val().address;
-                    PhoneInp.value = snapshot.val().phone;
-                } else {
-                    alert("No data available");
-                    console.log("No data available");
-                }
+        var files = [];
+        var reader = new FileReader();
+        var namebox = document.getElementById('namebox');
+        var extlab = document.getElementById('extlab');
+        var myimg = document.getElementById('myimg');
+        var proglab = document.getElementById('upprogress');
+
+        var UpBtn = document.getElementById('upbtn');
+
+        let mssv = UserInfo.id;
+
+        var input = document.createElement('input');
+        input.type = 'file';
+
+        input.onchange = e => {
+            files = e.target.files;
+
+            var extension = mssv;
+            var name = mssv;
+
+            namebox.value = name;
+            extlab.innerHTML = extension;
+
+            reader.readAsDataURL(files[0]);
+        };
+
+        reader.onload = function () {
+            myimg.src = reader.result;
+            uploadNewImage(); // Automatically upload the selected image
+        };
+        // Function to upload a new image
+        async function uploadNewImage() {
+            try {
+                // Check if there is a previous image to delete
+                const previousImageName = namebox.value.trim(); // Assuming namebox and extlab are defined elsewhere
+
+                // Upload the new image
+                const ImgToUpload = files[0];
+                const ImgName = namebox.value.trim();
+
+                const metaData = {
+                    contentType: ImgToUpload.type
+                };
+
+                const storageRef = sRef(storage, 'Img/imgUser/imgSV/' + mssv);
+                const UploadTask = uploadBytesResumable(storageRef, ImgToUpload, metaData);
+
+                UploadTask.on('state-changed', (snapshot) => {
+
+                },
+                    () => {
+                        getDownloadURL(UploadTask.snapshot.ref).then((downloadURL) => {
+                            console.log(downloadURL);
+                            SaveURLtoRealtimeDB(downloadURL);
+                        });
+                    });
+            } catch (error) {
+                console.error("Error uploading new image:", error);
+            }
+        }
+
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+        function displayAvt() {
+            const storageRef = sRef(storage, 'Img/imgUser/imgSV/' + mssv);
+            getDownloadURL(storageRef).then((url) => {
+                document.getElementById('myimg').src = url;
             }).catch((error) => {
-                console.error(error);
+                console.error('Error getting image URL:', error);
             });
         }
 
+        UpBtn.onclick = function () {
+            input.click();
+        };
+
+        function getData() {
+            const userRef = ref(realdb, `SinhVien/${UserInfo.id}`);
+
+            get(userRef).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const userData = snapshot.val();
+                    // Hiển thị dữ liệu người dùng trên giao diện người dùng
+                    document.getElementById('nameInp').value = userData.username;
+                    document.getElementById('emailInp').value = userData.email;
+                    document.getElementById('idInp').value = userData.id;
+                    document.getElementById('addressInp').value = userData.address;
+                    document.getElementById('phoneInp').value = userData.phone;
+                } else {
+                    console.log("Không tìm thấy thông tin người dùng trong cơ sở dữ liệu.");
+                }
+            }).catch((error) => {
+                console.error("Lỗi khi truy xuất dữ liệu từ cơ sở dữ liệu:", error);
+            });
+
+        }
+
         let UpdData = () => {
-            update(ref(db, 'SinhVien/' + IdInp.value), {
-                username: NameInp.value,
-                email: EmailInp.value,
-                address: AddressInp.value,
-                phone: PhoneInp.value
+            const db = getDatabase(app);
+            update(ref(db, 'SinhVien/' + UserInfo.id), {
+                phone: PhoneInp.value,
+                address: AddressInp.value
             }).then(() => {
                 alert("Data updated successfully!");
             }).catch((error) => {
@@ -185,20 +262,33 @@
             });
         }
 
+        window.addEventListener('load', () => {
+            const UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+            const mssv = UserInfo.id;
+            if (UserInfo) {
+                getData();
+                displayAvt();
+            } else {
+                console.log('User info not found in session storage.');
+            }
+        })
 
-        retBtn.addEventListener('click', evt => {
-            evt.preventDefault();
-            RetData();
-            console.log("123289321392");
-        });
-
-        updBtn.addEventListener('click', evt => {
+        UpdBtn.addEventListener('click', evt => {
             evt.preventDefault();
             UpdData();
         });
 
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Sign out
+        let SignOutBtn = document.getElementById("signoutbutton");
+        let SignOut = () => {
+            sessionStorage.removeItem("user-creds");
+            sessionStorage.removeItem("user-info");
+            window.location.href = "index.html";
+        }
+        SignOutBtn.addEventListener('click', SignOut);
     </script>
 </body>
-</body>
+
 
 </html>
