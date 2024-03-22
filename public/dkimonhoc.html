@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin sinh viên</title>
+
+    <link rel="stylesheet" href="style-modi-SV.css">
+    <script src="angular-route.min.js"></script>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/10.8.1/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/10.8.1/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+</head>
+
+<body ng-app="myapp" ng-controller="homeCtrl">
+    <nav>
+        <ul>
+            <li><a href="#" class="logo">
+                    <img
+                        src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2F01_logobachkhoasang.png?alt=media&token=6e835bd4-9c3f-4b16-8c4d-36f87c7e7c9d">
+
+                    <span class="nav-item">bkel</span>
+                </a></li>
+
+            <!-- <li><a href="#" class="avatar">
+    
+                    <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
+                        alt="Avatar">
+    
+                    <span class="nav-item">Thông tin cá nhân</span>
+                </a></li> -->
+            <li><a href="HomeQTV.html" class="side-bar-icon">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-item">Trang chủ</span>
+                </a></li>
+            <li><a href="registerADMIN.html" class="side-bar-icon">
+                    <i class="fas fa-newspaper"></i>
+                    <span class="nav-item">Đăng ký quản trị viên</span>
+                </a></li>
+            <li><a href="monhoc.html" class="side-bar-icon">
+                    <i class="fas fa-newspaper"></i>
+                    <span class="nav-item">Chỉnh sửa môn học</span>
+                </a></li>
+            <li><a href="modifySV.html" class="side-bar-icon">
+                    <i class="fas fa-book-open-reader"></i>
+                    <span class="nav-item">Chỉnh sửa sinh viên</span>
+                </a></li>
+            <li><a href="modifyGV.html" class="side-bar-icon">
+                    <i class="fas fa-book-open-reader"></i>
+                    <span class="nav-item">Chỉnh sửa giảng viên</span>
+                </a></li>
+            <li>
+                <a href="#" class="side-bar-icon">
+                    <i class="fas fa-solid fa-right-from-bracket"></i>
+                    <span class="nav-item" id="signoutbutton">Đăng xuất</span>
+                </a>
+            </li>
+            <!-- <div>
+                    
+                    <button type="button" ></button>
+                </div> -->
+        </ul>
+    </nav>
+    <form id="MainForm">
+        <div class="main1">
+            <div class="logo">
+                <img
+                    src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Flogo_DEF.jpg?alt=media&token=5c319bb6-f09c-4d0b-89d6-342fde279f9d">
+            </div>
+
+            <div class="Dang-nhap">
+                Đăng kí môn học
+                <br>
+                <h1 id="greet"></h1>
+                <br>
+                <p id="msg"></p>
+            </div>
+            
+            <div class="input-box">
+                Tìm kiếm môn
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="idInp" class="input-field" placeholder="">
+                </div>
+            </div>
+
+            <div class="input-box">
+                Tên môn học
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="nameInp" class="input-field" placeholder="" readonly>
+                </div>
+            </div>
+            
+
+            <div class="input-box">
+                Thời lượng dạy học (tuần)
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="timeInp" class="input-field" placeholder="" readonly>
+                </div>
+            </div>
+
+            <div class="input-box">
+                Số tín chỉ
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="tcInp" class="input-field" placeholder="" readonly>
+                </div>
+            </div>
+
+
+            <button id="RetBtn">Tìm kiếm môn</button>
+
+            <div class="input-box">
+                Học kì hiện tại
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="semesterInp" class="input-field" placeholder="">
+                </div>
+            </div>
+
+            <div class="input-box">
+                Tất cả các môn đã đăng kí của sinh viên (chỉ đọc)
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="subInp" class="input-field" placeholder="" readonly>
+                </div>
+            </div>
+
+            <p>Lưu ý: các dòng phía dưới phải theo định dạng như sau: CH1003,C01005,CO1007</p>
+
+            <div class="input-box">
+                Các môn sinh viên muốn HỦY đăng ký trong các môn hiện tại
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="cancelsubInp" class="input-field" placeholder="">
+                </div>
+            </div>
+
+            <div class="input-box">
+                Các môn sinh viên muốn ĐĂNG KÝ ngoài các môn hiện tại
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="addsubInp" class="input-field" placeholder="">
+                </div>
+
+
+                <button id="AddSubBtn">Thêm môn mới</button>
+                <button id="CanSubBtn">Xóa môn cũ</button>
+                <button id="RetSubBtn">Làm mới</button>
+
+            
+            </div>
+    </form>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDQk0PGIztg7qltOimH1_9_lLl5rluKsV8",
+            authDomain: "fir-d023a.firebaseapp.com",
+            databaseURL: "https://fir-d023a-default-rtdb.firebaseio.com",
+            projectId: "fir-d023a",
+            storageBucket: "fir-d023a.appspot.com",
+            messagingSenderId: "81322751429",
+            appId: "1:81322751429:web:eeb12e1ec56b1970c807ac",
+            measurementId: "G-KZQQJNVVWJ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+        import { getDatabase, set, ref, child, get, update, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+        const db = getDatabase(app);
+        const auth = getAuth(app);
+
+        let IdInp = document.getElementById("idInp");
+        let NameInp = document.getElementById("nameInp");
+        let TimeInp = document.getElementById("timeInp");
+        let TCInp = document.getElementById("tcInp");
+        let SemesterInp = document.getElementById("semesterInp");
+        let SubInp = document.getElementById("subInp");
+        let CancelSubInp = document.getElementById("cancelsubInp");
+        let AddSubInp = document.getElementById("addsubInp");
+
+        let RetBtn = document.getElementById("RetBtn");
+        let AddSubBtn = document.getElementById("AddSubBtn");
+        let CanSubBtn = document.getElementById("CanSubBtn");
+        let RetSubBtn = document.getElementById("RetSubBtn");
+
+        let SignOutBtn = document.getElementById("signoutbutton");
+        let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+        let MsgHead = document.getElementById("msg");
+        let GreetHead = document.getElementById("greet");
+
+
+        let RetData = () => {
+            const dbRef = ref(db);
+            get(child(dbRef, 'MonHoc/' + IdInp.value)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    NameInp.value = snapshot.val().mo_ta_mon_hoc.subjectname;
+                    TimeInp.value = snapshot.val().mo_ta_mon_hoc.subjecttime;
+                    TCInp.value = snapshot.val().mo_ta_mon_hoc.so_tin_chi;
+                } else {
+                    alert("No data available");
+                    console.log("No data available");
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
+        }
+
+        let RetSubData = () => {
+            const dbRef = ref(db);
+            get(child(dbRef, 'SinhVien/' + UserInfo.id +'/Hoc_ki/' + SemesterInp.value)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    if (snapshot.val().mon != null) {
+                        SubInp.value = snapshot.val().mon;
+                    }
+                    else {
+                        SubInp.value = "Chưa có môn nào";
+                    }
+                } else {
+                    alert("No data available");
+                    console.log("No data available");
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
+        }
+
+        
+
+        let AddSubjectData = () => {
+            let str = new String();
+            const dbRef = ref(db);
+            get(child(dbRef, 'SinhVien/' + UserInfo.id +'/Hoc_ki/' + SemesterInp.value)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    if (snapshot.val().mon != null) {
+                        str = snapshot.val().mon;
+                    }
+                    else {
+                        str = "";
+                    }
+                }
+                else {
+                    str = "";
+                }
+
+                if (str.length > 0) {
+                    str += ("," + AddSubInp.value);
+                }
+                else {
+                    str = AddSubInp.value;
+                }
+                update(ref(db, 'SinhVien/' + UserInfo.id +'/Hoc_ki/' + SemesterInp.value), {
+                    mon: str
+                });
+                let s = new String(AddSubInp.value);
+                let n = s.length;
+                let arr = new Array();
+                for (let i = 0; i < n; i++) {
+                    if (s[i] == ',') {
+                        arr.push(s.substring(0, i));
+                        s = s.substring(i + 1, n);
+                        n = s.length;
+                        i = 0;
+                    }
+                    else if (i == n - 1) arr.push(s);
+                }
+                let sophantucuamang = arr.length;
+
+                
+                for (let i = 0; i < sophantucuamang; i++) {
+                    set(ref(db, 'MonHoc/' + arr[i] + '/tong_so_sinh_vien/' + UserInfo.id), {
+                        username: UserInfo.username
+                    })
+                }
+                alert("Thêm " + sophantucuamang + " môn mới thành công!");
+            });
+        }
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        let CancelSubjectData = () => {
+            let str = new String();
+            const dbRef = ref(db);
+            get(child(dbRef, 'GiangVien/' + IdInp.value)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    if (snapshot.val().mon != null) {
+                        str = snapshot.val().mon;
+                    }
+                    else {
+                        str = "";
+                        alert("Chưa có môn nào để xóa!");
+                        return;
+                    }
+                } else {
+                    alert("No data available");
+                    console.log("No data available");
+                }
+
+                let s = new String(CancelSubInp.value);
+                let n = s.length;
+                let arr = new Array();
+                for (let i = 0; i < n; i++) {
+                    if (s[i] == ',') {
+                        arr.push(s.substring(0, i));
+                        s = s.substring(i + 1, n);
+                        n = s.length;
+                        i = 0;
+                    }
+                    else if (i == n - 1) arr.push(s);
+                }
+                let sophantucuamang = arr.length;
+                for (let i = 0; i < sophantucuamang; i++) {
+                    remove(ref(db, 'MonHoc/' + arr[i] + '/tong_so_giang_vien/' + IdInp.value));
+                }
+
+                let s_tmp = new String(str);
+                let n_tmp = s_tmp.length;
+                let arr_tmp = new Array();
+                for (let i = 0; i < n_tmp; i++) {
+                    if (s_tmp[i] == ',') {
+                        arr_tmp.push(s_tmp.substring(0, i));
+                        s_tmp = s_tmp.substring(i + 1, n_tmp);
+                        n_tmp = s_tmp.length;
+                        i = 0;
+                    }
+                    else if (i == n_tmp - 1) arr_tmp.push(s_tmp);
+                }
+                let sophantucuamang_tmp = arr_tmp.length;
+                if (sophantucuamang_tmp == sophantucuamang) {
+                    update(ref(db, 'GiangVien/' + IdInp.value), {
+                        mon: null
+                    });
+                    alert("Đã xóa hết môn giảng viên này giảng dạy!");
+                    return;
+                }
+                let tenmonhoccuoicung = new String("");
+                //alert(arr_tmp + " " + arr);
+                for (let i = 0; i < sophantucuamang_tmp; i++) {
+                    let flag = false;
+                    for (let j = 0; j < sophantucuamang; j++) {
+                        if (arr_tmp[i] == arr[j]) {
+                            //alert("Mon hoc " + arr_tmp[i] + " da bi xoa!");
+                            flag = true;
+                            break;
+                        }
+                        //else alert("Mon hoc " + arr_tmp[i] + " chua bi xoa!");
+                    }
+                    if (flag == false) {
+                        tenmonhoccuoicung += (arr_tmp[i] + ",");
+                    }
+                }
+                if (tenmonhoccuoicung.length > 0) {
+                    tenmonhoccuoicung = tenmonhoccuoicung.substring(0, tenmonhoccuoicung.length - 1);
+                    //alert("Các môn giảng viên còn giảng dạy sau khi xóa: " + tenmonhoccuoicung);
+                }
+                else {
+                    alert("Đã xóa hết môn giảng viên này giảng dạy!");
+                    tenmonhoccuoicung = null;
+                }
+                update(ref(db, 'GiangVien/' + IdInp.value), {
+                    mon: tenmonhoccuoicung
+                });
+                alert("Xóa " + sophantucuamang + " môn cũ thành công!");
+            });
+        }
+
+        let checkCred = () => {
+            if (!sessionStorage.getItem("user-creds")) {
+                window.location.href = "index.html";
+            }
+            else {
+
+                GreetHead.innerText = `Sinh viên ${UserInfo.username}!`;
+                MsgHead.innerText = `Email "${UserInfo.email}", mã sinh viên "${UserInfo.id}".`;
+            }
+        }
+
+        RetBtn.addEventListener('click', evt => {
+            evt.preventDefault();
+            RetData();
+        });
+
+        RetSubBtn.addEventListener('click', evt => {
+            evt.preventDefault();
+            RetSubData();
+        });
+
+        AddSubBtn.addEventListener('click', evt => {
+            evt.preventDefault();
+            AddSubjectData();
+        });
+
+        CanSubBtn.addEventListener('click', evt => {
+            evt.preventDefault();
+            CancelSubjectData();
+        });
+
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        
+
+        let SignOut = () => {
+            sessionStorage.removeItem("user-creds");
+            sessionStorage.removeItem("user-info");
+            window.location.href = "index.html";
+        }
+
+
+        SignOutBtn.addEventListener('click', SignOut);
+        window.addEventListener('load', checkCred);
+
+    </script>
+    <script src="checkmk.js"></script>
+</body>
+
+</html>
