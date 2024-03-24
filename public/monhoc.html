@@ -11,24 +11,6 @@
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
     <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
-
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/10.8.1/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/10.8.1/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/10.8.1/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/10.8.1/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/10.8.1/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/10.8.1/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/10.8.1/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/10.8.1/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/10.8.1/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/10.8.1/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 </head>
 
 <body ng-app="myapp" ng-controller="homeCtrl">
@@ -41,13 +23,7 @@
                     <span class="nav-item">bkel</span>
                 </a></li>
 
-            <!-- <li><a href="#" class="avatar">
-    
-                    <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
-                        alt="Avatar">
-    
-                    <span class="nav-item">Thông tin cá nhân</span>
-                </a></li> -->
+
             <li><a href="HomeQTV.html" class="side-bar-icon">
                     <i class="fas fa-home"></i>
                     <span class="nav-item">Trang chủ</span>
@@ -91,8 +67,13 @@
             <div class="Dang-nhap">
                 Chỉnh sửa môn học
                 <br>
-                Lưu ý: Quý quản trị viên vui lòng chỉ chỉnh sửa thông tin khi học kì hiện tại đã kết thúc và học kì mới
-                chưa bắt đầu
+                Lưu ý:
+                <br>
+                Quý quản trị viên vui lòng chỉ chỉnh sửa thông tin khi học kì hiện tại đã kết thúc và học kì mới chưa
+                bắt đầu
+                <br>
+                Nếu xóa 1 môn học bất kì, vui lòng thông báo cho toàn bộ các giảng viên trong trường về sự thay đổi và
+                yêu cầu các giảng viên cập nhật lại các môn giảng dạy của mình
             </div>
             <div class="input-box">
                 Tên môn học
@@ -116,6 +97,13 @@
             </div>
 
             <div class="input-box">
+                Sĩ số tối thiểu của lớp
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="limitInp" class="input-field" placeholder="">
+                </div>
+            </div>
+
+            <div class="input-box">
                 Số tín chỉ
                 <div class="rounded-rectangle-login">
                     <input type="text" id="tcInp" class="input-field" placeholder="">
@@ -123,9 +111,12 @@
             </div>
 
             <div class="input-box">
-                Số cột điểm và phần trăm từng cột điểm
+                Số cột điểm và tên, phần trăm, điểm tối thiểu của từng cột điểm
                 <br>
-                <p>Lưu ý: Nhập đúng định dạng như ví dụ sau: 4-10%-20%-20%-50%</p>
+                <p>Lưu ý: Nhập đúng định dạng như ví dụ sau, những phần không có sẽ nhập "none":
+                    <br>
+                    4~(Điểm Quiz-10%-3)~(Bài tập lớn-20%-0)~(none-20%-3)~(Cuối kì-50%-3)
+                </p>
                 <div class="rounded-rectangle-login">
                     <input type="text" id="gradeInp" class="input-field" placeholder="">
                 </div>
@@ -164,6 +155,7 @@
         let NameInp = document.getElementById('nameInp');
         let IdInp = document.getElementById('idInp');
         let TimeInp = document.getElementById('timeInp');
+        let LimitInp = document.getElementById('limitInp');
         let TCInp = document.getElementById('tcInp');
         let GradeInp = document.getElementById('gradeInp');
 
@@ -175,9 +167,9 @@
         let AddData = evt => {
             evt.preventDefault();
 
-            let s = GradeInp.value.split("-");
+            let s = GradeInp.value.split("~");
 
-            createUserWithEmailAndPassword(auth, IdInp.value + '@gmail.com', IdInp.value)
+            createUserWithEmailAndPassword(auth, IdInp.value + '@monhoc.edu.vn', IdInp.value)
                 .then((credentials) => {
                     set(ref(db, 'MonHoc/' + IdInp.value), {
                         tong_so_sinh_vien: "0",
@@ -186,12 +178,16 @@
                             text_hien_thi: GradeInp.value,
                             so_tin_chi: TCInp.value,
                             subjectname: NameInp.value,
-                            subjecttime: TimeInp.value
+                            subjecttime: TimeInp.value,
+                            si_so_toi_thieu: LimitInp.value
                         }
                     });
                     for (let i = 1; i < s.length; i++) {
+                        let tmp = s[i].split("-");
                         set(ref(db, 'MonHoc/' + IdInp.value + '/mo_ta_mon_hoc/so_cot_diem/' + 'cot' + i), {
-                            phan_tram: s[i]
+                            ten: tmp[0].trim().subString(1),
+                            phan_tram: tmp[1],
+                            diem_toi_thieu: tmp[2].slice(0, -1)
                         });
                     }
                     alert("Đăng ký thành công!")
@@ -214,6 +210,7 @@
                     TimeInp.value = snapshot.val().mo_ta_mon_hoc.subjecttime;
                     TCInp.value = snapshot.val().mo_ta_mon_hoc.so_tin_chi;
                     GradeInp.value = snapshot.val().mo_ta_mon_hoc.text_hien_thi;
+                    LimitInp.value = snapshot.val().mo_ta_mon_hoc.si_so_toi_thieu;
                 } else {
                     alert("No data available");
                     console.log("No data available");
@@ -224,19 +221,23 @@
         }
 
         let UpdData = () => {
-            let s = GradeInp.value.split("-");
+            let s = GradeInp.value.split("~");
             update(ref(db, 'MonHoc/' + IdInp.value), {
                 mo_ta_mon_hoc: {
                     text_hien_thi: GradeInp.value,
                     so_tin_chi: TCInp.value,
                     subjectname: NameInp.value,
-                    subjecttime: TimeInp.value
+                    subjecttime: TimeInp.value,
+                    si_so_toi_thieu: LimitInp.value
                 }
             }
             ).then(() => {
                 for (let i = 1; i < s.length; i++) {
-                    set(ref(db, 'MonHoc/' + IdInp.value + '/mo_ta_mon_hoc/so_cot_diem/' + 'cot' + i), {
-                        phan_tram: s[i]
+                    let tmp = s[i].split("-");
+                    update(ref(db, 'MonHoc/' + IdInp.value + '/mo_ta_mon_hoc/so_cot_diem/' + 'cot' + i), {
+                        ten: tmp[0].trim().substring(1),
+                        phan_tram: tmp[1],
+                        diem_toi_thieu: tmp[2].slice(0, -1)
                     });
                 }
                 alert("Data updated successfully!");

@@ -1,8 +1,3 @@
-<!-- 
-ĐÂY LÀ TRANG ĐĂNG NHẬP
- -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,7 +79,7 @@
             signInWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
                 .then((credentials) => {
                     get(child(dbref, 'SinhVien/' + IdInp.value)).then((snapshot) => {
-                        if (snapshot.exists()) {
+                        if (snapshot.exists() && snapshot.val().id == IdInp.value && snapshot.val().email == EmailInp.value && snapshot.val().password == PassInp.value){
                             sessionStorage.setItem("user-info", JSON.stringify({
                                 username: snapshot.val().username,
                                 email: snapshot.val().email,
@@ -94,10 +89,11 @@
                             sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
                             window.location.href = "Home.html";
                         }
+                        
                     })
 
                     get(child(dbref, 'GiangVien/' + IdInp.value)).then((snapshot) => {
-                        if (snapshot.exists()) {
+                        if (snapshot.exists() && snapshot.val().id == IdInp.value && snapshot.val().email == EmailInp.value && snapshot.val().password == PassInp.value){
                             sessionStorage.setItem("user-info", JSON.stringify({
                                 username: snapshot.val().username,
                                 email: snapshot.val().email,
@@ -107,10 +103,11 @@
                             sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
                             window.location.href = "HomeGV.html";
                         }
+                        
                     })
 
                     get(child(dbref, 'QuanTriVien/' + IdInp.value)).then((snapshot) => {
-                        if (snapshot.exists()) {
+                        if (snapshot.exists() && snapshot.val().id == IdInp.value && snapshot.val().email == EmailInp.value && snapshot.val().password == PassInp.value){
                             sessionStorage.setItem("user-info", JSON.stringify({
                                 username: snapshot.val().username,
                                 email: snapshot.val().email,
@@ -120,8 +117,9 @@
                             sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
                             window.location.href = "HomeQTV.html";
                         }
+                        
                     })
-
+                    
                 })
                 .catch((error) => {
                     alert("Sai tên đăng nhập hoặc mật khẩu!");
