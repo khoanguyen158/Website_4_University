@@ -178,12 +178,8 @@
                         value=" , {{phuong.Name}}, {{quan.Name}}, {{tinh.Name}}">
                 </div>
 
-                
+
             </div>
-            <button id="AddBtn">Thêm giảng viên</button>
-                <button id="RetBtn">Tìm kiếm</button>
-                <button id="UpdBtn">Cập nhật</button>
-                <button id="DelBtn">Xóa giảng viên</button>
 
             <div class="input-box">
                 Tất cả các môn giảng dạy hiện tại của giảng viên (chỉ đọc)
@@ -191,6 +187,11 @@
                     <input type="text" id="subInp" class="input-field" placeholder="" readonly>
                 </div>
             </div>
+
+            <button id="AddBtn">Thêm giảng viên</button>
+            <button id="RetBtn">Tìm kiếm</button>
+            <button id="UpdBtn">Cập nhật</button>
+            <button id="DelBtn">Xóa giảng viên</button>
 
             <p>Lưu ý: các dòng phía dưới phải theo định dạng như sau: CH1003,C01005,CO1007</p>
 
@@ -323,7 +324,7 @@
                 }
                 let sophantucuamang = arr.length;
 
-                
+
                 for (let i = 0; i < sophantucuamang; i++) {
                     set(ref(db, 'MonHoc/' + arr[i] + '/tong_so_giang_vien/' + IdInp.value), {
                         username: NameInp.value
@@ -468,7 +469,7 @@
                     password: PassInp.value,
                     address: AddressInp.value
                 });
-    
+
                 let s = new String(str);
                 let n = s.length;
                 let arr = new Array();
@@ -483,14 +484,14 @@
                 }
                 let sophantucuamang = arr.length;
 
-                
+
                 for (let i = 0; i < sophantucuamang; i++) {
                     update(ref(db, 'MonHoc/' + arr[i] + '/tong_so_giang_vien/' + IdInp.value), {
                         username: NameInp.value
                     })
                 }
                 alert("Cập nhật thông tin thành công!");
-            });            
+            });
         }
 
         let DelData = () => {

@@ -22,7 +22,7 @@
 
                     <span class="nav-item">bkel</span>
                 </a></li>
-                
+
             <li><a href="HomeQTV.html" class="side-bar-icon">
                     <i class="fas fa-home"></i>
                     <span class="nav-item">Trang chủ</span>
@@ -69,7 +69,7 @@
                 <br>
                 <p id="msg"></p>
             </div>
-            
+
             <div class="input-box">
                 Tìm kiếm môn
                 <div class="rounded-rectangle-login">
@@ -83,7 +83,7 @@
                     <input type="text" id="nameInp" class="input-field" placeholder="" readonly>
                 </div>
             </div>
-            
+
 
             <div class="input-box">
                 Thời lượng dạy học (tuần)
@@ -105,7 +105,7 @@
             <div class="input-box">
                 Học kì hiện tại
                 <div class="rounded-rectangle-login">
-                    <input type="text" id="semesterInp" class="input-field" placeholder="">
+                    <input type="text" id="semesterInp" class="input-field" placeholder="Nhập theo định dạng như ví dụ: HK232">
                 </div>
             </div>
 
@@ -136,7 +136,7 @@
                 <button id="CanSubBtn">Xóa môn cũ</button>
                 <button id="RetSubBtn">Làm mới</button>
 
-            
+
             </div>
     </form>
 
@@ -201,12 +201,19 @@
 
         let RetSubData = () => {
             const dbRef = ref(db);
-            get(child(dbRef, 'SinhVien/' + UserInfo.id +'/Hoc_ki/' + SemesterInp.value)).then((snapshot) => {
+            get(child(dbRef, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value)).then((snapshot) => {
                 if (snapshot.exists()) {
-                    if (snapshot.val().mon != null) {
-                        SubInp.value = snapshot.val().mon;
-                    }
-                    else {
+
+
+                    const subjects = snapshot.val();
+                    delete subjects.ten_hoc_ki;
+
+                    const subjectKeys = Object.keys(subjects);
+
+                    if (subjectKeys.length > 0) {
+
+                        SubInp.value = subjectKeys.join(',');
+                    } else {
                         SubInp.value = "Chưa có môn nào";
                     }
                 } else {
@@ -216,71 +223,81 @@
             }).catch((error) => {
                 console.error(error);
             });
-        }
+        };
 
-        
+
+
 
         let AddSubjectData = () => {
-                let str = new String();
-                const dbRef = ref(db);
-                let s = new String(AddSubInp.value);
-                let n = s.length;
-                let arr = new Array();
-                for (let i = 0; i < n; i++) {
-                    if (s[i] == ',') {
-                        arr.push(s.substring(0, i));
-                        s = s.substring(i + 1, n);
-                        n = s.length;
-                        i = 0;
-                    }
-                    else if (i == n - 1) arr.push(s);
+            let str = new String();
+            const dbRef = ref(db);
+            let s = new String(AddSubInp.value);
+            let n = s.length;
+            let arr = new Array();
+            for (let i = 0; i < n; i++) {
+                if (s[i] == ',') {
+                    arr.push(s.substring(0, i));
+                    s = s.substring(i + 1, n);
+                    n = s.length;
+                    i = 0;
                 }
-                let sophantucuamang = arr.length;
-                for (let i = 0; i < arr.length; i++) {
-                    get(child(dbRef, 'MonHoc/' + arr[i])).then((snapshot) => {
-                        if (snapshot.exists()) {
-                            NameInp.value = snapshot.val().mo_ta_mon_hoc.subjectname;
-                            TimeInp.value = snapshot.val().mo_ta_mon_hoc.subjecttime;
-                            TCInp.value = snapshot.val().mo_ta_mon_hoc.so_tin_chi;
-                                set(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value +'/'+ arr[i]), {
-                                    DTB_10:"0",
-                                    subjectname: NameInp.value,
-                                    subjecttime:TimeInp.value,
-                                    so_tin_chi: TCInp.value,
-                                });
-                        }
-                    }).catch((error) => {
-                        console.error(error);
-                    });
-                }       
-                for (let i = 0; i < arr.length; i++) {
-                    get(child(dbRef, 'MonHoc/' + arr[i] + '/mo_ta_mon_hoc/so_cot_diem')).then((snapshot) => {
-                        if (snapshot.exists()) {
-                        let so_cot_diem = snapshot.val();
-                    // Duyệt qua từng cột điểm
-                    for (let cot in so_cot_diem) {
-                        let phan_tram = so_cot_diem[cot].phan_tram;
-                     // Cập nhật thông tin cột điểm vào cơ sở dữ liệu sinh viên
-                        set(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value +'/'+ arr[i] + '/so_cot_diem/' + cot), {
-                        phan_tram: phan_tram
+                else if (i == n - 1) arr.push(s);
+            }
+            let sophantucuamang = arr.length;
+            update(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value), {
+                ten_hoc_ki: (SemesterInp.value).trim().substring(2)
+            });
+            for (let i = 0; i < arr.length; i++) {
+                get(child(dbRef, 'MonHoc/' + arr[i])).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        NameInp.value = snapshot.val().mo_ta_mon_hoc.subjectname;
+                        TimeInp.value = snapshot.val().mo_ta_mon_hoc.subjecttime;
+                        TCInp.value = snapshot.val().mo_ta_mon_hoc.so_tin_chi;
+                        set(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value + '/' + arr[i]), {
+                            DTB_10: "0",
+                            subjectname: NameInp.value,
+                            subjecttime: TimeInp.value,
+                            so_tin_chi: TCInp.value,
+                            Pass_Fail: 'waiting',
                         });
                     }
-                        } else {
-                    console.error("No data available");
-                }
-            }).catch((error) => {
-                console.error(error);
-            });       
-                }
+                }).catch((error) => {
+                    console.error(error);
+                });
+            }
 
-                for (let i = 0; i < sophantucuamang; i++) {
-                    set(ref(db, 'MonHoc/' + arr[i] + '/tong_so_sinh_vien/' + UserInfo.id), {
-                        username: UserInfo.username
-                    })
-                }
-                alert("Thêm " + sophantucuamang + " môn mới thành công!");
-            };
-       
+            for (let i = 0; i < arr.length; i++) {
+                get(child(dbRef, 'MonHoc/' + arr[i] + '/mo_ta_mon_hoc/so_cot_diem')).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        let so_cot_diem = snapshot.val();
+                        // Duyệt qua từng cột điểm
+                        for (let cot in so_cot_diem) {
+                            let phan_tram = so_cot_diem[cot].phan_tram;
+                            let diem_toi_thieu = so_cot_diem[cot].diem_toi_thieu;
+                            let ten = so_cot_diem[cot].ten;
+                            // Cập nhật thông tin cột điểm vào cơ sở dữ liệu sinh viên
+                            set(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value + '/' + arr[i] + '/so_cot_diem/' + cot), {
+                                phan_tram: phan_tram,
+                                diem_toi_thieu: diem_toi_thieu,
+                                ten: ten,
+                            });
+                        }
+                    } else {
+                        console.error("No data available");
+                    }
+                }).catch((error) => {
+                    console.error(error);
+                });
+            }
+
+            for (let i = 0; i < sophantucuamang; i++) {
+                set(ref(db, 'MonHoc/' + arr[i] + '/tong_so_sinh_vien/' + UserInfo.id), {
+                    username: UserInfo.username
+                })
+            }
+            alert("Thêm " + sophantucuamang + " môn mới thành công!");
+        };
+
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         let CancelSubjectData = () => {
@@ -401,7 +418,7 @@
         });
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        
+
 
         let SignOut = () => {
             sessionStorage.removeItem("user-creds");

@@ -169,7 +169,7 @@
 
             let s = GradeInp.value.split("~");
 
-            createUserWithEmailAndPassword(auth, IdInp.value + '@monhoc.edu.vn', IdInp.value)
+            createUserWithEmailAndPassword(auth, IdInp.value + '@gmail.com', IdInp.value)
                 .then((credentials) => {
                     set(ref(db, 'MonHoc/' + IdInp.value), {
                         tong_so_sinh_vien: "0",
@@ -185,15 +185,13 @@
                     for (let i = 1; i < s.length; i++) {
                         let tmp = s[i].split("-");
                         set(ref(db, 'MonHoc/' + IdInp.value + '/mo_ta_mon_hoc/so_cot_diem/' + 'cot' + i), {
-                            ten: tmp[0].trim().subString(1),
+                            ten: tmp[0].trim().substring(1),
                             phan_tram: tmp[1],
                             diem_toi_thieu: tmp[2].slice(0, -1)
                         });
                     }
                     alert("Đăng ký thành công!")
-                }
-
-                )
+                })
                 .catch((error) => {
                     alert(error.message);
                     console.log(error.code);

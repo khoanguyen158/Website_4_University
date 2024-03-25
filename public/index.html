@@ -79,7 +79,7 @@
             signInWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
                 .then((credentials) => {
                     get(child(dbref, 'SinhVien/' + IdInp.value)).then((snapshot) => {
-                        if (snapshot.exists() && snapshot.val().id == IdInp.value && snapshot.val().email == EmailInp.value && snapshot.val().password == PassInp.value){
+                        if (snapshot.exists() && snapshot.val().id == IdInp.value && snapshot.val().email == EmailInp.value){
                             sessionStorage.setItem("user-info", JSON.stringify({
                                 username: snapshot.val().username,
                                 email: snapshot.val().email,
@@ -93,7 +93,7 @@
                     })
 
                     get(child(dbref, 'GiangVien/' + IdInp.value)).then((snapshot) => {
-                        if (snapshot.exists() && snapshot.val().id == IdInp.value && snapshot.val().email == EmailInp.value && snapshot.val().password == PassInp.value){
+                        if (snapshot.exists() && snapshot.val().id == IdInp.value && snapshot.val().email == EmailInp.value){
                             sessionStorage.setItem("user-info", JSON.stringify({
                                 username: snapshot.val().username,
                                 email: snapshot.val().email,
@@ -107,7 +107,7 @@
                     })
 
                     get(child(dbref, 'QuanTriVien/' + IdInp.value)).then((snapshot) => {
-                        if (snapshot.exists() && snapshot.val().id == IdInp.value && snapshot.val().email == EmailInp.value && snapshot.val().password == PassInp.value){
+                        if (snapshot.exists() && snapshot.val().id == IdInp.value && snapshot.val().email == EmailInp.value){
                             sessionStorage.setItem("user-info", JSON.stringify({
                                 username: snapshot.val().username,
                                 email: snapshot.val().email,
@@ -122,7 +122,7 @@
                     
                 })
                 .catch((error) => {
-                    alert("Sai tên đăng nhập hoặc mật khẩu!");
+                    alert("Sai các thông tin đăng nhập!");
                     console.log(error.code);
                     console.log(error.message);
                 });
