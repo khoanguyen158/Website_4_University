@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thông tin sinh viên</title>
+    <title>Đăng kí môn học</title>
 
     <link rel="stylesheet" href="style-modi-SV.css">
     <script src="angular.min.js"></script>
@@ -75,8 +75,9 @@
                     <input type="text" id="idInp" class="input-field" placeholder="">
                 </div>
             </div>
-
+            
             <div class="input-box">
+                <h1>Thông tin môn học</h1>
                 Tên môn học
                 <div class="rounded-rectangle-login">
                     <input type="text" id="nameInp" class="input-field" placeholder="" readonly>
@@ -104,7 +105,8 @@
             <div class="input-box">
                 Học kì hiện tại
                 <div class="rounded-rectangle-login">
-                    <input type="text" id="semesterInp" class="input-field" placeholder="Nhập theo định dạng như ví dụ: HK232">
+                    <input type="text" id="semesterInp" class="input-field"
+                        placeholder="Nhập theo định dạng như ví dụ: HK232" readonly>
                 </div>
             </div>
 
@@ -113,6 +115,8 @@
                 <div class="rounded-rectangle-login">
                     <input type="text" id="subInp" class="input-field" placeholder="" readonly>
                 </div>
+
+                <button id="RetSubBtn">Làm mới</button>
             </div>
 
             <p>Lưu ý: các dòng phía dưới phải theo định dạng như sau: CH1003,C01005,CO1007</p>
@@ -133,7 +137,7 @@
 
                 <button id="AddSubBtn">Thêm môn mới</button>
                 <button id="CanSubBtn">Xóa môn cũ</button>
-                <button id="RetSubBtn">Làm mới</button>
+                
 
 
             </div>
@@ -186,8 +190,8 @@
             const dbRef = ref(db);
             get(child(dbRef, 'MonHoc/' + IdInp.value)).then((snapshot) => {
                 if (snapshot.exists()) {
-                    NameInp.value = snapshot.val().mo_ta_mon_hoc.subjectname;
-                    TimeInp.value = snapshot.val().mo_ta_mon_hoc.subjecttime;
+                    NameInp.value = snapshot.val().mo_ta_mon_hoc.ten_mon_hoc;
+                    TimeInp.value = snapshot.val().mo_ta_mon_hoc.thoi_gian_hoc;
                     TCInp.value = snapshot.val().mo_ta_mon_hoc.so_tin_chi;
                 } else {
                     alert("No data available");
@@ -216,6 +220,7 @@
                         SubInp.value = "Chưa có môn nào";
                     }
                 } else {
+                    SubInp.value = "Chưa có môn nào";
                     alert("No data available");
                     console.log("No data available");
                 }
@@ -249,13 +254,13 @@
             for (let i = 0; i < arr.length; i++) {
                 get(child(dbRef, 'MonHoc/' + arr[i])).then((snapshot) => {
                     if (snapshot.exists()) {
-                        NameInp.value = snapshot.val().mo_ta_mon_hoc.subjectname;
-                        TimeInp.value = snapshot.val().mo_ta_mon_hoc.subjecttime;
+                        NameInp.value = snapshot.val().mo_ta_mon_hoc.ten_mon_hoc;
+                        TimeInp.value = snapshot.val().mo_ta_mon_hoc.thoi_gian_hoc;
                         TCInp.value = snapshot.val().mo_ta_mon_hoc.so_tin_chi;
                         set(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value + '/' + arr[i]), {
                             DTB_10: "0",
-                            subjectname: NameInp.value,
-                            subjecttime: TimeInp.value,
+                            ten_mon_hoc: NameInp.value,
+                            thoi_gian_hoc: TimeInp.value,
                             so_tin_chi: TCInp.value,
                             Pass_Fail: 'waiting',
                         });
@@ -291,7 +296,7 @@
 
             for (let i = 0; i < sophantucuamang; i++) {
                 set(ref(db, 'MonHoc/' + arr[i] + '/tong_so_sinh_vien/' + UserInfo.id), {
-                    username: UserInfo.username
+                    ho_va_ten: UserInfo.ho_va_ten
                 })
             }
             alert("Thêm " + sophantucuamang + " môn mới thành công!");
@@ -391,7 +396,7 @@
             }
             else {
 
-                GreetHead.innerText = `Sinh viên ${UserInfo.username}!`;
+                GreetHead.innerText = `Sinh viên ${UserInfo.ho_va_ten}!`;
                 MsgHead.innerText = `Email "${UserInfo.email}", mã sinh viên "${UserInfo.id}".`;
             }
         }
@@ -427,8 +432,22 @@
 
 
         SignOutBtn.addEventListener('click', SignOut);
-        window.addEventListener('load', checkCred);
-
+        //window.addEventListener('load', checkCred);
+        SignOutBtn.addEventListener('click', SignOut);
+        window.addEventListener('load', () => {
+            checkCred();
+            const dbRef = ref(db);
+            get(child(dbRef, 'MonHoc/hoc_ki_hien_tai')).then((snapshot) => {
+                if (snapshot.exists()) {
+                    SemesterInp.value = snapshot.val();
+                } else {
+                    alert("No data available");
+                    console.log("No data available");
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
+        });
     </script>
     <script src="checkmk.js"></script>
 </body>

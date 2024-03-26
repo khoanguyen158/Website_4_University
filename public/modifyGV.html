@@ -14,6 +14,10 @@
 </head>
 
 <body ng-app="myapp" ng-controller="homeCtrl">
+    <!-- Vị trí thanh nav, copy từ file HomeQTV.html qua
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -->
     <nav>
         <ul>
             <li><a href="#" class="logo">
@@ -25,15 +29,15 @@
 
             <!-- <li><a href="#" class="avatar">
 
-                <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
-                    alt="Avatar">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
+                            alt="Avatar">
 
-                <span class="nav-item">Thông tin cá nhân</span>
-            </a></li> -->
-            <li><a href="HomeQTV.html" class="side-bar-icon">
-                    <i class="fas fa-home"></i>
-                    <span class="nav-item">Trang chủ</span>
-                </a></li>
+                        <span class="nav-item">Thông tin cá nhân</span>
+                    </a></li> -->
+            <!-- <li><a href="HomeQTV.html" class="side-bar-icon">
+                        <i class="fas fa-home"></i>
+                        <span class="nav-item">Trang chủ</span>
+                    </a></li> -->
             <li><a href="registerADMIN.html" class="side-bar-icon">
                     <i class="fas fa-newspaper"></i>
                     <span class="nav-item">Đăng ký quản trị viên</span>
@@ -50,6 +54,10 @@
                     <i class="fas fa-book-open-reader"></i>
                     <span class="nav-item">Chỉnh sửa giảng viên</span>
                 </a></li>
+            <li><a href="sap_xep_lich_hoc.html" class="side-bar-icon">
+                    <i class="fas fa-book-open-reader"></i>
+                    <span class="nav-item">Sắp xếp lịch học</span>
+                </a></li>
             <li>
                 <a href="#" class="side-bar-icon">
                     <i class="fas fa-solid fa-right-from-bracket"></i>
@@ -57,12 +65,16 @@
                 </a>
             </li>
             <!-- <div>
-                
-                <button type="button" ></button>
-            </div> -->
+                        
+                        <button type="button" ></button>
+                    </div> -->
             </li>
         </ul>
     </nav>
+    <!-- Vị trí thanh nav, copy từ file HomeQTV.html qua
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -->
     <form id="MainForm">
         <div class="main1">
             <div class="logo">
@@ -71,7 +83,7 @@
             </div>
 
             <div class="Dang-nhap">
-                Chỉnh sửa tài khoản giảng viên
+                Tài khoản giảng viên
             </div>
             <div class="input-box">
                 Họ và Tên
@@ -82,19 +94,55 @@
             <div class="input-box">
                 Mã số giảng viên
                 <div class="rounded-rectangle-login">
-                    <input type="text" id="idInp" class="input-field" placeholder="GV + number">
+                    <input type="text" id="idInp" class="input-field" placeholder="GV + số gồm 3 chữ số, ví dụ: GV001">
                 </div>
             </div>
             <div class="input-box">
                 Email
                 <div class="rounded-rectangle-login">
-                    <input type="text" id="emailInp" class="input-field" placeholder="">
+                    <input type="text" id="emailInp" class="input-field" placeholder="example@hcmut.edu.vn">
                 </div>
             </div>
             <div class="input-box">
                 Số điện thoại
                 <div class="rounded-rectangle-login">
                     <input type="text" id="phoneInp" class="input-field" placeholder="">
+                </div>
+            </div>
+            <div class="input-box">
+                Giới tính
+                <div class="rounded-rectangle-login">
+                    <!-- <input type="text" id="sexInp" class="input-field" placeholder=""> -->
+                    <select class="input-field" id="sexInp">
+                        <option value=""></option>
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-box">
+                Ngày sinh
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="dobInp" class="input-field" placeholder="">
+                </div>
+            </div>
+            <div class="input-box">
+                CCCD
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="cccdInp" class="input-field" placeholder="">
+                </div>
+            </div>
+            <div class="input-box">
+                Bằng cấp
+                <div class="rounded-rectangle-login">
+                    <!-- <input type="text" id="nganhInp" class="input-field" placeholder=""> -->
+                    <select class="input-field" id="bangcapInp">
+                        <option value=""></option>
+                        <option value="Thạc Sĩ">Thạc Sĩ</option>
+                        <option value="Tiến Sĩ">Tiến Sĩ</option>
+                        <option value="Cử nhân">Cử nhân</option>
+                    </select>
                 </div>
             </div>
             <div class="input-box">
@@ -149,8 +197,6 @@
                     </tr>
                 </table>
             </div>
-
-
 
             <div class="input-box">
                 Địa chỉ cụ thể
@@ -231,6 +277,10 @@
         let SubInp = document.getElementById('subInp');
         let CancelSubInp = document.getElementById('cancelsubInp');
         let AddSubInp = document.getElementById('addsubInp');
+        let SexInp = document.getElementById('sexInp');
+        let DobInp = document.getElementById('dobInp');
+        let CccdInp = document.getElementById('cccdInp');
+        let BangCapInp = document.getElementById('bangcapInp');
 
         let AddBtn = document.getElementById('AddBtn');
         let RetBtn = document.getElementById('RetBtn');
@@ -243,15 +293,19 @@
         let AddData = evt => {
             evt.preventDefault();
 
-            createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value, IdInp.value)
+            createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
                 .then((credentials) => {
                     set(ref(db, 'GiangVien/' + IdInp.value), {
-                        username: NameInp.value,
+                        ho_va_ten: NameInp.value,
                         email: EmailInp.value,
                         id: IdInp.value,
-                        phone: PhoneInp.value,
-                        password: PassInp.value,
-                        address: AddressInp.value
+                        so_dien_thoai: PhoneInp.value,
+                        mat_khau: PassInp.value,
+                        dia_chi: AddressInp.value,
+                        cccd: CccdInp.value,
+                        gioi_tinh: SexInp.value,
+                        ngay_sinh: DobInp.value,
+                        bang_cap: BangCapInp.value
                     });
                     alert("Đăng ký thông tin thành công! ");
                 }
@@ -408,11 +462,15 @@
             const dbRef = ref(db);
             get(child(dbRef, 'GiangVien/' + IdInp.value)).then((snapshot) => {
                 if (snapshot.exists()) {
-                    NameInp.value = snapshot.val().username;
+                    NameInp.value = snapshot.val().ho_va_ten;
                     EmailInp.value = snapshot.val().email;
-                    PhoneInp.value = snapshot.val().phone;
-                    PassInp.value = snapshot.val().password;
-                    AddressInp.value = snapshot.val().address;
+                    PhoneInp.value = snapshot.val().so_dien_thoai;
+                    PassInp.value = snapshot.val().mat_khau;
+                    AddressInp.value = snapshot.val().dia_chi;
+                    CccdInp.value = snapshot.val().cccd;
+                    SexInp.value = snapshot.val().gioi_tinh;
+                    DobInp.value = snapshot.val().ngay_sinh;
+                    BangCapInp.value = snapshot.val().bang_cap;
                     if (snapshot.val().mon != null) {
                         SubInp.value = snapshot.val().mon;
                     }
@@ -445,10 +503,14 @@
                 }
 
                 update(ref(db, 'GiangVien/' + IdInp.value), {
-                    username: NameInp.value,
-                    phone: PhoneInp.value,
-                    password: PassInp.value,
-                    address: AddressInp.value
+                    ho_va_ten: NameInp.value,
+                    so_dien_thoai: PhoneInp.value,
+                    mat_khau: PassInp.value,
+                    dia_chi: AddressInp.value,
+                    cccd: CccdInp.value,
+                    gioi_tinh: SexInp.value,
+                    ngay_sinh: DobInp.value,
+                    bang_cap: BangCapInp.value
                 });
 
                 let s = new String(str);
@@ -468,7 +530,7 @@
 
                 for (let i = 0; i < sophantucuamang; i++) {
                     update(ref(db, 'MonHoc/' + arr[i] + '/tong_so_giang_vien/' + IdInp.value), {
-                        username: NameInp.value
+                        ho_va_ten: NameInp.value
                     })
                 }
                 alert("Cập nhật thông tin thành công!");

@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang chủ</title>
+    <title>Trang chủ quản trị viên</title>
     <link rel="stylesheet" href="style_home.css" />
     <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
 </head>
@@ -23,6 +23,10 @@
         </div>
     </div>
     <div class="container">
+        <!-- Vị trí thanh nav, copy từ file HomeQTV.html qua
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -->
         <nav>
             <ul>
                 <li><a href="#" class="logo">
@@ -39,14 +43,17 @@
 
                         <span class="nav-item">Thông tin cá nhân</span>
                     </a></li> -->
-
+                <!-- <li><a href="HomeQTV.html" class="side-bar-icon">
+                        <i class="fas fa-home"></i>
+                        <span class="nav-item">Trang chủ</span>
+                    </a></li> -->
                 <li><a href="registerADMIN.html" class="side-bar-icon">
                         <i class="fas fa-newspaper"></i>
                         <span class="nav-item">Đăng ký quản trị viên</span>
                     </a></li>
                 <li><a href="monhoc.html" class="side-bar-icon">
                         <i class="fas fa-newspaper"></i>
-                        <span class="nav-item">Chỉnh sửa môn học</span>
+                        <span class="nav-item">Chỉnh sửa học kì và môn học</span>
                     </a></li>
                 <li><a href="modifySV.html" class="side-bar-icon">
                         <i class="fas fa-book-open-reader"></i>
@@ -73,6 +80,10 @@
                 </li>
             </ul>
         </nav>
+        <!-- Vị trí thanh nav, copy từ file HomeQTV.html qua
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -->
 
         <section class="main">
             <div class="main-top">
@@ -194,14 +205,14 @@
             }
             else {
 
-                GreetHead.innerText = `Chào mừng quản trị viên ${UserInfo.username}!`;
+                GreetHead.innerText = `Chào mừng ${UserInfo.ho_va_ten}!`;
                 MsgHead.innerText = `Bạn đang đăng nhập với email "${UserInfo.email}", mã quản trị viên "${UserInfo.id}".`;
             }
         }
 
         let UpdData = () => {
             update(ref(db, 'QuanTriVien/' + UserInfo.id), {
-                password: Input.value
+                mat_khau: Input.value
             }).then(() => {
                 alert("Data updated successfully!");
             }).catch((error) => {

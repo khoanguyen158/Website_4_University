@@ -81,9 +81,9 @@
                     get(child(dbref, 'SinhVien/' + IdInp.value)).then((snapshot) => {
                         if (snapshot.exists() && snapshot.val().id == IdInp.value && snapshot.val().email == EmailInp.value){
                             sessionStorage.setItem("user-info", JSON.stringify({
-                                username: snapshot.val().username,
+                                ho_va_ten: snapshot.val().ho_va_ten,
                                 email: snapshot.val().email,
-                                password: snapshot.val().password,
+                                mat_khau: snapshot.val().mat_khau,
                                 id: snapshot.val().id
                             }))
                             sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
@@ -95,9 +95,9 @@
                     get(child(dbref, 'GiangVien/' + IdInp.value)).then((snapshot) => {
                         if (snapshot.exists() && snapshot.val().id == IdInp.value && snapshot.val().email == EmailInp.value){
                             sessionStorage.setItem("user-info", JSON.stringify({
-                                username: snapshot.val().username,
+                                ho_va_ten: snapshot.val().ho_va_ten,
                                 email: snapshot.val().email,
-                                password: snapshot.val().password,
+                                mat_khau: snapshot.val().mat_khau,
                                 id: snapshot.val().id
                             }))
                             sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
@@ -109,9 +109,9 @@
                     get(child(dbref, 'QuanTriVien/' + IdInp.value)).then((snapshot) => {
                         if (snapshot.exists() && snapshot.val().id == IdInp.value && snapshot.val().email == EmailInp.value){
                             sessionStorage.setItem("user-info", JSON.stringify({
-                                username: snapshot.val().username,
+                                ho_va_ten: snapshot.val().ho_va_ten,
                                 email: snapshot.val().email,
-                                password: snapshot.val().password,
+                                mat_khau: snapshot.val().mat_khau,
                                 id: snapshot.val().id
                             }))
                             sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));

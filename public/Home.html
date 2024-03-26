@@ -211,14 +211,14 @@
             }
             else {
 
-                GreetHead.innerText = `Chào mừng sinh viên ${UserInfo.username}!`;
+                GreetHead.innerText = `Chào mừng sinh viên ${UserInfo.ho_va_ten}!`;
                 MsgHead.innerText = `Bạn đang đăng nhập với email "${UserInfo.email}", mã sinh viên "${UserInfo.id}".`;
             }
         }
 
         let UpdData = () => {
             update(ref(db, 'SinhVien/' + UserInfo.id), {
-                password: Input.value
+                mat_khau: Input.value
             }).then(() => {
                 alert("Data updated successfully!");
             }).catch((error) => {
