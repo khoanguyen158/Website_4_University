@@ -304,91 +304,66 @@
 
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        
+
         let CancelSubjectData = () => {
-            let str = new String();
-            const dbRef = ref(db);
-            get(child(dbRef, 'GiangVien/' + IdInp.value)).then((snapshot) => {
-                if (snapshot.exists()) {
-                    if (snapshot.val().mon != null) {
-                        str = snapshot.val().mon;
-                    }
-                    else {
-                        str = "";
-                        alert("Chưa có môn nào để xóa!");
-                        return;
-                    }
-                } else {
-                    alert("No data available");
-                    console.log("No data available");
-                }
+    const dbRef = ref(db);
 
-                let s = new String(CancelSubInp.value);
-                let n = s.length;
-                let arr = new Array();
-                for (let i = 0; i < n; i++) {
-                    if (s[i] == ',') {
-                        arr.push(s.substring(0, i));
-                        s = s.substring(i + 1, n);
-                        n = s.length;
-                        i = 0;
-                    }
-                    else if (i == n - 1) arr.push(s);
-                }
-                let sophantucuamang = arr.length;
-                for (let i = 0; i < sophantucuamang; i++) {
-                    remove(ref(db, 'MonHoc/' + arr[i] + '/tong_so_giang_vien/' + IdInp.value));
-                }
+    get(child(dbRef, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value)).then((snapshot) => {
+        if (snapshot.exists()) {
+            let s = new String(CancelSubInp.value);
+            let n = s.length;
+            let arr = new Array();
+            let notEnrolledSubjects = [];
+            for (let i = 0; i < n; i++) {
+                if (s[i] == ',') {
+                    arr.push(s.substring(0, i));
+                    s = s.substring(i + 1, n);
+                    n = s.length;
+                    i = 0;
+                } else if (i == n - 1) arr.push(s);
+            }
+            let sophantucuamang = arr.length;
 
-                let s_tmp = new String(str);
-                let n_tmp = s_tmp.length;
-                let arr_tmp = new Array();
-                for (let i = 0; i < n_tmp; i++) {
-                    if (s_tmp[i] == ',') {
-                        arr_tmp.push(s_tmp.substring(0, i));
-                        s_tmp = s_tmp.substring(i + 1, n_tmp);
-                        n_tmp = s_tmp.length;
-                        i = 0;
+            if (sophantucuamang == 0) {
+                alert("Không có môn học nào được xóa!");
+                return;
+            }
+
+            let deletedCount = arr.length;
+
+            // Xóa dữ liệu môn học của sinh viên
+            Promise.all(arr.map(subject => {
+                return get(child(dbRef, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value + '/' + subject)).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        remove(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value + '/' + subject));
+                        remove(ref(db, 'MonHoc/' + subject + '/tong_so_sinh_vien/' + UserInfo.id));
+                        get(child(dbRef, 'MonHoc/' + subject + '/tong_so_sinh_vien/')).then((snapshot) => {
+                            if (!snapshot.exists()) {
+                                update(ref(db, 'MonHoc/' + subject), {
+                                    tong_so_sinh_vien: "0",
+                                });
+                            }
+                        });
+                    } else {
+                        notEnrolledSubjects.push(subject);
+                        deletedCount--;
                     }
-                    else if (i == n_tmp - 1) arr_tmp.push(s_tmp);
-                }
-                let sophantucuamang_tmp = arr_tmp.length;
-                if (sophantucuamang_tmp == sophantucuamang) {
-                    update(ref(db, 'GiangVien/' + IdInp.value), {
-                        mon: null
-                    });
-                    alert("Đã xóa hết môn giảng viên này giảng dạy!");
-                    return;
-                }
-                let tenmonhoccuoicung = new String("");
-                //alert(arr_tmp + " " + arr);
-                for (let i = 0; i < sophantucuamang_tmp; i++) {
-                    let flag = false;
-                    for (let j = 0; j < sophantucuamang; j++) {
-                        if (arr_tmp[i] == arr[j]) {
-                            //alert("Mon hoc " + arr_tmp[i] + " da bi xoa!");
-                            flag = true;
-                            break;
-                        }
-                        //else alert("Mon hoc " + arr_tmp[i] + " chua bi xoa!");
-                    }
-                    if (flag == false) {
-                        tenmonhoccuoicung += (arr_tmp[i] + ",");
-                    }
-                }
-                if (tenmonhoccuoicung.length > 0) {
-                    tenmonhoccuoicung = tenmonhoccuoicung.substring(0, tenmonhoccuoicung.length - 1);
-                    //alert("Các môn giảng viên còn giảng dạy sau khi xóa: " + tenmonhoccuoicung);
-                }
-                else {
-                    alert("Đã xóa hết môn giảng viên này giảng dạy!");
-                    tenmonhoccuoicung = null;
-                }
-                update(ref(db, 'GiangVien/' + IdInp.value), {
-                    mon: tenmonhoccuoicung
                 });
-                alert("Xóa " + sophantucuamang + " môn cũ thành công!");
+            })).then(() => {
+                alert("Xóa " + deletedCount + " môn cũ thành công!");
+                if (notEnrolledSubjects.length > 0) {
+                    alert("Sinh viên chưa đăng kí môn: " + notEnrolledSubjects.join(", "));
+                }
             });
+        } else {
+            alert("No data available");
+            console.log("No data available");
         }
+    }).catch((error) => {
+        console.error(error);
+    });
+};
 
         let checkCred = () => {
             if (!sessionStorage.getItem("user-creds")) {
