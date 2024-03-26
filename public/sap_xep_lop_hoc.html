@@ -107,19 +107,19 @@
                 <h1>Tiến hành đăng kí lớp học</h1>
                 Số lượng lớp học
                 <div class="rounded-rectangle-login">
-                    <input type="text" id="nameInp" class="input-field" placeholder="">
+                    <input type="text" id="numofclassInp" class="input-field" placeholder="">
                 </div>
             </div>
             <div class="input-box">
                 Sĩ số mỗi lớp
                 <div class="rounded-rectangle-login">
-                    <input type="text" id="idInp" class="input-field" placeholder="">
+                    <input type="text" id="sisoInp" class="input-field" placeholder="">
                 </div>
             </div>
             <div class="input-box">
                 Đăng kí giảng viên giảng dạy cho từng lớp
                 <div class="rounded-rectangle-login">
-                    <input type="text" id="idInp" class="input-field" placeholder="">
+                    <input type="text" id="dkigvInp" class="input-field" placeholder="">
                 </div>
             </div>
             
@@ -151,163 +151,90 @@
         const db = getDatabase(app);
         const auth = getAuth(app);
 
-        let EmailInp = document.getElementById('emailInp');
-        let PassInp = document.getElementById('passwordInp');
-        let NameInp = document.getElementById('nameInp');
         let IdInp = document.getElementById('idInp');
-        let CityInp = document.getElementById('cityInp');
-        let DistrictInp = document.getElementById('districtInp');
-        let XaInp = document.getElementById('xaInp');
-        let AddressInp = document.getElementById('addressInp');
-        let PhoneInp = document.getElementById('phoneInp');
-        let TinChiInp = document.getElementById('tinchihoanthanh');
-        let SexInp = document.getElementById('sexInp');
-        let DobInp = document.getElementById('dobInp');
-        let CccdInp = document.getElementById('cccdInp');
-        let NganhInp = document.getElementById('nganhInp');
-        let HeDaoTaoInp = document.getElementById('hedaotaoInp');
-        let StartStudyInp = document.getElementById('startstudyInp');
-        let EndStudyInp = document.getElementById('endstudyInp');
+        let NumOfSvInp = document.getElementById('numofsvInp');
+        let NumOfClassInp = document.getElementById('numofclassInp');
+        let SiSoInp = document.getElementById('sisoInp');
+        let DkiGvInp = document.getElementById('dkigvInp');
 
+        let FindBtn = document.getElementById('findBtn');
         let AddBtn = document.getElementById('AddBtn');
-        let RetBtn = document.getElementById('RetBtn');
         let UpdBtn = document.getElementById('UpdBtn');
-        let DelBtn = document.getElementById('DelBtn');
 
-        let AddData = evt => {
-            evt.preventDefault();
 
-            createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value, IdInp.value)
-                .then((credentials) => {
-                    set(ref(db, 'SinhVien/' + IdInp.value), {
-                        ho_va_ten: NameInp.value,
-                        email: EmailInp.value,
-                        id: IdInp.value,
-                        so_dien_thoai: PhoneInp.value,
-                        mat_khau: PassInp.value,
-                        dia_chi: AddressInp.value,
-                        cccd: CccdInp.value,
-                        gioi_tinh: SexInp.value,
-                        ngay_sinh: DobInp.value,
-                        nganh: NganhInp.value,
-                        he_dao_tao: HeDaoTaoInp.value,
-                        ngay_bat_dau_hoc: StartStudyInp.value,
-                        so_tin_chi_hoan_thanh: "0",
-                    });
-                    if (HeDaoTaoInp.value == "Chính quy") {
-                        EndStudyInp.value = StartStudyInp.value.trim().substring(0, 6) + (parseInt(StartStudyInp.value.trim().substring(6, 10)) + 4).toString();
-                    }
-                    else if (HeDaoTaoInp.value == "Chất lượng cao") {
-                        EndStudyInp.value = StartStudyInp.value.trim().substring(0, 6) + (parseInt(StartStudyInp.value.trim().substring(6, 10)) + 5).toString();
-                    }
-                    else if (HeDaoTaoInp.value == "Vừa học vừa làm") {
-                        EndStudyInp.value = StartStudyInp.value.trim().substring(0, 6) + (parseInt(StartStudyInp.value.trim().substring(6, 10)) + 3).toString();
-                    }
-                    update(ref(db, 'SinhVien/' + IdInp.value), {
-                        ngay_ket_thuc_hoc: EndStudyInp.value
-                    });
-
-                    alert("Đăng ký thành công!");
-                }
-
-                )
-                .catch((error) => {
-                    alert(error.message);
-                    console.log(error.code);
-                    console.log(error.message);
-                });
-
+        let Find = async () => {
+            let id = IdInp.value;
+            let dbref = ref(db, 'MonHoc/' + id);
+            let dbdata = await get(dbref);
+            let data = dbdata.val();
+            if (data) {
+                NumOfSvInp.value = "cc";
+            } else {
+                alert('Không tìm thấy môn học');
+            }
         }
 
-        let RetData = () => {
-            const dbRef = ref(db);
-            get(child(dbRef, 'SinhVien/' + IdInp.value)).then((snapshot) => {
-                if (snapshot.exists()) {
-                    NameInp.value = snapshot.val().ho_va_ten;
-                    EmailInp.value = snapshot.val().email;
-                    PhoneInp.value = snapshot.val().so_dien_thoai;
-                    PassInp.value = snapshot.val().mat_khau;
-                    AddressInp.value = snapshot.val().dia_chi;
-                    CccdInp.value = snapshot.val().cccd;
-                    SexInp.value = snapshot.val().gioi_tinh;
-                    DobInp.value = snapshot.val().ngay_sinh;
-                    NganhInp.value = snapshot.val().nganh;
-                    HeDaoTaoInp.value = snapshot.val().he_dao_tao;
-                    StartStudyInp.value = snapshot.val().ngay_bat_dau_hoc;
-                    EndStudyInp.value = snapshot.val().ngay_ket_thuc_hoc;
-                    so_tin_chi_hoan_thanh.value = snapshot.val().so_tin_chi_hoan_thanh;
+        let Add = async () => {
+            let id = IdInp.value;
+            let numofsv = NumOfSvInp.value;
+            let numofclass = NumOfClassInp.value;
+            let siso = SiSoInp.value;
+            let dkigv = DkiGvInp.value;
+
+            let dbref = ref(db, 'MonHoc/' + id);
+            let dbdata = await get(dbref);
+            let data = dbdata.val();
+            if (data) {
+                let dbref = ref(db, 'LopHoc/' + id);
+                let dbdata = await get(dbref);
+                let data = dbdata.val();
+                if (data) {
+                    alert('Lớp học đã tồn tại');
                 } else {
-                    alert("No data available");
-                    console.log("No data available");
+                    set(ref(db, 'LopHoc/' + id), {
+                        SoLuongLop: numofclass,
+                        SiSo: siso,
+                        DangKiGV: dkigv
+                    });
+                    alert('Đăng kí lớp học thành công');
                 }
-            }).catch((error) => {
-                console.error(error);
-            });
+            } else {
+                alert('Không tìm thấy môn học');
+            }
         }
 
-        let UpdData = () => {
-            update(ref(db, 'SinhVien/' + IdInp.value), {
-                ho_va_ten: NameInp.value,
-                email: EmailInp.value,
-                so_dien_thoai: PhoneInp.value,
-                mat_khau: PassInp.value,
-                dia_chi: AddressInp.value,
-                cccd: CccdInp.value,
-                ngay_sinh: DobInp.value,
-                gioi_tinh: SexInp.value,
-                nganh: NganhInp.value,
-                he_dao_tao: HeDaoTaoInp.value,
-                ngay_bat_dau_hoc: StartStudyInp.value
-            }).then(() => {
-                if (HeDaoTaoInp.value == "Chính quy") {
-                    EndStudyInp.value = StartStudyInp.value.trim().substring(0, 6) + (parseInt(StartStudyInp.value.trim().substring(6, 10)) + 4).toString();
+        let Upd = async () => {
+            let id = IdInp.value;
+            let numofsv = NumOfSvInp.value;
+            let numofclass = NumOfClassInp.value;
+            let siso = SiSoInp.value;
+            let dkigv = DkiGvInp.value;
+
+            let dbref = ref(db, 'MonHoc/' + id);
+            let dbdata = await get(dbref);
+            let data = dbdata.val();
+            if (data) {
+                let dbref = ref(db, 'LopHoc/' + id);
+                let dbdata = await get(dbref);
+                let data = dbdata.val();
+                if (data) {
+                    update(ref(db, 'LopHoc/' + id), {
+                        SoLuongLop: numofclass,
+                        SiSo: siso,
+                        DangKiGV: dkigv
+                    });
+                    alert('Cập nhật thông tin thành công');
+                } else {
+                    alert('Lớp học không tồn tại');
                 }
-                else if (HeDaoTaoInp.value == "Chất lượng cao") {
-                    EndStudyInp.value = StartStudyInp.value.trim().substring(0, 6) + (parseInt(StartStudyInp.value.trim().substring(6, 10)) + 5).toString();
-                }
-                else if (HeDaoTaoInp.value == "Vừa học vừa làm") {
-                    EndStudyInp.value = StartStudyInp.value.trim().substring(0, 6) + (parseInt(StartStudyInp.value.trim().substring(6, 10)) + 3).toString();
-                }
-                update(ref(db, 'SinhVien/' + IdInp.value), {
-                    ngay_ket_thuc_hoc: EndStudyInp.value
-                });
-                alert("Data updated successfully!");
-            }).catch((error) => {
-                alert("Data could not be updated!" + error);
-                console.error(error);
-            });
+            } else {
+                alert('Không tìm thấy môn học');
+            }
         }
 
-        let DelData = () => {
-            remove(ref(db, 'SinhVien/' + IdInp.value)).then(() => {
-                alert("Data deleted successfully!");
-            }).catch((error) => {
-                alert("Data could not be deleted!" + error);
-                console.error(error);
-            });
-        }
-
-        AddBtn.addEventListener('click', AddData);
-
-        RetBtn.addEventListener('click', evt => {
-            evt.preventDefault();
-            RetData();
-        });
-
-        UpdBtn.addEventListener('click', evt => {
-            evt.preventDefault();
-            UpdData();
-        });
-
-        DelBtn.addEventListener('click', evt => {
-            evt.preventDefault();
-            DelData();
-        });
-
-        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
-
-        let MsgHead = document.getElementById("msg");
-        let GreetHead = document.getElementById("greet");
+        FindBtn.addEventListener('click', Find);
+        AddBtn.addEventListener('click', Add);
+        UpdBtn.addEventListener('click', Upd);
         let SignOutBtn = document.getElementById("signoutbutton");
 
 
