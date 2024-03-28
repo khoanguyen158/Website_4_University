@@ -45,6 +45,10 @@
 - Một số lưu ý:
     + Theo cách đặt cho id của từng user thì id đó sẽ là danh định, k ai giống ai
     + Quy ước cách đặt tên mail trường sẽ làm cho mail của người dùng cũng là danh định, k ai giống ai
+    + Quản trị viên sẽ quyết định (có thể) giảng viên nào dạy 2 lớp và sẽ dạy lớp nào trong 1 môn (phù hợp với thực tế)
+    + Chưa xóa đc dữ liệu 1 cách tự động ở trang Authentication
+    + Người dùng sau khi đổi mật khẩu phải nhấn vào nút trên cùng góc phải của trang Home để cập nhật lại thủ công
+    + Trường sẽ lưu thông tin của 1 sinh viên trong 8 năm = số năm học tối đa tại trường
 
 
 *****************************Cách lưu dữ liệu ở database*****************************

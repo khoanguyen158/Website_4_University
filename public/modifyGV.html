@@ -34,17 +34,17 @@
 
                         <span class="nav-item">Thông tin cá nhân</span>
                     </a></li> -->
-            <!-- <li><a href="HomeQTV.html" class="side-bar-icon">
+            <li><a href="HomeQTV.html" class="side-bar-icon">
                         <i class="fas fa-home"></i>
                         <span class="nav-item">Trang chủ</span>
-                    </a></li> -->
+                    </a></li>
             <li><a href="registerADMIN.html" class="side-bar-icon">
                     <i class="fas fa-newspaper"></i>
                     <span class="nav-item">Đăng ký quản trị viên</span>
                 </a></li>
             <li><a href="monhoc.html" class="side-bar-icon">
                     <i class="fas fa-newspaper"></i>
-                    <span class="nav-item">Chỉnh sửa môn học</span>
+                    <span class="nav-item">Chỉnh sửa học kì và môn học</span>
                 </a></li>
             <li><a href="modifySV.html" class="side-bar-icon">
                     <i class="fas fa-book-open-reader"></i>
@@ -54,9 +54,9 @@
                     <i class="fas fa-book-open-reader"></i>
                     <span class="nav-item">Chỉnh sửa giảng viên</span>
                 </a></li>
-            <li><a href="sap_xep_lich_hoc.html" class="side-bar-icon">
+            <li><a href="sap_xep_lop_hoc.html" class="side-bar-icon">
                     <i class="fas fa-book-open-reader"></i>
-                    <span class="nav-item">Sắp xếp lịch học</span>
+                    <span class="nav-item">Sắp xếp lớp học</span>
                 </a></li>
             <li>
                 <a href="#" class="side-bar-icon">
@@ -75,6 +75,8 @@
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         -->
+
+
     <form id="MainForm">
         <div class="main1">
             <div class="logo">
@@ -362,7 +364,7 @@
 
                 for (let i = 0; i < sophantucuamang; i++) {
                     set(ref(db, 'MonHoc/' + arr[i] + '/tong_so_giang_vien/' + IdInp.value), {
-                        username: NameInp.value
+                        ho_va_ten: NameInp.value
                     })
                 }
                 alert("Thêm " + sophantucuamang + " môn mới thành công!");
@@ -510,7 +512,8 @@
                     cccd: CccdInp.value,
                     gioi_tinh: SexInp.value,
                     ngay_sinh: DobInp.value,
-                    bang_cap: BangCapInp.value
+                    bang_cap: BangCapInp.value,
+                    email: EmailInp.value
                 });
 
                 let s = new String(str);

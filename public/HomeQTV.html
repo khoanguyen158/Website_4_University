@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ quản trị viên</title>
-    <link rel="stylesheet" href="style_home.css" />
+    <link rel="stylesheet" href="./css/chung/style_home.css" />
     <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
+    <script src="./js/chung/DangXuat.js" type="module"></script>
 </head>
 
 <body>
@@ -72,11 +73,6 @@
                         <i class="fas fa-solid fa-right-from-bracket"></i>
                         <span class="nav-item" id="signoutbutton">Đăng xuất</span>
                     </a>
-                </li>
-                <!-- <div>
-                        
-                        <button type="button" ></button>
-                    </div> -->
                 </li>
             </ul>
         </nav>
@@ -188,16 +184,8 @@
         let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
         let MsgHead = document.getElementById("msg");
         let GreetHead = document.getElementById("greet");
-        let SignOutBtn = document.getElementById("signoutbutton");
         let UpdBtn = document.getElementById("dialog-submit");
         let Input = document.getElementById("dialog-input");
-
-
-        let SignOut = () => {
-            sessionStorage.removeItem("user-creds");
-            sessionStorage.removeItem("user-info");
-            window.location.href = "index.html";
-        }
 
         let checkCred = () => {
             if (!sessionStorage.getItem("user-creds")) {
@@ -222,7 +210,6 @@
         }
 
         window.addEventListener('load', checkCred);
-        SignOutBtn.addEventListener('click', SignOut);
         UpdBtn.addEventListener('click', evt => {
             evt.preventDefault();
             UpdData();

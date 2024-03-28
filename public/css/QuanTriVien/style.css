@@ -3,7 +3,8 @@
     padding:0;
     margin:0;
     text-decoration: none;
-    font-family: "Poppins",sans-serif;
+    font-family: 'Poppins', sans-serif;   
+
 }
 #MainForm{
     margin-top: 50px;
@@ -18,6 +19,8 @@ body {
     background-color: #E8F1F2   ; /* Màu nền của toàn bộ trang */
     margin: 0; /* Loại bỏ margin mặc định */
     padding: 0; /* Loại bỏ padding mặc định */
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2FDH_DEF2.jpg?alt=media&token=5feb4f44-c78a-4e2e-ae98-abaef1831179);
+
   }
 
 .main1 {
@@ -25,7 +28,7 @@ body {
     padding: 50px;
     width: 900px;
     height: 650px;
-    background-color: #FFFFFF;
+    background-color: #031c458f;
     border-radius: 50px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
     margin: 20px;
     justify-content: center;
@@ -35,21 +38,22 @@ body {
     text-align: center;
     margin: 20px;
     font-size: 28px;
-    color: #333; /* Màu chữ */
+    color: #FFFF; /* Màu chữ */
     font-weight: bold; /* Chữ in đậm */
 }
 
 .input-box{
+    width: 350px;
     margin-top: 20px;
     margin-left: 10px;
     text-align: left;
     font-size: 18px;
-    color: #333; /* Màu chữ */
+    color: #FFFF; /* Màu chữ */
     font-weight: bold; /* Chữ in đậm */
 }
 
 .rounded-rectangle-login input[type="text"] {
-    width: 850px;
+    /* width: 850px; */
     height: 20px;
     margin-left: 5px;
     padding: 10px; /* Khoảng cách bên trong input */ 
@@ -86,7 +90,7 @@ body {
     margin-left: 10px;
     margin-top: 5px;
     font-size: 14px;  
-    color: #000000; /* Màu chữ */
+    color: #FFFF; /* Màu chữ */
     font-weight: bold; /* Chữ in đậm */
 
 }
@@ -97,7 +101,7 @@ body {
     margin-left: 12px;
     margin-bottom: 10px;
     background: #00173D;
-    color: #D9D9D9;
+    color: #FFFF;
     border-radius: 20px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
     padding: 10px 203px;
     white-space: nowrap;
@@ -121,7 +125,7 @@ body {
     margin-top: 30px;
     margin-bottom: 20px;
     background: #00173D;
-    color: #D9D9D9;
+    color: #FFFF;
     border-radius: 20px;
     /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
     padding: 10px 223px;
@@ -142,7 +146,7 @@ body {
     margin-bottom: 10px;
     text-align: center;
     font-size: 15px;
-    color: #00173D;
+    color: #FFFF;
     /* Màu chữ */
     font-weight: bold;
     /* Chữ in đấm */
@@ -163,7 +167,7 @@ body {
 .rounded-square input[type="text"] {
     text-align: center;
     background: #8098F9;
-    color: #8098F9;
+    color: #FFFF;
     border-radius: 3px;
     /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
     padding: 2px 2px;
@@ -215,7 +219,7 @@ body {
 }
 
 .resend-btn {
-    color: #8098F9;
+    color: #FFFF;
     border: none;
     cursor: pointer;
     font-size: 16px;
@@ -227,7 +231,7 @@ body {
     margin-top: 30px;
     margin-bottom: 20px;
     background: #00173D;
-    color: #D9D9D9;
+    color: #FFFF;
     border-radius: 20px;
     /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
     padding: 10px 223px;
@@ -256,7 +260,7 @@ body {
     height: 40px;
     border-radius: 10px;
     background-color: #00173D;
-    color: aliceblue;
+    color: #FFFF;
     font-size: large;
     font-family: 'Times New Roman', Times, serif;
 }
@@ -274,19 +278,25 @@ body {
     background-color: #054b36;
     color: aliceblue;
 }
-
+.dang-ki-tk{
+    position: relative;
+    bottom: 50px;
+    
+}
 .dang-ki-tk button {
     position: relative;
-    width: 900px;
+    left: 300px;
+    width: 300px;
     height: 40px;
     border-radius: 10px;
-    background-color: #00173D;
-    color: aliceblue;
+    background-color: #031c45bd;
+    color: #FFFF;
     font-size: large;
-    top: 80px;
     font-family: 'Times New Roman', Times, serif;
 }
-
+.dang-ki-tk button:hover {
+    background-color: #054b36;
+}
 /* thanh điều khiển*/
 nav{
     border: #00173D;
@@ -386,4 +396,42 @@ nav .fas{
 .side-bar-icon:hover .nav-item{
     color: #00173D;
     transition: 0.5s;
+}
+
+/*input  ten dang nhap QTV*/
+
+#nameInp{
+    width: 300px;
+}
+#emailInp{
+    width: 300px;
+}
+#idInp{
+    width: 300px;
+}
+#passwordInp{
+    width: 300px;
+}
+
+/*position box form QTV*/
+#box-name{
+    position: relative;
+    top: 50px;
+    left: 70px;
+}
+#box-email{
+    position: relative;
+    top: 50px;
+    left: 70px;
+}
+#box-id{
+    position: relative;
+    bottom: 112px;
+    left: 500px;
+
+}
+#box-pass{
+    position: relative;
+    bottom: 112px;
+    left: 500px;
 }

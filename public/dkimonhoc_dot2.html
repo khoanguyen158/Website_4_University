@@ -42,7 +42,7 @@
                     <span class="nav-item">Khóa học của tôi</span>
                 </a></li>
             <li>
-                <a href="dkimonhoc.html" class="side-bar-icon">
+                <a id="dot" href="dkimonhoc.html" class="side-bar-icon">
                     <i class="fas fa-regular fa-registered"></i>
                     <span class="nav-item" id="dkimonhoc">Đăng ký môn học</span>
                 </a>
@@ -91,7 +91,7 @@
             </div>
 
             <div class="Dang-nhap">
-                Đăng kí môn học đợt 1
+                Đăng kí môn học đợt 2
                 <br>
                 <h1 id="greet"></h1>
                 <br>
@@ -194,6 +194,7 @@
         const db = getDatabase(app);
         const auth = getAuth(app);
 
+        let dot = document.getElementById("dot");
         let IdInp = document.getElementById("idInp");
         let NameInp = document.getElementById("nameInp");
         let TimeInp = document.getElementById("timeInp");
@@ -213,6 +214,10 @@
         let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
         let MsgHead = document.getElementById("msg");
         let GreetHead = document.getElementById("greet");
+
+        let chuyen_dot = () => {
+            dot.href = "dkimonhoc_dot2.html";
+        }
 
 
         let RetData = () => {

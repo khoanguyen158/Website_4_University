@@ -18,60 +18,60 @@
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         -->
-        <nav>
-            <ul>
-                <li><a href="#" class="logo">
-                        <img
-                            src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2F01_logobachkhoasang.png?alt=media&token=6e835bd4-9c3f-4b16-8c4d-36f87c7e7c9d">
+    <nav>
+        <ul>
+            <li><a href="#" class="logo">
+                    <img
+                        src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2F01_logobachkhoasang.png?alt=media&token=6e835bd4-9c3f-4b16-8c4d-36f87c7e7c9d">
 
-                        <span class="nav-item">bkel</span>
-                    </a></li>
+                    <span class="nav-item">bkel</span>
+                </a></li>
 
-                <!-- <li><a href="#" class="avatar">
+            <!-- <li><a href="#" class="avatar">
 
                         <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
                             alt="Avatar">
 
                         <span class="nav-item">Thông tin cá nhân</span>
                     </a></li> -->
-                <!-- <li><a href="HomeQTV.html" class="side-bar-icon">
-                        <i class="fas fa-home"></i>
-                        <span class="nav-item">Trang chủ</span>
-                    </a></li> -->
-                <li><a href="registerADMIN.html" class="side-bar-icon">
-                        <i class="fas fa-newspaper"></i>
-                        <span class="nav-item">Đăng ký quản trị viên</span>
-                    </a></li>
-                <li><a href="monhoc.html" class="side-bar-icon">
-                        <i class="fas fa-newspaper"></i>
-                        <span class="nav-item">Chỉnh sửa học kì và môn học</span>
-                    </a></li>
-                <li><a href="modifySV.html" class="side-bar-icon">
-                        <i class="fas fa-book-open-reader"></i>
-                        <span class="nav-item">Chỉnh sửa sinh viên</span>
-                    </a></li>
-                <li><a href="modifyGV.html" class="side-bar-icon">
-                        <i class="fas fa-book-open-reader"></i>
-                        <span class="nav-item">Chỉnh sửa giảng viên</span>
-                    </a></li>
-                <li><a href="sap_xep_lop_hoc.html" class="side-bar-icon">
-                        <i class="fas fa-book-open-reader"></i>
-                        <span class="nav-item">Sắp xếp lớp học</span>
-                    </a></li>
-                <li>
-                    <a href="#" class="side-bar-icon">
-                        <i class="fas fa-solid fa-right-from-bracket"></i>
-                        <span class="nav-item" id="signoutbutton">Đăng xuất</span>
-                    </a>
-                </li>
-                <!-- <div>
+            <li><a href="HomeQTV.html" class="side-bar-icon">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-item">Trang chủ</span>
+                </a></li>
+            <li><a href="registerADMIN.html" class="side-bar-icon">
+                    <i class="fas fa-newspaper"></i>
+                    <span class="nav-item">Đăng ký quản trị viên</span>
+                </a></li>
+            <li><a href="monhoc.html" class="side-bar-icon">
+                    <i class="fas fa-newspaper"></i>
+                    <span class="nav-item">Chỉnh sửa học kì và môn học</span>
+                </a></li>
+            <li><a href="modifySV.html" class="side-bar-icon">
+                    <i class="fas fa-book-open-reader"></i>
+                    <span class="nav-item">Chỉnh sửa sinh viên</span>
+                </a></li>
+            <li><a href="modifyGV.html" class="side-bar-icon">
+                    <i class="fas fa-book-open-reader"></i>
+                    <span class="nav-item">Chỉnh sửa giảng viên</span>
+                </a></li>
+            <li><a href="sap_xep_lop_hoc.html" class="side-bar-icon">
+                    <i class="fas fa-book-open-reader"></i>
+                    <span class="nav-item">Sắp xếp lớp học</span>
+                </a></li>
+            <li>
+                <a href="#" class="side-bar-icon">
+                    <i class="fas fa-solid fa-right-from-bracket"></i>
+                    <span class="nav-item" id="signoutbutton">Đăng xuất</span>
+                </a>
+            </li>
+            <!-- <div>
                         
                         <button type="button" ></button>
                     </div> -->
-                </li>
-            </ul>
-        </nav>
-        <!-- Vị trí thanh nav, copy từ file HomeQTV.html qua
+            </li>
+        </ul>
+    </nav>
+    <!-- Vị trí thanh nav, copy từ file HomeQTV.html qua
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         -->
@@ -84,8 +84,18 @@
             </div>
 
             <div class="Dang-nhap">
-                Sắp xếp lớp học
+                <p id="msg"></p>
             </div>
+
+            <div class="input-box">
+                Đợt đăng kí môn hiện tại
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="dot_dki" class="input-field" placeholder="" readonly>
+                </div>
+            </div>
+
+            <button id="updkiBtn">Chuyển đợt</button>
+            <button id="closeBtn">Mở/Kết thúc đợt</button>
 
             <div class="input-box">
                 Mã môn học
@@ -94,17 +104,19 @@
                 </div>
             </div>
 
-            <button id="findBtn">Tìm kiếm môn học</button>
-
             <div class="input-box">
-                Số lượng sinh viên đăng kí
+                Sĩ số tối thiểu trong một lớp
                 <div class="rounded-rectangle-login">
-                    <input type="text" id="numofsvInp" class="input-field" placeholder="" readonly>
+                    <input type="text" id="min_numofsvInp" class="input-field" placeholder="" readonly>
                 </div>
             </div>
 
+            <button id="findBtn">Tìm kiếm môn học</button>
+
+
+
             <div class="input-box">
-                <h1>Tiến hành đăng kí lớp học</h1>
+                <h1>Quản trị viên tiến hành đăng kí lớp học</h1>
                 Số lượng lớp học
                 <div class="rounded-rectangle-login">
                     <input type="text" id="numofclassInp" class="input-field" placeholder="">
@@ -118,12 +130,14 @@
             </div>
             <div class="input-box">
                 Đăng kí giảng viên giảng dạy cho từng lớp
+                <br>
+                Lưu ý: Mỗi giảng viên cách nhau bởi dấu '-', ví dụ: GV001-GV002-GV003
                 <div class="rounded-rectangle-login">
                     <input type="text" id="dkigvInp" class="input-field" placeholder="">
                 </div>
             </div>
-            
-            
+
+
             <button id="AddBtn">Đăng kí lớp học</button>
             <button id="UpdBtn">Cập nhật thông tin</button>
         </div>
@@ -151,16 +165,62 @@
         const db = getDatabase(app);
         const auth = getAuth(app);
 
+        let Msg = document.getElementById('msg');
+        let dot_dki = document.getElementById('dot_dki');
         let IdInp = document.getElementById('idInp');
-        let NumOfSvInp = document.getElementById('numofsvInp');
+        let MinnumOfSvInp = document.getElementById('min_numofsvInp');
         let NumOfClassInp = document.getElementById('numofclassInp');
         let SiSoInp = document.getElementById('sisoInp');
         let DkiGvInp = document.getElementById('dkigvInp');
 
+        let CloseBtn = document.getElementById('closeBtn');
+        let UpdkiBtn = document.getElementById('updkiBtn');
         let FindBtn = document.getElementById('findBtn');
         let AddBtn = document.getElementById('AddBtn');
         let UpdBtn = document.getElementById('UpdBtn');
 
+
+        let Update_dot_dki = () => {
+            if (dot_dki.value == "Đợt 1") {
+                dot_dki.value = "Đợt 2";
+            }
+            else {
+                dot_dki.value = "Đợt 1";
+            }
+            update(ref(db, 'MonHoc/'), {
+                dot_dki: dot_dki.value
+            });
+            alert('Cập nhật đợt đăng kí môn học thành công');
+        }
+
+        let Mo_dong_dot_dki = () => {
+            if(dot_dki.value == "Close"){
+                dot_dki.value = "Đợt 1";
+                alert('Mở đợt đăng kí môn học thành công');
+            }
+            else{
+                dot_dki.value = "Close";
+                alert('Kết thúc đợt đăng kí môn học thành công');
+            }
+            update(ref(db, 'MonHoc/'), {
+                dot_dki: dot_dki.value
+            });
+        }
+
+        let dulieudot = async () => {
+            //cho code ké khúc load dữ liệu này lên nha
+            get(ref(db, 'MonHoc/hoc_ki_hien_tai')).then((snapshot) => {
+                if (snapshot.exists()) {
+                    Msg.innerHTML = "Sắp xếp lớp học cho " + snapshot.val();
+                }
+            })
+            //~~~~~~~~~~~~~~~~ cảm ơn ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+            let dbref = ref(db, 'MonHoc/');
+            let dbdata = await get(dbref);
+            let data = dbdata.val();
+            dot_dki.value = data.dot_dki;
+        }
 
         let Find = async () => {
             let id = IdInp.value;
@@ -168,7 +228,12 @@
             let dbdata = await get(dbref);
             let data = dbdata.val();
             if (data) {
-                NumOfSvInp.value = "cc";
+                MinnumOfSvInp.value = data.mo_ta_mon_hoc.si_so_toi_thieu;
+                // Navigate to the new page if data exists
+                //window.location.href = "class_list/class_list.html";
+                // Mở trang trong tab mới
+                sessionStorage.setItem("currentId", id);
+                window.open("class_list.html", '_blank');
             } else {
                 alert('Không tìm thấy môn học');
             }
@@ -176,7 +241,7 @@
 
         let Add = async () => {
             let id = IdInp.value;
-            let numofsv = NumOfSvInp.value;
+            let numofsv = MinnumOfSvInp.value;
             let numofclass = NumOfClassInp.value;
             let siso = SiSoInp.value;
             let dkigv = DkiGvInp.value;
@@ -184,18 +249,37 @@
             let dbref = ref(db, 'MonHoc/' + id);
             let dbdata = await get(dbref);
             let data = dbdata.val();
+            if (siso < numofsv) {
+                alert('Sĩ số mỗi lớp phải lớn hơn sĩ số tối thiểu');
+                return;
+            }
+
             if (data) {
-                let dbref = ref(db, 'LopHoc/' + id);
+                let dbref = ref(db, 'MonHoc/' + id + '/LopHoc');
                 let dbdata = await get(dbref);
                 let data = dbdata.val();
                 if (data) {
-                    alert('Lớp học đã tồn tại');
-                } else {
-                    set(ref(db, 'LopHoc/' + id), {
-                        SoLuongLop: numofclass,
-                        SiSo: siso,
-                        DangKiGV: dkigv
+                    alert('Lớp học đã tồn tại, vui lòng cập nhật thông tin');
+                }
+                else {
+                    update(ref(db, 'MonHoc/' + id), {
+                        so_luong_lop: numofclass,
+                        si_so_tung_lop: siso,
+                        gv_day_tung_lop: dkigv
                     });
+                    let s = dkigv.split('-');
+                    for (let i = 1; i <= numofclass; i++) {
+                        let x;
+                        if (i < 10) {
+                            x = id + '_L0' + i;
+                        } else {
+                            x = id + '_L' + i;
+                        }
+                        set(ref(db, 'MonHoc/' + id + '/LopHoc/' + x), {
+                            giang_vien: s[i - 1],
+                            sinh_vien: "0"
+                        });
+                    }
                     alert('Đăng kí lớp học thành công');
                 }
             } else {
@@ -205,7 +289,7 @@
 
         let Upd = async () => {
             let id = IdInp.value;
-            let numofsv = NumOfSvInp.value;
+            let numofsv = MinnumOfSvInp.value;
             let numofclass = NumOfClassInp.value;
             let siso = SiSoInp.value;
             let dkigv = DkiGvInp.value;
@@ -213,37 +297,53 @@
             let dbref = ref(db, 'MonHoc/' + id);
             let dbdata = await get(dbref);
             let data = dbdata.val();
+            if (siso < numofsv) {
+                alert('Sĩ số mỗi lớp phải lớn hơn sĩ số tối thiểu');
+                return;
+            }
             if (data) {
-                let dbref = ref(db, 'LopHoc/' + id);
+                let dbref = ref(db, 'MonHoc/' + id + '/LopHoc');
                 let dbdata = await get(dbref);
                 let data = dbdata.val();
-                if (data) {
-                    update(ref(db, 'LopHoc/' + id), {
-                        SoLuongLop: numofclass,
-                        SiSo: siso,
-                        DangKiGV: dkigv
+
+                update(ref(db, 'MonHoc/' + id), {
+                    so_luong_lop: numofclass,
+                    si_so_tung_lop: siso,
+                    gv_day_tung_lop: dkigv
+                });
+                let s = dkigv.split('-');
+                for (let i = 1; i <= numofclass; i++) {
+                    let x;
+                    if (i < 10) {
+                        x = id + '_L0' + i;
+                    } else {
+                        x = id + '_L' + i;
+                    }
+                    set(ref(db, 'MonHoc/' + id + '/LopHoc/' + x), {
+                        giang_vien: s[i - 1],
+                        sinh_vien: "0"
                     });
-                    alert('Cập nhật thông tin thành công');
-                } else {
-                    alert('Lớp học không tồn tại');
                 }
+                alert('Đăng kí lớp học thành công');
+
             } else {
                 alert('Không tìm thấy môn học');
             }
         }
 
+        UpdkiBtn.addEventListener('click', Update_dot_dki);
+        CloseBtn.addEventListener('click', Mo_dong_dot_dki);
         FindBtn.addEventListener('click', Find);
         AddBtn.addEventListener('click', Add);
         UpdBtn.addEventListener('click', Upd);
+        window.addEventListener('load', dulieudot);
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         let SignOutBtn = document.getElementById("signoutbutton");
-
-
         let SignOut = () => {
             sessionStorage.removeItem("user-creds");
             sessionStorage.removeItem("user-info");
             window.location.href = "index.html";
         }
-
         SignOutBtn.addEventListener('click', SignOut);
     </script>
     <script src="checkmk.js"></script>

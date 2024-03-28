@@ -6,28 +6,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khóa học của tôi</title>
-    <link rel="stylesheet" href="style_home.css" />
-    <link rel="stylesheet" href="userInfo.css" />
+    <link rel="stylesheet" href="./css/chung/style_home.css" />
+    <link rel="stylesheet" href="./css/SinhVien/userInfo.css" />
     <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
-
+    <script src="./js/SinhVien/Home.js" type="module"></script>
 </head>
 
 <body>
+    <!-- Vị trí thanh nav, copy từ file Home.html qua
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -->
+    <div class="dialog overplay" id="chon_dot">
+        <a href="#" class="overplay-close"></a>
+        <div class="dialog-body">
+            <a href="#" class="dialog-close-btn">&times;</a>
+            <p id="chon-dot-text">Chọn đợt đăng kí môn</p>
+            <button class="chon-dot-submit" id="dot1">Đợt 1</button>
+            <button class="chon-dot-submit" id="dot2">Đợt 2</button>
+        </div>
+    </div>
+    <!-- Vị trí thanh nav, copy từ file Home.html qua
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            -->
     <div class="container">
+        <!-- Vị trí thanh nav, copy từ file Home.html qua
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -->
         <nav>
             <ul>
                 <li><a href="#" class="logo">
                         <img
                             src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2F01_logobachkhoasang.png?alt=media&token=6e835bd4-9c3f-4b16-8c4d-36f87c7e7c9d">
-        
+
                         <span class="nav-item">bkel</span>
                     </a></li>
-        
+
                 <li><a href="svInfo.html" class="avatar">
-        
+
                         <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
                             alt="Avatar">
-        
+
                         <span class="nav-item">Thông tin cá nhân</span>
                     </a></li>
                 <li><a href="Home.html" class="side-bar-icon">
@@ -38,6 +59,12 @@
                         <i class="fas fa-book-open-reader"></i>
                         <span class="nav-item">Khóa học của tôi</span>
                     </a></li>
+                <li>
+                    <a href="#chon_dot" class="side-bar-icon">
+                        <i class="fas fa-regular fa-registered"></i>
+                        <span class="nav-item" id="dkimonhoc">Đăng ký môn học</span>
+                    </a>
+                </li>
                 <li><a href="#" class="side-bar-icon">
                         <i class="fas fa-newspaper"></i>
                         <span class="nav-item">Bài kiểm tra</span>
@@ -54,19 +81,14 @@
                         <i class="fas fa-gear"></i>
                         <span class="nav-item">Cài đặt</span>
                     </a></li>
-        
+
                 <li>
-                    <a href="#" class="side-bar-icon">
+                    <a href="bangdiem.html" class="side-bar-icon">
                         <i class="fas fa-regular fa-table"></i>
                         <span class="nav-item" id="bangdiem">Bảng điểm</span>
                     </a>
                 </li>
-                <li>
-                    <a href="dkimonhoc.html" class="side-bar-icon">
-                        <i class="fas fa-regular fa-registered"></i>
-                        <span class="nav-item" id="dkimonhoc">Đăng ký môn học</span>
-                    </a>
-                </li>
+
                 <li>
                     <a href="#" class="side-bar-icon">
                         <i class="fas fa-solid fa-right-from-bracket"></i>
@@ -75,6 +97,10 @@
                 </li>
             </ul>
         </nav>
+        <!-- Vị trí thanh nav, copy từ file Home.html qua
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -->
         <div class="userIn">
             <div class="tittleIn">
                 Thông tin cá nhân
@@ -94,6 +120,14 @@
                         <input type="text" id="nameInp" name="fullName" readonly>
                     </div>
                     <div class="form-group">
+                        <label for="email">Giới tính</label>
+                        <input type="text" id="sexInp" name="" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Ngày sinh:</label>
+                        <input type="text" id="dobInp" name="" readonly>
+                    </div>
+                    <div class="form-group">
                         <label for="mssv">MSSV:</label>
                         <input type="text" id="idInp" name="mssv" readonly>
                     </div>
@@ -102,13 +136,33 @@
                         <input type="text" id="emailInp" name="email" readonly>
                     </div>
                     <div class="form-group">
+                        <label for="email">Căn cước công dân:</label>
+                        <input type="text" id="cccd" name="" readonly>
+                    </div>
+                    <div class="form-group">
                         <label for="phone">Số điện thoại:</label>
                         <input type="text" id="phoneInp" name="phone">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="address">Địa chỉ </label>
                         <input type="text" id="addressInp" name="address">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Hệ đào tạo:</label>
+                        <input type="text" id="hedaotao" name="" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Ngành:</label>
+                        <input type="text" id="nganh" name="email" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Ngày bắt đầu học:</label>
+                        <input type="text" id="start_study" name="" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Ngày kết thúc học:</label>
+                        <input type="text" id="end_study" name="" readonly>
                     </div>
 
                     <button id="UpdBtn">Cập nhật thông tin</button>
@@ -145,6 +199,14 @@
         let IdInp = document.getElementById('idInp');
         let AddressInp = document.getElementById('addressInp');
         let PhoneInp = document.getElementById('phoneInp');
+        let SexInp = document
+        let DobInp = document.getElementById('dobInp');
+        let CccdInp = document.getElementById('cccd');
+        let HedaotaoInp = document.getElementById('hedaotao');
+        let NganhInp = document.getElementById('nganh');
+        let StartStudyInp = document.getElementById('start_study');
+        let EndStudyInp = document.getElementById('end_study');
+
         let UpdBtn = document.getElementById('UpdBtn');
 
         //let updBtn      = document.getElementById('UpdBtn');
@@ -235,11 +297,18 @@
                 if (snapshot.exists()) {
                     const userData = snapshot.val();
                     // Hiển thị dữ liệu người dùng trên giao diện người dùng
-                    document.getElementById('nameInp').value = userData.username;
+                    document.getElementById('nameInp').value = userData.ho_va_ten;
                     document.getElementById('emailInp').value = userData.email;
                     document.getElementById('idInp').value = userData.id;
-                    document.getElementById('addressInp').value = userData.address;
-                    document.getElementById('phoneInp').value = userData.phone;
+                    document.getElementById('addressInp').value = userData.dia_chi;
+                    document.getElementById('phoneInp').value = userData.so_dien_thoai;
+                    document.getElementById('dobInp').value = userData.ngay_sinh;
+                    document.getElementById('sexInp').value = userData.gioi_tinh;
+                    document.getElementById('cccd').value = userData.cccd;
+                    document.getElementById('hedaotao').value = userData.he_dao_tao;
+                    document.getElementById('nganh').value = userData.nganh;
+                    document.getElementById('start_study').value = userData.ngay_bat_dau_hoc;
+                    document.getElementById('end_study').value = userData.ngay_ket_thuc_hoc;
                 } else {
                     console.log("Không tìm thấy thông tin người dùng trong cơ sở dữ liệu.");
                 }
@@ -252,8 +321,8 @@
         let UpdData = () => {
             const db = getDatabase(app);
             update(ref(db, 'SinhVien/' + UserInfo.id), {
-                phone: PhoneInp.value,
-                address: AddressInp.value
+                so_dien_thoai: PhoneInp.value,
+                dia_chi: AddressInp.value
             }).then(() => {
                 alert("Data updated successfully!");
             }).catch((error) => {

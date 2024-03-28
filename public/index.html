@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elearning</title>
-    <link rel="stylesheet" href="style-index.css">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="./css/login/style-index.css">
 </head>
 
 <body>
@@ -84,7 +84,8 @@
                                 ho_va_ten: snapshot.val().ho_va_ten,
                                 email: snapshot.val().email,
                                 mat_khau: snapshot.val().mat_khau,
-                                id: snapshot.val().id
+                                id: snapshot.val().id,
+                                Result: snapshot.val().Hoc_ki
                             }))
                             sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
                             window.location.href = "Home.html";

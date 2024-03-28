@@ -5,12 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chỉnh sửa học kì và môn học</title>
-
-    <link rel="stylesheet" href="style-modi-SV.css">
-    <script src="angular.min.js"></script>
-    <script src="angular-route.min.js"></script>
-    <script src="app.js"></script>
+    <link rel="stylesheet" href="./css/QuanTriVien/style-modi-SV.css">
     <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
+    <script src="./js/chung/DangXuat.js" type="module"></script>
 </head>
 
 <body ng-app="myapp" ng-controller="homeCtrl">
@@ -326,16 +323,7 @@
 
         let MsgHead = document.getElementById("msg");
         let GreetHead = document.getElementById("greet");
-        let SignOutBtn = document.getElementById("signoutbutton");
 
-
-        let SignOut = () => {
-            sessionStorage.removeItem("user-creds");
-            sessionStorage.removeItem("user-info");
-            window.location.href = "index.html";
-        }
-
-        SignOutBtn.addEventListener('click', SignOut);
         window.addEventListener('load', () => {
             const dbRef = ref(db);
             get(child(dbRef, 'MonHoc/hoc_ki_hien_tai')).then((snapshot) => {
@@ -350,7 +338,6 @@
             });
         });
     </script>
-    <script src="checkmk.js"></script>
 </body>
 
 </html>

@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ sinh viên</title>
-    <link rel="stylesheet" href="style_home.css" />
+    <link rel="stylesheet" href="./css/chung/style_home.css" />
     <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
+    <script src="./js/SinhVien/Home.js" type="module"></script>
 </head>
 
 <body>
@@ -22,6 +23,23 @@
             <button id="dialog-submit">Xác nhận</button>
         </div>
     </div>
+    <!-- Vị trí thanh nav, copy từ file Home.html qua
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -->
+    <div class="dialog overplay" id="chon_dot">
+        <a href="#" class="overplay-close"></a>
+        <div class="dialog-body">
+            <a href="#" class="dialog-close-btn">&times;</a>
+            <p id="chon-dot-text">Chọn đợt đăng kí môn</p>
+            <button class="chon-dot-submit" id="dot1">Đợt 1</button>
+            <button class="chon-dot-submit" id="dot2">Đợt 2</button>
+        </div>
+    </div>
+    <!-- Vị trí thanh nav, copy từ file Home.html qua
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -->
     <div class="container">
         <!-- Vị trí thanh nav, copy từ file Home.html qua
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
@@ -32,15 +50,15 @@
                 <li><a href="#" class="logo">
                         <img
                             src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2F01_logobachkhoasang.png?alt=media&token=6e835bd4-9c3f-4b16-8c4d-36f87c7e7c9d">
-        
+
                         <span class="nav-item">bkel</span>
                     </a></li>
-        
+
                 <li><a href="svInfo.html" class="avatar">
-        
+
                         <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
                             alt="Avatar">
-        
+
                         <span class="nav-item">Thông tin cá nhân</span>
                     </a></li>
                 <li><a href="Home.html" class="side-bar-icon">
@@ -51,6 +69,12 @@
                         <i class="fas fa-book-open-reader"></i>
                         <span class="nav-item">Khóa học của tôi</span>
                     </a></li>
+                <li>
+                    <a href="#chon_dot" class="side-bar-icon">
+                        <i class="fas fa-regular fa-registered"></i>
+                        <span class="nav-item" id="dkimonhoc">Đăng ký môn học</span>
+                    </a>
+                </li>
                 <li><a href="#" class="side-bar-icon">
                         <i class="fas fa-newspaper"></i>
                         <span class="nav-item">Bài kiểm tra</span>
@@ -67,19 +91,14 @@
                         <i class="fas fa-gear"></i>
                         <span class="nav-item">Cài đặt</span>
                     </a></li>
-        
+
                 <li>
-                    <a href="#" class="side-bar-icon">
+                    <a href="bangdiem.html" class="side-bar-icon">
                         <i class="fas fa-regular fa-table"></i>
                         <span class="nav-item" id="bangdiem">Bảng điểm</span>
                     </a>
                 </li>
-                <li>
-                    <a href="dkimonhoc.html" class="side-bar-icon">
-                        <i class="fas fa-regular fa-registered"></i>
-                        <span class="nav-item" id="dkimonhoc">Đăng ký môn học</span>
-                    </a>
-                </li>
+
                 <li>
                     <a href="#" class="side-bar-icon">
                         <i class="fas fa-solid fa-right-from-bracket"></i>
@@ -194,16 +213,11 @@
         let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
         let MsgHead = document.getElementById("msg");
         let GreetHead = document.getElementById("greet");
-        let SignOutBtn = document.getElementById("signoutbutton");
+
         let UpdBtn = document.getElementById("dialog-submit");
         let Input = document.getElementById("dialog-input");
 
 
-        let SignOut = () => {
-            sessionStorage.removeItem("user-creds");
-            sessionStorage.removeItem("user-info");
-            window.location.href = "index.html";
-        }
 
         let checkCred = () => {
             if (!sessionStorage.getItem("user-creds")) {
@@ -228,12 +242,13 @@
         }
 
         window.addEventListener('load', checkCred);
-        SignOutBtn.addEventListener('click', SignOut);
         UpdBtn.addEventListener('click', evt => {
             evt.preventDefault();
             UpdData();
         });
     </script>
+
+
 </body>
 
 </html>
