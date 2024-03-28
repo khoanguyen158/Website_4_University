@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sắp xếp lớp học</title>
 
-    <link rel="stylesheet" href="style-modi-SV.css">
-    <script src="angular.min.js"></script>
-    <script src="angular-route.min.js"></script>
-    <script src="app.js"></script>
+    <link rel="stylesheet" href="./css/QuanTriVien/style-modi-SV.css">
     <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
+    <script src="./js/chung/DangXuat.js" type="module"></script>
 </head>
 
 <body ng-app="myapp" ng-controller="homeCtrl">
@@ -64,17 +62,14 @@
                     <span class="nav-item" id="signoutbutton">Đăng xuất</span>
                 </a>
             </li>
-            <!-- <div>
-                        
-                        <button type="button" ></button>
-                    </div> -->
-            </li>
         </ul>
     </nav>
     <!-- Vị trí thanh nav, copy từ file HomeQTV.html qua
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         -->
+
+
 
     <form id="MainForm">
         <div class="main1">
@@ -194,11 +189,11 @@
         }
 
         let Mo_dong_dot_dki = () => {
-            if(dot_dki.value == "Close"){
+            if (dot_dki.value == "Close") {
                 dot_dki.value = "Đợt 1";
                 alert('Mở đợt đăng kí môn học thành công');
             }
-            else{
+            else {
                 dot_dki.value = "Close";
                 alert('Kết thúc đợt đăng kí môn học thành công');
             }
@@ -346,7 +341,6 @@
         }
         SignOutBtn.addEventListener('click', SignOut);
     </script>
-    <script src="checkmk.js"></script>
 </body>
 
 </html>

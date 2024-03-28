@@ -8,6 +8,7 @@
     <title>Trang chủ giảng viên</title>
     <link rel="stylesheet" href="./css/chung/style_home.css" />
     <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
+    <script src="./js/chung/DangXuat.js" type="module"></script>
 </head>
 
 <body>
@@ -36,7 +37,7 @@
                         <span class="nav-item">bkel</span>
                     </a></li>
 
-                <li><a href="svInfo.html" class="avatar">
+                <li><a href="gvInfo.html" class="avatar">
 
                         <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
                             alt="Avatar">
@@ -68,18 +69,6 @@
                         <span class="nav-item">Cài đặt</span>
                     </a></li>
 
-                <li>
-                    <a href="#" class="side-bar-icon">
-                        <i class="fas fa-regular fa-table"></i>
-                        <span class="nav-item" id="bangdiem">Bảng điểm</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="side-bar-icon">
-                        <i class="fas fa-regular fa-registered"></i>
-                        <span class="nav-item" id="dkimonhoc">Đăng ký môn học</span>
-                    </a>
-                </li>
                 <li>
                     <a href="#" class="side-bar-icon">
                         <i class="fas fa-solid fa-right-from-bracket"></i>
@@ -199,16 +188,9 @@
         let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
         let MsgHead = document.getElementById("msg");
         let GreetHead = document.getElementById("greet");
-        let SignOutBtn = document.getElementById("signoutbutton");
         let UpdBtn = document.getElementById("dialog-submit");
         let Input = document.getElementById("dialog-input");
 
-
-        let SignOut = () => {
-            sessionStorage.removeItem("user-creds");
-            sessionStorage.removeItem("user-info");
-            window.location.href = "index.html";
-        }
 
         let checkCred = () => {
             if (!sessionStorage.getItem("user-creds")) {
@@ -233,7 +215,6 @@
         }
 
         window.addEventListener('load', checkCred);
-        SignOutBtn.addEventListener('click', SignOut);
         UpdBtn.addEventListener('click', evt => {
             evt.preventDefault();
             UpdData();

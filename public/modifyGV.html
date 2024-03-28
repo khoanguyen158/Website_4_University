@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông tin giảng viên</title>
 
-    <link rel="stylesheet" href="style-modi-SV.css">
-    <script src="angular.min.js"></script>
-    <script src="angular-route.min.js"></script>
-    <script src="app.js"></script>
+    <link rel="stylesheet" href="./css/QuanTriVien/style-modi-SV.css">
+    <script src="./js/QuanTriVien/angular.min.js"></script>
+    <script src="./js/QuanTriVien/angular-route.min.js"></script>
+    <script src="./js/QuanTriVien/app.js"></script>
+    <script src="./js/QuanTriVien/checkmk.js"></script>
     <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
+    <script src="./js/chung/DangXuat.js" type="module"></script>
 </head>
 
 <body ng-app="myapp" ng-controller="homeCtrl">
@@ -18,64 +20,58 @@
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         -->
-    <nav>
-        <ul>
-            <li><a href="#" class="logo">
-                    <img
-                        src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2F01_logobachkhoasang.png?alt=media&token=6e835bd4-9c3f-4b16-8c4d-36f87c7e7c9d">
+        <nav>
+            <ul>
+                <li><a href="#" class="logo">
+                        <img
+                            src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2F01_logobachkhoasang.png?alt=media&token=6e835bd4-9c3f-4b16-8c4d-36f87c7e7c9d">
 
-                    <span class="nav-item">bkel</span>
-                </a></li>
+                        <span class="nav-item">bkel</span>
+                    </a></li>
 
-            <!-- <li><a href="#" class="avatar">
+                <!-- <li><a href="#" class="avatar">
 
                         <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
                             alt="Avatar">
 
                         <span class="nav-item">Thông tin cá nhân</span>
                     </a></li> -->
-            <li><a href="HomeQTV.html" class="side-bar-icon">
+                <li><a href="HomeQTV.html" class="side-bar-icon">
                         <i class="fas fa-home"></i>
                         <span class="nav-item">Trang chủ</span>
                     </a></li>
-            <li><a href="registerADMIN.html" class="side-bar-icon">
-                    <i class="fas fa-newspaper"></i>
-                    <span class="nav-item">Đăng ký quản trị viên</span>
-                </a></li>
-            <li><a href="monhoc.html" class="side-bar-icon">
-                    <i class="fas fa-newspaper"></i>
-                    <span class="nav-item">Chỉnh sửa học kì và môn học</span>
-                </a></li>
-            <li><a href="modifySV.html" class="side-bar-icon">
-                    <i class="fas fa-book-open-reader"></i>
-                    <span class="nav-item">Chỉnh sửa sinh viên</span>
-                </a></li>
-            <li><a href="modifyGV.html" class="side-bar-icon">
-                    <i class="fas fa-book-open-reader"></i>
-                    <span class="nav-item">Chỉnh sửa giảng viên</span>
-                </a></li>
-            <li><a href="sap_xep_lop_hoc.html" class="side-bar-icon">
-                    <i class="fas fa-book-open-reader"></i>
-                    <span class="nav-item">Sắp xếp lớp học</span>
-                </a></li>
-            <li>
-                <a href="#" class="side-bar-icon">
-                    <i class="fas fa-solid fa-right-from-bracket"></i>
-                    <span class="nav-item" id="signoutbutton">Đăng xuất</span>
-                </a>
-            </li>
-            <!-- <div>
-                        
-                        <button type="button" ></button>
-                    </div> -->
-            </li>
-        </ul>
-    </nav>
-    <!-- Vị trí thanh nav, copy từ file HomeQTV.html qua
+                <li><a href="registerADMIN.html" class="side-bar-icon">
+                        <i class="fas fa-newspaper"></i>
+                        <span class="nav-item">Đăng ký quản trị viên</span>
+                    </a></li>
+                <li><a href="monhoc.html" class="side-bar-icon">
+                        <i class="fas fa-newspaper"></i>
+                        <span class="nav-item">Chỉnh sửa học kì và môn học</span>
+                    </a></li>
+                <li><a href="modifySV.html" class="side-bar-icon">
+                        <i class="fas fa-book-open-reader"></i>
+                        <span class="nav-item">Chỉnh sửa sinh viên</span>
+                    </a></li>
+                <li><a href="modifyGV.html" class="side-bar-icon">
+                        <i class="fas fa-book-open-reader"></i>
+                        <span class="nav-item">Chỉnh sửa giảng viên</span>
+                    </a></li>
+                <li><a href="sap_xep_lop_hoc.html" class="side-bar-icon">
+                        <i class="fas fa-book-open-reader"></i>
+                        <span class="nav-item">Sắp xếp lớp học</span>
+                    </a></li>
+                <li>
+                    <a href="#" class="side-bar-icon">
+                        <i class="fas fa-solid fa-right-from-bracket"></i>
+                        <span class="nav-item" id="signoutbutton">Đăng xuất</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Vị trí thanh nav, copy từ file HomeQTV.html qua
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         -->
-
 
     <form id="MainForm">
         <div class="main1">
@@ -603,7 +599,6 @@
 
         SignOutBtn.addEventListener('click', SignOut);
     </script>
-    <script src="checkmk.js"></script>
 </body>
 
 </html>
