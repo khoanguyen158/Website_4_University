@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chỉnh sửa học kì và môn học</title>
-    <link rel="stylesheet" href="./css/QuanTriVien/style-modi-SV.css">
+    <link rel="stylesheet" href="./css/QuanTriVien/monhoc.css">
     <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
     <script src="./js/chung/DangXuat.js" type="module"></script>
 </head>
@@ -15,152 +15,163 @@
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         -->
-        <nav>
-            <ul>
-                <li><a href="#" class="logo">
-                        <img
-                            src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2F01_logobachkhoasang.png?alt=media&token=6e835bd4-9c3f-4b16-8c4d-36f87c7e7c9d">
+    <nav>
+        <ul>
+            <li><a href="#" class="logo">
+                    <img
+                        src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2F01_logobachkhoasang.png?alt=media&token=6e835bd4-9c3f-4b16-8c4d-36f87c7e7c9d">
 
-                        <span class="nav-item">bkel</span>
-                    </a></li>
+                    <span class="nav-item">bkel</span>
+                </a></li>
 
-                <!-- <li><a href="#" class="avatar">
+            <!-- <li><a href="#" class="avatar">
 
                         <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
                             alt="Avatar">
 
                         <span class="nav-item">Thông tin cá nhân</span>
                     </a></li> -->
-                <li><a href="HomeQTV.html" class="side-bar-icon">
-                        <i class="fas fa-home"></i>
-                        <span class="nav-item">Trang chủ</span>
-                    </a></li>
-                <li><a href="registerADMIN.html" class="side-bar-icon">
-                        <i class="fas fa-newspaper"></i>
-                        <span class="nav-item">Đăng ký quản trị viên</span>
-                    </a></li>
-                <li><a href="monhoc.html" class="side-bar-icon">
-                        <i class="fas fa-newspaper"></i>
-                        <span class="nav-item">Chỉnh sửa học kì và môn học</span>
-                    </a></li>
-                <li><a href="modifySV.html" class="side-bar-icon">
-                        <i class="fas fa-book-open-reader"></i>
-                        <span class="nav-item">Chỉnh sửa sinh viên</span>
-                    </a></li>
-                <li><a href="modifyGV.html" class="side-bar-icon">
-                        <i class="fas fa-book-open-reader"></i>
-                        <span class="nav-item">Chỉnh sửa giảng viên</span>
-                    </a></li>
-                <li><a href="sap_xep_lich_hoc.html" class="side-bar-icon">
-                        <i class="fas fa-book-open-reader"></i>
-                        <span class="nav-item">Sắp xếp lịch học</span>
-                    </a></li>
-                <li>
-                    <a href="#" class="side-bar-icon">
-                        <i class="fas fa-solid fa-right-from-bracket"></i>
-                        <span class="nav-item" id="signoutbutton">Đăng xuất</span>
-                    </a>
-                </li>
-                <!-- <div>
+            <li><a href="HomeQTV.html" class="side-bar-icon">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-item">Trang chủ</span>
+                </a></li>
+            <li><a href="registerADMIN.html" class="side-bar-icon">
+                    <i class="fas fa-newspaper"></i>
+                    <span class="nav-item">Đăng ký quản trị viên</span>
+                </a></li>
+            <li><a href="monhoc.html" class="side-bar-icon">
+                    <i class="fas fa-newspaper"></i>
+                    <span class="nav-item">Chỉnh sửa học kì và môn học</span>
+                </a></li>
+            <li><a href="modifySV.html" class="side-bar-icon">
+                    <i class="fas fa-book-open-reader"></i>
+                    <span class="nav-item">Chỉnh sửa sinh viên</span>
+                </a></li>
+            <li><a href="modifyGV.html" class="side-bar-icon">
+                    <i class="fas fa-book-open-reader"></i>
+                    <span class="nav-item">Chỉnh sửa giảng viên</span>
+                </a></li>
+            <li><a href="sap_xep_lich_hoc.html" class="side-bar-icon">
+                    <i class="fas fa-book-open-reader"></i>
+                    <span class="nav-item">Sắp xếp lịch học</span>
+                </a></li>
+            <li>
+                <a href="#" class="side-bar-icon">
+                    <i class="fas fa-solid fa-right-from-bracket"></i>
+                    <span class="nav-item" id="signoutbutton">Đăng xuất</span>
+                </a>
+            </li>
+            <!-- <div>
                         
                         <button type="button" ></button>
                     </div> -->
-                </li>
-            </ul>
-        </nav>
-        <!-- Vị trí thanh nav, copy từ file Home.html qua
+            </li>
+        </ul>
+    </nav>
+    <!-- Vị trí thanh nav, copy từ file Home.html qua
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         -->
     <form id="MainForm">
         <div class="main1">
-            <div class="logo">
+            <!-- <div class="logo">
                 <img
                     src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Flogo_DEF.jpg?alt=media&token=5c319bb6-f09c-4d0b-89d6-342fde279f9d">
-            </div>
+            </div> -->
 
             <div class="Dang-nhap">
-                Chỉnh sửa học kì và môn học
+                CHỈNH SỬA HỌC KÌ VÀ MÔN HỌC
+            </div>
+            <div class="input-box" id="hkHT">
+                Học kì hiện tại
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="hkInp" class="input-field" placeholder="">
+                </div>
+            </div>
+
+            <button id="changeBtn">
+                <i class="fa-regular fa-floppy-disk"></i>
+            </button>
+
+            <div class="listNote">
                 <br>
                 <br>
                 Lưu ý:
                 <br>
                 <ul>
                     <li>
-                        Quý quản trị viên vui lòng chỉ chỉnh sửa thông tin khi học kì hiện tại đã kết thúc và học kì mới chưa bắt đầu
+                        Quý quản trị viên vui lòng chỉ chỉnh sửa thông tin khi học kì hiện tại đã kết thúc và học kì
+                        mới chưa bắt đầu
                     </li>
                     <li>
-                        Nếu xóa 1 môn học bất kì, vui lòng thông báo cho toàn bộ các giảng viên trong trường về sự thay đổi và yêu cầu các giảng viên cập nhật lại các môn giảng dạy của mình
+                        Nếu xóa 1 môn học bất kì, vui lòng thông báo cho toàn bộ các giảng viên trong trường về sự
+                        thay đổi và yêu cầu các giảng viên cập nhật lại các môn giảng dạy của mình
                     </li>
                 </ul>
             </div>
 
-            <div class="input-box">
-                Học kì hiện tại
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="hkInp" class="input-field" placeholder="">
-                </div>
-            </div>
-            <button id="changeBtn">Chỉnh sửa</button>
 
-            <div class="input-box">
+            <div class="input-box" id="maMH">
                 Mã số môn học
                 <div class="rounded-rectangle-login">
                     <input type="text" id="idInp" class="input-field" placeholder="">
                 </div>
             </div>
 
-            <div class="input-box">
+            <div class="input-box" id="tenMH">
                 Tên môn học
                 <div class="rounded-rectangle-login">
                     <input type="text" id="nameInp" class="input-field" placeholder="">
                 </div>
             </div>
 
-            <div class="input-box">
-                Thời lượng dạy học (tuần)
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="timeInp" class="input-field" placeholder="">
-                </div>
-            </div>
-
-            <div class="input-box">
-                Số giờ của một tiết học
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="sogio1tiethocInp" class="input-field" placeholder="">
-                </div>
-            </div>
-
-            <div class="input-box">
-                Sĩ số tối thiểu của lớp ở môn này
+            <div class="input-box" id="sisoMin">
+                Sĩ số tối thiểu
                 <div class="rounded-rectangle-login">
                     <input type="text" id="limitInp" class="input-field" placeholder="">
                 </div>
             </div>
 
-            <div class="input-box">
+            <div class="input-box" id="thoiluongDH">
+                Thời lượng dạy học
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="timeInp" class="input-field" placeholder="Tính theo tuần">
+                </div>
+            </div>
+
+            <div class="input-box" id="timeOfSub">
+                Số giờ một tiết
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="sogio1tiethocInp" class="input-field" placeholder="">
+                </div>
+            </div>
+
+
+
+            <div class="input-box" id="tinChi">
                 Số tín chỉ
                 <div class="rounded-rectangle-login">
                     <input type="text" id="tcInp" class="input-field" placeholder="">
                 </div>
             </div>
 
-            <div class="input-box">
-                Số cột điểm và tên, phần trăm, điểm tối thiểu của từng cột điểm
-                <br>
-                <p>Lưu ý: Nhập đúng định dạng như ví dụ sau, những phần không có sẽ nhập "none":
-                    <br>
-                    4~(Điểm Quiz-10%-3)~(Bài tập lớn-20%-0)~(none-20%-3)~(Cuối kì-50%-3)
+            <div class="input-box" id="noteTitle">
+                <p>
+                    Số cột điểm và tên, phần trăm, điểm tối thiểu của từng cột điểm
                 </p>
-                <div class="rounded-rectangle-login">
+                <div class="rounded-rectangle-login">Lưu ý: Nhập đúng định dạng như ví dụ sau, những phần không có sẽ
+                    nhập 'none'<br>
+                    4~(Điểm Quiz-10%-3)~(Bài tập lớn-20%-0)~(none-20%-3)~(Cuối kì-50%-3)
                     <input type="text" id="gradeInp" class="input-field" placeholder="">
                 </div>
             </div>
 
-            <button id="AddBtn">Add</button>
-            <button id="RetBtn">Retrive</button>
-            <button id="UpdBtn">Update</button>
-            <button id="DelBtn">Delete</button>
+            <div class="input-box" id="gt-btn">
+                <button id="AddBtn">Add</button>
+                <button id="RetBtn">Retrive</button>
+                <button id="UpdBtn">Update</button>
+                <button id="DelBtn">Delete</button>
+            </div>
         </div>
     </form>
 

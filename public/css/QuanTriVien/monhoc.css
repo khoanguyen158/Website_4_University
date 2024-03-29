@@ -1,6 +1,4 @@
-
 *{
-    list-style-type: none;
     padding:0;
     margin:0;
     text-decoration: none;
@@ -20,7 +18,7 @@ body {
     background-color: #E8F1F2   ; /* Màu nền của toàn bộ trang */
     margin: 0; /* Loại bỏ margin mặc định */
     padding: 0; /* Loại bỏ padding mặc định */
-    background-image: url(https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2FDH_DEF2.jpg?alt=media&token=5feb4f44-c78a-4e2e-ae98-abaef1831179);
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2FDH_DEF2.jpg?alt=media&token=5feb4f44-c78a-4e2e-ae98-abaef1831179");
 
   }
 
@@ -43,7 +41,19 @@ body {
     font-weight: bold; /* Chữ in đậm */
     font-family: 'Noto Serif', serif;
 }
-
+.listNote {
+    position: relative;
+    bottom: 30px;
+    margin-left: 10px;
+    font-size: 18px;
+    color: #c5a944; /* Màu chữ */
+    font-style: italic; /* Chữ in nghiêng */
+    /* font-weight: bold; Chữ in đậm */
+    font-family: 'Noto Serif', serif;
+}
+.listNote  li{
+    margin-left: 20px;
+}
 .input-box{
     width: 350px;
     margin-top: 20px;
@@ -400,25 +410,6 @@ nav .fas{
     transition: 0.5s;
 }
 
-/*input  ten dang nhap QTV*/
-
-#nameInp{
-    width: 300px;
-    background-color: #cdd3aa;
-}
-#emailInp{
-    width: 300px;
-    background-color: #cdd3aa;
-}
-#idInp{
-    width: 300px;
-    background-color: #cdd3aa;
-}
-#passwordInp{
-    width: 300px;
-    background-color: #cdd3aa;
-}
-
 /*position box form QTV*/
 #box-name{
     position: relative;
@@ -442,3 +433,139 @@ nav .fas{
     left: 500px;
 }
 
+/* templates monhoc */
+#hkHT{
+    position: relative;
+    top: 10px;
+    left: 50px;
+    
+}
+
+#changeBtn{
+    position: relative;
+    bottom: 30px;
+    left: 270px;
+    background-color: rgba(240,248,255,0);
+}
+
+#changeBtn i{
+    color: #cdd3aa;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+#maMH{
+    width: 210px;
+    position : relative;
+    left: 50px;
+    bottom: 20px;
+}
+
+
+#tenMH{
+    width: 210px;
+    position: relative;
+    bottom: 101px;
+    left: 330px;
+}
+#sisoMin{
+    width: 210px;
+    position: relative;
+    bottom: 180px;
+    left: 600px;
+}
+#thoiluongDH{
+    width: 210px;
+    position: relative;
+    bottom: 180px;
+    left: 50px;
+}
+#timeOfSub{
+    width: 210px;
+    position: relative;
+    bottom: 261px;
+    left: 330px;
+}
+#tinChi{
+    width: 210px;
+    position: relative;
+    bottom: 342px;
+    left: 600px;
+}
+#noteTitle{
+    position: relative;
+    bottom: 340px;
+    width: 670px;
+    font-size: 20px;
+    left: 50px;
+}
+#noteTitle div{
+    margin-top: 10px;
+    font-size: 14px;
+}
+#gradeInp{
+    width:730px;
+    margin-top: 10px;
+}
+
+#nameInp, #idInp, #hkInp, #limitInp, #timeInp, #sogio1tiethocInp, #tcInp, #gradeInp{
+    background-color: #cdd3aa;
+}
+
+#AddBtn{
+    width: 104px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #00173D;
+    color: aliceblue;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    left: 60px;
+}
+
+#RetBtn{
+    width: 104px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #00173D;
+    color: aliceblue;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    left: 160px;
+}
+
+#UpdBtn{
+    width: 104px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #00173D;
+    color: aliceblue;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    left: 260px;
+}
+
+#DelBtn{
+    width: 104px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #00173D;
+    color: aliceblue;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    left: 380px;
+}
+
+#AddBtn:hover, #RetBtn:hover, #UpdBtn:hover, #DelBtn:hover{
+    background-color: #054b36;
+    color: aliceblue;
+}
+#gt-btn{
+    position: relative;
+    bottom: 320px;
+    width: 700px;
+}

@@ -1,11 +1,13 @@
-
 *{
     padding:0;
     margin:0;
     text-decoration: none;
-    font-family: "Poppins",sans-serif;
-}
+    font-family: 'Poppins', sans-serif;   
 
+}
+#MainForm{
+    margin-top: 50px;
+}
 /*style trong login */
 
 body {
@@ -16,48 +18,63 @@ body {
     background-color: #E8F1F2   ; /* Màu nền của toàn bộ trang */
     margin: 0; /* Loại bỏ margin mặc định */
     padding: 0; /* Loại bỏ padding mặc định */
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2FDH_DEF2.jpg?alt=media&token=5feb4f44-c78a-4e2e-ae98-abaef1831179");
+
   }
 
 .main1 {
-    
+    position: relative;
+    top: 250px;
     padding: 50px;
-    padding-left: 95px;
-    width: 940px;
-    height: 990px;
-    background-color: #FFFFFF;
+    width: 900px;
+    height: 1150px;
+    background-color: #031c458f;
     border-radius: 50px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
-    margin: 350px 0 20px 0;
+    margin: 20px;
     justify-content: center;
     align-items: center;
 }
 .Dang-nhap {
     text-align: center;
     margin: 20px;
-    font-size: 28px;
-    color: #333; /* Màu chữ */
+    font-size: 38px;
+    color: #FFFF; /* Màu chữ */
     font-weight: bold; /* Chữ in đậm */
+    font-family: 'Noto Serif', serif;
 }
-
+.title{
+    margin: 20px;
+    font-size: 25px;
+    color: #FFFF; /* Màu chữ */
+    font-weight: bold; /* Chữ in đậm */
+    font-family: 'Noto Serif', serif;
+}
 .input-box{
+    width: 350px;
     margin-top: 20px;
     margin-left: 10px;
     text-align: left;
     font-size: 18px;
-    color: #333; /* Màu chữ */
+    color: #FFFF; /* Màu chữ */
     font-weight: bold; /* Chữ in đậm */
 }
 
-.confirm_css{
-    margin-top: 10px;
-    margin-left: 20px;
-    text-align: left;
-    font-size: 15px;
-    color: black; /* Màu chữ */
-    font-weight: bold; /* Chữ in đậm */
+.select-box{
+    height: 40px;
+    margin-left: 5px;
+    padding: 10px;
+    border: none;
+    background-color: #D9D9D9;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+
 
 .rounded-rectangle-login input[type="text"] {
-    width: 850px;
+    /* width: 850px; */
     height: 20px;
     margin-left: 5px;
     padding: 10px; /* Khoảng cách bên trong input */ 
@@ -67,7 +84,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .remember-login {
@@ -94,7 +110,7 @@ body {
     margin-left: 10px;
     margin-top: 5px;
     font-size: 14px;  
-    color: #000000; /* Màu chữ */
+    color: #FFFF; /* Màu chữ */
     font-weight: bold; /* Chữ in đậm */
 
 }
@@ -105,7 +121,7 @@ body {
     margin-left: 12px;
     margin-bottom: 10px;
     background: #00173D;
-    color: #D9D9D9;
+    color: #FFFF;
     border-radius: 20px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
     padding: 10px 203px;
     white-space: nowrap;
@@ -129,7 +145,7 @@ body {
     margin-top: 30px;
     margin-bottom: 20px;
     background: #00173D;
-    color: #D9D9D9;
+    color: #FFFF;
     border-radius: 20px;
     /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
     padding: 10px 223px;
@@ -150,7 +166,7 @@ body {
     margin-bottom: 10px;
     text-align: center;
     font-size: 15px;
-    color: #00173D;
+    color: #FFFF;
     /* Màu chữ */
     font-weight: bold;
     /* Chữ in đấm */
@@ -171,7 +187,7 @@ body {
 .rounded-square input[type="text"] {
     text-align: center;
     background: #8098F9;
-    color: #8098F9;
+    color: #FFFF;
     border-radius: 3px;
     /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
     padding: 2px 2px;
@@ -223,7 +239,7 @@ body {
 }
 
 .resend-btn {
-    color: #8098F9;
+    color: #FFFF;
     border: none;
     cursor: pointer;
     font-size: 16px;
@@ -235,7 +251,7 @@ body {
     margin-top: 30px;
     margin-bottom: 20px;
     background: #00173D;
-    color: #D9D9D9;
+    color: #FFFF;
     border-radius: 20px;
     /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
     padding: 10px 223px;
@@ -264,7 +280,7 @@ body {
     height: 40px;
     border-radius: 10px;
     background-color: #00173D;
-    color: aliceblue;
+    color: #FFFF;
     font-size: large;
     font-family: 'Times New Roman', Times, serif;
 }
@@ -282,57 +298,34 @@ body {
     background-color: #054b36;
     color: aliceblue;
 }
-
+.dang-ki-tk{
+    position: relative;
+    bottom: 50px;
+    
+}
 .dang-ki-tk button {
     position: relative;
-    width: 900px;
+    left: 300px;
+    width: 300px;
     height: 40px;
     border-radius: 10px;
-    background-color: #00173D;
-    color: aliceblue;
-    font-size: large;
-    top: 80px;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-#BackBtn a{
-    text-decoration: none;
-    color: aliceblue;
-}
-
-button{
-    margin: 40px 0 0 40px;
-    width: 120px;
-    height: 40px;
-    border-radius: 10px;
-    background-color: #00173D;
-    color: aliceblue;
+    background-color: #031c45bd;
+    color: #FFFF;
     font-size: large;
     font-family: 'Times New Roman', Times, serif;
 }
-
-tr{
-    display: inline-block;
-    margin-right:30px;
+.dang-ki-tk button:hover {
+    background-color: #054b36;
 }
-
-select{
-    width: 145px;
-    height: 40px;
-    border-radius: 10px;
-    font-size: large-smaller;
-    font-family: 'Times New Roman', Times, serif;
-}
-
 /* thanh điều khiển*/
 nav{
     border: #00173D;
     border-radius: 40px;
     position: relative;
-    top: 70px;
-    right: 160px;
+    top: 280px;
+    right: 180px;
     width: 90px;
-    height: 900px;
+    height: 1270px;
     margin-top: 10px;
     background: #00173D;
     overflow: hidden;
@@ -341,8 +334,8 @@ nav{
 /* animation cho thanh điều khiển*/
 nav:hover{
     position: relative;
-    top: 70px;
-    right: 50px;
+    top: 290px;
+    right: 70px;
     width: 300px;
 }
 
@@ -424,3 +417,253 @@ nav .fas{
     color: #00173D;
     transition: 0.5s;
 }
+
+/* templates modifySV */
+
+
+#hovaten{
+    width: 210px;
+    position: relative;
+    left: 50px;
+    //bottom: 101px;
+    //left: 330px;
+}
+#nameInp {
+    width: 450px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#mssv{
+    position: relative;
+    bottom: 81px;
+    left: 580px;
+}
+#idInp{
+    width: 210px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#sex{
+    left: 50px;
+    width: 210px;
+    position: relative;
+    bottom: 80px;
+}
+#sexInp{
+    width: 210px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#ngaysinh {
+    position: relative;
+    bottom: 161px;
+    left: 300px;
+}
+#dobInp{
+    width: 210px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#cancuoc {
+    position: relative;
+    bottom: 242px;
+    left: 580px;
+}
+#cccdInp{
+    width: 210px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#emaill {
+    position: relative;
+    bottom: 250px;
+    left: 50px;
+}
+#emailInp{
+    width: 450px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#SDT {
+    position: relative;
+    bottom: 330.5px;
+    left: 580px;
+}
+#phoneInp{
+    width: 210px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* #cityInp {
+    position: relative;
+    bottom: 410px;
+    left: 50px;
+
+} */
+
+/* position address */
+#infor{
+    width: 900px;
+    position: relative;
+    bottom: 330px;
+    left: 50px;
+}
+#infor tr{
+    display: inline-block;
+}
+#infor thead tr{
+    margin-right: 140px;
+}
+.ps-quan{
+    position: relative;
+    left: 90px;
+    width: 240px;
+
+}
+.ps-phuong{
+    position: relative;
+    left: 100px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#diachi {
+    position: relative;
+    bottom: 330px;
+    left: 50px;
+}
+#addressInp{
+    width: 750px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#mk {
+    position: relative;
+    bottom: 300px;
+    left: 50px;
+}
+#passwordInp{
+    width: 330px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#check {
+    position: relative;
+    bottom: 380px;
+    left: 480px;
+}
+#confirmInp{
+    width: 330px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#thongtinhocvu {
+    position: relative;
+    bottom: 300px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#nganhhoc {
+    position: relative;
+    bottom: 300px;
+    left: 50px;
+}
+#nganhInp{
+    width: 200px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#hedaotao {
+    position: relative;
+    bottom: 381px;
+    left: 330px;
+}
+#hedaotaoInp{
+    width: 200px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#khoa {
+    position: relative;
+    bottom: 462px;
+    left: 600px;
+}
+#khoaInp{
+    width: 200px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#start {
+    position: relative;
+    bottom: 442px;
+    left: 50px;
+}
+#startstudyInp {
+    width: 180px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#end {
+    position: relative;
+    bottom: 522px;
+    left: 330px;
+}
+#endstudyInp {
+    width: 180px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#complete {
+    position: relative;
+    bottom: 603.5px;
+    left: 600px;
+}
+#tinchihoanthanh {
+    width: 200px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#nameInp, #idInp, #sexInp, #dobInp, #cccdInp, #emailInp, #phoneInp, #cityInp, #districtInp, #xaInp, #addressInp, #passwordInp,
+#confirmInp, #nganhInp, #hedaotaoInp, #khoaInp, #startstudyInp, #endstudyInp, #tinchihoanthanh{
+    background-color: #cdd3aa;
+}
+
+#AddBtn{
+    width: 104px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #00173D;
+    color: aliceblue;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    left: 60px;
+}
+
+#RetBtn{
+    width: 104px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #00173D;
+    color: aliceblue;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    left: 160px;
+}
+
+#UpdBtn{
+    width: 104px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #00173D;
+    color: aliceblue;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    left: 260px;
+}
+
+#DelBtn{
+    width: 104px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #00173D;
+    color: aliceblue;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    left: 380px;
+}
+
+#AddBtn:hover, #RetBtn:hover, #UpdBtn:hover, #DelBtn:hover{
+    background-color: #054b36;
+    color: aliceblue;
+}
+#gt-btn{
+    position: relative;
+    bottom: 520px;
+    width: 700px;
+}
+
