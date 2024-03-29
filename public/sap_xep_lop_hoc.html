@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sắp xếp lớp học</title>
 
-    <link rel="stylesheet" href="./css/QuanTriVien/style-modi-SV.css">
+    <link rel="stylesheet" href="./css/QuanTriVien/sap_xep_lop_hoc.css">
     <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
     <script src="./js/chung/DangXuat.js" type="module"></script>
 </head>
@@ -73,68 +73,68 @@
 
     <form id="MainForm">
         <div class="main1">
-            <div class="logo">
-                <img
-                    src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Flogo_DEF.jpg?alt=media&token=5c319bb6-f09c-4d0b-89d6-342fde279f9d">
-            </div>
-
             <div class="Dang-nhap">
-                <p id="msg"></p>
+                <p id="msg" class="Dang-nhap"></p>
             </div>
 
-            <div class="input-box">
-                Đợt đăng kí môn hiện tại
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="dot_dki" class="input-field" placeholder="" readonly>
+            <div id="div1">
+                <div class="input-box" id="dot">
+                    Đợt đăng kí môn hiện tại
+                    <div class="rounded-rectangle-login">
+                        <input type="text" id="dot_dki" class="input-field" placeholder="" readonly>
+                    </div>
+                </div>
+                <div id="button1">
+                    <button id="updkiBtn">Chuyển đợt</button>
+                    <button id="closeBtn">Mở/Kết thúc đợt</button>
+                </div>
+
+                <div class="input-box" id="maMH">
+                    Mã môn học
+                    <div class="rounded-rectangle-login">
+                        <input type="text" id="idInp" class="input-field" placeholder="">
+                    </div>
+                </div>
+
+                <button id="findBtn">Tìm kiếm môn học</button>
+
+                <div class="input-box" id="sisi">
+                    Sĩ số tối thiểu
+                    <div class="rounded-rectangle-login">
+                        <input type="text" id="min_numofsvInp" class="input-field" placeholder="" readonly>
+                    </div>
                 </div>
             </div>
 
-            <button id="updkiBtn">Chuyển đợt</button>
-            <button id="closeBtn">Mở/Kết thúc đợt</button>
-
-            <div class="input-box">
-                Mã môn học
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="idInp" class="input-field" placeholder="">
+            <div id="div2">
+                <div class="title">
+                    QUẢN TRỊ VIÊN TIẾN HÀNH SẮP XẾP LỚP HỌC
                 </div>
-            </div>
-
-            <div class="input-box">
-                Sĩ số tối thiểu trong một lớp
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="min_numofsvInp" class="input-field" placeholder="" readonly>
+                <div class="input-box" id="numClass">
+                    Số lượng lớp học
+                    <div class="rounded-rectangle-login">
+                        <input type="text" id="numofclassInp" class="input-field" placeholder="">
+                    </div>
                 </div>
-            </div>
-
-            <button id="findBtn">Tìm kiếm môn học</button>
-
-
-
-            <div class="input-box">
-                <h1>Quản trị viên tiến hành đăng kí lớp học</h1>
-                Số lượng lớp học
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="numofclassInp" class="input-field" placeholder="">
+                <div class="input-box" id="eachsiso">
+                    Sĩ số mỗi lớp
+                    <div class="rounded-rectangle-login">
+                        <input type="text" id="sisoInp" class="input-field" placeholder="">
+                    </div>
                 </div>
-            </div>
-            <div class="input-box">
-                Sĩ số mỗi lớp
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="sisoInp" class="input-field" placeholder="">
+                <p id="note">Lưu ý: Mỗi giảng viên cách nhau bởi dấu '-', ví dụ: GV001-GV002-GV003</p>
+                <div class="input-box" id="dki">
+                    Đăng kí giảng viên giảng dạy cho từng lớp
+                    <div class="rounded-rectangle-login">
+                        <input type="text" id="dkigvInp" class="input-field" placeholder="">
+                    </div>
                 </div>
-            </div>
-            <div class="input-box">
-                Đăng kí giảng viên giảng dạy cho từng lớp
-                <br>
-                Lưu ý: Mỗi giảng viên cách nhau bởi dấu '-', ví dụ: GV001-GV002-GV003
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="dkigvInp" class="input-field" placeholder="">
+                <div>
+                    <button id="AddBtn">Đăng kí lớp học</button>
+                    <button id="UpdBtn">Cập nhật thông tin</button>
                 </div>
+
             </div>
-
-
-            <button id="AddBtn">Đăng kí lớp học</button>
-            <button id="UpdBtn">Cập nhật thông tin</button>
         </div>
     </form>
 
@@ -206,7 +206,7 @@
             //cho code ké khúc load dữ liệu này lên nha
             get(ref(db, 'MonHoc/hoc_ki_hien_tai')).then((snapshot) => {
                 if (snapshot.exists()) {
-                    Msg.innerHTML = "Sắp xếp lớp học cho " + snapshot.val();
+                    Msg.innerHTML = "SẮP XẾP LỚP HỌC CHO " + snapshot.val();
                 }
             })
             //~~~~~~~~~~~~~~~~ cảm ơn ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -21,20 +21,6 @@ body {
     background-image: 
     url("https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2FDH_DEF.jpg?alt=media&token=ffbe0c5c-bb5c-40b0-a073-898dba82fb71");
     background-size: cover;
-
-}
-
-.confirm_css{
-    //margin-top: 10px;
-    //margin-left: 20px;
-    text-align: left;
-    font-size: 15px;
-    color: black; /* Màu chữ */
-    font-weight: bold; /* Chữ in đậm */
-    font-family: 'Noto Serif', serif;
-    position: relative;
-    bottom: 370px;
-    left: 495px;
 }
 
 .main1 {
@@ -48,6 +34,18 @@ body {
     margin: 20px;
     justify-content: center;
     align-items: center;
+}
+.confirm_css{
+    //margin-top: 10px;
+    //margin-left: 20px;
+    text-align: left;
+    font-size: 15px;
+    color: black; /* Màu chữ */
+    font-weight: bold; /* Chữ in đậm */
+    font-family: 'Noto Serif', serif;
+    position: relative;
+    bottom: 370px;
+    left: 495px;
 }
 .Dang-nhap {
     text-align: center;
@@ -203,6 +201,9 @@ nav .fas{
 }
 
 /* templates modifySV */
+.information{
+    height: 500px;
+}
 
 
 #hovaten{
@@ -271,7 +272,6 @@ nav .fas{
     width: 210px;
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
 /* position address */
 #infor{
     width: 900px;
@@ -328,65 +328,25 @@ nav .fas{
     bottom: 300px;
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#nganhhoc {
+#bc{
     position: relative;
-    bottom: 300px;
+    //bottom: 100px;
     left: 50px;
 }
-#nganhInp{
+#bangcapInp{
     width: 200px;
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#hedaotao {
+#allSub{
     position: relative;
-    bottom: 381px;
-    left: 330px;
+    bottom: 80px;
+    left: 290px;
+    width: 500px;
 }
-#hedaotaoInp{
-    width: 200px;
+#subInp{
+    width: 530px;
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#khoa {
-    position: relative;
-    bottom: 462px;
-    left: 600px;
-}
-#khoaInp{
-    width: 200px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#start {
-    position: relative;
-    bottom: 442px;
-    left: 50px;
-}
-#startstudyInp {
-    width: 180px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#end {
-    position: relative;
-    bottom: 522px;
-    left: 330px;
-}
-#endstudyInp {
-    width: 180px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#complete {
-    position: relative;
-    bottom: 603.5px;
-    left: 600px;
-}
-#tinchihoanthanh {
-    width: 200px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#nameInp, #idInp, #sexInp, #dobInp, #cccdInp, #emailInp, #phoneInp, #cityInp, #districtInp, #xaInp, #addressInp, #passwordInp,
-#confirmInp, #nganhInp, #hedaotaoInp, #khoaInp, #startstudyInp, #endstudyInp, #tinchihoanthanh{
-    background-color: #cdd3aa;
-}
-
 #AddBtn{
     width: 104px;
     height: 40px;
@@ -435,14 +395,74 @@ nav .fas{
     left: 380px;
 }
 
-#AddBtn:hover, #RetBtn:hover, #UpdBtn:hover, #DelBtn:hover{
+#AddBtn:hover, #RetBtn:hover, #UpdBtn:hover, #DelBtn:hover, #AddSubBtn:hover, #CanSubBtn:hover{
     background-color: #054b36;
     color: aliceblue;
     cursor: pointer;
 }
+
 #gt-btn{
     position: relative;
-    bottom: 520px;
-    width: 700px;
+    bottom: 60px;
+    width: 900px;
 }
-
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#note{
+    position: relative;
+    bottom: 35px;
+    left: 50px;
+    width: 900px;
+    font-size: 20px;
+    color: #c5a944; /* Màu chữ */
+    font-style: italic; /* Chữ in nghiêng */
+    /* font-weight: bold; Chữ in đậm */
+    font-family: 'Noto Serif', serif;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#cancell{
+    position: relative;
+    left: 50px;
+    bottom: 30px;
+    width: 900px;
+}
+#cancelsubInp{
+    width: 780px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#addd{
+    position: relative;
+    left: 50px;
+    bottom: 30px;
+    width: 900px;
+}
+#addsubInp{
+    width: 780px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#nameInp, #idInp, #sexInp, #dobInp, #cccdInp, #emailInp, #phoneInp, #cityInp, #districtInp, #xaInp, #addressInp, #passwordInp,
+#confirmInp, #bangcapInp, #subInp, #cancelsubInp, #addsubInp{
+    background-color: #cdd3aa;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#AddSubBtn{
+    width: 304px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #00173D;
+    color: aliceblue;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    left: 100px;
+}
+#CanSubBtn{
+    width: 304px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #00173D;
+    color: aliceblue;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    left: 200px;
+}

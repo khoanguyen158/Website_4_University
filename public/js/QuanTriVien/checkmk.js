@@ -6,11 +6,11 @@ function checkPassword() {
     let message = document.getElementById('message');
     if (p.length != 0) {
         if (p == cp) {
-            message.style.color = 'green';
+            message.style.color = 'orange';
             message.textContent = 'Password is matching!';
         }
         else {
-            message.style.color = 'red';
+            message.style.color = 'white';
             message.textContent = 'Password is not matching!';
         }
     }

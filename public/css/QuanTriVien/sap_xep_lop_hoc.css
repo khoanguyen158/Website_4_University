@@ -21,28 +21,14 @@ body {
     background-image: 
     url("https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2FDH_DEF.jpg?alt=media&token=ffbe0c5c-bb5c-40b0-a073-898dba82fb71");
     background-size: cover;
-
-}
-
-.confirm_css{
-    //margin-top: 10px;
-    //margin-left: 20px;
-    text-align: left;
-    font-size: 15px;
-    color: black; /* Màu chữ */
-    font-weight: bold; /* Chữ in đậm */
-    font-family: 'Noto Serif', serif;
-    position: relative;
-    bottom: 370px;
-    left: 495px;
 }
 
 .main1 {
     position: relative;
-    top: 250px;
+    bottom: 10px;
     padding: 50px;
     width: 900px;
-    height: 1150px;
+    height: 700px;
     background-color: #031c458f;
     border-radius: 50px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
     margin: 20px;
@@ -106,10 +92,10 @@ nav{
     border: #00173D;
     border-radius: 40px;
     position: relative;
-    top: 280px;
+    top: 10px;
     right: 180px;
     width: 90px;
-    height: 1270px;
+    height: 800px;
     margin-top: 10px;
     background: #00173D;
     overflow: hidden;
@@ -118,7 +104,7 @@ nav{
 /* animation cho thanh điều khiển*/
 nav:hover{
     position: relative;
-    top: 290px;
+    top: 10px;
     right: 70px;
     width: 300px;
 }
@@ -202,193 +188,108 @@ nav .fas{
     transition: 0.5s;
 }
 
-/* templates modifySV */
-
-
-#hovaten{
-    width: 210px;
+/* templates sap_xep_mon_hoc */
+#div1{
     position: relative;
-    left: 50px;
-    //bottom: 101px;
-    //left: 330px;
+    top: 50px;
+    height: 150px;
+    left: 20px;
 }
-#nameInp {
-    width: 450px;
+#div2{
+    position: relative;
+    top: 50px;
+    left: 20px;
+}
+#dot_dki{
+    width: 200px;
+}
+#button1{
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+#updkiBtn{
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #00173D;
+    color: aliceblue;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+}
+#closeBtn{
+    width: 130px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #00173D;
+    color: aliceblue;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#mssv{
+#maMH{
     position: relative;
-    bottom: 81px;
-    left: 580px;
+    left: 320px;
+    bottom: 121px;
 }
 #idInp{
-    width: 210px;
+    width:150px;
+}
+
+#findBtn{
+    width: 180px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #00173D;
+    color: aliceblue;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    left: 465px;
+    bottom: 111px;
+}
+#sisi{
+    position: relative;
+    left: 600px;
+    bottom: 241px;
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#sex{
-    left: 50px;
-    width: 210px;
+#numofclassInp{
+    width: 350px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#eachsiso{
     position: relative;
+    left: 430px;
     bottom: 80px;
 }
-#sexInp{
-    width: 210px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#ngaysinh {
-    position: relative;
-    bottom: 161px;
-    left: 300px;
-}
-#dobInp{
-    width: 210px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#cancuoc {
-    position: relative;
-    bottom: 242px;
-    left: 580px;
-}
-#cccdInp{
-    width: 210px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#emaill {
-    position: relative;
-    bottom: 250px;
-    left: 50px;
-}
-#emailInp{
-    width: 450px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#SDT {
-    position: relative;
-    bottom: 330.5px;
-    left: 580px;
-}
-#phoneInp{
-    width: 210px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#sisoInp{
+    width: 350px;
 
-/* position address */
-#infor{
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#note{
+    position: relative;
+    bottom: 35px;
+    left: 10px;
     width: 900px;
+    font-size: 20px;
+    color: #c5a944; /* Màu chữ */
+    font-style: italic; /* Chữ in nghiêng */
+    /* font-weight: bold; Chữ in đậm */
+    font-family: 'Noto Serif', serif;
+}
+#dki{
     position: relative;
-    bottom: 330px;
-    left: 50px;
+    width: 700px;
+    bottom: 50px;
 }
-#infor tr{
-    display: inline-block;
-}
-#infor thead tr{
-    margin-right: 140px;
-}
-.ps-quan{
-    position: relative;
-    left: 90px;
-    width: 240px;
-
-}
-.ps-phuong{
-    position: relative;
-    left: 100px;
+#dkigvInp{
+    width: 790px;
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#diachi {
-    position: relative;
-    bottom: 330px;
-    left: 50px;
-}
-#addressInp{
-    width: 750px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#mk {
-    position: relative;
-    bottom: 300px;
-    left: 50px;
-}
-#passwordInp{
-    width: 330px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#check {
-    position: relative;
-    bottom: 380px;
-    left: 480px;
-}
-#confirmInp{
-    width: 330px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#thongtinhocvu {
-    position: relative;
-    bottom: 300px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#nganhhoc {
-    position: relative;
-    bottom: 300px;
-    left: 50px;
-}
-#nganhInp{
-    width: 200px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#hedaotao {
-    position: relative;
-    bottom: 381px;
-    left: 330px;
-}
-#hedaotaoInp{
-    width: 200px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#khoa {
-    position: relative;
-    bottom: 462px;
-    left: 600px;
-}
-#khoaInp{
-    width: 200px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#start {
-    position: relative;
-    bottom: 442px;
-    left: 50px;
-}
-#startstudyInp {
-    width: 180px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#end {
-    position: relative;
-    bottom: 522px;
-    left: 330px;
-}
-#endstudyInp {
-    width: 180px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#complete {
-    position: relative;
-    bottom: 603.5px;
-    left: 600px;
-}
-#tinchihoanthanh {
-    width: 200px;
-}
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#nameInp, #idInp, #sexInp, #dobInp, #cccdInp, #emailInp, #phoneInp, #cityInp, #districtInp, #xaInp, #addressInp, #passwordInp,
-#confirmInp, #nganhInp, #hedaotaoInp, #khoaInp, #startstudyInp, #endstudyInp, #tinchihoanthanh{
-    background-color: #cdd3aa;
-}
-
 #AddBtn{
-    width: 104px;
+    width: 300px;
     height: 40px;
     border-radius: 10px;
     background-color: #00173D;
@@ -396,23 +297,11 @@ nav .fas{
     font-size: large;
     font-family: 'Times New Roman', Times, serif;
     position: relative;
-    left: 60px;
-}
-
-#RetBtn{
-    width: 104px;
-    height: 40px;
-    border-radius: 10px;
-    background-color: #00173D;
-    color: aliceblue;
-    font-size: large;
-    font-family: 'Times New Roman', Times, serif;
-    position: relative;
-    left: 160px;
+    left: 20px;
 }
 
 #UpdBtn{
-    width: 104px;
+    width: 300px;
     height: 40px;
     border-radius: 10px;
     background-color: #00173D;
@@ -420,29 +309,20 @@ nav .fas{
     font-size: large;
     font-family: 'Times New Roman', Times, serif;
     position: relative;
-    left: 260px;
+    left: 210px;
 }
-
-#DelBtn{
-    width: 104px;
-    height: 40px;
-    border-radius: 10px;
-    background-color: #00173D;
-    color: aliceblue;
-    font-size: large;
-    font-family: 'Times New Roman', Times, serif;
-    position: relative;
-    left: 380px;
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#dot_dki, #idInp, #min_numofsvInp, #numofclassInp, #sisoInp, #dkigvInp{
+    background-color: #cdd3aa;
 }
-
-#AddBtn:hover, #RetBtn:hover, #UpdBtn:hover, #DelBtn:hover{
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#updkiBtn:hover, #closeBtn:hover, #findBtn:hover{
     background-color: #054b36;
     color: aliceblue;
     cursor: pointer;
 }
-#gt-btn{
-    position: relative;
-    bottom: 520px;
-    width: 700px;
-}
-
