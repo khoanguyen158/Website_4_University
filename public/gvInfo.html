@@ -6,15 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khóa học của tôi</title>
-    <link rel="stylesheet" href="./css/chung/style_home.css" />
-    <link rel="stylesheet" href="./css/SinhVien/userInfo.css" />
+    <!-- <link rel="stylesheet" href="./css/chung/style_home.css" /> -->
+    <link rel="stylesheet" href="./css/GiangVien/userInfoGV.css" />
     <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
-    <script src="./js/chung/DangXuat.js" type="module"></script>
+    <script src="./js/SinhVien/Home.js" type="module"></script>
 </head>
 
 <body>
+    <!-- Vị trí thanh nav, copy từ file Home.html qua
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -->
+    
+    <!-- Vị trí thanh nav, copy từ file Home.html qua
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    -->
     <div class="container">
-
+        <!-- Vị trí thanh nav, copy từ file Home.html qua
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -->
+        
+        
         <nav>
             <ul>
                 <li><a href="#" class="logo">
@@ -24,28 +38,24 @@
                         <span class="nav-item">bkel</span>
                     </a></li>
 
-                <li><a href="#" class="avatar">
+                <li><a href="svInfo.html" class="avatar">
 
                         <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
                             alt="Avatar">
 
                         <span class="nav-item">Thông tin cá nhân</span>
                     </a></li>
-                <li><a href="#" class="side-bar-icon">
+                <li><a href="Home.html" class="side-bar-icon">
                         <i class="fas fa-home"></i>
                         <span class="nav-item">Trang chủ</span>
                     </a></li>
                 <li><a href="#" class="side-bar-icon">
                         <i class="fas fa-book-open-reader"></i>
-                        <span class="nav-item">Khóa học của tôi</span>
-                    </a></li>
-                <li><a href="#" class="side-bar-icon">
-                        <i class="fas fa-newspaper"></i>
-                        <span class="nav-item">Bài kiểm tra</span>
+                        <span class="nav-item">Môn dạy</span>
                     </a></li>
                 <li><a href="#" class="side-bar-icon">
                         <i class="fas fa-table"></i>
-                        <span class="nav-item">Thời khóa biểu</span>
+                        <span class="nav-item">Lịch dạy</span>
                     </a></li>
                 <li><a href="#" class="side-bar-icon">
                         <i class="fas fa-comments"></i>
@@ -55,100 +65,256 @@
                         <i class="fas fa-gear"></i>
                         <span class="nav-item">Cài đặt</span>
                     </a></li>
-
                 <li>
                     <a href="#" class="side-bar-icon">
-                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <i class="fas fa-solid fa-right-from-bracket"></i>
                         <span class="nav-item" id="signoutbutton">Đăng xuất</span>
                     </a>
                 </li>
-                <!-- <div>
-                            
-                            <button type="button" ></button>
-                        </div> -->
-                </li>
             </ul>
         </nav>
+        
+
+        <!-- Vị trí thanh nav, copy từ file Home.html qua
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -->
 
         <div class="userIn">
             <div class="tittleIn">
-                Thông tin của giáo viên
+                Thông tin cá nhân
             </div>
-            <div class="mainUserIn">
-                <div class="ImageProfile">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FimgUser%2FimgSV%2Fjuan.png?alt=media&token=dd8a2e1c-2a93-42a8-a0d3-70e5d602ed01"
-                        id="profilePic">
-                    <br />
-                    <label for="input-file"> Update image </label>
-                    <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file">
-
-                </div>
-                <div class="userInfoForm">
+            <div class="imgPro">
+                <input type="text" id="namebox">
+                <label id="extlab"></label>
+                <img id="myimg" src="">
+                <br> <br>
+                <button id="upbtn">Sửa ảnh</button>
+            </div>
+                <div class="userInfoForm1">
                     <div class="form-group">
                         <label for="fullName">Họ và Tên:</label>
-                        <input type="text" id="fullName" name="fullName" value="Nguyễn Văn A" readonly>
+                        <input type="text" id="nameInp" name="fullName" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Giới tính</label>
+                        <input type="text" id="sexInp" name="" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Ngày sinh:</label>
+                        <input type="text" id="dobInp" name="" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="msgv">MSGV:</label>
+                        <input type="text" id="idInp" name="msgv" readonly>
                     </div>
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="text" id="email" name="email" value="example@example.com" readonly>
+                        <input type="text" id="emailInp" name="email" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Căn cước công dân:</label>
+                        <input type="text" id="cccd" name="" readonly>
                     </div>
                     <div class="form-group">
                         <label for="phone">Số điện thoại:</label>
-                        <input type="text" id="phone" name="phone" value="0123456789" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="mssv">MSGV:</label>
-                        <input type="text" id="phone" name="phone" value="2211625" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Quốc gia</label>
-                        <input type="text" id="phone" name="phone" value="abc,def,ghi" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Địa chỉ tạm trú</label>
-                        <input type="text" id="phone" name="phone" value="abc,def,ghi" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Địa chỉ thường trú</label>
-                        <input type="text" id="phone" name="phone" value="abc,def,ghi" readonly>
-                    </div>
-                    <!-- <div class="form-group">
-                            <label for="address">Huyện</label>
-                            <input type="text" id="phone" name="phone" value="abc,def,ghi" readonly>
-                        </div> -->
-
-                    <div class="btn-group">
-                        <button type="button" id="editBtn" onclick="enableEdit()">Chỉnh sửa</button>
-                        <button type="submit" id="updateBtn" style="display: none;">Cập nhật</button>
+                        <input type="text" id="phoneInp" name="phone">
                     </div>
                 </div>
-                <!-- <div class = "wrap">
-                        <div class="form-group2" >
-                            <label for="address">Xã</label>
-                            <input type="text" id="phone" name="phone" value="abc,def,ghi" readonly>
-                        </div>
-                        <div class="form-group2" >
-                            <label for="address">Tên đường, số nhà</label>
-                            <input type="text" id="phone" name="phone" value="abc,def,ghi" readonly>
-                        </div>
-                    </div> -->
-
-
+                <div class="userInfoForm2">
+                    <div class="form-group">
+                        <label for="address">Địa chỉ: </label>
+                        <input type="text" id="addressInp" name="address">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Bằng cấp:</label>
+                        <input type="text" id="bangcap" name="" readonly>
+                    </div>
+                    <button id="UpdBtn">Cập nhật thông tin</button>
             </div>
         </div>
-        <!--
-                <button id="edit-btn">Edit</button>
-                -->
     </div>
-    <script src="userInfo.js"></script>
-    <script>
-        let profilePic = document.getElementById("profilePic");
-        let inputfile = document.getElementById("input-file");
 
-        inputfile.onchange = function () {
-            profilePic.src = URL.createObjectURL(inputfile.files[0]);
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL, deleteObject, listAll } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-storage.js";
+        import { getDatabase, set, ref, child, get, update, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDQk0PGIztg7qltOimH1_9_lLl5rluKsV8",
+            authDomain: "fir-d023a.firebaseapp.com",
+            databaseURL: "https://fir-d023a-default-rtdb.firebaseio.com",
+            projectId: "fir-d023a",
+            storageBucket: "fir-d023a.appspot.com",
+            messagingSenderId: "81322751429",
+            appId: "1:81322751429:web:eeb12e1ec56b1970c807ac",
+            measurementId: "G-KZQQJNVVWJ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const realdb = getDatabase(app);
+        const auth = getAuth(app);
+
+        //-------------------------------------------------------------
+        let EmailInp    = document.getElementById('emailInp');
+        let NameInp     = document.getElementById('nameInp');
+        let IdInp       = document.getElementById('idInp');
+        let AddressInp  = document.getElementById('addressInp');
+        let PhoneInp    = document.getElementById('phoneInp');
+        let SexInp      = document
+        let DobInp      = document.getElementById('dobInp');
+        let CccdInp     = document.getElementById('cccd');
+        let bangcap = document.getElementById('bangcap');
+
+        let UpdBtn = document.getElementById('UpdBtn');
+
+        //let updBtn      = document.getElementById('UpdBtn');
+        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+        const storage = getStorage();
+
+        var files   = [];
+        var reader  = new FileReader();
+        var namebox = document.getElementById('namebox');
+        var extlab  = document.getElementById('extlab');
+        var myimg   = document.getElementById('myimg');
+        var proglab = document.getElementById('upprogress');
+
+        var UpBtn = document.getElementById('upbtn');
+
+        let msgv = UserInfo.id;
+
+        var input = document.createElement('input');
+        input.type = 'file';
+
+        input.onchange = e => {
+            files = e.target.files;
+
+            var extension = msgv;
+            var name = msgv;
+
+            namebox.value = name;
+            extlab.innerHTML = extension;
+
+            reader.readAsDataURL(files[0]);
+        };
+
+        reader.onload = function () {
+            myimg.src = reader.result;
+            uploadNewImage(); // Automatically upload the selected image
+        };
+        // Function to upload a new image
+        async function uploadNewImage() {
+            try {
+                // Check if there is a previous image to delete
+                const previousImageName = namebox.value.trim(); // Assuming namebox and extlab are defined elsewhere
+
+                // Upload the new image
+                const ImgToUpload = files[0];
+                const ImgName = namebox.value.trim();
+
+                const metaData = {
+                    contentType: ImgToUpload.type
+                };
+
+                const storageRef = sRef(storage, 'Img/imgUser/imgGV/' + msgv);
+                const UploadTask = uploadBytesResumable(storageRef, ImgToUpload, metaData);
+
+                UploadTask.on('state-changed', (snapshot) => {
+
+                },
+                    () => {
+                        getDownloadURL(UploadTask.snapshot.ref).then((downloadURL) => {
+                            console.log(downloadURL);
+                            SaveURLtoRealtimeDB(downloadURL);
+                        });
+                    });
+            } catch (error) {
+                console.error("Error uploading new image:", error);
+            }
         }
+
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+        function displayAvt() {
+            const storageRef = sRef(storage, 'Img/imgUser/imgGV/' + msgv);
+            getDownloadURL(storageRef).then((url) => {
+                document.getElementById('myimg').src = url;
+            }).catch((error) => {
+                console.error('Error getting image URL:', error);
+            });
+        }
+
+        UpBtn.onclick = function () {
+            input.click();
+        };
+
+        function getData() {
+            const userRef = ref(realdb, `GiangVien/${UserInfo.id}`);
+
+            get(userRef).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const userData = snapshot.val();
+                    // Hiển thị dữ liệu người dùng trên giao diện người dùng
+                    document.getElementById('nameInp').value = userData.ho_va_ten;
+                    document.getElementById('emailInp').value = userData.email;
+                    document.getElementById('idInp').value = userData.id;
+                    document.getElementById('addressInp').value = userData.dia_chi;
+                    document.getElementById('phoneInp').value = userData.so_dien_thoai;
+                    document.getElementById('dobInp').value = userData.ngay_sinh;
+                    document.getElementById('sexInp').value = userData.gioi_tinh;
+                    document.getElementById('cccd').value = userData.cccd;
+                    document.getElementById('bangcap').value = userData.bang_cap;
+                } else {
+                    console.log("Không tìm thấy thông tin người dùng trong cơ sở dữ liệu.");
+                }
+            }).catch((error) => {
+                console.error("Lỗi khi truy xuất dữ liệu từ cơ sở dữ liệu:", error);
+            });
+
+        }
+
+        let UpdData = () => {
+            const db = getDatabase(app);
+            update(ref(db, 'GiangVien/' + UserInfo.id), {
+                so_dien_thoai: PhoneInp.value,
+                dia_chi: AddressInp.value
+            }).then(() => {
+                alert("Data updated successfully!");
+            }).catch((error) => {
+                alert("Data could not be updated!" + error);
+                console.error(error);
+            });
+        }
+
+        window.addEventListener('load', () => {
+            const UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+            const msgv = UserInfo.id;
+            if (UserInfo) {
+                getData();
+                displayAvt();
+            } else {
+                console.log('User info not found in session storage.');
+            }
+        })
+
+        UpdBtn.addEventListener('click', evt => {
+            evt.preventDefault();
+            UpdData();
+        });
+
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Sign out
+        let SignOutBtn = document.getElementById("signoutbutton");
+        let SignOut = () => {
+            sessionStorage.removeItem("user-creds");
+            sessionStorage.removeItem("user-info");
+            window.location.href = "index.html";
+        }
+        SignOutBtn.addEventListener('click', SignOut);
     </script>
 </body>
+
 
 </html>

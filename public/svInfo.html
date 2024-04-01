@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khóa học của tôi</title>
-    <link rel="stylesheet" href="./css/chung/style_home.css" />
+    <!-- <link rel="stylesheet" href="./css/chung/style_home.css" /> -->
     <link rel="stylesheet" href="./css/SinhVien/userInfo.css" />
     <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
     <script src="./js/SinhVien/Home.js" type="module"></script>
@@ -27,14 +27,16 @@
         </div>
     </div>
     <!-- Vị trí thanh nav, copy từ file Home.html qua
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            -->
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    -->
     <div class="container">
         <!-- Vị trí thanh nav, copy từ file Home.html qua
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         -->
+        
+        
         <nav>
             <ul>
                 <li><a href="#" class="logo">
@@ -97,24 +99,25 @@
                 </li>
             </ul>
         </nav>
+        
+
         <!-- Vị trí thanh nav, copy từ file Home.html qua
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         -->
+
         <div class="userIn">
             <div class="tittleIn">
-                Thông tin cá nhân
+                Thông tin   cá nhân
             </div>
             <div class="imgPro">
                 <input type="text" id="namebox">
                 <label id="extlab"></label>
                 <img id="myimg" src="">
                 <br> <br>
-                <button id="upbtn">Upload Image</button>
+                <button id="upbtn">Sửa ảnh</button>
             </div>
-            <div class="mainUserIn">
-
-                <div class="userInfoForm">
+                <div class="userInfoForm1">
                     <div class="form-group">
                         <label for="fullName">Họ và Tên:</label>
                         <input type="text" id="nameInp" name="fullName" readonly>
@@ -143,7 +146,8 @@
                         <label for="phone">Số điện thoại:</label>
                         <input type="text" id="phoneInp" name="phone">
                     </div>
-
+                </div>
+                <div class="userInfoForm2">
                     <div class="form-group">
                         <label for="address">Địa chỉ </label>
                         <input type="text" id="addressInp" name="address">
@@ -166,9 +170,7 @@
                     </div>
 
                     <button id="UpdBtn">Cập nhật thông tin</button>
-                </div>
             </div>
-
         </div>
     </div>
 
@@ -194,16 +196,16 @@
         const auth = getAuth(app);
 
         //-------------------------------------------------------------
-        let EmailInp = document.getElementById('emailInp');
-        let NameInp = document.getElementById('nameInp');
-        let IdInp = document.getElementById('idInp');
-        let AddressInp = document.getElementById('addressInp');
-        let PhoneInp = document.getElementById('phoneInp');
-        let SexInp = document
-        let DobInp = document.getElementById('dobInp');
-        let CccdInp = document.getElementById('cccd');
+        let EmailInp    = document.getElementById('emailInp');
+        let NameInp     = document.getElementById('nameInp');
+        let IdInp       = document.getElementById('idInp');
+        let AddressInp  = document.getElementById('addressInp');
+        let PhoneInp    = document.getElementById('phoneInp');
+        let SexInp      = document
+        let DobInp      = document.getElementById('dobInp');
+        let CccdInp     = document.getElementById('cccd');
         let HedaotaoInp = document.getElementById('hedaotao');
-        let NganhInp = document.getElementById('nganh');
+        let NganhInp    = document.getElementById('nganh');
         let StartStudyInp = document.getElementById('start_study');
         let EndStudyInp = document.getElementById('end_study');
 
@@ -214,11 +216,11 @@
 
         const storage = getStorage();
 
-        var files = [];
-        var reader = new FileReader();
+        var files   = [];
+        var reader  = new FileReader();
         var namebox = document.getElementById('namebox');
-        var extlab = document.getElementById('extlab');
-        var myimg = document.getElementById('myimg');
+        var extlab  = document.getElementById('extlab');
+        var myimg   = document.getElementById('myimg');
         var proglab = document.getElementById('upprogress');
 
         var UpBtn = document.getElementById('upbtn');

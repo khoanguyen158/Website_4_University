@@ -329,11 +329,14 @@ nav{
     border: #00173D;
     border-radius: 40px;
     position: relative;
-    top: 70px;
-    right: 160px;
+    /* top: 70px;
+    right: 160px; */
+    margin-right: 30px;
     width: 90px;
     height: 900px;
-    margin-top: 10px;
+    margin-top: 130px;
+
+
     background: #00173D;
     overflow: hidden;
     transition: 1s;
@@ -341,8 +344,8 @@ nav{
 /* animation cho thanh điều khiển*/
 nav:hover{
     position: relative;
-    top: 70px;
-    right: 50px;
+    /* top: 70px;
+    right: 50px; */
     width: 300px;
 }
 
