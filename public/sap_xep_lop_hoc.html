@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="./css/QuanTriVien/sap_xep_lop_hoc.css">
     <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
     <script src="./js/chung/DangXuat.js" type="module"></script>
+    <script src="./js/QuanTriVien/angular.min.js"></script>
+    <script src="./js/QuanTriVien/angular-route.min.js"></script>
+    <script src="./js/QuanTriVien/app.js"></script>
 </head>
 
 <body ng-app="myapp" ng-controller="homeCtrl">
@@ -220,13 +223,13 @@
         let Find = async () => {
             let id = IdInp.value;
             let dbref = ref(db, 'MonHoc/' + id);
+            
             let dbdata = await get(dbref);
             let data = dbdata.val();
             if (data) {
                 MinnumOfSvInp.value = data.mo_ta_mon_hoc.si_so_toi_thieu;
                 // Navigate to the new page if data exists
-                //window.location.href = "class_list/class_list.html";
-                // Mở trang trong tab mới
+                
                 sessionStorage.setItem("currentId", id);
                 window.open("class_list.html", '_blank');
             } else {
@@ -236,9 +239,9 @@
 
         let Add = async () => {
             let id = IdInp.value;
-            let numofsv = MinnumOfSvInp.value;
+            let numofsv = Number(MinnumOfSvInp.value);
             let numofclass = NumOfClassInp.value;
-            let siso = SiSoInp.value;
+            let siso = Number(SiSoInp.value);
             let dkigv = DkiGvInp.value;
 
             let dbref = ref(db, 'MonHoc/' + id);
@@ -250,16 +253,16 @@
             }
 
             if (data) {
-                let dbref = ref(db, 'MonHoc/' + id + '/LopHoc');
+                let dbref = ref(db, 'MonHoc/' + id + '/LopHoc/');
                 let dbdata = await get(dbref);
-                let data = dbdata.val();
-                if (data) {
+                let data1 = dbdata.val();
+                if (data1) {
                     alert('Lớp học đã tồn tại, vui lòng cập nhật thông tin');
                 }
                 else {
                     update(ref(db, 'MonHoc/' + id), {
                         so_luong_lop: numofclass,
-                        si_so_tung_lop: siso,
+                        si_so_tung_lop: siso.toString(),
                         gv_day_tung_lop: dkigv
                     });
                     let s = dkigv.split('-');
@@ -284,9 +287,9 @@
 
         let Upd = async () => {
             let id = IdInp.value;
-            let numofsv = MinnumOfSvInp.value;
+            let numofsv = Number(MinnumOfSvInp.value);
             let numofclass = NumOfClassInp.value;
-            let siso = SiSoInp.value;
+            let siso = Number(SiSoInp.value);
             let dkigv = DkiGvInp.value;
 
             let dbref = ref(db, 'MonHoc/' + id);
@@ -303,9 +306,10 @@
 
                 update(ref(db, 'MonHoc/' + id), {
                     so_luong_lop: numofclass,
-                    si_so_tung_lop: siso,
+                    si_so_tung_lop: siso.toString(),
                     gv_day_tung_lop: dkigv
                 });
+                remove(ref(db, 'MonHoc/' + id + '/LopHoc'));
                 let s = dkigv.split('-');
                 for (let i = 1; i <= numofclass; i++) {
                     let x;
@@ -314,12 +318,12 @@
                     } else {
                         x = id + '_L' + i;
                     }
-                    set(ref(db, 'MonHoc/' + id + '/LopHoc/' + x), {
+                    update(ref(db, 'MonHoc/' + id + '/LopHoc/' + x), {
                         giang_vien: s[i - 1],
                         sinh_vien: "0"
                     });
                 }
-                alert('Đăng kí lớp học thành công');
+                alert('Cập nhật thông tin thành công');
 
             } else {
                 alert('Không tìm thấy môn học');
@@ -332,14 +336,6 @@
         AddBtn.addEventListener('click', Add);
         UpdBtn.addEventListener('click', Upd);
         window.addEventListener('load', dulieudot);
-        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        let SignOutBtn = document.getElementById("signoutbutton");
-        let SignOut = () => {
-            sessionStorage.removeItem("user-creds");
-            sessionStorage.removeItem("user-info");
-            window.location.href = "index.html";
-        }
-        SignOutBtn.addEventListener('click', SignOut);
     </script>
 </body>
 
