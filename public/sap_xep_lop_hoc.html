@@ -112,7 +112,10 @@
             <div id="div2">
                 <div class="title">
                     QUẢN TRỊ VIÊN TIẾN HÀNH SẮP XẾP LỚP HỌC
+                    <br>
+                    <br>
                 </div>
+                <p id="note">Lưu ý: Chỉ có thể chỉnh sửa các thông tin bên dưới khi đang trong giai đoạn đăng kí môn ĐỢT 1</p>
                 <div class="input-box" id="numClass">
                     Số lượng lớp học
                     <div class="rounded-rectangle-login">
@@ -126,6 +129,7 @@
                     </div>
                 </div>
                 <p id="note">Lưu ý: Mỗi giảng viên cách nhau bởi dấu '-', ví dụ: GV001-GV002-GV003</p>
+                
                 <div class="input-box" id="dki">
                     Đăng kí giảng viên giảng dạy cho từng lớp
                     <div class="rounded-rectangle-login">
@@ -189,6 +193,7 @@
                 dot_dki: dot_dki.value
             });
             alert('Cập nhật đợt đăng kí môn học thành công');
+            window.location.reload();
         }
 
         let Mo_dong_dot_dki = () => {
@@ -203,6 +208,7 @@
             update(ref(db, 'MonHoc/'), {
                 dot_dki: dot_dki.value
             });
+            window.location.reload();
         }
 
         let dulieudot = async () => {
@@ -218,18 +224,32 @@
             let dbdata = await get(dbref);
             let data = dbdata.val();
             dot_dki.value = data.dot_dki;
+
+            if(dot_dki.value != "Đợt 1"){
+                NumOfClassInp.disabled = true;
+                SiSoInp.disabled = true;
+                DkiGvInp.disabled = true;
+                AddBtn.disabled = true;
+                UpdBtn.disabled = true;
+            }
         }
 
         let Find = async () => {
             let id = IdInp.value;
             let dbref = ref(db, 'MonHoc/' + id);
-            
+
             let dbdata = await get(dbref);
             let data = dbdata.val();
             if (data) {
                 MinnumOfSvInp.value = data.mo_ta_mon_hoc.si_so_toi_thieu;
+                let dbref1 = ref(db, 'MonHoc/' + id);
+                let dbdata1 = await get(dbref1);
+                let data1 = dbdata1.val();
+                NumOfClassInp.value = data1.so_luong_lop;
+                SiSoInp.value = data1.si_so_tung_lop;
+                DkiGvInp.value = data1.gv_day_tung_lop;
                 // Navigate to the new page if data exists
-                
+
                 sessionStorage.setItem("currentId", id);
                 window.open("class_list.html", '_blank');
             } else {
@@ -275,8 +295,14 @@
                         }
                         set(ref(db, 'MonHoc/' + id + '/LopHoc/' + x), {
                             giang_vien: s[i - 1],
-                            sinh_vien: "0"
+                            sinh_vien: "0",
+                            thong_bao: "Chưa có thông báo"
                         });
+                        update(ref(db, 'GiangVien' + s[i - 1] + '/mon_chi_tiet/' + id), {
+                            lop: {
+                                x: ""
+                            }
+                        })
                     }
                     alert('Đăng kí lớp học thành công');
                 }
@@ -286,7 +312,7 @@
         }
 
         let Upd = async () => {
-            let id = IdInp.value;
+            let id = IdInp.value; //mã môn học
             let numofsv = Number(MinnumOfSvInp.value);
             let numofclass = NumOfClassInp.value;
             let siso = Number(SiSoInp.value);
@@ -300,6 +326,23 @@
                 return;
             }
             if (data) {
+                //xóa thông tin cũ
+                get(ref(db, 'MonHoc/' + id)).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        let data = snapshot.val();
+                        let num = data.so_luong_lop;
+                        let s = data.gv_day_tung_lop.split('-');
+                        for (let i = 1; i <= num; i++) {
+                            let x;
+                            if (i < 10) {
+                                x = id + '_L0' + i;
+                            } else {
+                                x = id + '_L' + i;
+                            }
+                            remove(ref(db, 'GiangVien/' + s[i - 1] + '/mon_chi_tiet/' + id + '/lop/x'));
+                        }
+                    }
+                });
                 let dbref = ref(db, 'MonHoc/' + id + '/LopHoc');
                 let dbdata = await get(dbref);
                 let data = dbdata.val();
@@ -320,7 +363,12 @@
                     }
                     update(ref(db, 'MonHoc/' + id + '/LopHoc/' + x), {
                         giang_vien: s[i - 1],
-                        sinh_vien: "0"
+                        sinh_vien: "0",
+                    });
+                    update(ref(db, 'GiangVien/' + s[i - 1] + '/mon_chi_tiet/' + id), {
+                        lop: {
+                            x : ""
+                        }
                     });
                 }
                 alert('Cập nhật thông tin thành công');

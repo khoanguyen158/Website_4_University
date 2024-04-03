@@ -83,11 +83,6 @@
         -->
     <form id="MainForm">
         <div class="main1">
-            <div class="logo">
-                <img
-                    src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Flogo_DEF.jpg?alt=media&token=5c319bb6-f09c-4d0b-89d6-342fde279f9d">
-            </div>
-
             <div class="Dang-nhap">
                 Đăng kí môn học đợt 1
                 <br>
@@ -95,16 +90,16 @@
                 <br>
                 <p id="msg"></p>
             </div>
-
-            <div class="input-box">
+            <div class="title" id="thongtinmonhoc">
+                THÔNG TIN MÔN HỌC
+            </div>
+            <div class="input-box" id="timkiem">
                 Tìm kiếm môn
                 <div class="rounded-rectangle-login">
                     <input type="text" id="idInp" class="input-field" placeholder="">
                 </div>
             </div>
-
-            <div class="input-box">
-                <h1>Thông tin môn học</h1>
+            <div class="input-box" id="tenmonhoc">
                 Tên môn học
                 <div class="rounded-rectangle-login">
                     <input type="text" id="nameInp" class="input-field" placeholder="" readonly>
@@ -112,14 +107,14 @@
             </div>
 
 
-            <div class="input-box">
+            <div class="input-box" id="thoiluong">
                 Thời lượng dạy học (tuần)
                 <div class="rounded-rectangle-login">
                     <input type="text" id="timeInp" class="input-field" placeholder="" readonly>
                 </div>
             </div>
 
-            <div class="input-box">
+            <div class="input-box" id="sotinchi">
                 Số tín chỉ
                 <div class="rounded-rectangle-login">
                     <input type="text" id="tcInp" class="input-field" placeholder="" readonly>
@@ -129,7 +124,7 @@
 
             <button id="RetBtn">Tìm kiếm môn</button>
 
-            <div class="input-box">
+            <div class="input-box" id="hockihientai">
                 Học kì hiện tại
                 <div class="rounded-rectangle-login">
                     <input type="text" id="semesterInp" class="input-field"
@@ -137,7 +132,7 @@
                 </div>
             </div>
 
-            <div class="input-box">
+            <div class="input-box" id="cacmondangki" >
                 Tất cả các môn đã đăng kí của sinh viên (chỉ đọc)
                 <div class="rounded-rectangle-login">
                     <input type="text" id="subInp" class="input-field" placeholder="" readonly>
@@ -146,16 +141,16 @@
                 <button id="RetSubBtn">Làm mới</button>
             </div>
 
-            <p>Lưu ý: các dòng phía dưới phải theo định dạng như sau: CH1003,C01005,CO1007</p>
+            <div class="note"><p>Lưu ý: các dòng phía dưới phải theo định dạng như sau: CH1003,C01005,CO1007</p></div>
 
-            <div class="input-box">
+            <div class="input-box" id="cacmonhuy">
                 Các môn sinh viên muốn HỦY đăng ký trong các môn hiện tại
                 <div class="rounded-rectangle-login">
                     <input type="text" id="cancelsubInp" class="input-field" placeholder="">
                 </div>
             </div>
 
-            <div class="input-box">
+            <div class="input-box" id="dangkingoai">
                 Các môn sinh viên muốn ĐĂNG KÝ ngoài các môn hiện tại
                 <div class="rounded-rectangle-login">
                     <input type="text" id="addsubInp" class="input-field" placeholder="">

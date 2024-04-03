@@ -229,6 +229,7 @@
                 </div>
     
                 <p id="note">Lưu ý: các dòng phía dưới phải theo định dạng như sau: CH1003,C01005,CO1007</p>
+                <p id="note">Chỉ chỉnh sửa các môn giảng dạy của giảng viên khi đang trong giai đoạn chuyển giao giữa 2 học kì</p>
     
                 <div class="input-box" id="cancell">
                     Các môn giảng viên muốn HỦY đăng ký giảng dạy trong các môn hiện tại
@@ -334,7 +335,7 @@
             get(child(dbRef, 'GiangVien/' + IdInp.value)).then((snapshot) => {
                 if (snapshot.exists()) {
                     if (snapshot.val().mon != null) {
-                        str = snapshot.val().mon;
+                        str = snapshot.val().mon; //gán môn học cũ vào str
                     }
                     else {
                         str = "";
@@ -342,10 +343,11 @@
                 } else {
                     alert("No data available");
                     console.log("No data available");
+                    return;
                 }
 
                 if (str.length > 0) {
-                    str += ("," + AddSubInp.value);
+                    str += ("," + AddSubInp.value); //thêm môn học mới vào str
                 }
                 else {
                     str = AddSubInp.value;
@@ -353,6 +355,7 @@
                 update(ref(db, 'GiangVien/' + IdInp.value), {
                     mon: str
                 });
+                //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 let s = new String(AddSubInp.value);
                 let n = s.length;
                 let arr = new Array();
@@ -371,14 +374,18 @@
                 for (let i = 0; i < sophantucuamang; i++) {
                     set(ref(db, 'MonHoc/' + arr[i] + '/tong_so_giang_vien/' + IdInp.value), {
                         ho_va_ten: NameInp.value
+                    });
+                    update(ref(db, 'GiangVien/' + IdInp.value + '/mon_chi_tiet/' + arr[i]), {
+                        lop: "Chưa có lớp nào"
                     })
                 }
                 alert("Thêm " + sophantucuamang + " môn mới thành công!");
+                AddSubInp.value = "";
             });
         }
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         let CancelSubjectData = () => {
-            let str = new String();
+            let str = new String(); //chuỗi môn học cũ
             const dbRef = ref(db);
             get(child(dbRef, 'GiangVien/' + IdInp.value)).then((snapshot) => {
                 if (snapshot.exists()) {
@@ -393,11 +400,12 @@
                 } else {
                     alert("No data available");
                     console.log("No data available");
+                    return;
                 }
 
-                let s = new String(CancelSubInp.value);
+                let s = new String(CancelSubInp.value); // chuỗi môn học cần xóa
                 let n = s.length;
-                let arr = new Array();
+                let arr = new Array(); //mảng chứa các môn học cần xóa
                 for (let i = 0; i < n; i++) {
                     if (s[i] == ',') {
                         arr.push(s.substring(0, i));
@@ -429,28 +437,32 @@
                     update(ref(db, 'GiangVien/' + IdInp.value), {
                         mon: null
                     });
+                    remove(ref(db, 'GiangVien/' + IdInp.value + '/mon_chi_tiet'));
                     alert("Đã xóa hết môn giảng viên này giảng dạy!");
+                    CancelSubInp.value = "";
                     return;
                 }
+
+
+                remove(ref(db, 'GiangVien/' + IdInp.value + '/mon_chi_tiet'));
                 let tenmonhoccuoicung = new String("");
-                //alert(arr_tmp + " " + arr);
                 for (let i = 0; i < sophantucuamang_tmp; i++) {
                     let flag = false;
                     for (let j = 0; j < sophantucuamang; j++) {
                         if (arr_tmp[i] == arr[j]) {
-                            //alert("Mon hoc " + arr_tmp[i] + " da bi xoa!");
                             flag = true;
                             break;
                         }
-                        //else alert("Mon hoc " + arr_tmp[i] + " chua bi xoa!");
                     }
                     if (flag == false) {
                         tenmonhoccuoicung += (arr_tmp[i] + ",");
+                        update(ref(db, 'GiangVien/' + IdInp.value + '/mon_chi_tiet/' + arr_tmp[i]), {
+                            lop: "Chưa có lớp nào"
+                        });
                     }
                 }
                 if (tenmonhoccuoicung.length > 0) {
                     tenmonhoccuoicung = tenmonhoccuoicung.substring(0, tenmonhoccuoicung.length - 1);
-                    //alert("Các môn giảng viên còn giảng dạy sau khi xóa: " + tenmonhoccuoicung);
                 }
                 else {
                     alert("Đã xóa hết môn giảng viên này giảng dạy!");
@@ -459,10 +471,10 @@
                 update(ref(db, 'GiangVien/' + IdInp.value), {
                     mon: tenmonhoccuoicung
                 });
+                
                 alert("Xóa " + sophantucuamang + " môn cũ thành công!");
+                CancelSubInp.value = "";
             });
-
-
 
         }
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -587,6 +599,7 @@
         AddSubBtn.addEventListener('click', evt => {
             evt.preventDefault();
             AddSubjectData();
+            
         });
 
         CanSubBtn.addEventListener('click', evt => {
