@@ -16,87 +16,11 @@ body {
     align-items: center; /* Căn giữa theo chiều dọc */
     height: 100vh; /* Chiều cao của toàn bộ trang */
     background-color: #E8F1F2   ; /* Màu nền của toàn bộ trang */
-    margin: 0; /* Loại bỏ margin mặc định */
+    margin: 5vh 0px 0px 10vh; /* Loại bỏ margin mặc định */
     padding: 0; /* Loại bỏ padding mặc định */
     background-image: 
     url("https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2FDH_DEF.jpg?alt=media&token=ffbe0c5c-bb5c-40b0-a073-898dba82fb71");
     background-size: cover;
-}
-
-.main1 {
-    position: relative;
-    top: 250px;
-    padding: 50px;
-    width: 900px;
-    height: 1150px;
-    background-color: #031c458f;
-    border-radius: 50px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
-    margin: 20px;
-    justify-content: center;
-    align-items: center;
-}
-.confirm_css{
-    //margin-top: 10px;
-    //margin-left: 20px;
-    text-align: left;
-    font-size: 15px;
-    color: black; /* Màu chữ */
-    font-weight: bold; /* Chữ in đậm */
-    font-family: 'Noto Serif', serif;
-    position: relative;
-    bottom: 370px;
-    left: 495px;
-}
-.Dang-nhap {
-    text-align: center;
-    margin: 20px;
-    font-size: 38px;
-    color: #FFFF; /* Màu chữ */
-    font-weight: bold; /* Chữ in đậm */
-    font-family: 'Noto Serif', serif;
-}
-.title{
-    margin: 20px;
-    font-size: 25px;
-    color: #FFFF; /* Màu chữ */
-    font-weight: bold; /* Chữ in đậm */
-    font-family: 'Noto Serif', serif;
-}
-.input-box{
-    width: 350px;
-    margin-top: 20px;
-    margin-left: 10px;
-    text-align: left;
-    font-size: 18px;
-    color: #FFFF; /* Màu chữ */
-    font-weight: bold; /* Chữ in đậm */
-}
-
-.select-box{
-    height: 40px;
-    margin-left: 5px;
-    padding: 10px;
-    border: none;
-    background-color: #D9D9D9;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-.rounded-rectangle-login input[type="text"] {
-    /* width: 850px; */
-    height: 20px;
-    margin-left: 5px;
-    padding: 10px; /* Khoảng cách bên trong input */ 
-    border: none; /* Loại bỏ viền */
-    background-color: #D9D9D9;
-    border-radius: 20px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 /* thanh điều khiển*/
@@ -104,10 +28,10 @@ nav{
     border: #00173D;
     border-radius: 40px;
     position: relative;
-    top: 280px;
+    top: 270px;
     right: 180px;
     width: 90px;
-    height: 1270px;
+    height: 175vh;
     margin-top: 10px;
     background: #00173D;
     overflow: hidden;
@@ -116,16 +40,18 @@ nav{
 /* animation cho thanh điều khiển*/
 nav:hover{
     position: relative;
-    top: 290px;
+    margin-top: 20px;
     right: 70px;
+    margin-left: 30px;
     width: 300px;
 }
 
 /* Chỉnh logo và avatar*/
 .logo{
     text-align: center;
+    align-items: center ;
     display: flex;
-    margin: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 5px;
     padding-bottom: 2rem;
 }
 .logo img{
@@ -137,7 +63,6 @@ nav:hover{
     font-weight: bold;
     padding-left: 15px;
     font-size: 18px;
-    margin-top: 10px;
     text-transform: uppercase;
 }
 nav ul li a{
@@ -200,6 +125,82 @@ nav .fas{
     transition: 0.5s;
 }
 
+.main1 {
+    position: relative;
+    top: 250px;
+    padding: 50px;
+    width: 900px;
+    height: 1150px;
+    background-color: #031c458f;
+    border-radius: 50px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.confirm_css{
+    /* //margin-top: 10px;
+    //margin-left: 20px; */
+    text-align: left;
+    font-size: 15px;
+    color: black; /* Màu chữ */
+    font-weight: bold; /* Chữ in đậm */
+    font-family: 'Noto Serif', serif;
+    position: relative;
+    bottom: 370px;
+    left: 495px;
+}
+.Dang-nhap {
+    text-align: center;
+    margin: 20px;
+    font-size: 38px;
+    color: #FFFF; /* Màu chữ */
+    font-weight: bold; /* Chữ in đậm */
+    font-family: 'Noto Serif', serif;
+}
+.title{
+    margin: 20px;
+    font-size: 25px;
+    color: #FFFF; /* Màu chữ */
+    font-weight: bold; /* Chữ in đậm */
+    font-family: 'Noto Serif', serif;
+}
+.input-box{
+    width: 350px;
+    margin-top: 20px;
+    margin-left: 10px;
+    text-align: left;
+    font-size: 18px;
+    color: #FFFF; /* Màu chữ */
+    font-weight: bold; /* Chữ in đậm */
+}
+
+.select-box{
+    height: 40px;
+    margin-left: 5px;
+    padding: 10px;
+    border: none;
+    background-color: #D9D9D9;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.rounded-rectangle-login input[type="text"] {
+    /* width: 850px; */
+    height: 20px;
+    margin-left: 5px;
+    padding: 10px; /* Khoảng cách bên trong input */ 
+    border: none; /* Loại bỏ viền */
+    background-color: #D9D9D9;
+    border-radius: 20px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* templates modifySV */
 .information{
     height: 500px;
@@ -210,8 +211,8 @@ nav .fas{
     width: 210px;
     position: relative;
     left: 50px;
-    //bottom: 101px;
-    //left: 330px;
+    /* //bottom: 101px;
+    //left: 330px; */
 }
 #nameInp {
     width: 450px;
@@ -330,7 +331,7 @@ nav .fas{
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 #bc{
     position: relative;
-    //bottom: 100px;
+    /* //bottom: 100px; */
     left: 50px;
 }
 #bangcapInp{

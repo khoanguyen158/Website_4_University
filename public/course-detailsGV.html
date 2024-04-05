@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Chi tiết môn học</title>
+  <title>Chi tiết môn học của Giảng Viên</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -16,6 +16,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+  <link rel="stylesheet" href="./css/GiangVien/course-detailsGV.css">
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -27,7 +28,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  <script src="./js/SinhVien/course-details.js" type="module"></script>
+  <script src="./js/GiangVien/course-detailsGV.js" type="module"></script>
 
   <!-- =======================================================
   * Template Name: Mentor
@@ -52,7 +53,7 @@
         <ul>
           <!-- <li><a href="Home.html">Home</a></li> -->
           <!-- <li><a href="about.html">About</a></li> -->
-          <li><a class="active" href="courses.html">Khóa học của tôi</a></li>
+          <li><a class="active" href="coursesGV.html">Khóa học của tôi</a></li>
           <!-- <li><a href="trainers.html">Trainers</a></li>
           <li><a href="events.html">Events</a></li>
           <li><a href="pricing.html">Pricing</a></li>
@@ -79,7 +80,7 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="Home.html" class="get-started-btn">Trang chủ</a>
+      <a href="HomeGV.html" class="get-started-btn">Trang chủ</a>
 
     </div>
   </header><!-- End Header -->
@@ -90,8 +91,8 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
-        <h2 id="title_course_details">MT1003_L01</h2>
-        <p id="giang_vien_course_details">Giảng viên: Nguyễn Văn A</p>
+        <h2 id="title_course_details"></h2>
+        <p id="title_lop"></p>
       </div>
     </div><!-- End Breadcrumbs -->
 
@@ -101,9 +102,11 @@
 
         <div class="row">
           <div class="col-lg-8">
-            <!-- <img src="assets/img/course-details.jpg" class="img-fluid" alt=""> -->
             <h3>Thông báo</h3>
-            <p id="notification"></p>
+         
+            <textarea id="myInput" name="notes" rows="1" cols="50" ></textarea>
+            <br>
+            <button id="btn_notification">Đổi nội dung</button>
           </div>
           <div class="col-lg-4">
 
@@ -121,6 +124,8 @@
               <h5>Số giờ 1 tiết</h5>
               <p id="sogio"></p>
             </div>
+
+            <button>Cập nhật điểm</button>
 
           </div>
           <div class="col-lg-8">

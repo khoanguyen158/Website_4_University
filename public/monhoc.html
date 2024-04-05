@@ -100,8 +100,10 @@
                 <br>
                 <ul>
                     <li>
-                        Quý quản trị viên vui lòng chỉ chỉnh sửa thông tin khi học kì hiện tại đã kết thúc và học kì
-                        mới chưa bắt đầu
+                        Chỉ chỉnh sửa học kì khi điểm của TẤT CẢ các sinh viên đã được hoàn thành
+                    </li>
+                    <li>
+                        Việc chỉnh sửa các thông tin môn học bên dưới chỉ diễn ra khi đang trong 2 giai đoạn đki môn học
                     </li>
                     <li>
                         Nếu xóa 1 môn học bất kì, vui lòng thông báo cho toàn bộ các giảng viên trong trường về sự
@@ -213,14 +215,68 @@
         let DelBtn = document.getElementById('DelBtn');
 
         ChangeBtn.addEventListener('click', evt => {
+            if (confirm("Bạn có chắc chắn muốn thay đổi học kì hiện tại?") == false) {
+                return;
+            }
             evt.preventDefault();
+
+            //cap nhat hoc_ki_hien_tai
             update(ref(db, 'MonHoc/'), {
                 hoc_ki_hien_tai: HkInp.value
             });
+
+            //xoa mon_chi_tiet cua toan bo GiangVien
+            let dbRef = ref(db, 'GiangVien/');
+            get((dbRef)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    snapshot.forEach((childSnapshot) => {
+                        let key = childSnapshot.key;
+                        remove(ref(db, 'GiangVien/' + key + '/mon_chi_tiet/'));
+                    });
+                } else {
+                    alert("No data available");
+                    console.log("No data available");
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
+
+            //xoa trong MonHoc:
+            //LopHoc
+            //gv_day_tung_lop
+            //si_so_tung_lop
+            //so_luong_lop
+            //tong_so_sinh_vien
+            let dbRef1 = ref(db, 'MonHoc/');
+            get((dbRef1)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    snapshot.forEach((childSnapshot) => {
+                        let key = childSnapshot.key;
+                        if (key !== 'dot_dki' && key !== 'hoc_ki_hien_tai') {
+                            remove(ref(db, 'MonHoc/' + key + '/LopHoc/'));
+                            remove(ref(db, 'MonHoc/' + key + '/gv_day_tung_lop/'));
+                            remove(ref(db, 'MonHoc/' + key + '/si_so_tung_lop/'));
+                            remove(ref(db, 'MonHoc/' + key + '/so_luong_lop/'));
+                            remove(ref(db, 'MonHoc/' + key + '/tong_so_sinh_vien/'));
+                        }
+
+                    });
+                } else {
+                    alert("No data available");
+                    console.log("No data available");
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
+
             alert("Học kì hiện tại đã được cập nhật!");
+            window.location.reload();
         });
 
         let AddData = evt => {
+            if (confirm("Bạn có chắc chắn muốn thêm môn học này?") == false) {
+                return;
+            }
             evt.preventDefault();
 
             let s = GradeInp.value.split("~");
@@ -277,6 +333,9 @@
         }
 
         let UpdData = () => {
+            if (confirm("Bạn có chắc chắn muốn cập nhật môn học này?") == false) {
+                return;
+            }
             let s = GradeInp.value.split("~");
             update(ref(db, 'MonHoc/' + IdInp.value), {
                 mo_ta_mon_hoc: {
@@ -305,12 +364,37 @@
         }
 
         let DelData = () => {
+            if (confirm("Bạn có chắc chắn muốn xóa môn học này?") == false) {
+                return;
+            }
             remove(ref(db, 'MonHoc/' + IdInp.value)).then(() => {
                 alert("Data deleted successfully!");
             }).catch((error) => {
                 alert("Data could not be deleted!" + error);
                 console.error(error);
             });
+        }
+
+        let dulieudot = async () => {
+            let dbref = ref(db, 'MonHoc/');
+            let dbdata = await get(dbref);
+            let data = dbdata.val();
+            let tmp = data.dot_dki;
+
+            if (tmp == "Close") {
+                IdInp.disabled = true;
+                NameInp.disabled = true;
+                TimeInp.disabled = true;
+                Sogio1tiethocInp.disabled = true;
+                TCInp.disabled = true;
+                GradeInp.disabled = true;
+                LimitInp.disabled = true;
+
+                AddBtn.disabled = true;
+                RetBtn.disabled = true;
+                UpdBtn.disabled = true;
+                DelBtn.disabled = true;
+            }
         }
 
         AddBtn.addEventListener('click', AddData);
@@ -335,6 +419,7 @@
         let MsgHead = document.getElementById("msg");
         let GreetHead = document.getElementById("greet");
 
+        window.addEventListener('load', dulieudot);
         window.addEventListener('load', () => {
             const dbRef = ref(db);
             get(child(dbRef, 'MonHoc/hoc_ki_hien_tai')).then((snapshot) => {
@@ -348,6 +433,7 @@
                 console.error(error);
             });
         });
+        
     </script>
 </body>
 

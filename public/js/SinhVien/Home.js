@@ -58,9 +58,6 @@ Dot2Btn.addEventListener('click', () => {
     window.location.href = "dkimonhoc_dot2.html";
 });
 
-
-
-
 let SignOut = () => {
     sessionStorage.removeItem("user-creds");
     sessionStorage.removeItem("user-info");

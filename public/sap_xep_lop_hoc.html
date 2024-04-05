@@ -115,7 +115,8 @@
                     <br>
                     <br>
                 </div>
-                <p id="note">Lưu ý: Chỉ có thể chỉnh sửa các thông tin bên dưới khi đang trong giai đoạn đăng kí môn ĐỢT 1</p>
+                <p id="note">Lưu ý: Chỉ có thể chỉnh sửa các thông tin bên dưới khi đang trong giai đoạn đăng kí môn ĐỢT
+                    1</p>
                 <div class="input-box" id="numClass">
                     Số lượng lớp học
                     <div class="rounded-rectangle-login">
@@ -129,7 +130,7 @@
                     </div>
                 </div>
                 <p id="note">Lưu ý: Mỗi giảng viên cách nhau bởi dấu '-', ví dụ: GV001-GV002-GV003</p>
-                
+
                 <div class="input-box" id="dki">
                     Đăng kí giảng viên giảng dạy cho từng lớp
                     <div class="rounded-rectangle-login">
@@ -225,7 +226,7 @@
             let data = dbdata.val();
             dot_dki.value = data.dot_dki;
 
-            if(dot_dki.value != "Đợt 1"){
+            if (dot_dki.value != "Đợt 1") {
                 NumOfClassInp.disabled = true;
                 SiSoInp.disabled = true;
                 DkiGvInp.disabled = true;
@@ -298,10 +299,8 @@
                             sinh_vien: "0",
                             thong_bao: "Chưa có thông báo"
                         });
-                        update(ref(db, 'GiangVien' + s[i - 1] + '/mon_chi_tiet/' + id), {
-                            lop: {
-                                x: ""
-                            }
+                        update(ref(db, 'GiangVien/' + s[i - 1] + '/mon_chi_tiet/' + id + '/' + x), {
+                            Null: "Null"
                         })
                     }
                     alert('Đăng kí lớp học thành công');
@@ -339,7 +338,7 @@
                             } else {
                                 x = id + '_L' + i;
                             }
-                            remove(ref(db, 'GiangVien/' + s[i - 1] + '/mon_chi_tiet/' + id + '/lop/x'));
+                            remove(ref(db, 'GiangVien/' + s[i - 1] + '/mon_chi_tiet/' + id + '/' + x));
                         }
                     }
                 });
@@ -365,11 +364,9 @@
                         giang_vien: s[i - 1],
                         sinh_vien: "0",
                     });
-                    update(ref(db, 'GiangVien/' + s[i - 1] + '/mon_chi_tiet/' + id), {
-                        lop: {
-                            x : ""
-                        }
-                    });
+                    update(ref(db, 'GiangVien/' + s[i - 1] + '/mon_chi_tiet/' + id + '/' + x), {
+                        Null: "Null"
+                    })
                 }
                 alert('Cập nhật thông tin thành công');
 

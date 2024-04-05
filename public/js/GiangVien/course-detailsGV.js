@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-import { getDatabase, set, ref, child, get, update, remove, onValue } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+import { getDatabase, onValue, ref, set } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
 
@@ -23,31 +23,38 @@ let lop = sessionStorage.getItem('lop');
 let ma_mon = sessionStorage.getItem('ma_mon');
 
 let title_course_details = document.getElementById('title_course_details');
-let giang_vien_course_details = document.getElementById('giang_vien_course_details');
+let title_lop = document.getElementById('title_lop');
 
-let notification = document.getElementById('notification');
+let notification = document.getElementById('myInput');
+let notifiBtn = document.getElementById('btn_notification');
 
 let thoiluonghoc = document.getElementById('thoiluonghoc');
 let sotinchi = document.getElementById('sotinchi');
 let sogio = document.getElementById('sogio');
 
+let change_notifi = () => {
+    set(ref(db, 'MonHoc/' + ma_mon + '/LopHoc/' + lop + '/thong_bao'), notification.value);
+    alert('Thay đổi thông báo thành công');
+};
+
+const inputElement = document.getElementById("myInput");
+inputElement.addEventListener("input", function () {
+    // Cập nhật chiều rộng dựa trên độ dài của văn bản
+    this.style.width = (this.value.length * 10) + "px";
+});
+
+notifiBtn.addEventListener('click', change_notifi);
+
 window.addEventListener('load', () => {
-    title_course_details.innerHTML = ten_mon_hoc + ' - ' + lop;
-    get(ref(db, 'MonHoc/' + ma_mon + '/LopHoc/' + lop + '/giang_vien')).then((snapshot) => {
-        if (snapshot.exists()) {
-            giang_vien_course_details.innerHTML = 'Giảng Viên: ' +  snapshot.val();
-        }
-        else{
-            giang_vien_course_details.innerHTML = 'Chưa cập nhật giảng viên cho môn học này';
-        }
-    });
+    title_course_details.innerHTML = ten_mon_hoc;
+    title_lop.innerHTML = 'Lớp: ' + lop;
 
     onValue(ref(db, 'MonHoc/' + ma_mon + '/LopHoc/' + lop + '/thong_bao'), (snapshot) => {
-        if(snapshot.exists()){
-            notification.innerHTML = snapshot.val();
+        if (snapshot.exists()) {
+            notification.value = snapshot.val();
         }
-        else{
-            notification.innerHTML = 'Chưa có thông báo';
+        else {
+            notification.value = 'Chưa có thông báo';
         }
     });
 

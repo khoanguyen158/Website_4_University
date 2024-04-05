@@ -16,20 +16,17 @@ body {
     background-color: #E8F1F2   ; /* Màu nền của toàn bộ trang */
     margin: 0; /* Loại bỏ margin mặc định */
     padding: 0; /* Loại bỏ padding mặc định */
-    background-image: 
-    url("https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2FDH_DEF.jpg?alt=media&token=ffbe0c5c-bb5c-40b0-a073-898dba82fb71");
-    background-size: cover;
   }
 
 .main1 {
-    position: relative;
-    top: 200px;
+    
     padding: 50px;
-    width: 900px;
-    height: 900px;
-    background-color: #031c458f;
+    padding-left: 95px;
+    width: 940px;
+    height: 990px;
+    background-color: #FFFFFF;
     border-radius: 50px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
-    margin: 20px;
+    margin: 350px 0 20px 0;
     justify-content: center;
     align-items: center;
 }
@@ -37,7 +34,7 @@ body {
     text-align: center;
     margin: 20px;
     font-size: 28px;
-    color: white; /* Màu chữ */
+    color: #333; /* Màu chữ */
     font-weight: bold; /* Chữ in đậm */
 }
 
@@ -46,7 +43,7 @@ body {
     margin-left: 10px;
     text-align: left;
     font-size: 18px;
-    color: white; /* Màu chữ */
+    color: #333; /* Màu chữ */
     font-weight: bold; /* Chữ in đậm */
 }
 
@@ -272,6 +269,15 @@ body {
     font-family: 'Times New Roman', Times, serif;
 }
 
+.main1 .logo img {
+    position: relative;
+    top: 10px;
+    left: 360px;
+    width: 180px;
+    height: 140px;
+    border-radius: 50%;
+}
+
 .log-in button:hover {
     background-color: #054b36;
     color: aliceblue;
@@ -317,6 +323,7 @@ select{
     font-size: large-smaller;
     font-family: 'Times New Roman', Times, serif;
 }
+
 /* thanh điều khiển*/
 nav{
     border: #00173D;
@@ -324,23 +331,16 @@ nav{
     position: relative;
     /* top: 70px;
     right: 160px; */
-    
     margin-right: 30px;
     width: 90px;
-
-    height: 100vh;
-
+    height: 900px;
     margin-top: 130px;
+
+
     background: #00173D;
     overflow: hidden;
     transition: 1s;
 }
-@media screen and (max-width: 800px) {
-    .left, .main, .right {
-      width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-    }
-  }
-
 /* animation cho thanh điều khiển*/
 nav:hover{
     position: relative;
@@ -426,109 +426,4 @@ nav .fas{
 .side-bar-icon:hover .nav-item{
     color: #00173D;
     transition: 0.5s;
-}
-p {
-    color: white;
-}
-.title{
-    margin: 20px;
-    font-size: 25px;
-    color: white; /* Màu chữ */
-    font-weight: bold; /* Chữ in đậm */
-    font-family: 'Noto Serif', serif;
-}
-
-#idInp{
-    width: 350px;
-}
-#timkiem{
-    position: relative;
-    left: 20px
-}
-#nameInp{
-    width: 350px;
-}
-#tenmonhoc{
-    position: relative;
-    bottom: 81px;
-    left: 470px;
-}
-#timeInp{
-    width: 350px;
-}
-#thoiluong{
-    position: relative;
-    bottom: 81px;
-    left: 20px;
-}
-#sotinchi{
-    position: relative;
-    bottom: 161px;
-    left: 470px;
-}
-#tcInp{
-    width: 350px;
-}
-#RetBtn{
-    position: relative;
-    bottom:171px;
-    left: 340px;
-}
-#semesterInp{
-    width: 650px;
-}
-#hockihientai{
-    position: relative;
-    bottom:181px;
-    left: 20px;
-}
-#subInp{
-    width: 800px;
-}
-#cacmondangki{
-    position: relative;
-    bottom:181px;
-    left: 20px;
-}
-#RetSubBtn{
-    position: relative;
-    bottom: 161px;
-    left: 660px;
-}
-.note{
-    position: relative;
-    bottom:221px;
-    left: 40px;
-}
-#cancelsubInp{
-    width: 800px;
-}
-#cacmonhuy{
-    position: relative;
-    bottom:221px;
-    left: 20px;
-}
-#addsubInp{
-    width: 800px;  
-}
-#dangkingoai{
-    position: relative;
-    bottom:221px;
-    left: 20px;
-}
-#AddSubBtn{
-    position: relative;
-    left: 200px;
-}
-#CanSubBtn{
-    position: relative;
-    left: 250px;
-}
-#AddSubBtn:hover, #RetBtn:hover, #CanSubBtn:hover, #RetSubBtn:hover{
-    background-color: #054b36;
-    color: aliceblue;
-    cursor: pointer;
-}
-#idInp, #nameInp, #timeInp, #tcInp, #semesterInp, #subInp, #cancelsubInp, #addsubInp{
-    background-color: #cdd3aa;
 }

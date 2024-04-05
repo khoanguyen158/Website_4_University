@@ -1,104 +1,17 @@
 *{
-    padding:0;
-    margin:0;
+    margin: 0;
+    padding: 0;
     text-decoration: none;
-    font-family: 'Poppins', sans-serif;   
-
+    font-family: "Poppins",sans-serif;
 }
-#MainForm{
-    margin-top: 50px;
-}
-/*style trong login */
-
-body {
+body{
     display: flex;
-    justify-content: center; /* Căn giữa theo chiều ngang */
+    justify-content: left; /* Căn giữa theo chiều ngang */
     align-items: center; /* Căn giữa theo chiều dọc */
-    height: 100vh; /* Chiều cao của toàn bộ trang */
-    background-color: #E8F1F2   ; /* Màu nền của toàn bộ trang */
-    margin: 0; /* Loại bỏ margin mặc định */
-    padding: 0; /* Loại bỏ padding mặc định */
-    background-image: 
-    url("https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2FDH_DEF.jpg?alt=media&token=ffbe0c5c-bb5c-40b0-a073-898dba82fb71");
+    background:#E8F1F2 url('https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2FDH_DEF2.jpg?alt=media&token=5feb4f44-c78a-4e2e-ae98-abaef1831179') no-repeat center center;
     background-size: cover;
+    height: 100vh;
 
-}
-
-.confirm_css{
-    //margin-top: 10px;
-    //margin-left: 20px;
-    text-align: left;
-    font-size: 15px;
-    color: black; /* Màu chữ */
-    font-weight: bold; /* Chữ in đậm */
-    font-family: 'Noto Serif', serif;
-    position: relative;
-    bottom: 370px;
-    left: 495px;
-}
-
-.main1 {
-    position: relative;
-    top: 250px;
-    padding: 50px;
-    width: 900px;
-    height: 1150px;
-    background-color: #031c458f;
-    border-radius: 50px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
-    margin: 20px;
-    justify-content: center;
-    align-items: center;
-}
-.Dang-nhap {
-    text-align: center;
-    margin: 20px;
-    font-size: 38px;
-    color: #FFFF; /* Màu chữ */
-    font-weight: bold; /* Chữ in đậm */
-    font-family: 'Noto Serif', serif;
-}
-.title{
-    margin: 20px;
-    font-size: 25px;
-    color: #FFFF; /* Màu chữ */
-    font-weight: bold; /* Chữ in đậm */
-    font-family: 'Noto Serif', serif;
-}
-.input-box{
-    width: 350px;
-    margin-top: 20px;
-    margin-left: 10px;
-    text-align: left;
-    font-size: 18px;
-    color: #FFFF; /* Màu chữ */
-    font-weight: bold; /* Chữ in đậm */
-}
-
-.select-box{
-    height: 40px;
-    margin-left: 5px;
-    padding: 10px;
-    border: none;
-    background-color: #D9D9D9;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-.rounded-rectangle-login input[type="text"] {
-    /* width: 850px; */
-    height: 20px;
-    margin-left: 5px;
-    padding: 10px; /* Khoảng cách bên trong input */ 
-    border: none; /* Loại bỏ viền */
-    background-color: #D9D9D9;
-    border-radius: 20px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 /* thanh điều khiển*/
@@ -106,28 +19,27 @@ nav{
     border: #00173D;
     border-radius: 40px;
     position: relative;
-    top: 280px;
-    right: 180px;
+    top: 185px;
+    left: 10px;
     width: 90px;
-    height: 1270px;
-    margin-top: 10px;
+    height: 145vh;
+    margin-top: 5px;
+    margin-right: 10px;
     background: #00173D;
     overflow: hidden;
     transition: 1s;
 }
 /* animation cho thanh điều khiển*/
 nav:hover{
-    position: relative;
-    top: 290px;
-    right: 70px;
-    width: 300px;
+    width: 360px;
 }
 
 /* Chỉnh logo và avatar*/
 .logo{
     text-align: center;
+    align-items: center ;
     display: flex;
-    margin: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 5px;
     padding-bottom: 2rem;
 }
 .logo img{
@@ -139,7 +51,6 @@ nav:hover{
     font-weight: bold;
     padding-left: 15px;
     font-size: 18px;
-    margin-top: 10px;
     text-transform: uppercase;
 }
 nav ul li a{
@@ -202,15 +113,77 @@ nav .fas{
     transition: 0.5s;
 }
 
-/* templates modifySV */
+.main1 {
+    position: relative;
+    top: 190px;
+    left: 80px;
+    padding: 20px;
+    width: 900px;
+    height: 140vh;
+    background-color: #031c458f;
+    border-radius: 50px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.Dang-nhap {
+    text-align: center;
+    margin: 20px;
+    font-size: 38px;
+    color: #FFFF; /* Màu chữ */
+    font-weight: bold; /* Chữ in đậm */
+    font-family: 'Noto Serif', serif;
+}
+.title{
+    margin: 20px;
+    font-size: 25px;
+    color: #FFFF; /* Màu chữ */
+    font-weight: bold; /* Chữ in đậm */
+    font-family: 'Noto Serif', serif;
+}
+.input-box{
+    width: 350px;
+    margin-top: 20px;
+    margin-left: 10px;
+    text-align: left;
+    font-size: 18px;
+    color: #FFFF; /* Màu chữ */
+    font-weight: bold; /* Chữ in đậm */
+}
 
+.select-box{
+    height: 40px;
+    margin-left: 5px;
+    padding: 10px;
+    border: none;
+    background-color: #D9D9D9;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rounded-rectangle-login input[type="text"] {
+    /* width: 850px; */
+    height: 20px;
+    margin-left: 5px;
+    padding: 10px; /* Khoảng cách bên trong input */ 
+    border: none; /* Loại bỏ viền */
+    background-color: #D9D9D9;
+    border-radius: 20px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+/* templates modifySV */
 
 #hovaten{
     width: 210px;
     position: relative;
     left: 50px;
-    //bottom: 101px;
-    //left: 330px;
+    /* //bottom: 101px;
+    //left: 330px; */
 }
 #nameInp {
     width: 450px;
@@ -322,15 +295,33 @@ nav .fas{
 #confirmInp{
     width: 330px;
 }
+.confirm_css{
+    /* //margin-top: 10px;
+    //margin-left: 20px; */
+    text-align: left;
+    font-size: 15px;
+    color: black; /* Màu chữ */
+    font-weight: bold; /* Chữ in đậm */
+    font-family: 'Noto Serif', serif;
+    position: relative;
+    bottom: 370px;
+    left: 495px;
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.thongtinHV{
+    position: relative;
+}
 #thongtinhocvu {
     position: relative;
-    bottom: 300px;
+    bottom: 350px;
+    margin-bottom: 10px;
 }
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 #nganhhoc {
     position: relative;
-    bottom: 300px;
+    bottom: 350px;
     left: 50px;
 }
 #nganhInp{
@@ -339,7 +330,7 @@ nav .fas{
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 #hedaotao {
     position: relative;
-    bottom: 381px;
+    bottom: 431px;
     left: 330px;
 }
 #hedaotaoInp{
@@ -348,7 +339,7 @@ nav .fas{
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 #khoa {
     position: relative;
-    bottom: 462px;
+    bottom: 512px;
     left: 600px;
 }
 #khoaInp{
@@ -357,7 +348,7 @@ nav .fas{
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 #start {
     position: relative;
-    bottom: 442px;
+    bottom: 492px;
     left: 50px;
 }
 #startstudyInp {
@@ -366,7 +357,7 @@ nav .fas{
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 #end {
     position: relative;
-    bottom: 522px;
+    bottom: 570px;
     left: 330px;
 }
 #endstudyInp {
@@ -375,7 +366,7 @@ nav .fas{
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 #complete {
     position: relative;
-    bottom: 603.5px;
+    bottom: 653.5px;
     left: 600px;
 }
 #tinchihoanthanh {
@@ -386,7 +377,11 @@ nav .fas{
 #confirmInp, #nganhInp, #hedaotaoInp, #khoaInp, #startstudyInp, #endstudyInp, #tinchihoanthanh{
     background-color: #cdd3aa;
 }
-
+#gt-btn{
+    position: relative;
+    bottom: 650px;
+    width: 700px;
+}
 #AddBtn{
     width: 104px;
     height: 40px;
@@ -440,9 +435,5 @@ nav .fas{
     color: aliceblue;
     cursor: pointer;
 }
-#gt-btn{
-    position: relative;
-    bottom: 520px;
-    width: 700px;
-}
+
 

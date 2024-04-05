@@ -16,7 +16,7 @@ body {
     align-items: center; /* Căn giữa theo chiều dọc */
     height: 100vh; /* Chiều cao của toàn bộ trang */
     background-color: #E8F1F2   ; /* Màu nền của toàn bộ trang */
-    margin: 0; /* Loại bỏ margin mặc định */
+    margin: 10vh 0px 0px 10vh; /* Loại bỏ margin mặc định */
     padding: 0; /* Loại bỏ padding mặc định */
     background-image: 
     url("https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2FDH_DEF.jpg?alt=media&token=ffbe0c5c-bb5c-40b0-a073-898dba82fb71");
