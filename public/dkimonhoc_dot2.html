@@ -10,11 +10,10 @@
     <meta content="" name="keywords">
 
     <!-- CSS tự thêm -->
-    <link rel="stylesheet" href="./css/SinhVien/dkimonhoc.css">
+
     <!-- JS tự thêm -->
     <script src="./js/chung/DangXuat.js" type="module"></script>
-    <script src="./js/SinhVien/dkimonhoc.js" type="module"></script>
-
+    <script src="regis2/regis2.js" type="module"></script>
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -90,37 +89,22 @@
             <div class="row">
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <br>
+                        <br>
                         <h1 id="semesterInp"></h1>
-                        <br>
-                        <br>
-                        <div class="col-md-12"><label class="labels">Mã môn học</label><input type="text"
-                                class="form-control" placeholder="" value="" id="idInp"></div>
-                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
-                                id="RetBtn">Tìm kiếm</button>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-md-5 border-right">
                     <div class="p-3 py-5">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-right">Thông tin môn học</h4>
-                        </div>
-
+                        <br>
+                        <br>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Tên môn học</label><input type="text"
-                                    class="form-control" placeholder="" value="" id="nameInp" readonly></div>
-                            <div class="col-md-12"><label class="labels">Thời lượng dạy học</label><input type="text"
-                                    class="form-control" placeholder="" value="" id="timeInp" readonly></div>
-                            <div class="col-md-12"><label class="labels">Số tín chỉ</label><input type="text"
-                                    class="form-control" placeholder="" value="" id="tcInp" readonly></div>
-                        </div>
-
-                        <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Các môn sinh viên đã đăng kí</label><input
-                                    type="text" class="form-control" placeholder="" value="" id="subInp" readonly></div>
+                            <div class="col-md-12"><label class="labels">Chọn môn đã đăng kí ở đợt 1</label><input
+                                    type="text" class="form-control" placeholder="" value="" id="idInp"></div>
                         </div>
                         <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
-                                id="RetSubBtn">Làm mới</button>
+                                id="Ficlass">Tìm kiếm</button>
                         </div>
                     </div>
                 </div>
@@ -128,27 +112,15 @@
                     <div class="p-3 py-5">
                         <div class="d-flex justify-content-between align-items-center experience"><span></span><span
                                 class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;</span></div><br>
-                        <!-- <div class="col-md-12"><label class="labels">Các môn sinh viên đã đăng kí</label><input
-                                type="text" class="form-control" placeholder="" value="" id="subInp" readonly></div>
+                        <!-- <div class="col-md-12"><label class="labels">Thông tin chi tiết</label><input type="text"
+                                class="form-control" placeholder="" value="" id="cancelsubInp"></div> -->
+
+                        <div class="col-md-12"><label class="labels">Thông tin chi tiết</label>
+                            <textarea class="form-control" name="" id="subInp" cols="30" rows="5" readonly></textarea>
+                        </div>
 
                         <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
                                 id="RetSubBtn">Làm mới</button>
-                        </div> -->
-
-                        <div class="col-md-12"><label class="labels">Các môn cần HỦY trong các môn đã đăng
-                                kí</label><input type="text" class="form-control" placeholder="" value=""
-                                id="cancelsubInp"></div>
-
-                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
-                                id="CanSubBtn">Hủy</button>
-                        </div>
-                        <br>
-                        <div class="col-md-12"><label class="labels">Các môn cần ĐĂNG KÍ THÊM ngoài các môn đã đăng
-                                kí</label><input type="text" class="form-control" placeholder="" value=""
-                                id="addsubInp"></div>
-
-                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
-                                id="AddSubBtn">Đăng kí</button>
                         </div>
                     </div>
 

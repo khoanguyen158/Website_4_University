@@ -91,18 +91,6 @@ let Registered_Subjects = () => {
     });
 };
 
-
-let checkCred = () => {
-    if (!sessionStorage.getItem("user-creds")) {
-        window.location.href = "index.html";
-    }
-    else {
-
-        GreetHead.innerText = `Sinh viên ${UserInfo.ho_va_ten}!`;
-        MsgHead.innerText = `Email "${UserInfo.email}", mã sinh viên "${UserInfo.id}".`;
-    }
-}
-
 Ficlass.addEventListener('click', evt => {
     evt.preventDefault();
     getclasstable();
@@ -124,11 +112,11 @@ let SignOut = () => {
 SignOutBtn.addEventListener('click', SignOut);
 SignOutBtn.addEventListener('click', SignOut);
 window.addEventListener('load', () => {
-    checkCred();
     const dbRef = ref(db);
     get(child(dbRef, 'MonHoc/hoc_ki_hien_tai')).then((snapshot) => {
         if (snapshot.exists()) {
             SemesterInp.value = snapshot.val();
+            SemesterInp.innerHTML = snapshot.val();
         } else {
             alert("No data available");
             console.log("No data available");

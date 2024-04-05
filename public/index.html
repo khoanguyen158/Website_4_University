@@ -5,15 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập</title>
-    <link rel="stylesheet" href="./css/login/style-index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="test.css">
+    <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
+
+    <!-- <link rel="stylesheet" href="./css/login/style-index.css">
+    <script src="./js/login/script.js"></script> -->
+
+    <link rel="stylesheet" href="./css/login/test.css">
     <script src="./js/login/script.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
-    
-    <div id="page">
+    <!-- <div id="page">
         <div class="logo">
             <ion-icon name="logo-react"></ion-icon>
         </div>
@@ -39,6 +45,69 @@
                 </form>
             </div>
         </div>
+    </div> -->
+
+    <div id="main-wrapper" class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-10">
+                <div class="card border-0">
+                    <div class="card-body p-0">
+                        <div class="row no-gutters">
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="mb-5">
+                                        <h3 class="h4 font-weight-bold text-theme">Đăng nhập</h3>
+                                    </div>
+    
+                                    <!-- <h6 class="h5 mb-0">Welcome back!</h6>
+                                    <p class="text-muted mt-2 mb-5">Enter your email address and password to access admin panel.</p> -->
+    
+                                    <form id="MainForm">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email address</label>
+                                            <input type="email" class="form-control" id="emailInp">
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">ID</label>
+                                            <input type="" class="form-control" id="idInp">
+                                        </div>
+                                        <br>
+                                        <div class="form-group mb-5">
+                                            <label for="exampleInputPassword1">Password</label>
+                                            <input type="password" class="form-control" id="passwordInp">
+                                        </div>
+                                        <button type="submit" class="btn btn-theme" id="loginBtn">Login</button>
+                                        <a class="forgot-link float-right text-success" id="forgotpasslabel" class="forgot-pass">Quên mật khẩu?</a>
+                                        <!-- <div id="forgotpasslabel" class="forgot-pass">Quên mật khẩu?</div> -->
+                                    </form>
+                                </div>
+                            </div>
+    
+                            <div class="col-lg-6 d-none d-lg-inline-block">
+                                <div class="account-block rounded-right">
+                                    <div class="overlay rounded-right"></div>
+                                    <div class="account-testimonial">
+                                        <h4 class="text-white mb-4">This  beautiful theme yours!</h4>
+                                        <p class="lead text-white">"Best investment i made for a long time. Can only recommend it for other users."</p>
+                                        <p>- Admin User</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                    <!-- end card-body -->
+                </div>
+                <!-- end card -->
+    
+    
+                <!-- end row -->
+    
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- Row -->
     </div>
     
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -67,7 +136,8 @@
         let EmailInp = document.getElementById('emailInp');
         let IdInp = document.getElementById('idInp');
         let PassInp = document.getElementById('passwordInp');
-        let MainForm = document.getElementById('MainForm');
+        // let MainForm = document.getElementById('MainForm');
+        let LoginBtn = document.getElementById('loginBtn');
 
         let ForgotPassLabel = document.getElementById('forgotpasslabel');
 
@@ -143,7 +213,8 @@
                 });
         }
 
-        MainForm.addEventListener('submit', SignInUser);
+        // MainForm.addEventListener('submit', SignInUser);
+        LoginBtn.addEventListener('click', SignInUser);
         ForgotPassLabel.addEventListener('click', ForgotPassword);
     </script>
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
