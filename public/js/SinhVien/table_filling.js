@@ -189,10 +189,10 @@ function GetAllDataRealtime() {
     //StuID.innerText = "2222";
 
     let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
-    var StuName = document.getElementById('studentName');
-    var StuID = document.getElementById('studentId');
-    StuName.innerText = UserInfo.ho_va_ten;
-    StuID.innerText = UserInfo.id;
+    //var StuName = document.getElementById('studentName');
+    //var StuID = document.getElementById('studentId');
+    //StuName.innerText = UserInfo.ho_va_ten;
+    //StuID.innerText = UserInfo.id;
     const dbRef = ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki');
     //----------------
 

@@ -37,11 +37,11 @@ let change_notifi = () => {
     alert('Thay đổi thông báo thành công');
 };
 
-const inputElement = document.getElementById("myInput");
-inputElement.addEventListener("input", function () {
-    // Cập nhật chiều rộng dựa trên độ dài của văn bản
-    this.style.width = (this.value.length * 10) + "px";
-});
+// const inputElement = document.getElementById("myInput");
+// inputElement.addEventListener("input", function () {
+//     // Cập nhật chiều rộng dựa trên độ dài của văn bản
+//     this.style.width = (this.value.length * 10) + "px";
+// });
 
 notifiBtn.addEventListener('click', change_notifi);
 

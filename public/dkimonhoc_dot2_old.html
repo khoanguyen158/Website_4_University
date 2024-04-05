@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng kí môn học đợt 2</title>
+
+    <link rel="stylesheet" href="./css/SinhVien/sinhvien.css">
+    <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
+</head>
+
+<body ng-app="myapp" ng-controller="homeCtrl">
+    
+    <nav>
+        <ul>
+            <li><a href="#" class="logo">
+                    <img
+                        src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2F01_logobachkhoasang.png?alt=media&token=6e835bd4-9c3f-4b16-8c4d-36f87c7e7c9d">
+
+                    <span class="nav-item">bkel</span>
+                </a></li>
+
+            <li><a href="svInfo.html" class="avatar">
+
+                    <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
+                        alt="Avatar">
+
+                    <span class="nav-item">Thông tin cá nhân</span>
+                </a></li>
+            <li><a href="Home.html" class="side-bar-icon">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-item">Trang chủ</span>
+                </a></li>
+            <li><a href="#" class="side-bar-icon">
+                    <i class="fas fa-book-open-reader"></i>
+                    <span class="nav-item">Khóa học của tôi</span>
+                </a></li>
+            <li>
+                <a id="dot" href="dkimonhoc.html" class="side-bar-icon">
+                    <i class="fas fa-regular fa-registered"></i>
+                    <span class="nav-item" id="dkimonhoc">Đăng ký môn học</span>
+                </a>
+            </li>
+            <li><a href="#" class="side-bar-icon">
+                    <i class="fas fa-newspaper"></i>
+                    <span class="nav-item">Bài kiểm tra</span>
+                </a></li>
+            <li><a href="#" class="side-bar-icon">
+                    <i class="fas fa-table"></i>
+                    <span class="nav-item">Thời khóa biểu</span>
+                </a></li>
+            <li><a href="#" class="side-bar-icon">
+                    <i class="fas fa-comments"></i>
+                    <span class="nav-item">Diễn đàn</span>
+                </a></li>
+            <li><a href="#" class="side-bar-icon">
+                    <i class="fas fa-gear"></i>
+                    <span class="nav-item">Cài đặt</span>
+                </a></li>
+
+            <li>
+                <a href="bangdiem.html" class="side-bar-icon">
+                    <i class="fas fa-regular fa-table"></i>
+                    <span class="nav-item" id="bangdiem">Bảng điểm</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="side-bar-icon">
+                    <i class="fas fa-solid fa-right-from-bracket"></i>
+                    <span class="nav-item" id="signoutbutton">Đăng xuất</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <form id="MainForm">
+        <div class="main1">
+            <div class="logo">
+                <img
+                    src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Flogo_DEF.jpg?alt=media&token=5c319bb6-f09c-4d0b-89d6-342fde279f9d">
+            </div>
+
+            <div class="Dang-nhap"> Đăng kí môn học đợt 2
+                <br>
+                <h1 id="greet"></h1>
+                <br>
+                <p id="msg"></p>
+            </div>
+
+            <div class="input-box"> Chọn lớp học
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="idInp" class="input-field" placeholder="Bạn hãy điền mã môn học">
+                    <p>Lưu ý: Bạn chỉ có thể chọn lớp của những môn bạn đã đăng ký ở đợt 1.</p>
+
+                </div>
+            </div>
+            <button id="Ficlass">Tìm kiếm lớp học </button>
+
+
+            <div class="input-box"> Học kì hiện tại
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="semesterInp" class="input-field"
+                        placeholder="Nhập theo định dạng như ví dụ: HK232" readonly>
+                </div>
+            </div>
+
+            <div class="input-box"> Tất cả các môn đã đăng kí của sinh viên (chỉ đọc)
+                <div class="rounded-rectangle-login">
+                    <input type="text" id="subInp" class="input-field" placeholder="Những môn bạn đã đăng ký ở đợt 1 sẽ được hiện ở đây" readonly>
+                </div>
+                <button id="RetSubBtn">Làm mới</button>
+    </form>
+
+    <script src="regis2/regis2.js" type="module"></script>
+</body>
+
+</html>

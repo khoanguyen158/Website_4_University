@@ -2,449 +2,179 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng kí môn học đợt 1</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <link rel="stylesheet" href="./css/SinhVien/sinhvien.css">
-    <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
+    <title>Đăng kí môn học đợt 1</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- CSS tự thêm -->
+    <link rel="stylesheet" href="./css/SinhVien/dkimonhoc.css">
+    <!-- JS tự thêm -->
+    <script src="./js/chung/DangXuat.js" type="module"></script>
+    <script src="./js/SinhVien/dkimonhoc.js" type="module"></script>
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <!-- =======================================================
+  * Template Name: Mentor
+  * Updated: Jan 29 2024 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
-<body ng-app="myapp" ng-controller="homeCtrl">
-    <!-- Vị trí thanh nav, copy từ file Home.html qua
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        -->
-    <nav>
-        <ul>
-            <li><a href="#" class="logo">
-                    <img
-                        src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2F01_logobachkhoasang.png?alt=media&token=6e835bd4-9c3f-4b16-8c4d-36f87c7e7c9d">
+<body>
 
-                    <span class="nav-item">bkel</span>
-                </a></li>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
 
-            <li><a href="svInfo.html" class="avatar">
+            <h1 class="logo me-auto"><a>Đăng kí môn học đợt 1</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-                    <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
-                        alt="Avatar">
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a class="active" href="Home.html">Home</a></li>
+                    <li><a href="thongtincanhanSV.html">Thông tin cá nhân</a></li>
+                    <li><a href="#">Thời khóa biểu</a></li>
+                    <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li> -->
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
 
-                    <span class="nav-item">Thông tin cá nhân</span>
-                </a></li>
-            <li><a href="Home.html" class="side-bar-icon">
-                    <i class="fas fa-home"></i>
-                    <span class="nav-item">Trang chủ</span>
-                </a></li>
-            <li><a href="#" class="side-bar-icon">
-                    <i class="fas fa-book-open-reader"></i>
-                    <span class="nav-item">Khóa học của tôi</span>
-                </a></li>
-            <li>
-                <a href="dkimonhoc.html" class="side-bar-icon">
-                    <i class="fas fa-regular fa-registered"></i>
-                    <span class="nav-item" id="dkimonhoc">Đăng ký môn học</span>
-                </a>
-            </li>
-            <li><a href="#" class="side-bar-icon">
-                    <i class="fas fa-newspaper"></i>
-                    <span class="nav-item">Bài kiểm tra</span>
-                </a></li>
-            <li><a href="#" class="side-bar-icon">
-                    <i class="fas fa-table"></i>
-                    <span class="nav-item">Thời khóa biểu</span>
-                </a></li>
-            <li><a href="#" class="side-bar-icon">
-                    <i class="fas fa-comments"></i>
-                    <span class="nav-item">Diễn đàn</span>
-                </a></li>
-            <li><a href="#" class="side-bar-icon">
-                    <i class="fas fa-gear"></i>
-                    <span class="nav-item">Cài đặt</span>
-                </a></li>
+            <a href="#" class="get-started-btn" id="signoutbutton">Đăng xuất</a>
 
-            <li>
-                <a href="bangdiem.html" class="side-bar-icon">
-                    <i class="fas fa-regular fa-table"></i>
-                    <span class="nav-item" id="bangdiem">Bảng điểm</span>
-                </a>
-            </li>
+        </div>
+    </header><!-- End Header -->
 
-            <li>
-                <a href="#" class="side-bar-icon">
-                    <i class="fas fa-solid fa-right-from-bracket"></i>
-                    <span class="nav-item" id="signoutbutton">Đăng xuất</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <!-- Vị trí thanh nav, copy từ file Home.html qua
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        -->
-    <form id="MainForm">
-        <div class="main1">
-            <div class="Dang-nhap">
-                Đăng kí môn học đợt 1
-                <br>
-                <h1 id="greet"></h1>
-                <br>
-                <p id="msg"></p>
-            </div>
-            <div class="title" id="thongtinmonhoc">
-                THÔNG TIN MÔN HỌC
-            </div>
-            <div class="input-box" id="timkiem">
-                Tìm kiếm môn
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="idInp" class="input-field" placeholder="">
+    <main id="main" data-aos="fade-in">
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-3 border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <h1 id="semesterInp"></h1>
+                        <br>
+                        <br>
+                        <div class="col-md-12"><label class="labels">Mã môn học</label><input type="text"
+                                class="form-control" placeholder="" value="" id="idInp"></div>
+                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
+                                id="RetBtn">Tìm kiếm</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 border-right">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Thông tin môn học</h4>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Tên môn học</label><input type="text"
+                                    class="form-control" placeholder="" value="" id="nameInp" readonly></div>
+                            <div class="col-md-12"><label class="labels">Thời lượng dạy học</label><input type="text"
+                                    class="form-control" placeholder="" value="" id="timeInp" readonly></div>
+                            <div class="col-md-12"><label class="labels">Số tín chỉ</label><input type="text"
+                                    class="form-control" placeholder="" value="" id="tcInp" readonly></div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Các môn sinh viên đã đăng kí</label><input
+                                    type="text" class="form-control" placeholder="" value="" id="subInp" readonly></div>
+                        </div>
+                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
+                                id="RetSubBtn">Làm mới</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center experience"><span></span><span
+                                class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;</span></div><br>
+                        <!-- <div class="col-md-12"><label class="labels">Các môn sinh viên đã đăng kí</label><input
+                                type="text" class="form-control" placeholder="" value="" id="subInp" readonly></div>
+
+                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
+                                id="RetSubBtn">Làm mới</button>
+                        </div> -->
+
+                        <div class="col-md-12"><label class="labels">Các môn cần HỦY trong các môn đã đăng
+                                kí</label><input type="text" class="form-control" placeholder="" value=""
+                                id="cancelsubInp"></div>
+
+                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
+                                id="CanSubBtn">Hủy</button>
+                        </div>
+                        <br>
+                        <div class="col-md-12"><label class="labels">Các môn cần ĐĂNG KÍ THÊM ngoài các môn đã đăng
+                                kí</label><input type="text" class="form-control" placeholder="" value=""
+                                id="addsubInp"></div>
+
+                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
+                                id="AddSubBtn">Đăng kí</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <div class="input-box" id="tenmonhoc">
-                Tên môn học
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="nameInp" class="input-field" placeholder="" readonly>
-                </div>
-            </div>
-
-
-            <div class="input-box" id="thoiluong">
-                Thời lượng dạy học (tuần)
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="timeInp" class="input-field" placeholder="" readonly>
-                </div>
-            </div>
-
-            <div class="input-box" id="sotinchi">
-                Số tín chỉ
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="tcInp" class="input-field" placeholder="" readonly>
-                </div>
-            </div>
-
-
-            <button id="RetBtn">Tìm kiếm môn</button>
-
-            <div class="input-box" id="hockihientai">
-                Học kì hiện tại
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="semesterInp" class="input-field"
-                        placeholder="Nhập theo định dạng như ví dụ: HK232" readonly>
-                </div>
-            </div>
-
-            <div class="input-box" id="cacmondangki" >
-                Tất cả các môn đã đăng kí của sinh viên (chỉ đọc)
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="subInp" class="input-field" placeholder="" readonly>
-                </div>
-
-                <button id="RetSubBtn">Làm mới</button>
-            </div>
-
-            <div class="note"><p>Lưu ý: các dòng phía dưới phải theo định dạng như sau: CH1003,C01005,CO1007</p></div>
-
-            <div class="input-box" id="cacmonhuy">
-                Các môn sinh viên muốn HỦY đăng ký trong các môn hiện tại
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="cancelsubInp" class="input-field" placeholder="">
-                </div>
-            </div>
-
-            <div class="input-box" id="dangkingoai">
-                Các môn sinh viên muốn ĐĂNG KÝ ngoài các môn hiện tại
-                <div class="rounded-rectangle-login">
-                    <input type="text" id="addsubInp" class="input-field" placeholder="">
-                </div>
-
-
-                <button id="AddSubBtn">Thêm môn mới</button>
-                <button id="CanSubBtn">Xóa môn cũ</button>
+        </div>
+        </div>
+        </div>
+    </main><!-- End #main -->
 
 
 
-            </div>
-    </form>
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyDQk0PGIztg7qltOimH1_9_lLl5rluKsV8",
-            authDomain: "fir-d023a.firebaseapp.com",
-            databaseURL: "https://fir-d023a-default-rtdb.firebaseio.com",
-            projectId: "fir-d023a",
-            storageBucket: "fir-d023a.appspot.com",
-            messagingSenderId: "81322751429",
-            appId: "1:81322751429:web:eeb12e1ec56b1970c807ac",
-            measurementId: "G-KZQQJNVVWJ"
-        };
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
 
-        const app = initializeApp(firebaseConfig);
-
-        import { getDatabase, set, ref, child, get, update, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
-
-        const db = getDatabase(app);
-        const auth = getAuth(app);
-
-        let IdInp = document.getElementById("idInp");
-        let NameInp = document.getElementById("nameInp");
-        let TimeInp = document.getElementById("timeInp");
-        let TCInp = document.getElementById("tcInp");
-        let SemesterInp = document.getElementById("semesterInp");
-        let SubInp = document.getElementById("subInp");
-        let CancelSubInp = document.getElementById("cancelsubInp");
-        let AddSubInp = document.getElementById("addsubInp");
-
-        let RetBtn = document.getElementById("RetBtn");
-        let AddSubBtn = document.getElementById("AddSubBtn");
-        let CanSubBtn = document.getElementById("CanSubBtn");
-        let RetSubBtn = document.getElementById("RetSubBtn");
-
-        let SignOutBtn = document.getElementById("signoutbutton");
-        let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
-        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
-        let MsgHead = document.getElementById("msg");
-        let GreetHead = document.getElementById("greet");
-
-
-        let RetData = () => {
-            const dbRef = ref(db);
-            get(child(dbRef, 'MonHoc/' + IdInp.value)).then((snapshot) => {
-                if (snapshot.exists()) {
-                    NameInp.value = snapshot.val().mo_ta_mon_hoc.ten_mon_hoc;
-                    TimeInp.value = snapshot.val().mo_ta_mon_hoc.thoi_gian_hoc;
-                    TCInp.value = snapshot.val().mo_ta_mon_hoc.so_tin_chi;
-                } else {
-                    alert("No data available");
-                    console.log("No data available");
-                }
-            }).catch((error) => {
-                console.error(error);
-            });
-        }
-
-        let RetSubData = () => {
-            const dbRef = ref(db);
-            get(child(dbRef, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value)).then((snapshot) => {
-                if (snapshot.exists()) {
-                    const subjects = snapshot.val();
-                    delete subjects.ten_hoc_ki;
-
-                    const subjectKeys = Object.keys(subjects);
-
-                    if (subjectKeys.length > 0) {
-
-                        SubInp.value = subjectKeys.join(',');
-                    } else {
-                        SubInp.value = "Chưa có môn nào";
-                    }
-                } else {
-                    SubInp.value = "Chưa có môn nào";
-                    //alert("No data available");
-                    //console.log("No data available");
-                }
-            }).catch((error) => {
-                console.error(error);
-            });
-        };
-
-
-
-
-        let AddSubjectData = () => {
-            let str = new String();
-            const dbRef = ref(db);
-            let s = new String(AddSubInp.value);
-            let n = s.length;
-            let arr = new Array();
-            for (let i = 0; i < n; i++) {
-                if (s[i] == ',') {
-                    arr.push(s.substring(0, i));
-                    s = s.substring(i + 1, n);
-                    n = s.length;
-                    i = 0;
-                }
-                else if (i == n - 1) arr.push(s);
-            }
-            let sophantucuamang = arr.length;
-            update(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value), {
-                ten_hoc_ki: (SemesterInp.value).trim().substring(2)
-            });
-            for (let i = 0; i < arr.length; i++) {
-                get(child(dbRef, 'MonHoc/' + arr[i])).then((snapshot) => {
-                    if (snapshot.exists()) {
-                        NameInp.value = snapshot.val().mo_ta_mon_hoc.ten_mon_hoc;
-                        TimeInp.value = snapshot.val().mo_ta_mon_hoc.thoi_gian_hoc;
-                        TCInp.value = snapshot.val().mo_ta_mon_hoc.so_tin_chi;
-                        set(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value + '/' + arr[i]), {
-                            DTB_10: "0",
-                            ten_mon_hoc: NameInp.value,
-                            thoi_gian_hoc: TimeInp.value,
-                            so_tin_chi: TCInp.value,
-                            Pass_Fail: 'waiting',
-                        });
-                    }
-                }).catch((error) => {
-                    console.error(error);
-                });
-            }
-
-            for (let i = 0; i < arr.length; i++) {
-                get(child(dbRef, 'MonHoc/' + arr[i] + '/mo_ta_mon_hoc/so_cot_diem')).then((snapshot) => {
-                    if (snapshot.exists()) {
-                        let so_cot_diem = snapshot.val();
-                        // Duyệt qua từng cột điểm
-                        for (let cot in so_cot_diem) {
-                            let phan_tram = so_cot_diem[cot].phan_tram;
-                            let diem_toi_thieu = so_cot_diem[cot].diem_toi_thieu;
-                            let ten = so_cot_diem[cot].ten;
-                            // Cập nhật thông tin cột điểm vào cơ sở dữ liệu sinh viên
-                            set(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value + '/' + arr[i] + '/so_cot_diem/' + cot), {
-                                phan_tram: phan_tram,
-                                diem_toi_thieu: diem_toi_thieu,
-                                ten: ten,
-                            });
-                        }
-                    } else {
-                        console.error("No data available");
-                    }
-                }).catch((error) => {
-                    console.error(error);
-                });
-            }
-
-            for (let i = 0; i < sophantucuamang; i++) {
-                set(ref(db, 'MonHoc/' + arr[i] + '/tong_so_sinh_vien/' + UserInfo.id), {
-                    ho_va_ten: UserInfo.ho_va_ten
-                })
-            }
-            alert("Thêm " + sophantucuamang + " môn mới thành công!");
-        };
-
-
-        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-        let CancelSubjectData = () => {
-            const dbRef = ref(db);
-
-            get(child(dbRef, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value)).then((snapshot) => {
-                if (snapshot.exists()) {
-                    let s = new String(CancelSubInp.value);
-                    let n = s.length;
-                    let arr = new Array();
-                    let notEnrolledSubjects = [];
-                    for (let i = 0; i < n; i++) {
-                        if (s[i] == ',') {
-                            arr.push(s.substring(0, i));
-                            s = s.substring(i + 1, n);
-                            n = s.length;
-                            i = 0;
-                        } else if (i == n - 1) arr.push(s);
-                    }
-                    let sophantucuamang = arr.length;
-
-                    if (sophantucuamang == 0) {
-                        alert("Không có môn học nào được xóa!");
-                        return;
-                    }
-
-                    let deletedCount = arr.length;
-
-                    // Xóa dữ liệu môn học của sinh viên
-                    Promise.all(arr.map(subject => {
-                        return get(child(dbRef, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value + '/' + subject)).then((snapshot) => {
-                            if (snapshot.exists()) {
-                                remove(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value + '/' + subject));
-                                remove(ref(db, 'MonHoc/' + subject + '/tong_so_sinh_vien/' + UserInfo.id));
-                                get(child(dbRef, 'MonHoc/' + subject + '/tong_so_sinh_vien/')).then((snapshot) => {
-                                    if (!snapshot.exists()) {
-                                        update(ref(db, 'MonHoc/' + subject), {
-                                            tong_so_sinh_vien: "0",
-                                        });
-                                    }
-                                });
-                            } else {
-                                notEnrolledSubjects.push(subject);
-                                deletedCount--;
-                            }
-                        });
-                    })).then(() => {
-                        alert("Xóa " + deletedCount + " môn cũ thành công!");
-                        if (notEnrolledSubjects.length > 0) {
-                            alert("Sinh viên chưa đăng kí môn: " + notEnrolledSubjects.join(", "));
-                        }
-                    });
-                } else {
-                    alert("No data available");
-                    console.log("No data available");
-                }
-            }).catch((error) => {
-                console.error(error);
-            });
-        };
-
-        let checkCred = () => {
-            if (!sessionStorage.getItem("user-creds")) {
-                window.location.href = "index.html";
-            }
-            else {
-
-                GreetHead.innerText = `Sinh viên ${UserInfo.ho_va_ten}!`;
-                MsgHead.innerText = `Email "${UserInfo.email}", mã sinh viên "${UserInfo.id}".`;
-            }
-        }
-
-        RetBtn.addEventListener('click', evt => {
-            evt.preventDefault();
-            RetData();
-        });
-
-        RetSubBtn.addEventListener('click', evt => {
-            evt.preventDefault();
-            RetSubData();
-        });
-
-        AddSubBtn.addEventListener('click', evt => {
-            evt.preventDefault();
-            AddSubjectData();
-        });
-
-        CanSubBtn.addEventListener('click', evt => {
-            evt.preventDefault();
-            CancelSubjectData();
-        });
-
-        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-        let SignOut = () => {
-            sessionStorage.removeItem("user-creds");
-            sessionStorage.removeItem("user-info");
-            window.location.href = "index.html";
-        }
-
-
-        SignOutBtn.addEventListener('click', SignOut);
-        //window.addEventListener('load', checkCred);
-        SignOutBtn.addEventListener('click', SignOut);
-        window.addEventListener('load', () => {
-            checkCred();
-            const dbRef = ref(db);
-            get(child(dbRef, 'MonHoc/hoc_ki_hien_tai')).then((snapshot) => {
-                if (snapshot.exists()) {
-                    SemesterInp.value = snapshot.val();
-                } else {
-                    alert("No data available");
-                    console.log("No data available");
-                }
-            }).catch((error) => {
-                console.error(error);
-            });
-        });
-    </script>
-    <script src="checkmk.js"></script>
 </body>
 
 </html>

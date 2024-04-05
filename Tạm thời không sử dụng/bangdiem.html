@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng điểm sinh viên</title>
+    <link rel="stylesheet" href="./css/SinhVien/bangdiem.css">
+    <link rel="stylesheet" href="./css/SinhVien/transcript.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="./js/SinhVien/Home.js" type="module"></script>
+    <script src="./js/SinhVien/table_filling.js" type="module"></script>
+    <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <!-- Vị trí thanh nav, copy từ file Home.html qua
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -->
+    <div class="dialog overplay" id="chon_dot">
+        <a href="#" class="overplay-close"></a>
+        <div class="dialog-body">
+            <a href="#" class="dialog-close-btn">&times;</a>
+            <p id="chon-dot-text">Chọn đợt đăng kí môn</p>
+            <button class="chon-dot-submit" id="dot1">Đợt 1</button>
+            <button class="chon-dot-submit" id="dot2">Đợt 2</button>
+        </div>
+    </div>
+    <!-- Vị trí thanh nav, copy từ file Home.html qua
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            -->
+            <div  class = "temp">
+                <h1>Bảng Điểm Sinh Viên</h1>
+            <h2 id="studentName">Họ và tên</h2>
+            <h3>Mã số sinh viên: <span id="studentId">0000000</span></h3>
+            <d>Số tín chỉ tích lũy học kỳ: <span id="">0000000</span></d>
+            <p>Số tín chỉ tích lũy trung bình: <span id="">0000000</span></p>
+        
+            </div>
+            
+        
+    <div class="main">
+        <!-- Vị trí thanh nav, copy từ file Home.html qua
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -->
+        <nav>
+            <ul>
+                <li><a href="#" class="logo">
+                        <img
+                            src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2F01_logobachkhoasang.png?alt=media&token=6e835bd4-9c3f-4b16-8c4d-36f87c7e7c9d">
+
+                        <span class="nav-item">bkel</span>
+                    </a></li>
+
+                <li><a href="svInfo.html" class="avatar">
+
+                        <img src="https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2Fimg_avatar.png?alt=media&token=58662505-3b47-4043-9e5b-a475516b8d22"
+                            alt="Avatar">
+
+                        <span class="nav-item">Thông tin cá nhân</span>
+                    </a></li>
+                <li><a href="Home.html" class="side-bar-icon">
+                        <i class="fas fa-home"></i>
+                        <span class="nav-item">Trang chủ</span>
+                    </a></li>
+                <li><a href="courses.html" class="side-bar-icon">
+                        <i class="fas fa-book-open-reader"></i>
+                        <span class="nav-item">Khóa học của tôi</span>
+                    </a></li>
+
+                <li>
+                    <a href="bangdiem.html" class="side-bar-icon">
+                        <i class="fas fa-regular fa-table"></i>
+                        <span class="nav-item" id="bangdiem">Bảng điểm</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#chon_dot" class="side-bar-icon">
+                        <i class="fas fa-regular fa-registered"></i>
+                        <span class="nav-item" id="dkimonhoc">Đăng ký môn học</span>
+                    </a>
+                </li>
+
+                <li><a href="#" class="side-bar-icon">
+                        <i class="fas fa-table"></i>
+                        <span class="nav-item">Thời khóa biểu</span>
+                    </a></li>
+                <li>
+                    <a href="#" class="side-bar-icon">
+                        <i class="fas fa-solid fa-right-from-bracket"></i>
+                        <span class="nav-item" id="signoutbutton">Đăng xuất</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Vị trí thanh nav, copy từ file Home.html qua
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -->
+
+        <div class="scroll-container">
+
+            <div class="">
+                <table class="table">
+                    <thead>
+                        <th>Số thứ tự</th>
+                        <th>Tên môn học</th>
+                        <th>Mã môn học</th>
+                        <th>Số tín chỉ</th>
+                        <th>Điểm thành phần</th>
+                        <th>Điểm tổng kết</th>
+                        <th>Tình trạng môn học </th>
+                    </thead>
+                    <tbody id="tbody1"></tbody>
+                </table>
+            </div>
+
+            <div class="container mt-3">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td rowspan="7" style="text-align: center; vertical-align: middle; font-size: 28px">Tổng
+                                quan</td></tr>
+
+                        <tr id="oddrow">
+                            <td>Tổng số tin chỉ tích lũy: </td>
+                            <td id="ttCre">0</td></tr>
+
+                        <tr>
+                            <td>Tông số tín chỉ tích lũy học kỳ:</td>
+                            <td id="seCre">0</td>
+                        </tr>
+                        <tr id="oddrow">
+                            <td>Điểm trung bình học kỳ ( hệ 4):</td>
+                            <td>0</td></tr>
+
+                        <tr>
+                            <td>Điểm trung bình tích lũy ( hệ 4):</td>
+                            <td>0</td></tr>
+
+                        <tr id="oddrow">
+                            <td>Điểm rèn luyện:</td>
+                            <td>0</td></tr>
+
+                        <tr>
+                            <td>Điều kiện nhận học bổng:</td>
+                            <td>nul</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

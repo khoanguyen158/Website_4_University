@@ -5,15 +5,16 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Đăng kí môn học đợt 2</title>
+    <title>Thông tin cá nhân</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- CSS tự thêm -->
-    <link rel="stylesheet" href="./css/SinhVien/dkimonhoc.css">
+    <link rel="stylesheet" href="./css/SinhVien/thongtincanhanSV.css">
+
     <!-- JS tự thêm -->
+    <script src="./js/SinhVien/thongtincanhanSV.js" type="module"></script>
     <script src="./js/chung/DangXuat.js" type="module"></script>
-    <script src="./js/SinhVien/dkimonhoc.js" type="module"></script>
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
@@ -50,7 +51,7 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo me-auto"><a>Đăng kí môn học đợt 2</a></h1>
+            <h1 class="logo me-auto"><a>Thông tin cá nhân</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -90,68 +91,66 @@
             <div class="row">
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <h1 id="semesterInp"></h1>
-                        <br>
-                        <br>
-                        <div class="col-md-12"><label class="labels">Mã môn học</label><input type="text"
-                                class="form-control" placeholder="" value="" id="idInp"></div>
+                        <input type="text" id="namebox" style="display: none;">
+                        <label id="extlab"></label>
+                        <img id="myimg" src="" class="rounded-circle mt-5" width="150px">
+                        <!-- <img class="rounded-circle mt-5" width="150px"
+                            src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"> -->
+                        <span class="font-weight-bold">
+                            <p id="nameInp"></p>
+                        </span>
+                        <span class="text-black-50">
+                            <p id="emailInp"></p>
+                        </span>
+
                         <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
-                                id="RetBtn">Tìm kiếm</button>
+                                id="upbtn">Chỉnh sửa ảnh</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5 border-right">
                     <div class="p-3 py-5">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-right">Thông tin môn học</h4>
+                            <h4 class="text-right">Chỉnh sửa thông tin</h4>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6"><label class="labels">Mã số</label><input type="text"
+                                    class="form-control" placeholder="" value="" id="idInp" readonly></div>
+                            <div class="col-md-6"><label class="labels">Giới tính</label><input type="text"
+                                    class="form-control" value="" placeholder="" id="sexInp" readonly></div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6"><label class="labels">Số điện thoại</label><input type="text"
+                                    class="form-control" placeholder="" value="" id="phoneInp"></div>
+                            <div class="col-md-6"><label class="labels">Ngày sinh</label><input type="text"
+                                    class="form-control" value="" placeholder="" id="dobInp"></div>
                         </div>
 
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Tên môn học</label><input type="text"
-                                    class="form-control" placeholder="" value="" id="nameInp" readonly></div>
-                            <div class="col-md-12"><label class="labels">Thời lượng dạy học</label><input type="text"
-                                    class="form-control" placeholder="" value="" id="timeInp" readonly></div>
-                            <div class="col-md-12"><label class="labels">Số tín chỉ</label><input type="text"
-                                    class="form-control" placeholder="" value="" id="tcInp" readonly></div>
+                            <div class="col-md-12"><label class="labels">Căn cước công dân</label><input type="text"
+                                    class="form-control" placeholder="" value="" id="cccd"></div>
+                            <div class="col-md-12"><label class="labels">Địa chỉ</label><input type="text"
+                                    class="form-control" placeholder="" value="" id="addressInp"></div>
                         </div>
 
-                        <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Các môn sinh viên đã đăng kí</label><input
-                                    type="text" class="form-control" placeholder="" value="" id="subInp" readonly></div>
-                        </div>
-                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
-                                id="RetSubBtn">Làm mới</button>
-                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="p-3 py-5">
                         <div class="d-flex justify-content-between align-items-center experience"><span></span><span
                                 class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;</span></div><br>
-                        <!-- <div class="col-md-12"><label class="labels">Các môn sinh viên đã đăng kí</label><input
-                                type="text" class="form-control" placeholder="" value="" id="subInp" readonly></div>
-
-                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
-                                id="RetSubBtn">Làm mới</button>
-                        </div> -->
-
-                        <div class="col-md-12"><label class="labels">Các môn cần HỦY trong các môn đã đăng
-                                kí</label><input type="text" class="form-control" placeholder="" value=""
-                                id="cancelsubInp"></div>
-
-                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
-                                id="CanSubBtn">Hủy</button>
-                        </div>
-                        <br>
-                        <div class="col-md-12"><label class="labels">Các môn cần ĐĂNG KÍ THÊM ngoài các môn đã đăng
-                                kí</label><input type="text" class="form-control" placeholder="" value=""
-                                id="addsubInp"></div>
-
-                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
-                                id="AddSubBtn">Đăng kí</button>
-                        </div>
+                        <div class="col-md-12"><label class="labels">Hệ đào tạo</label><input type="text"
+                                class="form-control" placeholder="" value="" id="hedaotao" readonly></div>
+                        <div class="col-md-12"><label class="labels">Ngành</label><input type="text"
+                                class="form-control" placeholder="" value="" id="nganh" readonly></div>
+                        <div class="col-md-12"><label class="labels">Ngày bắt đầu học</label><input type="text"
+                                class="form-control" placeholder="" value="" id="start_study" readonly></div>
+                        <div class="col-md-12"><label class="labels">Ngày kết thúc học</label><input type="text"
+                                class="form-control" placeholder="" value="" id="end_study" readonly></div>
                     </div>
-
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
+                            id="UpdBtn">Chỉnh sửa thông tin</button>
+                    </div>
                 </div>
             </div>
         </div>
