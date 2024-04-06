@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng điểm lớp học</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/2c32e62c1f.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1 id="header">Cập nhật điểm cho sinh viên</h1>
+
+    <div id="overlay" class="overlay"></div>
+    <div id="editPopup" style="display:none;">
+        <div id="editContent"></div>
+        <button id="closepop">Đóng</button>
+    </div>
+    </div>
+
+    <div class="container mt-3">
+        <table class="table table">
+            <thead>
+                <th>Số thứ tự</th>
+                <th>Họ và tên sinh viên </th>
+                <th>Mã số sinh viên </th>
+                <th>Điểm thành phần</th>
+                <th>Điểm tổng kết (hệ 10) </th>
+                <th>Chỉnh sửa điểm </th>
+
+            </thead>
+            <tbody id="tbody1"></tbody>
+        </table>
+    </div>
+    <p> Lưu ý 1: dữ liệu nhập vào không phải số sẽ tự chuyển thành N/A, dữ liệu là số > 10 sẽ tự động chuyển thành 10,
+        dữ liệu là số nhỏ hơn 0 sẽ tự động chuyển thành 0. </p>
+    <d>Lưu ý 2: nếu bất kỳ điểm thành phần nào của sinh viên dưới mức điểm tối thiểu, hệ thống sẽ tự động gán điểm tổng
+        kết bằng 0, các điểm thành phần khác giữ nguyên.</d>
+
+    <link rel="stylesheet" href="./css/GiangVien/updateStuRe_GV.css">
+    <script src="./js/GiangVien/updateStuRe_GV.js" type="module"></script>
+</body>
+
+</html>

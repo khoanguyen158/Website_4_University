@@ -32,6 +32,8 @@ let thoiluonghoc = document.getElementById('thoiluonghoc');
 let sotinchi = document.getElementById('sotinchi');
 let sogio = document.getElementById('sogio');
 
+let updateResult = document.getElementById('upRe');
+
 let change_notifi = () => {
     set(ref(db, 'MonHoc/' + ma_mon + '/LopHoc/' + lop + '/thong_bao'), notification.value);
     alert('Thay đổi thông báo thành công');
@@ -72,3 +74,6 @@ window.addEventListener('load', () => {
     });
 });
 
+updateResult.addEventListener('click', () => {
+    window.location.href = 'updateStuRe_GV.html';
+});
