@@ -82,11 +82,23 @@ let RetSubData = () => {
 
 
 let AddSubjectData = () => {
+    if(AddSubInp.value == ""){
+        alert("Vui lòng nhập mã (các) môn học cần thêm!");
+        return;
+    }
+    if(confirm("Bạn có chắc chắn muốn thêm môn học này?") == false) return;
     let str = new String();
     const dbRef = ref(db);
     let s = new String(AddSubInp.value);
     let n = s.length;
     let arr = new Array();
+    for(let i = 0; i < n; i++){
+        if(s[i] == ',' || (s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= '0' && s[i] <= '9')){}
+        else{
+            alert("Dữ liệu nhập vào không hợp lệ!");
+            return;
+        }
+    }
     for (let i = 0; i < n; i++) {
         if (s[i] == ',') {
             arr.push(s.substring(0, i));
@@ -156,6 +168,11 @@ let AddSubjectData = () => {
 
 
 let CancelSubjectData = () => {
+    if(CancelSubInp.value == ""){
+        alert("Vui lòng nhập mã (các) môn học cần xóa!");
+        return;
+    }
+    if(confirm("Bạn có chắc chắn muốn xóa môn học này?") == false) return;
     const dbRef = ref(db);
 
     get(child(dbRef, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value)).then((snapshot) => {

@@ -66,7 +66,7 @@ let SignInUser = evt => {
                         id: snapshot.val().id
                     }))
                     sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
-                    update(ref(db, 'SinhVien/' + IdInp), {
+                    update(ref(db, 'GiangVien/' + IdInp), {
                         mat_khau: PassInp.value
                     });
                     window.location.href = "HomeGV.html";
@@ -83,7 +83,7 @@ let SignInUser = evt => {
                         id: snapshot.val().id
                     }))
                     sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
-                    update(ref(db, 'SinhVien/' + IdInp), {
+                    update(ref(db, 'QuanTriVien/' + IdInp), {
                         mat_khau: PassInp.value
                     });
                     window.location.href = "HomeQTV.html";
@@ -92,7 +92,7 @@ let SignInUser = evt => {
             })
         })
         .catch((error) => {
-            alert("Sai các thông tin đăng nhập!");
+            alert("Sai thông tin, vui lòng kiểm tra lại!");
             console.log(error.code);
             console.log(error.message);
         });
@@ -113,6 +113,5 @@ let ForgotPassword = () => {
         });
 }
 
-// MainForm.addEventListener('submit', SignInUser);
 LoginBtn.addEventListener('click', SignInUser);
 ForgotPassLabel.addEventListener('click', ForgotPassword);
