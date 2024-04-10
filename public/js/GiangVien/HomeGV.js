@@ -46,7 +46,3 @@ let UpdData = () => {
 }
 
 window.addEventListener('load', checkCred);
-UpdBtn.addEventListener('click', evt => {
-    evt.preventDefault();
-    UpdData();
-});
