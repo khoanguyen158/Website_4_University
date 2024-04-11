@@ -1,4 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+import { getDatabase, set, ref, child, get, update, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDQk0PGIztg7qltOimH1_9_lLl5rluKsV8",
@@ -12,12 +14,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
-import { getDatabase, set, ref, child, get, update, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
-import { getAuth} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
-
 const db = getDatabase(app);
-const auth = getAuth(app);
 
 let IdInp = document.getElementById("idInp");
 let NameInp = document.getElementById("nameInp");
@@ -33,10 +30,7 @@ let AddSubBtn = document.getElementById("AddSubBtn");
 let CanSubBtn = document.getElementById("CanSubBtn");
 let RetSubBtn = document.getElementById("RetSubBtn");
 
-let SignOutBtn = document.getElementById("signoutbutton");
 let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
-
-
 let RetData = () => {
     const dbRef = ref(db);
     get(child(dbRef, 'MonHoc/' + IdInp.value)).then((snapshot) => {
@@ -76,9 +70,7 @@ let RetSubData = () => {
 };
 
 
-
-
-let AddSubjectData = async () => {
+let AddSubjectData = () => {
     if (AddSubInp.value == "") {
         alert("Vui lòng nhập mã (các) môn học cần thêm!");
         return;
@@ -106,28 +98,11 @@ let AddSubjectData = async () => {
         else if (i == n - 1) arr.push(s);
     }
     let sophantucuamang = arr.length;
-    for (let i = 0; i < arr.length; i++) {
-        get(child(dbRef, 'MonHoc/' + arr[i])).then((snapshot) => {
-            if (!snapshot.exists()) {
-                alert("Không tìm thấy môn học " + arr[i]);
-                return;
-            }
-        }).catch((error) => {
-            console.error(error);
-        });
-        // let snapshot = get((dbRef, 'MonHoc/' + arr[i]));
-        // alert("Tìm thấy môn học");
-        // if (!snapshot.exists()) {
-        //     alert("Không tìm thấy môn học " + arr[i]);
-        //     return;
-        // }
-        // else{
-        //     alert("Tìm thấy môn học " + arr[i]);
-        // }
-    };
+    
     update(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value), {
         ten_hoc_ki: (SemesterInp.value).trim().substring(2)
     });
+    
     for (let i = 0; i < arr.length; i++) {
         get(child(dbRef, 'MonHoc/' + arr[i])).then((snapshot) => {
             if (snapshot.exists()) {
@@ -171,12 +146,10 @@ let AddSubjectData = async () => {
             console.error(error);
         });
     }
-
     for (let i = 0; i < sophantucuamang; i++) {
         set(ref(db, 'MonHoc/' + arr[i] + '/tong_so_sinh_vien/' + UserInfo.id), {
             ho_va_ten: UserInfo.ho_va_ten
         })
-
     }
     alert("Thêm " + sophantucuamang + " môn mới thành công!");
 };
@@ -287,7 +260,7 @@ window.addEventListener('load', () => {
         if (snapshot.exists()) {
             SemesterInp.innerHTML = snapshot.val();
             SemesterInp.value = snapshot.val();
-            //RetSubData();
+            RetSubData();
         } else {
             alert("Không tìm thấy dữ liệu học kì!");
         }
