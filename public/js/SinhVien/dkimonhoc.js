@@ -14,7 +14,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 import { getDatabase, set, ref, child, get, update, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+import { getAuth} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
 const db = getDatabase(app);
 const auth = getAuth(app);
@@ -45,8 +45,7 @@ let RetData = () => {
             TimeInp.value = snapshot.val().mo_ta_mon_hoc.thoi_gian_hoc;
             TCInp.value = snapshot.val().mo_ta_mon_hoc.so_tin_chi;
         } else {
-            alert("No data available");
-            console.log("No data available");
+            alert("Không tìm thấy môn học!");
         }
     }).catch((error) => {
         console.error(error);
@@ -70,8 +69,6 @@ let RetSubData = () => {
             }
         } else {
             SubInp.value = "Chưa có môn nào";
-            //alert("No data available");
-            //console.log("No data available");
         }
     }).catch((error) => {
         console.error(error);
@@ -81,20 +78,20 @@ let RetSubData = () => {
 
 
 
-let AddSubjectData = () => {
-    if(AddSubInp.value == ""){
+let AddSubjectData = async () => {
+    if (AddSubInp.value == "") {
         alert("Vui lòng nhập mã (các) môn học cần thêm!");
         return;
     }
-    if(confirm("Bạn có chắc chắn muốn thêm môn học này?") == false) return;
+    if (confirm("Bạn có chắc chắn muốn thêm môn học này?") == false) return;
     let str = new String();
     const dbRef = ref(db);
     let s = new String(AddSubInp.value);
     let n = s.length;
     let arr = new Array();
-    for(let i = 0; i < n; i++){
-        if(s[i] == ',' || (s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= '0' && s[i] <= '9')){}
-        else{
+    for (let i = 0; i < n; i++) {
+        if (s[i] == ',' || (s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= '0' && s[i] <= '9')) { }
+        else {
             alert("Dữ liệu nhập vào không hợp lệ!");
             return;
         }
@@ -109,6 +106,25 @@ let AddSubjectData = () => {
         else if (i == n - 1) arr.push(s);
     }
     let sophantucuamang = arr.length;
+    for (let i = 0; i < arr.length; i++) {
+        get(child(dbRef, 'MonHoc/' + arr[i])).then((snapshot) => {
+            if (!snapshot.exists()) {
+                alert("Không tìm thấy môn học " + arr[i]);
+                return;
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+        // let snapshot = get((dbRef, 'MonHoc/' + arr[i]));
+        // alert("Tìm thấy môn học");
+        // if (!snapshot.exists()) {
+        //     alert("Không tìm thấy môn học " + arr[i]);
+        //     return;
+        // }
+        // else{
+        //     alert("Tìm thấy môn học " + arr[i]);
+        // }
+    };
     update(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value), {
         ten_hoc_ki: (SemesterInp.value).trim().substring(2)
     });
@@ -126,6 +142,7 @@ let AddSubjectData = () => {
                     Pass_Fail: 'waiting',
                 });
             }
+
         }).catch((error) => {
             console.error(error);
         });
@@ -159,6 +176,7 @@ let AddSubjectData = () => {
         set(ref(db, 'MonHoc/' + arr[i] + '/tong_so_sinh_vien/' + UserInfo.id), {
             ho_va_ten: UserInfo.ho_va_ten
         })
+
     }
     alert("Thêm " + sophantucuamang + " môn mới thành công!");
 };
@@ -168,15 +186,23 @@ let AddSubjectData = () => {
 
 
 let CancelSubjectData = () => {
-    if(CancelSubInp.value == ""){
+    if (CancelSubInp.value == "") {
         alert("Vui lòng nhập mã (các) môn học cần xóa!");
         return;
     }
-    if(confirm("Bạn có chắc chắn muốn xóa môn học này?") == false) return;
-    const dbRef = ref(db);
+    if (confirm("Bạn có chắc chắn muốn xóa môn học này?") == false) return;
 
+    for (let i = 0; i < CancelSubInp.value.length; i++) {
+        if (CancelSubInp.value[i] == ',' || (CancelSubInp.value[i] >= 'A' && CancelSubInp.value[i] <= 'Z') || (CancelSubInp.value[i] >= '0' && CancelSubInp.value[i] <= '9')) { }
+        else {
+            alert("Dữ liệu nhập vào không hợp lệ!");
+            return;
+        }
+    }
+    const dbRef = ref(db);
     get(child(dbRef, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value)).then((snapshot) => {
         if (snapshot.exists()) {
+            alert("Tìm thấy học kì");
             let s = new String(CancelSubInp.value);
             let n = s.length;
             let arr = new Array();
@@ -227,6 +253,7 @@ let CancelSubjectData = () => {
             console.log("No data available");
         }
     }).catch((error) => {
+        alert("No data available");
         console.error(error);
     });
 };
@@ -244,37 +271,25 @@ RetSubBtn.addEventListener('click', evt => {
 AddSubBtn.addEventListener('click', evt => {
     evt.preventDefault();
     AddSubjectData();
+    window.location.reload();
 });
 
 CanSubBtn.addEventListener('click', evt => {
     evt.preventDefault();
     CancelSubjectData();
+    window.location.reload();
 });
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-let SignOut = () => {
-    sessionStorage.removeItem("user-creds");
-    sessionStorage.removeItem("user-info");
-    window.location.href = "index.html";
-}
-
-
-SignOutBtn.addEventListener('click', SignOut);
-//window.addEventListener('load', checkCred);
-SignOutBtn.addEventListener('click', SignOut);
 window.addEventListener('load', () => {
     const dbRef = ref(db);
     get(child(dbRef, 'MonHoc/hoc_ki_hien_tai')).then((snapshot) => {
         if (snapshot.exists()) {
             SemesterInp.innerHTML = snapshot.val();
             SemesterInp.value = snapshot.val();
+            //RetSubData();
         } else {
-            alert("No data available");
-            console.log("No data available");
+            alert("Không tìm thấy dữ liệu học kì!");
         }
-    }).catch((error) => {
-        console.error(error);
     });
 });
