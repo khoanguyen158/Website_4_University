@@ -399,13 +399,13 @@ h6 {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-#hero {
+/* #hero {
   width: 100%;
   height: 80vh;
   background: url("../img/about.jpg") top center;
   background-size: cover;
   position: relative;
-}
+} */
 
 #hero:before {
   content: "";

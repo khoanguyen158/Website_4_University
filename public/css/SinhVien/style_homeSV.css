@@ -100,3 +100,45 @@
     margin-top: 10px;
     margin-left: 170px;
 }
+
+#hero {
+    width: 100%;
+    height: 80vh;
+    background: url("https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2FHomeSV%2FHOMESV.jpg?alt=media&token=260ce239-7397-4e6d-bc5d-f9eb8f979024") top center;
+    background-size: cover;
+    position: relative;
+}
+
+.overlay {
+    position: fixed; /* Fixed position */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 1; /* Ensure it sits above other content */
+    display: none; /* Hide by default */
+}
+
+/* Popup Style */
+#editPopup {
+    position: fixed; /* Fixed position */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the popup */
+    justify-content: center; /* Center contents horizontally */
+    z-index: 2; /* Ensure it sits above the overlay */
+    background-color: #fff; /* White background */
+    padding: 20px;
+    border: 1px solid #ddd; /* Add a border */
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1); /* Add some shadow */
+    display: none; /* Hide by default */
+}
+
+.editContent {
+    display: flex;
+    justify-content: center; /* Center contents horizontally */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center contents vertically */
+    width: 100%; /* Take full width to center align in parent */
+}

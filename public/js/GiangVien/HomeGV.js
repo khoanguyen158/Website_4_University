@@ -34,15 +34,4 @@ let checkCred = () => {
     }
 }
 
-let UpdData = () => {
-    update(ref(db, 'GiangVien/' + UserInfo.id), {
-        mat_khau: Input.value
-    }).then(() => {
-        alert("Data updated successfully!");
-    }).catch((error) => {
-        alert("Data could not be updated!" + error);
-        console.error(error);
-    });
-}
-
 window.addEventListener('load', checkCred);

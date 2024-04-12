@@ -1,6 +1,4 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-import { getDatabase, set, ref, child, get, update, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDQk0PGIztg7qltOimH1_9_lLl5rluKsV8",
@@ -14,7 +12,12 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+
+import { getDatabase, set, ref, child, get, update, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+import { getAuth} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
 const db = getDatabase(app);
+const auth = getAuth(app);
 
 let IdInp = document.getElementById("idInp");
 let NameInp = document.getElementById("nameInp");
@@ -30,7 +33,10 @@ let AddSubBtn = document.getElementById("AddSubBtn");
 let CanSubBtn = document.getElementById("CanSubBtn");
 let RetSubBtn = document.getElementById("RetSubBtn");
 
+let SignOutBtn = document.getElementById("signoutbutton");
 let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+
 let RetData = () => {
     const dbRef = ref(db);
     get(child(dbRef, 'MonHoc/' + IdInp.value)).then((snapshot) => {
@@ -59,7 +65,10 @@ let RetSubData = () => {
 
                 SubInp.value = subjectKeys.join(',');
             } else {
-                SubInp.value = "Chưa có môn nào";
+                SubInp.value = "Sinh viên chưa đăng kí môn nào";
+                CancelSubInp.value = "";
+                CancelSubInp.setAttribute("disabled", "disabled");
+                CanSubBtn.setAttribute("disabled", "disabled");
             }
         } else {
             SubInp.value = "Chưa có môn nào";
@@ -70,7 +79,9 @@ let RetSubData = () => {
 };
 
 
-let AddSubjectData = () => {
+
+
+let AddSubjectData = async () => {
     if (AddSubInp.value == "") {
         alert("Vui lòng nhập mã (các) môn học cần thêm!");
         return;
@@ -81,6 +92,7 @@ let AddSubjectData = () => {
     let s = new String(AddSubInp.value);
     let n = s.length;
     let arr = new Array();
+    let arr1 = new Array();
     for (let i = 0; i < n; i++) {
         if (s[i] == ',' || (s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= '0' && s[i] <= '9')) { }
         else {
@@ -90,15 +102,46 @@ let AddSubjectData = () => {
     }
     for (let i = 0; i < n; i++) {
         if (s[i] == ',') {
-            arr.push(s.substring(0, i));
+            arr1.push(s.substring(0, i));
             s = s.substring(i + 1, n);
             n = s.length;
             i = 0;
         }
-        else if (i == n - 1) arr.push(s);
+        else if (i == n - 1) arr1.push(s);
     }
-    let sophantucuamang = arr.length;
     
+    
+// code mới đây nha Khoa. -> Oke nha Khải
+
+
+let promises = arr1.map((item) =>
+    get(child(dbRef, 'MonHoc/' + item))
+);
+
+Promise.all(promises)
+    .then((snapshots) => {
+        // Mảng lưu các môn học không tồn tại
+        let notExistCourses = [];
+
+        snapshots.forEach((snapshot, index) => {
+            if (!snapshot.exists()) {
+                // Thêm môn học vào mảng
+                notExistCourses.push(arr1[index]);
+            } else {
+                arr.push(arr1[index]);
+            }
+        });
+        if(notExistCourses.length == arr1.length){
+            alert("Không tồn tại môn " + notExistCourses.join(','));
+            return;
+        }
+
+        // Kiểm tra xem nếu có môn học không tồn tại
+        if(notExistCourses.length > 0){
+            alert("Không tồn tại môn " + notExistCourses.join(',')); 
+        }
+
+    let sophantucuamang = arr.length;
     update(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value), {
         ten_hoc_ki: (SemesterInp.value).trim().substring(2)
     });
@@ -122,6 +165,7 @@ let AddSubjectData = () => {
             console.error(error);
         });
     }
+    
 
     for (let i = 0; i < arr.length; i++) {
         get(child(dbRef, 'MonHoc/' + arr[i] + '/mo_ta_mon_hoc/so_cot_diem')).then((snapshot) => {
@@ -140,18 +184,28 @@ let AddSubjectData = () => {
                     });
                 }
             } else {
-                console.error("No data available");
+                console.error("Không tìm thấy dữ liệu!");
             }
         }).catch((error) => {
             console.error(error);
         });
     }
+
     for (let i = 0; i < sophantucuamang; i++) {
         set(ref(db, 'MonHoc/' + arr[i] + '/tong_so_sinh_vien/' + UserInfo.id), {
             ho_va_ten: UserInfo.ho_va_ten
-        })
+        });
     }
     alert("Thêm " + sophantucuamang + " môn mới thành công!");
+    })
+    .catch((error) => {
+        console.error("Error fetching data: ", error);
+    });
+
+
+
+
+
 };
 
 
@@ -175,7 +229,7 @@ let CancelSubjectData = () => {
     const dbRef = ref(db);
     get(child(dbRef, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value)).then((snapshot) => {
         if (snapshot.exists()) {
-            alert("Tìm thấy học kì");
+            //alert("Tìm thấy học kì");
             let s = new String(CancelSubInp.value);
             let n = s.length;
             let arr = new Array();
@@ -217,19 +271,22 @@ let CancelSubjectData = () => {
                 });
             })).then(() => {
                 alert("Xóa " + deletedCount + " môn cũ thành công!");
+                RetSubData();
                 if (notEnrolledSubjects.length > 0) {
                     alert("Sinh viên chưa đăng kí môn: " + notEnrolledSubjects.join(", "));
                 }
             });
         } else {
-            alert("No data available");
+            alert("Không tìm thấy dữ liệu");
             console.log("No data available");
         }
     }).catch((error) => {
-        alert("No data available");
+       // alert("No data available");
         console.error(error);
     });
 };
+
+
 
 RetBtn.addEventListener('click', evt => {
     evt.preventDefault();
@@ -244,13 +301,11 @@ RetSubBtn.addEventListener('click', evt => {
 AddSubBtn.addEventListener('click', evt => {
     evt.preventDefault();
     AddSubjectData();
-    window.location.reload();
 });
 
 CanSubBtn.addEventListener('click', evt => {
     evt.preventDefault();
     CancelSubjectData();
-    window.location.reload();
 });
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
