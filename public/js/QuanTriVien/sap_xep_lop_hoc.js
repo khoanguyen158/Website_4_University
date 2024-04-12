@@ -26,17 +26,28 @@ let MinnumOfSvInp = document.getElementById('min_numofsvInp');
 let NumOfClassInp = document.getElementById('numofclassInp');
 let SiSoInp = document.getElementById('sisoInp');
 let DkiGvInp = document.getElementById('dkigvInp');
+let tuan_hoc = document.getElementById('tuan_hoc');
 
 let CloseBtn = document.getElementById('closeBtn');
 let UpdkiBtn = document.getElementById('updkiBtn');
 let FindBtn = document.getElementById('findBtn');
 let AddBtn = document.getElementById('AddBtn');
 let UpdBtn = document.getElementById('UpdBtn');
+let submit_tuan_hoc_Btn = document.getElementById('submit_tuan_hoc');   
 
 
 let Update_dot_dki = () => {
     if (dot_dki.value == "Đợt 1") {
+        dot_dki.value = "Đóng đợt 1";
+    }
+    else if (dot_dki.value == "Đóng đợt 1") {
         dot_dki.value = "Đợt 2";
+    }
+    else if (dot_dki.value == "Đợt 2") {
+        dot_dki.value = "Đóng đợt 2";
+    }
+    else if (dot_dki.value == "Đóng đợt 2") {
+        dot_dki.value = "Close";
     }
     else {
         dot_dki.value = "Đợt 1";
@@ -77,12 +88,53 @@ let dulieudot = async () => {
     let data = dbdata.val();
     dot_dki.value = data.dot_dki;
 
-    if (dot_dki.value != "Đợt 1") {
+    // if (dot_dki.value != "Đóng đợt 1") {
+    //     NumOfClassInp.disabled = true;
+    //     SiSoInp.disabled = true;
+    //     DkiGvInp.disabled = true;
+    //     tuan_hoc.disabled = true;
+    //     AddBtn.disabled = true;
+    //     UpdBtn.disabled = true;
+    //     submit_tuan_hoc_Btn.disabled = true;
+    // }
+    // else{
+
+    // }
+
+    // if (dot_dki.value != "Đóng đợt 2") {
+    //     NumOfClassInp.disabled = true;
+    //     SiSoInp.disabled = true;
+    //     DkiGvInp.disabled = true;
+    //     AddBtn.disabled = true;
+    //     UpdBtn.disabled = true;
+    // }
+
+    if(dot_dki.value == "Đóng đợt 1"){
+        NumOfClassInp.disabled = false;
+        SiSoInp.disabled = false;
+        DkiGvInp.disabled = false;
+        tuan_hoc.disabled = true;
+        AddBtn.disabled = false;
+        UpdBtn.disabled = false;
+        submit_tuan_hoc_Btn.disabled = true;
+    }
+    else if(dot_dki.value == "Đóng đợt 2"){
         NumOfClassInp.disabled = true;
         SiSoInp.disabled = true;
         DkiGvInp.disabled = true;
+        tuan_hoc.disabled = false;
         AddBtn.disabled = true;
         UpdBtn.disabled = true;
+        submit_tuan_hoc_Btn.disabled = false;
+    }
+    else{
+        NumOfClassInp.disabled = true;
+        SiSoInp.disabled = true;
+        DkiGvInp.disabled = true;
+        tuan_hoc.disabled = true;
+        AddBtn.disabled = true;
+        UpdBtn.disabled = true;
+        submit_tuan_hoc_Btn.disabled = true;
     }
 }
 
@@ -272,9 +324,36 @@ let Upd = async () => {
     }
 }
 
+let thong_tin_tuan_hoc_inp = async () => {
+    if(IdInp.value == "") {
+        alert('Vui lòng nhập mã môn học');
+        return;
+    }
+
+    if(confirm('Bạn có chắc chắn muốn cập nhật thông tin tuần học không?') == false) {
+        return;
+    }
+    let id = IdInp.value;
+    let tuan = tuan_hoc.value;
+
+    let dbref = ref(db, 'MonHoc/' + id);
+    let dbdata = await get(dbref);
+    let data = dbdata.val();
+
+    if (data) {
+        update(ref(db, 'MonHoc/' + id), {
+            thong_tin_tuan_hoc: tuan
+        });
+        alert('Cập nhật thông tin tuần học thành công');
+    } else {
+        alert('Không tìm thấy môn học');
+    }
+}
+
 UpdkiBtn.addEventListener('click', Update_dot_dki);
 CloseBtn.addEventListener('click', Mo_dong_dot_dki);
 FindBtn.addEventListener('click', Find);
 AddBtn.addEventListener('click', Add);
 UpdBtn.addEventListener('click', Upd);
+submit_tuan_hoc_Btn.addEventListener('click', thong_tin_tuan_hoc_inp);
 window.addEventListener('load', dulieudot);
