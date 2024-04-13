@@ -67,6 +67,7 @@ ChangeBtn.addEventListener('click', evt => {
     //si_so_tung_lop
     //so_luong_lop
     //tong_so_sinh_vien
+    //thong_tin_tuan_hoc;
     let dbRef1 = ref(db, 'MonHoc/');
     get((dbRef1)).then((snapshot) => {
         if (snapshot.exists()) {
@@ -78,8 +79,8 @@ ChangeBtn.addEventListener('click', evt => {
                     remove(ref(db, 'MonHoc/' + key + '/si_so_tung_lop/'));
                     remove(ref(db, 'MonHoc/' + key + '/so_luong_lop/'));
                     remove(ref(db, 'MonHoc/' + key + '/tong_so_sinh_vien/'));
+                    remove(ref(db, 'MonHoc/' + key + '/thong_tin_tuan_hoc/'));
                 }
-
             });
         } else {
             alert("No data available");

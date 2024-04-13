@@ -81,6 +81,136 @@ let RetSubData = () => {
 
 
 
+// let AddSubjectData12 = async () => {
+//     if (AddSubInp.value == "") {
+//         alert("Vui lòng nhập mã (các) môn học cần thêm!");
+//         return;
+//     }
+//     if (confirm("Bạn có chắc chắn muốn thêm môn học này?") == false) return;
+//     let str = new String();
+//     const dbRef = ref(db);
+//     let s = new String(AddSubInp.value);
+//     let n = s.length;
+//     let arr = new Array();
+//     let arr1 = new Array();
+//     for (let i = 0; i < n; i++) {
+//         if (s[i] == ',' || (s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= '0' && s[i] <= '9')) { }
+//         else {
+//             alert("Dữ liệu nhập vào không hợp lệ!");
+//             return;
+//         }
+//     }
+//     for (let i = 0; i < n; i++) {
+//         if (s[i] == ',') {
+//             arr1.push(s.substring(0, i));
+//             s = s.substring(i + 1, n);
+//             n = s.length;
+//             i = 0;
+//         }
+//         else if (i == n - 1) arr1.push(s);
+//     }
+    
+    
+// // code mới đây nha Khoa. -> Oke nha Khải
+
+
+// let promises = arr1.map((item) =>
+//     get(child(dbRef, 'MonHoc/' + item))
+// );
+
+// Promise.all(promises)
+//     .then((snapshots) => {
+//         // Mảng lưu các môn học không tồn tại
+//         let notExistCourses = [];
+
+//         snapshots.forEach((snapshot, index) => {
+//             if (!snapshot.exists()) {
+//                 // Thêm môn học vào mảng
+//                 notExistCourses.push(arr1[index]);
+//             } else {
+//                 arr.push(arr1[index]);
+//             }
+//         });
+//         if(notExistCourses.length == arr1.length){
+//             alert("Không tồn tại môn " + notExistCourses.join(','));
+//             return;
+//         }
+
+//         // Kiểm tra xem nếu có môn học không tồn tại
+//         if(notExistCourses.length > 0){
+//             alert("Không tồn tại môn " + notExistCourses.join(',')); 
+//         }
+
+//     let sophantucuamang = arr.length;
+//     update(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value), {
+//         ten_hoc_ki: (SemesterInp.value).trim().substring(2)
+//     });
+    
+//     for (let i = 0; i < arr.length; i++) {
+//         get(child(dbRef, 'MonHoc/' + arr[i])).then((snapshot) => {
+//             if (snapshot.exists()) {
+//                 NameInp.value = snapshot.val().mo_ta_mon_hoc.ten_mon_hoc;
+//                 TimeInp.value = snapshot.val().mo_ta_mon_hoc.thoi_gian_hoc;
+//                 TCInp.value = snapshot.val().mo_ta_mon_hoc.so_tin_chi;
+//                 set(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value + '/' + arr[i]), {
+//                     DTB_10: "0",
+//                     ten_mon_hoc: NameInp.value,
+//                     thoi_gian_hoc: TimeInp.value,
+//                     so_tin_chi: TCInp.value,
+//                     Pass_Fail: 'waiting',
+//                 });
+//             }
+
+//         }).catch((error) => {
+//             console.error(error);
+//         });
+//     }
+    
+
+//     for (let i = 0; i < arr.length; i++) {
+//         get(child(dbRef, 'MonHoc/' + arr[i] + '/mo_ta_mon_hoc/so_cot_diem')).then((snapshot) => {
+//             if (snapshot.exists()) {
+//                 let so_cot_diem = snapshot.val();
+//                 // Duyệt qua từng cột điểm
+//                 for (let cot in so_cot_diem) {
+//                     let phan_tram = so_cot_diem[cot].phan_tram;
+//                     let diem_toi_thieu = so_cot_diem[cot].diem_toi_thieu;
+//                     let ten = so_cot_diem[cot].ten;
+//                     // Cập nhật thông tin cột điểm vào cơ sở dữ liệu sinh viên
+//                     set(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value + '/' + arr[i] + '/so_cot_diem/' + cot), {
+//                         phan_tram: phan_tram,
+//                         diem_toi_thieu: diem_toi_thieu,
+//                         ten: ten,
+//                     });
+//                 }
+//             } else {
+//                 console.error("Không tìm thấy dữ liệu!");
+//             }
+//         }).catch((error) => {
+//             console.error(error);
+//         });
+//     }
+
+//     for (let i = 0; i < sophantucuamang; i++) {
+//         set(ref(db, 'MonHoc/' + arr[i] + '/tong_so_sinh_vien/' + UserInfo.id), {
+//             ho_va_ten: UserInfo.ho_va_ten
+//         });
+//     }
+//     alert("Thêm " + sophantucuamang + " môn mới thành công!");
+//     })
+//     .catch((error) => {
+//         console.error("Error fetching data: ", error);
+//     });
+
+
+
+
+
+// };
+
+
+//Test thử hàm này oke thì xoá hàm trên nha
+
 let AddSubjectData = async () => {
     if (AddSubInp.value == "") {
         alert("Vui lòng nhập mã (các) môn học cần thêm!");
@@ -110,42 +240,54 @@ let AddSubjectData = async () => {
         else if (i == n - 1) arr1.push(s);
     }
     
-    
-// code mới đây nha Khoa. -> Oke nha Khải
-
-
 let promises = arr1.map((item) =>
     get(child(dbRef, 'MonHoc/' + item))
 );
+let checkPromises = arr1.map((item) =>
+    get(child(dbRef, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value + '/' + item))
+);
 
-Promise.all(promises)
+Promise.all(promises.concat(checkPromises))
     .then((snapshots) => {
-        // Mảng lưu các môn học không tồn tại
+        // Mảng lưu các môn học không tồn tại và đã đăng ký
         let notExistCourses = [];
+        let alreadyRegisteredCourses = [];
 
-        snapshots.forEach((snapshot, index) => {
-            if (!snapshot.exists()) {
+        arr1.forEach((item, index) => {
+            if (!snapshots[index].exists()) {
                 // Thêm môn học vào mảng
-                notExistCourses.push(arr1[index]);
-            } else {
-                arr.push(arr1[index]);
+                notExistCourses.push(item);
+            } 
+            // Check if course has been already registered
+            else if(snapshots[arr1.length + index].exists()){
+                alreadyRegisteredCourses.push(item);
+            }
+            else{
+                arr.push(item);
             }
         });
         if(notExistCourses.length == arr1.length){
             alert("Không tồn tại môn " + notExistCourses.join(','));
             return;
         }
-
         // Kiểm tra xem nếu có môn học không tồn tại
         if(notExistCourses.length > 0){
-            alert("Không tồn tại môn " + notExistCourses.join(',')); 
+            alert("Không tồn tại môn " + notExistCourses.join(','));
         }
+
+        //kiem tra mon hoc da dang ki
+        if(alreadyRegisteredCourses.length == arr1.lenght){
+             alert("Bạn đã đăng ký môn " + alreadyRegisteredCourses.join(','));
+             return;
+        }
+        if(alreadyRegisteredCourses.length > 0){
+            alert("Bạn đã đăng ký môn " + alreadyRegisteredCourses.join(','));      
+       }
 
     let sophantucuamang = arr.length;
     update(ref(db, 'SinhVien/' + UserInfo.id + '/Hoc_ki/' + SemesterInp.value), {
         ten_hoc_ki: (SemesterInp.value).trim().substring(2)
     });
-    
     for (let i = 0; i < arr.length; i++) {
         get(child(dbRef, 'MonHoc/' + arr[i])).then((snapshot) => {
             if (snapshot.exists()) {
@@ -197,15 +339,9 @@ Promise.all(promises)
         });
     }
     alert("Thêm " + sophantucuamang + " môn mới thành công!");
-    })
-    .catch((error) => {
-        console.error("Error fetching data: ", error);
-    });
-
-
-
-
-
+}).catch((error) => {
+    console.error("Error fetching data: ", error);
+});
 };
 
 
