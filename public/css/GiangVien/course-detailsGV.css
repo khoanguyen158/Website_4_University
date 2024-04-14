@@ -5,7 +5,7 @@
     padding: 10px; /* Thêm khoảng cách giữa chữ và viền */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Làm mờ viền */
 }
-#btn_notification, #upRe{
+#btn_notification, #upRe, #them_btn{
     background-color: #4CAF50; /* Màu nền */
     color: white; /* Màu chữ */
     padding: 10px 20px; /* Kích thước */

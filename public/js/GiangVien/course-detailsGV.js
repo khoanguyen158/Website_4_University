@@ -34,6 +34,8 @@ let sogio = document.getElementById('sogio');
 
 let updateResult = document.getElementById('upRe');
 
+
+
 let change_notifi = () => {
     set(ref(db, 'MonHoc/' + ma_mon + '/LopHoc/' + lop + '/thong_bao'), notification.value);
     alert('Thay đổi thông báo thành công');
@@ -128,6 +130,10 @@ function AddAllVideosToTable(ID_video) {
 function GetAllVideosRealTime() {
     const dbRef = ref(db, 'MonHoc/' + ma_mon + '/LopHoc/' + lop + '/video');
     onValue(dbRef, (snapshot) => {
+        if (!snapshot.exists()) {
+            return;
+        }
+        document.getElementById('Table').style.display = '';
         var ID_video = [];
         snapshot.forEach(childSnapshot => {
             ID_video.push(childSnapshot.key);
@@ -140,11 +146,33 @@ function GetAllVideosRealTime() {
 window.addEventListener('load', GetAllVideosRealTime);
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+let Id_video = document.getElementById('id_video');
+let Title_video = document.getElementById('title_video');
+let Ma_nhung = document.getElementById('ma_nhung');
 let them_Btn = document.getElementById('them_btn');
 
 let them_video = () => {
     if(confirm('Bạn có chắc muốn thêm video này không?') == false) return;
     //hàm sẽ thêm video mới vào firebase realtime
+    
+        let videoIdMatch = Ma_nhung.value.match(/[?&]v=(.{11})/);
+        let videoId = videoIdMatch ? videoIdMatch[1] : null;
+    
+        if(videoId === null){
+            videoIdMatch = Ma_nhung.value.match(/youtu.be\/(.{11})/);
+            videoId = videoIdMatch ? videoIdMatch[1] : null;
+        }
+    
+        
+    
+    set(ref(db, 'MonHoc/' + ma_mon + '/LopHoc/' + lop + '/video/' + Id_video.value),{
+        link:"https://www.youtube.com/embed/" + videoId,
+        ten: Title_video.value,
+    });
+
+    alert('Thêm video thành công');
+    window.location.reload();
 };
 
 them_Btn.addEventListener('click', them_video);

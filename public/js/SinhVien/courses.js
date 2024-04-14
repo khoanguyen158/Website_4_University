@@ -67,8 +67,8 @@ let getSemester = () => {
                             }
                         }
                     }
-                    for(let i = numOfCourses + 1; i <= 10; i++) {
-                        document.getElementById('c' + i).style.display = 'none';
+                    for(let i = 1; i <= numOfCourses; i++) {
+                        document.getElementById('c' + i).style.display = '';
                     }
                 }
                 else {
