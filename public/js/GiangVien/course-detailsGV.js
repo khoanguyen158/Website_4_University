@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-import { getDatabase, onValue, ref, set } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+import { getDatabase, onValue, ref, set, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
 
@@ -81,6 +81,17 @@ updateResult.addEventListener('click', () => {
 });
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// let deleteVideo = (videoId) => {
+//     let videoRef = ref(db, 'MonHoc/' + ma_mon + '/LopHoc/' + lop + '/video/' + videoId);
+//     remove(videoRef)
+//       .then(() => {
+//         alert("Video đã được xóa thành công");
+//         window.location.reload();
+//       })
+//       .catch((error) => {
+//         console.error("Error removing video: ", error);
+//       });
+// };
 
 var tbody = document.getElementById('tbody1');
 function AddVideoToTable(x0, x1, x2) {
@@ -90,22 +101,35 @@ function AddVideoToTable(x0, x1, x2) {
     let td2 = document.createElement('td');
     let td3 = document.createElement('td');
     let td4 = document.createElement('td');
-    let td5 = document.createElement('td');
+    
 
 
     td0.innerHTML = x0;
     td1.innerHTML = x1;
     td2.innerHTML = x2;
     td3.innerHTML = '<a href="video.html" id=VIDEO_HAS_ID_' + x1 + '>Xem</a>';
-    td4.innerHTML = 'Xóa';
-    td5.innerHTML = 'Ẩn';
+
+let btnDelete = document.createElement('button');
+    btnDelete.innerHTML = 'Xóa';
+    btnDelete.className = 'btn btn-danger';
+    btnDelete.addEventListener('click', (event) => {
+        if(confirm('Bạn có chắc muốn xoá video này không?') == false) return;
+        // Xóa dòng đại diện cho video ra khỏi table
+        tbody.removeChild(trow);
+         // Xóa video khỏi firebase 
+        deleteVideo(x1);
+        alert('Xoá video thành công');
+        window.location.reload();
+       
+    });
+    td4.appendChild(btnDelete);
 
     trow.appendChild(td0);
     trow.appendChild(td1);
     trow.appendChild(td2);
     trow.appendChild(td3);
     trow.appendChild(td4);
-    trow.appendChild(td5);
+    
 
     tbody.appendChild(trow);
 }
@@ -176,3 +200,13 @@ let them_video = () => {
 };
 
 them_Btn.addEventListener('click', them_video);
+
+
+function deleteVideo(videoId) {
+    // Nhận tham chiếu đến vị trí của video cần xóa
+   
+    const videoRef = ref(db, `MonHoc/${ma_mon}/LopHoc/${lop}/video/${videoId}`);
+    
+    // Xóa video
+    remove(videoRef)        
+}
