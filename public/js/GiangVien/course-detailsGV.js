@@ -210,3 +210,123 @@ function deleteVideo(videoId) {
     // Xóa video
     remove(videoRef)        
 }
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Tai Lieu ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+var tbody2 = document.getElementById('tbody2');
+function AddTLToTable(x0, x1, x2) {
+    let trow = document.createElement("tr");
+    let td0 = document.createElement('td');
+    let td1 = document.createElement('td');
+    let td2 = document.createElement('td');
+    let td3 = document.createElement('td');
+    let td4 = document.createElement('td');
+    
+
+
+    td0.innerHTML = x0;
+    td1.innerHTML = x1;
+    td2.innerHTML = x2;
+    td3.innerHTML = '<a href="bai_kiem_tra.html" id=TL_HAS_ID_' + x1 + '>Xem</a>';
+
+let btnDelete = document.createElement('button');
+    btnDelete.innerHTML = 'Xóa';
+    btnDelete.className = 'btn btn-danger';
+    btnDelete.addEventListener('click', (event) => {
+        if(confirm('Bạn có chắc muốn xoá tài liệu này không?') == false) return;
+        // Xóa dòng đại diện cho video ra khỏi table
+        tbody2.removeChild(trow);
+         // Xóa video khỏi firebase 
+        deletetl(x1);
+        alert('Xoá tài liệu thành công');
+        window.location.reload();
+       
+    });
+    td4.appendChild(btnDelete);
+
+    trow.appendChild(td0);
+    trow.appendChild(td1);
+    trow.appendChild(td2);
+    trow.appendChild(td3);
+    trow.appendChild(td4);
+    
+
+    tbody2.appendChild(trow);
+}
+
+function AddAllTLToTable(ID_tl) {
+    let idx = 0;
+    ID_tl.forEach(id => {
+        onValue(ref(db, 'MonHoc/' + ma_mon + '/LopHoc/' + lop + '/tailieu/' + id), (snapshot) => {
+            if (snapshot.exists()) {
+                idx++;
+                let tl = snapshot.val();
+                AddTLToTable(idx, id, tl.ten);
+                document.getElementById('TL_HAS_ID_' + id).addEventListener('click', () => {
+                    sessionStorage.setItem('ID_TL', id);
+                    sessionStorage.setItem('TL_' + id, tl.link);
+                });
+            }
+        });
+    });
+}
+
+function GetAllTLRealTime() {
+    const dbRef = ref(db, 'MonHoc/' + ma_mon + '/LopHoc/' + lop + '/tailieu');
+    onValue(dbRef, (snapshot) => {
+        if (!snapshot.exists()) {
+            return;
+        }
+        document.getElementById('Table2').style.display = '';
+        var ID_tl = [];
+        snapshot.forEach(childSnapshot => {
+            ID_tl.push(childSnapshot.key);
+        });
+        //tbody.innerHTML = "";
+        AddAllTLToTable(ID_tl);
+    })
+}
+
+window.addEventListener('load', GetAllTLRealTime);
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+let Id_tl = document.getElementById('id_tl');
+let Title_tl = document.getElementById('title_tl');
+let Ma_nhungtl = document.getElementById('ma_nhungtl');
+let themtl_Btn = document.getElementById('themtl_btn');
+
+let them_tl = () => {
+    if(confirm('Bạn có chắc muốn thêm tài liệu này không?') == false) return;
+    //hàm sẽ thêm video mới vào firebase realtime
+    
+        // let videoIdMatch = Ma_nhung.value.match(/[?&]v=(.{11})/);
+        // let videoId = videoIdMatch ? videoIdMatch[1] : null;
+    
+        // if(videoId === null){
+        //     videoIdMatch = Ma_nhung.value.match(/youtu.be\/(.{11})/);
+        //     videoId = videoIdMatch ? videoIdMatch[1] : null;
+        // }
+    
+        
+    
+    set(ref(db, 'MonHoc/' + ma_mon + '/LopHoc/' + lop + '/tailieu/' + Id_tl.value),{
+        link: Ma_nhungtl.value,
+        ten: Title_tl.value,
+    });
+
+    alert('Thêm tài liệu thành công');
+    window.location.reload();
+};
+
+themtl_Btn.addEventListener('click', them_tl);
+
+
+function deletetl(tlId) {
+    // Nhận tham chiếu đến vị trí của video cần xóa
+   
+    const tlRef = ref(db, `MonHoc/${ma_mon}/LopHoc/${lop}/tailieu/${tlId}`);
+    
+    // Xóa video
+    remove(tlRef);        
+}

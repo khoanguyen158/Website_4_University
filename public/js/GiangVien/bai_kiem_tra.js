@@ -1,11 +1,11 @@
-let id_vid = sessionStorage.getItem('ID_VIDEO');
-let link = sessionStorage.getItem('VIDEO_' + id_vid);
+let id_tl = sessionStorage.getItem('ID_TL');
+let link = sessionStorage.getItem('TL_' + id_tl);
 let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
 
 function getSrc() {
-    //console.log(id_vid);
-    //console.log(link);
-    return document.getElementById('video_inp').setAttribute('src', link);
+    console.log(id_tl);
+    console.log(link);
+    return document.getElementById('tl_inp').setAttribute('src', link);
 }
 window.addEventListener('load', getSrc);
 
@@ -21,4 +21,3 @@ function whoami() {
     }
 }
 window.addEventListener('load', whoami);
-
