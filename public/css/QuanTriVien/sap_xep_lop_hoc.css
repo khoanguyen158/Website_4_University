@@ -12,26 +12,26 @@
 
 body {
     display: flex;
-    justify-content: center; /* Căn giữa theo chiều ngang */
+    justify-content: left; /* Căn giữa theo chiều ngang */
     align-items: center; /* Căn giữa theo chiều dọc */
-    height: 100vh; /* Chiều cao của toàn bộ trang */
-    background-color: #E8F1F2   ; /* Màu nền của toàn bộ trang */
-    margin: 10vh 0px 0px 10vh; /* Loại bỏ margin mặc định */
-    padding: 0; /* Loại bỏ padding mặc định */
-    background-image: 
-    url("https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2FDH_DEF.jpg?alt=media&token=ffbe0c5c-bb5c-40b0-a073-898dba82fb71");
+    background: #E8F1F2;
+    height: 100vh;
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/fir-d023a.appspot.com/o/Img%2FHome%2FDH_DEF2.jpg?alt=media&token=5feb4f44-c78a-4e2e-ae98-abaef1831179');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
     background-size: cover;
+
 }
 
 .main1 {
     position: relative;
-    bottom: 10px;
-    padding: 50px;
+    left: 50px;
+    top: 70px;
+    padding: 10px;
     width: 900px;
-    height: 700px;
+    height: 750px;
     background-color: #031c458f;
     border-radius: 50px; /* Điều chỉnh giá trị này để thay đổi độ cong của góc */
-    margin: 20px;
     justify-content: center;
     align-items: center;
 }
@@ -92,28 +92,27 @@ nav{
     border: #00173D;
     border-radius: 40px;
     position: relative;
-    top: 10px;
-    right: 180px;
+    top: 6px;
+    left: 10px;
     width: 90px;
-    height: 800px;
-    margin-top: 10px;
+    height: 87vh;
+    margin-top: 5px;
+    margin-right: 40px;
     background: #00173D;
     overflow: hidden;
     transition: 1s;
 }
 /* animation cho thanh điều khiển*/
 nav:hover{
-    position: relative;
-    top: 10px;
-    right: 70px;
-    width: 300px;
+    width: 360px;
 }
 
 /* Chỉnh logo và avatar*/
 .logo{
     text-align: center;
+    align-items: center ;
     display: flex;
-    margin: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 5px;
     padding-bottom: 2rem;
 }
 .logo img{
@@ -125,7 +124,6 @@ nav:hover{
     font-weight: bold;
     padding-left: 15px;
     font-size: 18px;
-    margin-top: 10px;
     text-transform: uppercase;
 }
 nav ul li a{
@@ -191,22 +189,28 @@ nav .fas{
 /* templates sap_xep_mon_hoc */
 #div1{
     position: relative;
-    top: 50px;
+    top: 10px;
     height: 150px;
     left: 20px;
 }
 #div2{
     position: relative;
-    top: 50px;
     left: 20px;
+    bottom: 20px;
 }
+#div3{
+    position: relative;
+    left: 20px;
+    bottom: 120px;
+}
+
 #dot_dki{
     width: 200px;
 }
 #button1{
     position: relative;
     top: 10px;
-    left: 10px;
+    left: 70px;
 }
 #updkiBtn{
     width: 100px;
@@ -261,16 +265,42 @@ nav .fas{
 #eachsiso{
     position: relative;
     left: 430px;
-    bottom: 80px;
+    bottom: 120px;
 }
 #sisoInp{
     width: 350px;
 
 }
+#numClass{
+    position: relative;
+    bottom: 37px;
+}
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 #note{
     position: relative;
-    bottom: 35px;
+    bottom: 20px;
+    left: 10px;
+    width: 900px;
+    font-size: 20px;
+    color: #c5a944; /* Màu chữ */
+    font-style: italic; /* Chữ in nghiêng */
+    /* font-weight: bold; Chữ in đậm */
+    font-family: 'Noto Serif', serif;
+}
+#note1{
+    position: relative;
+    bottom: 100px;
+    left: 10px;
+    width: 900px;
+    font-size: 20px;
+    color: #c5a944; /* Màu chữ */
+    font-style: italic; /* Chữ in nghiêng */
+    /* font-weight: bold; Chữ in đậm */
+    font-family: 'Noto Serif', serif;
+}
+#note2{
+    position: relative;
+    bottom: 50px;
     left: 10px;
     width: 900px;
     font-size: 20px;
@@ -282,7 +312,12 @@ nav .fas{
 #dki{
     position: relative;
     width: 700px;
-    bottom: 50px;
+    bottom: 120px;
+}
+#dki1{
+    position: relative;
+    width: 700px;
+    bottom: 60px;
 }
 #dkigvInp{
     width: 790px;
@@ -298,6 +333,7 @@ nav .fas{
     font-family: 'Times New Roman', Times, serif;
     position: relative;
     left: 20px;
+    bottom: 110px;
 }
 
 #UpdBtn{
@@ -310,6 +346,7 @@ nav .fas{
     font-family: 'Times New Roman', Times, serif;
     position: relative;
     left: 210px;
+    bottom: 110px;
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
