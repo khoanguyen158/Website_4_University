@@ -95,7 +95,7 @@ let AddSubjectData = () => {
     }
     let s1 = new String(AddSubInp.value);
     for(let i = 0; i < s1.length; i++) {
-        if(s1[i] == '-' || (s1[i] >= '0' && s1[i] <= '9') || (s1[i] >= 'A' && s1[i] <= 'Z')) {}
+        if(s1[i] == ',' || (s1[i] >= '0' && s1[i] <= '9') || (s1[i] >= 'A' && s1[i] <= 'Z')) {}
         else {
             alert("Môn học không hợp lệ!");
             return;
@@ -166,7 +166,7 @@ let CancelSubjectData = () => {
     }
     let s1 = new String(CancelSubInp.value);
     for(let i = 0; i < s1.length; i++) {
-        if(s1[i] == '-' || (s1[i] >= '0' && s1[i] <= '9') || (s1[i] >= 'A' && s1[i] <= 'Z')) {}
+        if(s1[i] == ',' || (s1[i] >= '0' && s1[i] <= '9') || (s1[i] >= 'A' && s1[i] <= 'Z')) {}
         else {
             alert("Môn học không hợp lệ!");
             return;
