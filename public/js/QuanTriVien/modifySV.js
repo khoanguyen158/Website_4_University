@@ -43,7 +43,7 @@ let UpdBtn = document.getElementById('UpdBtn');
 let DelBtn = document.getElementById('DelBtn');
 
 let AddData = evt => {
-    if(IdInp.value == "" || NameInp.value == "" || EmailInp.value == "" || PassInp.value == "" || CityInp.value == "" || DistrictInp.value == "" || XaInp.value == "" || AddressInp.value == "" || PhoneInp.value == "" || TinChiInp.value == "" || SexInp.value == "" || DobInp.value == "" || CccdInp.value == "" || NganhInp.value == "" || HeDaoTaoInp.value == "" || StartStudyInp.value == "") {
+    if(IdInp.value == "" || NameInp.value == "" || EmailInp.value == "" || PassInp.value == "" || CityInp.value == "" || AddressInp.value == "" || PhoneInp.value == "" || SexInp.value == "" || DobInp.value == "" || CccdInp.value == "" || NganhInp.value == "" || HeDaoTaoInp.value == "" || StartStudyInp.value == "") {
         alert("Vui lòng điền đầy đủ thông tin!");
         return;
     }
