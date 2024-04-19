@@ -13,12 +13,12 @@
   <link rel="stylesheet" href="./css/GiangVien/updateStuRe_GV.css">
   <script src="./js/GiangVien/updateStuRe_GV.js" type="module"></script>
     -->
-    <link rel="stylesheet" href="./css/chung/timeTableGroup.css">
-    <script src="./js/SinhVien/timetable_Stu.js" type="module"></script>
-    <script src="./js/chung/DangXuat.js" type="module"></script>
+  <link rel="stylesheet" href="./css/chung/timeTableGroup.css">
+  <script src="./js/SinhVien/timetable_Stu.js" type="module"></script>
+  <script src="./js/chung/DangXuat.js" type="module"></script>
+
   <!-- Favicons -->
-  <link rel="shortcut icon" type="image/png" href="/img/D.png"/>
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="shortcut icon" type="image/png" href="./assets/img/D.png" />
 
   <!-- Google Fonts -->
   <link
@@ -52,29 +52,29 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-        <h1 class="logo me-auto"><a>Trang chủ</a></h1>
+      <h1 class="logo me-auto"><a>Trang chủ</a></h1>
 
-        <nav id="navbar" class="navbar order-last order-lg-0">
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="active" href="Home.html">Home</a></li>
+
+          <li><a href="courses.html">Khóa học của tôi</a></li>
+
+          <li class="dropdown"><a href="#"><span>Chức năng</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-                <li><a class="active" href="Home.html">Home</a></li>
-
-                <li><a href="courses.html">Khóa học của tôi</a></li>
-
-                <li class="dropdown"><a href="#"><span>Chức năng</span> <i class="bi bi-chevron-down"></i></a>
-                    <ul>
-                        <li><a href="thongtincanhanSV.html">Thông tin cá nhân</a></li>
-                        <li><a href="bangdiem.html">Bảng điểm</a></li>
-                        <li><a href="timetable_Stu.html">Thời khóa biểu</a></li>
-                    </ul>
-                </li>
+              <li><a href="thongtincanhanSV.html">Thông tin cá nhân</a></li>
+              <li><a href="bangdiem.html">Bảng điểm</a></li>
+              <li><a href="timetable_Stu.html">Thời khóa biểu</a></li>
             </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
 
-        <a href="#" class="get-started-btn" id="signoutbutton">Đăng xuất</a>
+      <a href="#" class="get-started-btn" id="signoutbutton">Đăng xuất</a>
 
     </div>
-</header><!-- End Header -->
+  </header><!-- End Header -->
 
 
 
@@ -82,18 +82,18 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
-     
+
     </div><!-- End Breadcrumbs -->
 
     <div id="overlay" class="overlay"></div>
     <div id="editPopup" style="display:none;">
-        <div id="editContent"></div>
-        <br>
-        <button id="closepop">Đóng</button>
+      <div id="editContent"></div>
+      <br>
+      <button id="closepop">Đóng</button>
     </div>
 
     <br>
-     <!--
+    <!--
     <div class="filter-container">
         <input type="text" id="classIdFilter" placeholder="Nhập Mã lớp để lọc...">
         <button id ="sort">Lọc</button>
@@ -102,20 +102,21 @@
 
     <div class="container mt-3">
       <table class="table table">
-          <thead>
-              <th>Số thứ tự</th>
-              <th>Tên môn học </th>
-              <th>Mã môn học </th>
-              <th>Mã lớp </th>
-              <th>Phòng học </th>
-              <th>Cơ sở </th>
-              <th>Thứ</th> </th>
-              <th>Tiết học</th>
-              <th>Tuần học</th>
-          </thead>
-          <tbody id="tbody1"></tbody>
+        <thead>
+          <th>Số thứ tự</th>
+          <th>Tên môn học </th>
+          <th>Mã môn học </th>
+          <th>Mã lớp </th>
+          <th>Phòng học </th>
+          <th>Cơ sở </th>
+          <th>Thứ</th>
+          </th>
+          <th>Tiết học</th>
+          <th>Tuần học</th>
+        </thead>
+        <tbody id="tbody1"></tbody>
       </table>
-  </div>
+    </div>
   </main><!-- End #main -->
 
   <div id="preloader"></div>
