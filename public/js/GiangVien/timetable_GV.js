@@ -23,7 +23,7 @@ var tbody = document.getElementById('tbody1');
 var closepop = document.getElementById('closepop');
 
 function AddItemToTable(subname, subId, ClassID, Room,
-     Camp, ClassTime, Week, day) {
+    Camp, ClassTime, Week, day) {
     let trow = document.createElement("tr");
     let td1 = document.createElement('td');
     let td2 = document.createElement('td');
@@ -47,7 +47,7 @@ function AddItemToTable(subname, subId, ClassID, Room,
 
     td8.innerHTML = ClassTime;
     td9.innerHTML = Week;
- 
+
     trow.appendChild(td1);
     trow.appendChild(td2);
     trow.appendChild(td3);
@@ -63,13 +63,24 @@ async function AddRow(SubID, ClassID, SubName) {
     try {
         const weekSnapshot = await get(ref(db, 'MonHoc/' + SubID));
         let week = weekSnapshot.exists() ? weekSnapshot.val().thong_tin_tuan_hoc : "N/A";
-
         const classSnapshot = await get(ref(db, 'MonHoc/' + SubID + '/LopHoc/' + ClassID));
         if (classSnapshot.exists()) {
             var data = classSnapshot.val();
-            AddItemToTable(SubName || "N/A", SubID || "N/A",
-                ClassID || "N/A", data.phong || "N/A", data.co_so || "N/A",
-                data.thoi_luong || "N/A", week || "N/A", data.thu || "N/A");
+            get(ref(db, 'MonHoc/' + SubID + '/mo_ta_mon_hoc/so_gio_mot_tiet_hoc')).then((snapshot) => {
+                let ClassTime = "";
+                if (snapshot.exists()) {
+                    ClassTime = snapshot.val();
+                }
+                return ClassTime; // Trả về giá trị của ClassTime
+            }).then((ClassTime) => {
+                let x = 0;
+                if (data.thoi_luong && ClassTime) {
+                    x = Number(data.thoi_luong) + Number(ClassTime) - 1;
+                }
+                AddItemToTable(SubName || "N/A", SubID || "N/A",
+                    ClassID || "N/A", data.phong || "N/A", data.co_so || "N/A",
+                    data.thoi_luong + " -> " + x || "N/A", week || "N/A", data.thu || "N/A");
+            });
         } else {
             AddItemToTable(SubName || "N/A", SubID || "N/A",
                 ClassID || "N/A", "N/A", "N/A",
@@ -82,7 +93,7 @@ async function AddRow(SubID, ClassID, SubName) {
 
 function AddAllItemsToTable(subs) {
     stdNo = 0;
-     tbody.innerHTML = ""; 
+    tbody.innerHTML = "";
     for (const subject of subs) {
         AddRow(subject.key, subject.lop, subject.ten_mon_hoc);
     }
@@ -105,14 +116,14 @@ async function GetAllDataRealtime() {
         for (let item of subIDs) {
             try {
                 const ten_mon_hoc = await getSubName(item.key);
-                item.ten_mon_hoc = ten_mon_hoc;  
+                item.ten_mon_hoc = ten_mon_hoc;
             } catch (error) {
                 console.error("Error fetching subject name:", error);
-                item.ten_mon_hoc = "Error";  
+                item.ten_mon_hoc = "Error";
             }
         }
 
-        AddAllItemsToTable(subIDs); 
+        AddAllItemsToTable(subIDs);
     })
 }
 
@@ -131,7 +142,7 @@ function getSubName(subID) {
     });
 }
 
- 
+
 window.onload = GetAllDataRealtime;
 
 

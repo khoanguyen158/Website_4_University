@@ -189,3 +189,17 @@ function GetAllTLRealTime() {
 window.addEventListener('load', GetAllTLRealTime);
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+let get_tai_lieu = () => {
+    let dbRef1 = ref(db, 'MonHoc/' + ma_mon + '/LopHoc/' + lop + '/tailieuhoctap');
+    onValue(dbRef1, (snapshot) => {
+        if (snapshot.exists()) {
+            let tl = snapshot.val();
+            document.getElementById('tai_lieu_message').innerHTML = "Link tài liệu: " + '<a href=' + tl + '>' + tl + '</a>';
+        }
+        else {
+            document.getElementById('tai_lieu_message').innerHTML = 'Chưa có tài liệu học tập';
+        }
+    });
+}
+
+window.addEventListener('load', get_tai_lieu);

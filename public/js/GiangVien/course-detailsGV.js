@@ -330,3 +330,46 @@ function deletetl(tlId) {
     // Xóa video
     remove(tlRef);        
 }
+
+//~~~~~~~~~~Tài liệu học tập~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+let get_tai_lieu = () => {
+    let dbRef1 = ref(db, 'MonHoc/' + ma_mon + '/LopHoc/' + lop + '/tailieuhoctap');
+    onValue(dbRef1, (snapshot) => {
+        if (snapshot.exists()) {
+            let tl = snapshot.val();
+            document.getElementById('tai_lieu_message').innerHTML = "Link tài liệu hiện tại: " + '<a href=' + tl + '>' + tl + '</a>';
+        }
+        else {
+            document.getElementById('tai_lieu_message').innerHTML = 'Chưa có tài liệu học tập';
+        }
+    });
+}
+
+let them_tai_lieu_btn = document.getElementById('them_tai_lieu_btn');
+
+let them_tai_lieu = () => {
+    let link_tai_lieu = document.getElementById('link_tai_lieu').value;
+    set(ref(db, 'MonHoc/' + ma_mon + '/LopHoc/' + lop + '/tailieuhoctap'), link_tai_lieu);
+    alert('Chỉnh sửa tài liệu học tập thành công');
+};
+
+them_tai_lieu_btn.onclick = () => {
+    if(confirm('Bạn có chắc muốn thêm/chỉnh sửa tài liệu này không?') == false) return;
+    them_tai_lieu();
+    window.location.reload();
+};
+
+let xoa_tai_lieu_btn = document.getElementById('xoa_tai_lieu_btn');
+
+let xoa_tai_lieu = () => {
+    remove(ref(db, 'MonHoc/' + ma_mon + '/LopHoc/' + lop + '/tailieuhoctap'));
+    alert('Xoá tài liệu học tập thành công');
+}
+
+xoa_tai_lieu_btn.onclick = () => {
+    if(confirm('Bạn có chắc muốn xoá tài liệu này không?') == false) return;
+    xoa_tai_lieu();
+    get_tai_lieu();
+};
+
+window.addEventListener('load', get_tai_lieu);

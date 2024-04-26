@@ -75,18 +75,31 @@ function AddRow(SubID, ClassID, SubName){
         }
         return week; // Trả về giá trị của week
     }).then((week) => {
-        get(ref(db, 'MonHoc/' + SubID + '/LopHoc/' + ClassID)).then((snapshot) => {
+        get(ref(db, 'MonHoc/' + SubID + '/mo_ta_mon_hoc/so_gio_mot_tiet_hoc')).then((snapshot) => {
+            let ClassTime = "";
             if (snapshot.exists()) {
-                var data = snapshot.val();
-                AddItemToTable(SubName || "N/A", SubID || "N/A",
-                ClassID || "N/A", data.phong || "N/A", data.co_so || "N/A" ,
-                data.thoi_luong || "N/A", week || "N/A", data.thu || "N/A");
+                ClassTime = snapshot.val();
             }
-            else{
-                AddItemToTable(SubName || "N/A", SubID || "N/A",
-                ClassID || "N/A", "N/A", "N/A",
-                 "N/A", week || "N/A", "N/A");
-            }
+            return ClassTime; // Trả về giá trị của ClassTime
+        }).then((ClassTime) => {
+            get(ref(db, 'MonHoc/' + SubID + '/LopHoc/' + ClassID)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    var data = snapshot.val();
+                    //let x = (Number)data.thoi_luong + (Number)ClassTime;
+                    let x = 0;
+                    if (data.thoi_luong && ClassTime) {
+                        x = Number(data.thoi_luong) + Number(ClassTime) - 1;
+                    }
+                    AddItemToTable(SubName || "N/A", SubID || "N/A",
+                    ClassID || "N/A", data.phong || "N/A", data.co_so || "N/A" ,
+                    data.thoi_luong + " -> " + x || "N/A", week || "N/A", data.thu || "N/A");
+                }
+                else{
+                    AddItemToTable(SubName || "N/A", SubID || "N/A",
+                    ClassID || "N/A", "N/A", "N/A",
+                     "N/A", week || "N/A", "N/A");
+                }
+            });
         });
     });
 }
