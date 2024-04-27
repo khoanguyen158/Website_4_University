@@ -53,7 +53,7 @@ let getclasstable = () => {
                     sessionStorage.setItem('selectedSubjectKey', idInp.value);
                     sessionStorage.setItem('currentSemester', SemesterInp.value);
 
-                    window.open("regis2/Regis2_class_table.html", '_blank');
+                    window.open("Regis2_class_table.html", '_blank');
                 } else {
                     SubInp.value = "Chưa có môn nào";
                 }
