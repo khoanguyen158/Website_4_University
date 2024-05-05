@@ -30,7 +30,8 @@ function formatProcData(proc) {
         if (proc.hasOwnProperty(key)) {
             const component = proc[key];
             // Tạo chuỗi với định dạng "Tên: Điểm | "
-            formattedString += `${component.ten ||"N/A"}: ${component.diem || "N/A"} | `;
+            if(component.diem !== 0) formattedString += `${component.ten ||"N/A"}: ${component.diem} | `;
+            else formattedString += `${component.ten ||"N/A"}: ${component.diem ||"N/A"} | `;
         }
     }
     // Cắt bỏ ký tự '|' cuối cùng khỏi chuỗi
