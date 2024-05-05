@@ -30,25 +30,28 @@ function formatProcData(proc) {
         if (proc.hasOwnProperty(key)) {
             const component = proc[key];
             // Tạo chuỗi với định dạng "Tên: Điểm | "
-            if(component.diem !== 0) formattedString += `${component.ten ||"N/A"}: ${component.diem} | `;
-            else formattedString += `${component.ten ||"N/A"}: ${component.diem ||"N/A"} | `;
+            const name = component.ten !== undefined ? component.ten : "N/A";
+            const score = component.diem !== undefined ? component.diem : "N/A";
+            formattedString += `${name}: ${score} | `;
         }
     }
     // Cắt bỏ ký tự '|' cuối cùng khỏi chuỗi
     return formattedString.slice(0, -2);
 }
 
+
+
 function Status(fi_Re, proc){
     for (const key in proc) {
         if (proc.hasOwnProperty(key)) {
             const component = proc[key];
-            if(!component.ten || !component.diem)
+            if(!component.ten || component.diem == undefined)
                 return "N/A";
         }
     }
     if(fi_Re == 0)
          return "Không đạt";
-    else if(fi_Re == "N/A" || !fi_Re)
+    else if(fi_Re == "N/A" || fi_Re == undefined)
         return "N/A";
     else
          return "Đạt";
@@ -70,7 +73,7 @@ function AddItemToTable(name, id, proc, fi, cre) {
     td3.innerHTML = id || "N/A";
     td4.innerHTML = cre || "N/A";
     td5.innerHTML = formatProcData(proc);
-    td6.innerHTML = fi || "N/A";
+    td6.innerHTML = fi !== undefined ? fi : "N/A";
     td7.innerHTML = Status(fi, proc);
 
     trow.appendChild(td1);

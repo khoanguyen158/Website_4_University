@@ -239,7 +239,7 @@ function InitStuRes(studentID, val = 'N/A'){
 async function AddAllItemsToTable(StuList) {
     stdNo = 0;
     for (let studentID of StuList) {
-        await InitStuRes(studentID);
+        //await InitStuRes(studentID);
         const dbref = ref(db, 'SinhVien/' + studentID + '/Hoc_ki/' + semes + '/' + ma_mon);
         get(dbref).then(async (snapshot) => {
         //onValue(dbref, (snapshot) =>{
