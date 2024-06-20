@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
 import { getDatabase, onValue, ref, set, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-storage.js";
 
 
 const firebaseConfig = {
@@ -212,7 +213,7 @@ function deleteVideo(videoId) {
 }
 
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Tai Lieu ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Tai Lieu (Bài kiểm tra)~~~~~~~~~~~~~~~~~~~~~~~~~~~
 var tbody2 = document.getElementById('tbody2');
 function AddTLToTable(x0, x1, x2) {
     let trow = document.createElement("tr");
@@ -331,7 +332,7 @@ function deletetl(tlId) {
     remove(tlRef);        
 }
 
-//~~~~~~~~~~Tài liệu học tập~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~Tài liệu học tập (Tài liệu)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 let get_tai_lieu = () => {
     let dbRef1 = ref(db, 'MonHoc/' + ma_mon + '/LopHoc/' + lop + '/tailieuhoctap');
     onValue(dbRef1, (snapshot) => {
@@ -373,3 +374,19 @@ xoa_tai_lieu_btn.onclick = () => {
 };
 
 window.addEventListener('load', get_tai_lieu);
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~Làm phần tài liệu mới~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Làm mới: thêm được tài liệu bằng pdf và word, lưu ở firebase storage
+const storage = getStorage();
+let get_material = () => {
+    let dbar = sRef(storage, 'TaiLieu/' + 'final_2019.pdf');
+    getDownloadURL(dbar)
+        .then((url) => {
+            document.getElementById('material_message').innerHTML = "Link tài liệu hiện tại: ";
+            document.getElementById('material_embed').src = url;
+        })
+        .catch((error) => {
+            document.getElementById('material_message').innerHTML = 'Chưa có tài liệu';
+        });
+}
+window.addEventListener('load', get_material);

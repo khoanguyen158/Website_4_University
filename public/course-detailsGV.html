@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link rel="shortcut icon" type="image/png" href="./assets/img/D.png"/>
+  <link rel="shortcut icon" type="image/png" href="./assets/img/D.png" />
   <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
@@ -104,7 +104,7 @@
         <div class="row">
           <div class="col-lg-8">
             <h3>Thông báo</h3>
-            <textarea id="myInput" name="notes" rows="3" cols="70"></textarea>
+            <textarea id="myInput" name="notes" rows="7" cols="70"></textarea>
             <br>
             <button id="btn_notification">Đổi nội dung</button>
           </div>
@@ -140,18 +140,21 @@
                   </thead>
                   <tbody id="tbody1"></tbody>
                 </table>
-          
+
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="inputGroup-sizing-default">ID VIDEO</span>
-                  <input id="id_video" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  <input id="id_video" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="inputGroup-sizing-default">Tiêu đề</span>
-                  <input id="title_video" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  <input id="title_video" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="inputGroup-sizing-default">Link</span>
-                  <input id="ma_nhung" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  <input id="ma_nhung" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
                 </div>
 
                 <button id="them_btn">Thêm video</button>
@@ -164,11 +167,39 @@
         <div class="col-lg-8">
           <h3>Tài liệu</h3>
           <div class="input-group mb-3">
+            <p id="material_message"></p>
+            <embed src="" width="800" height="500" id="material_embed">
+          </div>
+          <table class="table" id="TableMaterial" style="display: none;">
+            <thead>
+              <th>STT</th>
+              <th>ID</th>
+              <th>Tiêu đề</th>
+              <th>Tải xuống</th>
+              <th>Xóa</th>
+            </thead>
+            <tbody id="tbodytablematerial"></tbody>
+          </table>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">ID Tài Liệu</span>
+            <input id="id_tai_lieu" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Tiêu đề</span>
+            <input id="title_tai_lieu" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div>Lưu ý: chỉ được thêm tài liệu dạng pdf</div>
+          <button id="addMaterial">Thêm tài liệu</button>
+          
+          <div class="input-group mb-3">
             <p id="tai_lieu_message"></p>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Link</span>
-            <input id="link_tai_lieu" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input id="link_tai_lieu" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default">
           </div>
 
           <button id="them_tai_lieu_btn">Chỉnh sửa đường dẫn</button>
@@ -190,20 +221,23 @@
                 </thead>
                 <tbody id="tbody2"></tbody>
               </table>
-        
+
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">ID Tài Liệu</span>
-                <input id="id_tl" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <input id="id_tl" type="text" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Tiêu đề</span>
-                <input id="title_tl" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <input id="title_tl" type="text" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Link</span>
-                <input id="ma_nhungtl" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <input id="ma_nhungtl" type="text" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
               </div>
-
+              <div>Lưu ý: chỉ hỗ trợ thêm bài kiểm tra dưới dạng google form</div>
               <button id="themtl_btn">Thêm bài kiểm tra</button>
 
             </div>
