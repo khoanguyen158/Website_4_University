@@ -24,6 +24,25 @@ This project is a **web-based University Management System** developed using **H
 - **Course Management:** Modify course details, including descriptions and assigned instructors.
 
 ---
+## How To Use
+
+### 🔹 For Students
+- **Course Registration:** Browse and enroll in available courses during open registration periods.
+- **Class Participation:** Access enrolled courses and interact with faculty.
+- **Grade Viewing:** Securely check academic performance in real-time.
+- **Profile Management:** Update personal information (e.g., contact details).
+
+### 🔹 For Faculty
+- **Course Selection:** Choose subjects they are eligible to teach.
+- **Grade Management:** Update and manage student grades in real-time.
+- **Profile Management:** Edit personal details and professional information.
+
+### 🔹 For Administrators
+- **Manage Course Registration Periods:** Open and close course registration for students.
+- **User Management:** Edit student and faculty information.
+- **Course Management:** Modify course details, including descriptions and assigned instructors.
+
+---
 
 ## Technologies Used
 - **Frontend:** HTML, CSS (Bootstrap/Tailwind), JavaScript
@@ -39,5 +58,3 @@ This system streamlines **university administration**, allowing for efficient **
 
 ### Deployment Link
 Access the deployed project here: [https://fir-d023a.web.app/](https://fir-d023a.web.app/)
-
-For more details, visit the [Firebase documentation](https://firebase.google.com/docs/cli).
