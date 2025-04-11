@@ -3,6 +3,7 @@
 ## Project Overview
 This project is a **web-based University Management System** developed using **HTML, CSS, JavaScript, and Firebase**. It enables students to register for courses and check their grades, faculty members to manage academic records, and administrators to oversee the entire system, including course registration periods and user management.
 
+![Overview](https://th.bing.com/th/id/OIF.FXvsPMbyG3nSwyaGeY2ThQ?rs=1&pid=ImgDetMain)
 ---
 
 ## Key Features
@@ -24,28 +25,11 @@ This project is a **web-based University Management System** developed using **H
 - **Course Management:** Modify course details, including descriptions and assigned instructors.
 
 ---
-## How To Use
-
-### 🔹 For Students
-- **Course Registration:** Browse and enroll in available courses during open registration periods.
-- **Class Participation:** Access enrolled courses and interact with faculty.
-- **Grade Viewing:** Securely check academic performance in real-time.
-- **Profile Management:** Update personal information (e.g., contact details).
-
-### 🔹 For Faculty
-- **Course Selection:** Choose subjects they are eligible to teach.
-- **Grade Management:** Update and manage student grades in real-time.
-- **Profile Management:** Edit personal details and professional information.
-
-### 🔹 For Administrators
-- **Manage Course Registration Periods:** Open and close course registration for students.
-- **User Management:** Edit student and faculty information.
-- **Course Management:** Modify course details, including descriptions and assigned instructors.
-
+## Install 
 ---
 
 ## Technologies Used
-- **Frontend:** HTML, CSS (Bootstrap/Tailwind), JavaScript
+- **Frontend:** HTML, CSS (Bootstrap), JavaScript
 - **Backend & Database:** Firebase Firestore for storing student, faculty, admin, and course data
 - **Authentication:** Firebase Authentication for secure login and role-based access control
 - **Hosting & Deployment:** Firebase Hosting for live access
@@ -57,4 +41,4 @@ This system streamlines **university administration**, allowing for efficient **
 
 
 ### Deployment Link
-Access the deployed project here: [https://fir-d023a.web.app/](https://fir-d023a.web.app/)
+Access the deployed project here: [Click here](https://fir-d023a.web.app/)
