@@ -3,7 +3,7 @@
 ## Project Overview
 This project is a **web-based University Management System** developed using **HTML, CSS, JavaScript, and Firebase**. It enables students to register for courses and check their grades, faculty members to manage academic records, and administrators to oversee the entire system, including course registration periods and user management.
 
-![Overview](https://th.bing.com/th/id/OIF.FXvsPMbyG3nSwyaGeY2ThQ?rs=1&pid=ImgDetMain)
+![Overview](/img/Doc/Overview.png)
 ---
 
 ## Key Features
