@@ -37,28 +37,7 @@ This project is a **web-based University Management System** developed using **H
 This system streamlines **university administration**, allowing for efficient **course management**, **student enrollment**, and **grade tracking**. The Firebase-powered backend ensures **secure data storage**, **real-time updates**, and **role-based access control**, providing a **scalable and efficient** academic management solution.
 
 
-# Deploying to Firebase
-
-To upload and deploy your project to Firebase, use the following command:
-
-```sh
-firebase deploy
-```
-
-## Prerequisites
-- Ensure you have Firebase CLI installed.
-- Authenticate by running:
-  ```sh
-  firebase login
-  ```
-- Navigate to your project directory and initialize Firebase if not already done:
-  ```sh
-  firebase init
-  ```
-
-## Deployment Steps
-1. Navigate to your project folder.
-2. Run `firebase deploy` to upload and deploy the latest changes.
-3. Upon successful deployment, Firebase will provide a hosting URL for your project.
+### Deployment Link
+Access the deployed project here: [https://fir-d023a.web.app/](https://fir-d023a.web.app/)
 
 For more details, visit the [Firebase documentation](https://firebase.google.com/docs/cli).
