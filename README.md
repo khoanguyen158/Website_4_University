@@ -1,4 +1,4 @@
-# University Student, Faculty & Admin Management System
+# [University Student, Faculty & Admin Management System](https://fir-d023a.web.app/)
 
 ## Project Overview
 This project is a **web-based University Management System** developed using **HTML, CSS, JavaScript, and Firebase**. It enables students to register for courses and check their grades, faculty members to manage academic records, and administrators to oversee the entire system, including course registration periods and user management.
