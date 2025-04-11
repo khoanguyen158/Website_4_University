@@ -25,8 +25,6 @@ This project is a **web-based University Management System** developed using **H
 - **Course Management:** Modify course details, including descriptions and assigned instructors.
 
 ---
-## Install 
----
 
 ## Technologies Used
 - **Frontend:** HTML, CSS (Bootstrap), JavaScript
@@ -35,10 +33,59 @@ This project is a **web-based University Management System** developed using **H
 - **Hosting & Deployment:** Firebase Hosting for live access
 
 ---
+## Install
 
-## Outcome & Impact
-This system streamlines **university administration**, allowing for efficient **course management**, **student enrollment**, and **grade tracking**. The Firebase-powered backend ensures **secure data storage**, **real-time updates**, and **role-based access control**, providing a **scalable and efficient** academic management solution.
+### Prerequisites
+- Node.js (v20 or higher)
+- Git
+- Firebase CLI
+- Web browser (Chrome, Firefox, etc.)
 
+### Clone Repository
+```bash
+git clone https://github.com/khoanguyen158/Website_4_University.git
+cd Website_4_University
+```
+
+### Firebase Setup
+1. Create a new Firebase project at [Firebase Console](https://console.firebase.google.com/)
+2. Install Firebase CLI globally:
+```bash
+npm install -g firebase-tools
+```
+3. Login to Firebase:
+```bash
+firebase login
+```
+4. Initialize Firebase in your project:
+```bash
+firebase init
+```
+
+### Configuration
+1. Navigate to your Firebase project settings
+2. Copy your Firebase configuration
+3. Create a file `firebase-config.js` in the project root
+4. Paste your Firebase configuration
+
+### Running Locally
+1. Install dependencies:
+```bash
+npm install
+```
+2. Start the development server:
+```bash
+firebase serve
+```
+3. Open your browser and navigate to `http://localhost:5000`
+
+### Deployment
+Deploy to Firebase Hosting:
+```bash
+firebase deploy
+``` 
 
 ### Deployment Link
 Access the deployed project here: [Click here](https://fir-d023a.web.app/)
+
+---
