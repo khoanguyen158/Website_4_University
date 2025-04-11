@@ -69,15 +69,11 @@ firebase init
 4. Paste your Firebase configuration
 
 ### Running Locally
-1. Install dependencies:
-```bash
-npm install
-```
-2. Start the development server:
+1. Start the development server:
 ```bash
 firebase serve
 ```
-3. Open your browser and navigate to `http://localhost:5000`
+2. Open your browser and navigate to `http://localhost:5000`
 
 ### Deployment
 Deploy to Firebase Hosting:
